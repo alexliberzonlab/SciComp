@@ -1,0 +1,4 @@
+SciComp
+=======
+
+Scientific Computing course
