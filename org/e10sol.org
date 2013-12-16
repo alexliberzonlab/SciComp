@@ -1,0 +1,33 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 10 solutions
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:t html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/e10.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+coming soon...
+
+#+BEGIN_COMMENT
+* Python
+e10.py
+##+INCLUDE: "../code/e10.py" src python
+
+* MATLAB / Octave
+e10.m
+##+INCLUDE: "../code/e10.m" src octave
+
+* R
+e10.R
+##+INCLUDE: "../code/e10.R" src R
+
+* C
+e10.c
+##+INCLUDE: "../code/e10.c" src C
+#+END_COMMENT

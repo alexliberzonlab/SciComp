@@ -1,0 +1,34 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 19
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Line Plot
+
+Let x be a vector [0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9] and set y to be equal to sin(2*pi*x).
+
+Generate a line plot that looks like this:
+
+#+ATTR_HTML: width="500"
+[[file:code/e19plot1.jpg]]
+
+* Smoother Line
+
+Redefine x and y to make the curve smoother:
+
+#+ATTR_HTML: width="500"
+[[file:code/e19plot2.jpg]]
+
+* Change line colour
+
+Plot it again but make the line blue, and thick:
+
+#+ATTR_HTML: width="500"
+[[file:code/e19plot3.jpg]]
+
+[[file:e19sol.html][solutions]]

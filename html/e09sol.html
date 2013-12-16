@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Exercise 9 solutions</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Exercise 9 solutions"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="fall 2013"/>
+<meta name="author" content="Paul Gribble"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="mystyle.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+ <a accesskey="h" href="http://www.gribblelab.org/scicomp/e09.html"> UP </a>
+ |
+ <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
+</div>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Exercise 9 solutions</h1>
+
+
+
+<hr/>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Python</a></li>
+<li><a href="#sec-2">MATLAB / Octave</a></li>
+<li><a href="#sec-3">R</a></li>
+<li><a href="#sec-4">C</a></li>
+<li><a href="#sec-5">Bonus Question 1</a></li>
+</ul>
+</div>
+</div>
+
+<hr/>
+
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Python</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>e09.py
+</p>
+
+
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">fib</span>(n):
+    <span style="color: #a020f0;">if</span> (n == 1):
+        <span style="color: #a020f0;">return</span> 0
+    <span style="color: #a020f0;">elif</span> (n == 2):
+        <span style="color: #a020f0;">return</span> 1
+    <span style="color: #a020f0;">else</span>:
+        <span style="color: #a0522d;">fprev2</span> = 1
+        <span style="color: #a0522d;">fprev1</span> = 1
+        <span style="color: #a0522d;">fn</span> = 1
+        <span style="color: #a0522d;">i</span> = 3
+        <span style="color: #a020f0;">while</span> (i &lt; n):
+            <span style="color: #a0522d;">fn</span> = fprev1 + fprev2
+            <span style="color: #a0522d;">fprev2</span> = fprev1
+            <span style="color: #a0522d;">fprev1</span> = fn
+            <span style="color: #a0522d;">i</span> = i + 1
+        <span style="color: #a020f0;">return</span> fn
+
+<span style="color: #a0522d;">n</span> = <span style="color: #483d8b;">int</span>(<span style="color: #483d8b;">raw_input</span>(<span style="color: #8b2252;">"Which Fibonacci number do you want? "</span>))
+<span style="color: #a020f0;">print</span> <span style="color: #8b2252;">"Fibonacci number "</span> + <span style="color: #483d8b;">str</span>(n) + <span style="color: #8b2252;">" is equal to "</span> + <span style="color: #483d8b;">str</span>(fib(n))
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">MATLAB / Octave</h2>
+<div class="outline-text-2" id="text-2">
+
+<p>fib.m
+</p>
+
+
+<pre class="src src-octave"><span style="color: #a020f0;">function</span> fn = <span style="color: #0000ff;">fib</span>(n)
+  <span style="color: #a020f0;">if</span> (n <span style="color: #483d8b;">==</span> 1)
+    fn = 0;
+  <span style="color: #a020f0;">elseif</span> (n <span style="color: #483d8b;">==</span> 2)
+    fn = 1;
+  <span style="color: #a020f0;">else</span>
+    fprev2 = 1;
+    fprev1 = 1;
+    fn = 1;
+    i = 3;
+    <span style="color: #a020f0;">while</span> (i <span style="color: #483d8b;">&lt;</span> n)
+      fn = fprev1 + fprev2;
+      fprev2 = fprev1;
+      fprev1 = fn;
+      i = i + 1;
+    <span style="color: #a020f0;">end</span>
+  <span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">end</span>
+</pre>
+
+<p>
+e09.m
+</p>
+
+
+<pre class="src src-octave">n = input(<span style="color: #8b2252;">'Which Fibonacci number do you want? '</span>);
+disp([<span style="color: #8b2252;">'Fibonacci number '</span>,num2str(n),<span style="color: #8b2252;">' is equal to '</span>,num2str(fib(n))]);
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">R</h2>
+<div class="outline-text-2" id="text-3">
+
+<p>e09.R
+</p>
+
+
+<pre class="src src-R">fib &lt;- function(n){
+    if (n == 1) {
+        return(0)
+    }
+    else if (n == 2) {
+        return(1)
+    }
+    else {
+        fprev2 &lt;- 1
+        fprev1 &lt;- 1
+        fn &lt;- 1
+        i &lt;- 3
+        while (i &lt; n) {
+            fn &lt;- fprev1 + fprev2
+            fprev2 &lt;- fprev1
+            fprev1 &lt;- fn
+            i &lt;- i + 1
+        }
+        return(fn)
+    }
+}
+
+n &lt;- as.integer(readline(<span style="color: #8b2252;">"Which Fibonacci number do you want? "</span>))
+cat(<span style="color: #8b2252;">"Fibonacci number"</span>,n,<span style="color: #8b2252;">"is equal to"</span>,fib(n),<span style="color: #8b2252;">"\n"</span>)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">C</h2>
+<div class="outline-text-2" id="text-4">
+
+<p>e09.c
+</p>
+
+
+<pre class="src src-C"><span style="color: #b22222;">// </span><span style="color: #b22222;">compile with: gcc -o e09 e09.c</span>
+
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
+
+<span style="color: #228b22;">int</span> <span style="color: #0000ff;">fib</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
+  <span style="color: #a020f0;">if</span> (n==1) {
+    <span style="color: #a020f0;">return</span> 0;
+  }
+  <span style="color: #a020f0;">else</span> <span style="color: #a020f0;">if</span> (n==2) {
+    <span style="color: #a020f0;">return</span> 1;
+  }
+  <span style="color: #a020f0;">else</span> {
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">fprev2</span> = 1;
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">fprev1</span> = 1;
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">fn</span> = 1;
+    <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span> = 3;
+    <span style="color: #a020f0;">while</span> (i &lt; n) {
+      fn = fprev1 + fprev2;
+      fprev2 = fprev1;
+      fprev1 = fn;
+      i = i + 1;
+    }
+    <span style="color: #a020f0;">return</span> fn;
+  }
+}
+
+<span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">argc</span>, <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">argv</span>[]) {
+
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>;
+  printf(<span style="color: #8b2252;">"Which Fibonacci number do you want? "</span>);
+  scanf(<span style="color: #8b2252;">"%d"</span>, &amp;n);
+  printf(<span style="color: #8b2252;">"Fibonacci number %d is equal to %d\n"</span>, n, fib(n));
+
+  <span style="color: #a020f0;">return</span> 0;
+}
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5">Bonus Question 1</h2>
+<div class="outline-text-2" id="text-5">
+
+
+<p>
+e09b1.py
+</p>
+
+
+<pre class="src src-python"><span style="color: #a020f0;">def</span> <span style="color: #0000ff;">fibR</span>(n):
+    <span style="color: #a020f0;">if</span> (n == 1):
+        <span style="color: #a020f0;">return</span> 0
+    <span style="color: #a020f0;">elif</span> (n == 2):
+        <span style="color: #a020f0;">return</span> 1
+    <span style="color: #a020f0;">else</span>:
+        <span style="color: #a020f0;">return</span> fibR(n-2) + fibR(n-1)
+
+<span style="color: #a0522d;">n</span> = <span style="color: #483d8b;">int</span>(<span style="color: #483d8b;">raw_input</span>(<span style="color: #8b2252;">"Which Fibonacci number do you want? "</span>))
+<span style="color: #a020f0;">print</span> <span style="color: #8b2252;">"Fibonacci number "</span> + <span style="color: #483d8b;">str</span>(n) + <span style="color: #8b2252;">" is equal to "</span> + <span style="color: #483d8b;">str</span>(fibR(n))
+</pre>
+
+
+<p>
+fibR.m
+</p>
+
+
+<pre class="src src-octave"><span style="color: #a020f0;">function</span> fn = <span style="color: #0000ff;">fibR</span>(n)
+  <span style="color: #a020f0;">if</span> (n <span style="color: #483d8b;">==</span> 1)
+    fn = 0;
+  <span style="color: #a020f0;">elseif</span> (n <span style="color: #483d8b;">==</span> 2)
+    fn = 1;
+  <span style="color: #a020f0;">else</span>
+    fn = fibR(n-2) + fibR(n-1);
+  <span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">end</span>
+</pre>
+
+<p>
+e09b1.m
+</p>
+
+
+<pre class="src src-octave">n = input(<span style="color: #8b2252;">'Which Fibonacci number do you want? '</span>);
+disp([<span style="color: #8b2252;">'Fibonacci number '</span>,num2str(n),<span style="color: #8b2252;">' is equal to '</span>,num2str(fibR(n))]);
+</pre>
+
+
+<p>
+e09b1.R
+</p>
+
+
+<pre class="src src-R">fibR &lt;- function(n){
+    if (n == 1) {
+        return(0)
+    }
+    else if (n == 2) {
+        return(1)
+    }
+    else {
+        return(fibR(n-2) + fibR(n-1))
+    }
+}
+
+n &lt;- as.integer(readline(<span style="color: #8b2252;">"Which Fibonacci number do you want? "</span>))
+cat(<span style="color: #8b2252;">"Fibonacci number"</span>,n,<span style="color: #8b2252;">"is equal to"</span>,fibR(n),<span style="color: #8b2252;">"\n"</span>)
+</pre>
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<hr />Paul Gribble | fall 2013<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
+</div>
+</body>
+</html>

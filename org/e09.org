@@ -1,0 +1,33 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 9
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Fibonacci numbers
+
+Write a function that computes the nth [[http://en.wikipedia.org/wiki/Fibonacci_number][Fibonacci number]]. Your function
+should be called =fib()= and should take as input a single integer
+value =n=, and should return a single integer value representing the
+nth Fibonacci number.
+
+Use a loop to accomplish this. Count how many arithmetic operations
+take place for computing the 10th Fibonacci number, and count also for
+the 20th.
+
+*Bonus*: write a second version of your function that uses [[http://en.wikipedia.org/wiki/Recursion_(computer_science)][recursion]]
+instead of a loop. Note how much more succint the code is. Count how
+many arithmetic operations take place for computing the 10th Fibonacci
+number, and for the 20th as well. Now you see the potential downside
+of recursive algorithms.
+
+*Bonus 2*: incorporate [[http://en.wikipedia.org/wiki/Memoization][memoization]] to make your recursive version more
+efficient. Count again the number of arithmetic operations for the
+10th and 20th Fibonacci numbers.
+
+[[file:e09sol.html][solutions]]
+

@@ -1,0 +1,30 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 1
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* temperature conversion
+Write a program to convert temperature values from Celsius to
+Fahrenheit according to the equation:
+
+\begin{equation}
+	F = \frac{9}{5}C + 32
+\end{equation}
+
+The program should as the user to input the temperature in Celsius,
+and then print out a sentence giving the temperature in Fahrenheit,
+like this:
+
+#+BEGIN_SRC example
+enter the temperature in Celsius: 22
+22 degrees Celsius is 71.6 degrees Fahrenheit
+#+END_SRC example
+
+[[file:e01sol.html][solutions]]
+
+

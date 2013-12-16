@@ -1,0 +1,34 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 25
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Line of best fit
+
+Let x be a vector starting at 1 and ending at 100. Let y be a vector
+equal to (x * 0.15) + N where N is a vector of random values chosen
+from a gaussian distribution with mean 0.0 and standard deviation 1.0.
+
+Generate a scatterplot of (x vs y) and overlay on the plot, the line
+of best fit after fitting a linear model to the data: $\hat{y} =
+\beta_{0} + \beta{1}x$.
+
+#+ATTR_HTML: width="400"
+[[file:code/e25plot1.jpg]]
+
+* add a legend:
+
+#+ATTR_HTML: width="400"
+[[file:code/e25plot2.jpg]]
+
+* add the equation of the line:
+
+#+ATTR_HTML: width="400"
+[[file:code/e25plot3.jpg]]
+
+[[file:e25sol.html][solutions]]

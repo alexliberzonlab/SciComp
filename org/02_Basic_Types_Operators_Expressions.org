@@ -1,0 +1,62 @@
+#+STARTUP: showall
+
+#+TITLE:     2. Basic Types, Operators & Expressions
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: html:t num:t toc:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/index.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+Here is a list of programming concepts that we will be covering this
+week. After going through the readings, in particular chapters 1 and 2
+of How To Think Like a Computer Scientist (HTTLACS), you should have a
+good grasp of the concepts, and you should be able to being to work
+through the exercises.
+
+In class we will go through the exercises together. There are sample
+solutions provided with each exercise; my suggestion is to have a go
+at them on your own first and only if you get really stuck, have a
+look at the sample solutions.
+
+We will also have a look at the first assignment together and talk
+about how best to approach it.
+
+* Basic Types, Operators and Expressions
+** expressions
+- arithmetic operators
+- relational & logical operators
+** variables
+- numeric variables
+- characters & strings
+* Control Flow
+- if / then / else
+- for loop / while loop
+
+* Readings
+- [[http://openbookproject.net/thinkcs/python/english2e/ch01.html][Chapter 1]] of How To Think Like a Computer Scientist (HTTLACS)
+- variables and statements: [[http://openbookproject.net/thinkcs/python/english2e/ch02.html][Chapter 2]] of HTTLACS
+- strings: [[http://en.wikibooks.org/wiki/Python_Programming/Variables_and_Strings][Variables and Strings section]] of /Python Programming/ (PP)
+  and the [[http://en.wikibooks.org/wiki/Python_Programming/Strings][strings section]] as well, plus [[http://openbookproject.net/thinkcs/python/english2e/ch07.html][Chapter 7]] of HTTLACS
+- conditionals
+- iteration: the [[http://en.wikibooks.org/wiki/Python_Programming/Loops][Loops]] section of PP
+- tuples: the [[http://www.diveintopython.net/native_data_types/tuples.html][Tuples]] section of /Dive Into Python/ (DIP) and the
+  [[http://docs.python.org/2/tutorial/datastructures.html#tuples-and-sequences][Tuples and Sequences]] section of the /Python Tutorial/ (PT)
+
+* Exercises
+[[file:exercises.html][Exercises]] 1 through 7 are designed to get you writing some basic
+programs to do arithmetic and generate output to the screen, and to
+get used to the idea of seeing mathematical expressions and equations,
+and tranlsating them into programs that run on your computer.
+
+* Assignment
+[[file:a01.html][Assignment 1]] is due no later than Sunday Sep 29, 2013, 23:59:59
+EDT. For your reference here is
+[[http://tycho.usno.navy.mil/simpletime.html][US Naval Observatory
+Master Clock Time]]. Please send me your solution by email to paul
+[at] gribblelab [dot] org. I want a single file that I can directly
+run (or compile and run) in whichever language you choose to use.

@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Exercise 14 solutions</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Exercise 14 solutions"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="fall 2013"/>
+<meta name="author" content="Paul Gribble"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="mystyle.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js">
+/**
+ *
+ * @source: http://orgmode.org/mathjax/MathJax.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ * Copyright (C) 2012-2013  MathJax
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ */
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code below.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code below is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code below.
+*/
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+ <a accesskey="h" href="http://www.gribblelab.org/scicomp/e14.html"> UP </a>
+ |
+ <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
+</div>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Exercise 14 solutions</h1>
+
+
+
+<hr/>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Python</a></li>
+<li><a href="#sec-2">MATLAB / Octave</a></li>
+<li><a href="#sec-3">R</a></li>
+<li><a href="#sec-4">C</a></li>
+</ul>
+</div>
+</div>
+
+<hr/>
+
+<p>
+A note about this exercise. It turns out that solving the regression
+problem \(Y = X \beta\) using the OLS equation \(\hat{\beta} = \left(
+X^{\top}X \right)^{-1} X^{\top} Y\) is actually numerically not very
+efficient. In particular, taking the inverse of a matrix is typically
+not needed. There is a more advanced method in linear algebra called
+<a href="http://en.wikipedia.org/wiki/QR_decomposition">QR decomposition</a> which is more efficient and more numerically stable
+than having to take the inverse directly. There's a blog post by John
+D. Cook that talks about this in some detail: <a href="http://www.johndcook.com/blog/2010/01/19/dont-invert-that-matrix/">Don't invert that matrix</a>.
+</p>
+<p>
+In MATLAB you can solve the regression equation \(Ax=b\) more directly
+by using the <i>slash operator</i>:
+</p>
+
+
+
+<pre class="src src-octave">x = A\b
+</pre>
+
+
+<p>
+In NumPy the equivalent is using the <code>linalg.lstsq()</code> function from the <code>linalg</code> submodule of NumPy:
+</p>
+
+
+
+<pre class="src src-python"><span style="color: #a0522d;">x</span> = linalg.lstsq(a,b)
+</pre>
+
+
+<p>
+In R it's the <code>qr.solve()</code> function:
+</p>
+
+
+
+<pre class="src src-r">x = qr.solve(A,b)
+</pre>
+
+
+<p>
+In any case, here are solutions using the full OLS equation from the
+exercise, for your reference. It's a good exercise at least to get you
+manipulating matrices and vectors.
+</p>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Python</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>e14.py
+</p>
+
+
+<pre class="src src-python"><span style="color: #a020f0;">from</span> numpy <span style="color: #a020f0;">import</span> *
+<span style="color: #a020f0;">from</span> numpy.linalg <span style="color: #a020f0;">import</span> inv
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">enter the data as column vectors</span>
+<span style="color: #a0522d;">inc</span> = array([50,35,80,25,90,75,65,95,70,110],<span style="color: #8b2252;">"float"</span>)
+<span style="color: #a0522d;">inc</span> = inc * 1000
+<span style="color: #a0522d;">age</span> = array([35,40,45,25,70,55,50,60,45,50],<span style="color: #8b2252;">"float"</span>)
+<span style="color: #a0522d;">edu</span> = array([4,2,6,0,4,6,4,6,8,8],<span style="color: #8b2252;">"float"</span>)
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">dependent variable Y</span>
+<span style="color: #a0522d;">Y</span> = inc
+<span style="color: #b22222;"># </span><span style="color: #b22222;">matrix of independent variables</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">including a column of 1s</span>
+<span style="color: #a0522d;">X</span> = array([ones((<span style="color: #483d8b;">len</span>(age),1)), age, edu])
+<span style="color: #a0522d;">X</span> = transpose(X)
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">find beta weights for:</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">Y = X * b</span>
+<span style="color: #a0522d;">b</span> = dot(dot(inv(dot(X.T, X)), X.T), Y)
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">estimated values of Y</span>
+<span style="color: #a0522d;">Yhat</span> = dot(X, b)
+
+<span style="color: #a020f0;">print</span> b
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">MATLAB / Octave</h2>
+<div class="outline-text-2" id="text-2">
+
+<p>e14.m
+</p>
+
+
+<pre class="src src-octave"><span style="color: #b22222;">% </span><span style="color: #b22222;">enter the data as column vectors</span>
+inc = [50,35,80,25,90,75,65,95,70,110]';
+inc = inc * 1000;
+age = [35,40,45,25,70,55,50,60,45,50]';
+edu = [4,2,6,0,4,6,4,6,8,8]';
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">dependent variable Y</span>
+Y = inc;
+<span style="color: #b22222;">% </span><span style="color: #b22222;">matrix of independent variables</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">including a column of 1s</span>
+X = [ones(length(age),1) age edu];
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">find beta weights for:</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">Y = X * b</span>
+b = inv(X' * X) * X' * Y;
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">estimated values of Y</span>
+Yhat = X * b;
+
+disp([<span style="color: #8b2252;">'b = '</span>,mat2str(b,8)]);
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">R</h2>
+<div class="outline-text-2" id="text-3">
+
+<p>e14.R
+</p>
+
+
+<pre class="src src-r"># enter the data as column vectors
+inc &lt;- c(50,35,80,25,90,75,65,95,70,110)
+inc &lt;- inc * 1000
+age &lt;- c(35,40,45,25,70,55,50,60,45,50)
+edu &lt;- c(4,2,6,0,4,6,4,6,8,8)
+
+# dependent variable Y
+Y &lt;- matrix(inc, ncol=1)
+# matrix of independent variables
+# including a column of 1s
+X &lt;- matrix(c(rep(1,length(age)), age, edu), ncol=3)
+
+library(MASS) # to get ginv() function
+# find beta weights for:
+# Y = X * b
+b &lt;- ginv(t(X) %*% X) %*% t(X) %*% Y
+
+# estimated values of Y
+Yhat &lt;- X %*% b
+
+cat(<span style="color: #8b2252;">"b = "</span>, b)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">C</h2>
+<div class="outline-text-2" id="text-4">
+
+<p>There are no built-in types for matrices in C. One can have
+multi-dimensional arrays but they are sort of hacked together as
+arrays of pointers to arrays. The best bet for doing matrix stuff in C
+is to use a third party library such as the <a href="http://www.gnu.org/software/gsl/">GNU Scientific Library</a>.
+</p>
+<p>
+To use this library you have to first download it to your machine, and
+then install it. There are installation instructions in the
+documentation. On my Mac I use <a href="http://brew.sh">Homebrew</a> and I just install it by
+opening a Terminal and typing:
+</p>
+
+
+
+<pre class="example">brew install gsl
+</pre>
+
+
+<p>
+Once installed, you have to link to the library once in your C code
+itself, by including the appropriate header, and second, when
+compiling, by linking to the library itself. See the sample code below
+for an example.
+</p>
+<p>
+The GSL has many, many useful functions and types for scientific
+programming of all kinds, there is a table of contents <a href="http://www.gnu.org/software/gsl/manual/html_node/">here</a>. Each section has code examples to help get you on your way.
+</p>
+<p>
+There is also a library called <a href="http://apophenia.info/">Apophenia</a> and a companion book <a href="http://modelingwithdata.org/about_the_book.html">Modeling With Data</a> (and <a href="http://modelingwithdata.org/arch/">blog</a>) by Ben Klemens, that provides a rich statistical
+library in C.
+</p>
+<p>
+e14.c
+</p>
+
+
+<pre class="src src-c"><span style="color: #b22222;">// </span><span style="color: #b22222;">compile with:</span>
+<span style="color: #b22222;">// </span><span style="color: #b22222;">gcc -o e14 e14.c `pkg-config --cflags --libs gsl`</span>
+
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;gsl/gsl_linalg.h&gt;</span>
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;gsl/gsl_blas.h&gt;</span>
+
+<span style="color: #b22222;">// </span><span style="color: #b22222;">a little function to take an array of doubles and return a gsl vector</span>
+<span style="color: #b22222;">//</span>
+<span style="color: #228b22;">gsl_vector</span> *<span style="color: #0000ff;">array2vec</span>(<span style="color: #228b22;">double</span> <span style="color: #a0522d;">a</span>[], <span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
+  <span style="color: #228b22;">gsl_vector</span> *<span style="color: #a0522d;">v</span> = gsl_vector_alloc(n);
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
+  <span style="color: #a020f0;">for</span> (i=0; i&lt;n; i++) {
+    gsl_vector_set(v, i, a[i]);
+  }
+  <span style="color: #a020f0;">return</span> v;
+}
+
+<span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">argc</span>, <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">argv</span>[]) {
+
+  <span style="color: #228b22;">double</span> <span style="color: #a0522d;">income</span>[] = {50000, 35000, 80000, 25000, 90000,
+                     75000, 65000, 95000, 70000, 110000};
+  <span style="color: #228b22;">double</span> <span style="color: #a0522d;">age</span>[] = {35, 40, 45, 25, 70, 55, 50, 60, 45, 50};
+  <span style="color: #228b22;">double</span> <span style="color: #a0522d;">education</span>[] = {4, 2, 6, 0, 4, 6, 4, 6, 8, 8};
+  <span style="color: #228b22;">double</span> <span style="color: #a0522d;">ones</span>[] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">stick data into gsl vectors</span>
+  <span style="color: #228b22;">gsl_vector</span> *<span style="color: #a0522d;">inc_v</span> = array2vec(income, 10);
+  <span style="color: #228b22;">gsl_vector</span> *<span style="color: #a0522d;">age_v</span> = array2vec(age, 10);
+  <span style="color: #228b22;">gsl_vector</span> *<span style="color: #a0522d;">edu_v</span> = array2vec(education, 10);
+  <span style="color: #228b22;">gsl_vector</span> *<span style="color: #a0522d;">one_v</span> = array2vec(ones, 10);
+
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">create a gsl matrix X to hold [ones, age, education]</span>
+  <span style="color: #228b22;">gsl_matrix</span> *<span style="color: #a0522d;">X</span> = gsl_matrix_alloc(10,3);
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">copy in the columns</span>
+  gsl_matrix_set_col(X, 0, one_v);
+  gsl_matrix_set_col(X, 1, age_v);
+  gsl_matrix_set_col(X, 2, edu_v);
+
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">allocate a gsl vector b to hold the beta weights</span>
+  <span style="color: #228b22;">gsl_vector</span> *<span style="color: #a0522d;">b</span> = gsl_vector_alloc(3);
+
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">our equation is inc_v = X * b and we want to solve for b</span>
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">we could use the OLS equation b = inv(X'X)X'Y but we won't</span>
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">instead we will use QR decomposition, which turns out to be way more efficient</span>
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">http://www.gnu.org/software/gsl/manual/html_node/QR-Decomposition.html</span>
+  <span style="color: #228b22;">gsl_vector</span> *<span style="color: #a0522d;">tau</span> = gsl_vector_alloc(3);
+  <span style="color: #228b22;">gsl_vector</span> *<span style="color: #a0522d;">resid</span> = gsl_vector_alloc(10);
+  gsl_linalg_QR_decomp(X, tau);
+  gsl_linalg_QR_lssolve(X, tau, inc_v, b, resid);
+
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">print the results (the 3 coefficients b) to the screen</span>
+  printf(<span style="color: #8b2252;">"\nb = [\n"</span>);
+  gsl_vector_fprintf(stdout, b, <span style="color: #8b2252;">"%.3f"</span>);
+  printf(<span style="color: #8b2252;">"]\n\n"</span>);
+
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">free the various heap memory that we allocated</span>
+  gsl_vector_free(resid);
+  gsl_vector_free(tau);
+  gsl_vector_free(b);
+  gsl_matrix_free(X);
+  gsl_vector_free(one_v);
+  gsl_vector_free(edu_v);
+  gsl_vector_free(age_v);
+  gsl_vector_free(inc_v);
+
+  <span style="color: #a020f0;">return</span> 0;
+}
+</pre>
+
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<hr />Paul Gribble | fall 2013<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
+</div>
+</body>
+</html>

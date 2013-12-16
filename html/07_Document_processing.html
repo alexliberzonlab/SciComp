@@ -1,0 +1,1100 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>7. Document Processing &amp; Reproducible Research</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="7. Document Processing &amp; Reproducible Research"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="fall 2013"/>
+<meta name="author" content="Paul Gribble"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="mystyle.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+ <a accesskey="h" href="http://www.gribblelab.org/scicomp/index.html"> UP </a>
+ |
+ <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
+</div>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">7. Document Processing &amp; Reproducible Research</h1>
+
+
+
+<hr/>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Document Processing</a></li>
+<li><a href="#sec-2">2 LaTeX</a></li>
+<li><a href="#sec-3">3 Markdown</a></li>
+<li><a href="#sec-4">4 Reproducible Research</a></li>
+<li><a href="#sec-5">5 Some links</a></li>
+<li><a href="#sec-6">6 Assignment</a></li>
+</ul>
+</div>
+</div>
+
+<hr/>
+
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Document Processing</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+Most of you have experience using programs like Microsoft Word to
+write papers and reports. The reason programs like these are so
+popular is that they are "what you see is what you get" (WYSIWYG) in
+their design. You see a graphical representation of the page, and of
+your document. Stylistic aspects like boldface, underlining, spacing,
+etc, are inserted using menus and buttons. MS Word and programs like
+it are easy to start using immediately. In many ways they mimic the
+<a href="http://en.wikipedia.org/wiki/Typewriter">typewriter</a> (link for those of you who may not know what these ancient
+devices are)&hellip; you see a page, and you start typing.
+</p>
+<p>
+There are however shortcomings of WYSIWYG programs like MS Word,
+especially for larger documents that include features like tables of
+contents, citations and bibliographies, figures and tables,
+etc. Technical documents that include mathematical equations can also
+be rather time consuming to generate in WYSIWYG word processors.
+</p>
+<p>
+What is the alternative? There is another way of typesetting documents
+that involves <b>separation of content and style</b>. Content is specified
+using plain text, and then stylistic aspects are specified using
+<i>markup</i> (special keywords and codes).
+</p>
+<p>
+One example of this style of document processing is <a href="http://en.wikipedia.org/wiki/HTML">HTML</a>. Page content
+is specified using plain text, and stylistic aspects are specified
+using HTML tags (e.g. &lt;br&gt; for a line break, &lt;div&gt; to define a new
+section, &lt;b&gt; for boldface, etc). Another example is <a href="http://en.wikipedia.org/wiki/Cascading_Style_Sheets">CSS</a> and how it
+works with HTML. An entire web site can be written in a generic way in
+HTML, and by referring to different CSS files, totally different
+stylistic presentations can be implemented. Another example is
+<a href="http://en.wikipedia.org/wiki/Markdown">Markdown</a>, in which simple markup tags can be used in a plaintext
+document to denote stylistic features. Markdown documents can be
+translated into HTML and several other formats using programs like
+<a href="http://johnmacfarlane.net/pandoc/">pandoc</a>. Another example, and the one that we will be looking at here,
+is called <a href="http://www.latex-project.org">LaTeX</a> (pronounced "lay-teck").
+</p>
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Why not MS Word?</h3>
+<div class="outline-text-3" id="text-1-1">
+
+
+<p>
+Separating style and content frees your mind to focus on your
+thoughts, and writing, without constantly being taken out of the
+moment, to manually implement stylistic features of your document. If
+every time you start a new section, or compose a list, etc, you need
+to mentally pause your thoughts in order to find the menu or submenu
+element or ribbon-bar-button to enlarge the font, make it bold, insert
+bullet points, adjust spacing, etc, then that detracts from the
+continuity of your thoughts. In programs like MS Word, all of these
+stylistic aspects have to be implemented manually, throughout the
+document. In systems like LaTeX, style is specified separately from
+content, all in a single place, and so changing the look of your
+document can be done at a separate time from writing the content.
+</p>
+<p>
+You all know, if you've ever written a large document like a
+scientific manuscript, that handling things like citations and
+bibliographies, figures, tables, equations, etc can be a huge
+nuisance. There are bibliography managers with citation features, such
+as EndNote, but in my experience they are rather difficult and
+unreliable to use. Imagine you are writing for a journal like Nature
+or Science, in which citations appear as numbers in increasing order
+as the document progresses. Imagine now you have 50 citations, and you
+decide that in the middle of your document, after citation #25, you
+need to add another one. Now you have to go through and manually
+change citations #26-50 to be 27-51. A similar issue exists with
+numbered equations, with Figures, and with Tables. Moving things
+around and you work on subsequent drafts of your article can often
+involve serious busywork in order to manually change citation, figure,
+equation, and table numbering.
+</p>
+<p>
+In LaTeX, all of this is handled 100% automatically for you. At no
+point do you need to manually number citations, figures, equations,
+tables, sections, subsections, chapters, etc. These things are
+specified using LaTeX markup codes, and when you <i>compile</i> your LaTeX
+plaintext file (which generates a .pdf), all of the numbering is
+handled for you by the LaTeX system. This turns out to be a <b>huge</b>
+time saver, especially for long documents like a manuscript, or a
+thesis.
+</p>
+<p>
+Side note: my PhD thesis (200+ pages) was written using LaTeX, and
+everything including citations, equations, figures, tables, sections,
+even a table of contents with page numbers, is generated automatically
+by LaTeX. What's more, the thesis document itself is now almost 15
+years old, but I can still today compile it and generate a .pdf using
+the original LaTeX plaintext files.
+</p>
+<p>
+Another reason why I like systems like LaTeX more than programs like
+MS Word is that Word files are encoded in a binary format, and are not
+immediately human-readable. To read a Word file one needs a program
+that knows how to open Word files. What's more, Word file formats have
+changed over the years, and so there is no guarantee that some time in
+the future you will be able to easily open an old Word file. What's
+more, different operating systems (Windows, Linux, Mac OSX) often are
+not 100% compatible and interchangable with respect to Word files. In
+contrast, systems like LaTeX use plain text ascii files. These are
+universally readable and 100% platform independent. LaTeX is also
+open-source and free, whereas MS Word is proprietary and licensed.
+</p>
+<p>
+Have a look at the following sites to read more about the issue of
+Word vs LaTeX, and content vs style in document processing:
+</p>
+<ul>
+<li><a href="http://www.andy-roberts.net/writing/latex/benefits">Benefits of LaTeX typesetting</a>
+</li>
+<li><a href="http://math.mit.edu/~sswatson/whylatex.html">Why LaTeX?</a>
+</li>
+<li><a href="http://factorgrad.blogspot.ca/2010/07/why-latex-is-superior-to-ms-word.html">Why LaTeX is superior to MS Word</a>
+</li>
+<li><a href="http://www.eng.cam.ac.uk/help/tpl/textprocessing/latex_advocacy.html">Why LaTeX?</a>
+</li>
+<li><a href="http://chronicle.com/blognetwork/castingoutnines/2010/02/21/five-reasons-you-should-use-latex-and-five-tips-for-teaching-it/">Five reasons you should use LaTeX and five tips for teaching it</a>
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> LaTeX</h2>
+<div class="outline-text-2" id="text-2">
+
+
+
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> installing LaTeX</h3>
+<div class="outline-text-3" id="text-2-1">
+
+
+<p>
+LaTeX can be installed in Linux by typing:
+</p>
+
+
+
+<pre class="src src-sh">sudo apt-get install texlive
+</pre>
+
+
+<p>
+On the Mac, the <a href="http://www.tug.org/mactex/">MacTEX</a> distribution is the easiest way to go.
+</p>
+<p>
+On Windows, I've been told that <a href="http://www.tug.org/protext/">proTeXt</a> is the way to go&hellip; although I
+have zero experience with it.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Basic LaTeX document structure</h3>
+<div class="outline-text-3" id="text-2-2">
+
+
+<p>
+Every LaTeX document must have at the very least, a basic structure that looks like this:
+</p>
+
+
+
+<pre class="src src-tex"><span style="color: #b22222;">% </span><span style="color: #b22222;">latexdemo1.tex</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">a very basic document</span>
+
+<span style="color: #a020f0;">\documentclass</span>{<span style="color: #0000ff;">article</span>}
+
+<span style="color: #a020f0;">\begin</span>{<span style="color: #0000ff;">document</span>}
+
+Hello World!
+
+<span style="color: #a020f0;">\end</span>{<span style="color: #0000ff;">document</span>}
+</pre>
+
+
+<p>
+This LaTeX plaintext file can be compiled from the command line by:
+</p>
+
+
+
+<pre class="src src-sh">pdflatex latexdemo1.tex
+</pre>
+
+
+<p>
+Here is what the above document looks like when compiled into a .pdf:
+<a href="code/latexdemo1.pdf">latexdemo1.pdf</a>. You can see that it's not very
+interesting. We have our document text, "Hello World!", and we have a
+page number at the bottom.
+</p>
+<p>
+The <code>\documentclass</code> command signifies one of several pre-canned
+<a href="http://en.wikibooks.org/wiki/LaTeX/Document_Structure#Document_classes">document styles</a>. Some of the more relevant ones for us are <code>article</code>,
+which provides a basic report style appropriate for scientific
+manuscripts and reports, <code>report</code> which provides for longer reports
+containing several chapters, and <code>book</code> for actual books. Other styles
+you may find useful are <code>letter</code> for writing letters, and <code>beamer</code> for
+presentations (i.e. using LateX instead of MS Powerpoint).
+</p>
+<p>
+The document class command can be supplemented with one of a number of
+optional style options including things like font size, paper format
+(letter, A4, legal, etc), single vs two-columns, portrait vs landscape
+page orientation, etc.
+</p>
+<p>
+The idea here is that a given document class (e.g. <code>article</code>) provides
+a pre-determined systematic document appearance. This can be modified
+by other LaTeX commands. Typically these commands are entered after
+the <code>\documentclass</code> command but before the <code>\begin{document}</code>
+command.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Including Packages</h3>
+<div class="outline-text-3" id="text-2-3">
+
+
+<p>
+In the header between the <code>\documentclass</code> and <code>\begin{document}</code>
+commands, one can also load LaTeX packages using the
+<code>\includepackage{}</code> command. There are a ton of packages available,
+and they all live in a central repository known as <a href="http://www.ctan.org">CTAN</a>, the
+Comprehensive TeX Archive Network.
+</p>
+<p>
+Here is one package that we will use in order to demonstrate the
+various document styles available: the <a href="http://www.ctan.org/pkg/lipsum">lipsum</a> package, which will
+insert chunks of dummy text so that we can see how different styles
+look. Here is an example:
+</p>
+
+
+
+<pre class="src src-tex"><span style="color: #b22222;">% </span><span style="color: #b22222;">latexdemo2.tex</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">a very basic document</span>
+
+<span style="color: #a020f0;">\documentclass</span>{<span style="color: #0000ff;">article</span>}
+
+<span style="color: #a020f0;">\usepackage</span>{<span style="color: #0000ff;">lipsum</span>}
+
+<span style="color: #a020f0;">\title</span>{<span style="color: #228b22;">A demo document in </span><span style="color: #a020f0;">\LaTeX</span><span style="color: #228b22;">{}</span>}
+<span style="color: #a020f0;">\author</span>{<span style="color: #228b22;">John Doe</span>}
+<span style="color: #a020f0;">\date</span>{<span style="color: #228b22;">\today</span>}
+
+<span style="color: #a020f0;">\begin</span>{<span style="color: #0000ff;">document</span>}
+
+<span style="color: #696969;">\maketitle</span>
+
+<span style="color: #696969;">\lipsum</span>[1]
+
+<span style="color: #a020f0;">\section</span><span style="color: #a020f0;">*</span>{<span style="color: #00008b; font-size: 133%; font-weight: bold;">Introduction</span>}
+
+<span style="color: #696969;">\lipsum</span>[1-5]
+
+<span style="color: #a020f0;">\section</span><span style="color: #a020f0;">*</span>{<span style="color: #00008b; font-size: 133%; font-weight: bold;">Methods</span>}
+
+<span style="color: #696969;">\lipsum</span>[1-5]
+
+<span style="color: #a020f0;">\end</span>{<span style="color: #0000ff;">document</span>}
+</pre>
+
+
+<p>
+Here is what the .pdf file looks like: <a href="code/latexdemo2.pdf">latexdemo2.pdf</a>.
+</p>
+<p>
+The <code>\lipsum[]</code> commands mean, generate paragraphs of dummy text. The
+results in a 4-page document that allows you to see the basic
+<code>article</code> style. We also see commands for the title, author, and
+date. These are specified in the header, and depending on the
+documentstyle, are rendered differently.
+</p>
+<p>
+As an exercise, try changing the <code>\documentclass</code> to <code>book</code>,
+recompile, and see what it looks like. Try <code>report</code> and do the
+same. You get the idea. By changing style commands independent of the
+content (which doesn't have to change), we can alter the appearance of
+our document to suit our needs.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> Equations</h3>
+<div class="outline-text-3" id="text-2-4">
+
+
+<p>
+Let's look at another example document. This time we've introduced
+equations:
+</p>
+
+
+
+<pre class="src src-tex"><span style="color: #b22222;">% </span><span style="color: #b22222;">latexdemo3.tex</span>
+
+<span style="color: #a020f0;">\documentclass</span>{<span style="color: #0000ff;">article</span>}
+
+<span style="color: #a020f0;">\title</span>{<span style="color: #228b22;">A demo document in </span><span style="color: #a020f0;">\LaTeX</span><span style="color: #228b22;">{}</span>}
+<span style="color: #a020f0;">\author</span>{<span style="color: #228b22;">John Doe</span>}
+<span style="color: #a020f0;">\date</span>{<span style="color: #228b22;">\today</span>}
+
+<span style="color: #a020f0;">\begin</span>{<span style="color: #0000ff;">document</span>}
+
+<span style="color: #696969;">\maketitle</span>
+
+We will see two equations here. Equation <span style="color: #a020f0;">\ref</span>{<span style="color: #008b8b;">eq:regression_line</span>}
+gives the formula for a line of best fit for a linear
+regression. Equation <span style="color: #a020f0;">\ref</span>{<span style="color: #008b8b;">eq:sample_mean</span>} gives the formula for the
+mean of a sample. It is not the same as Equation
+<span style="color: #a020f0;">\ref</span>{<span style="color: #008b8b;">eq:regression_line</span>}.
+
+This is an equation: <span style="color: #8b4513;">$</span><span style="color: #8b4513;">\hat</span><span style="color: #8b4513;">{Y} = </span><span style="color: #8b4513;">\beta</span><span style="color: #8b4513;">_{0} + </span><span style="color: #8b4513;">\beta</span><span style="color: #8b4513;">_{1} X$</span>.
+
+<span style="color: #a020f0;">\begin</span>{<span style="color: #0000ff;">equation</span>}
+<span style="color: #8b4513;">  </span><span style="color: #8b4513;">\hat</span><span style="color: #8b4513;">{Y} = </span><span style="color: #8b4513;">\beta</span><span style="color: #8b4513;">_{0} + </span><span style="color: #8b4513;">\beta</span><span style="color: #8b4513;">_{1} X</span>
+<span style="color: #a020f0;">\label</span><span style="color: #8b4513;">{</span><span style="color: #008b8b;">eq:regression_line</span><span style="color: #8b4513;">}</span>
+<span style="color: #a020f0;">\end</span>{<span style="color: #0000ff;">equation</span>}
+
+<span style="color: #a020f0;">\begin</span>{<span style="color: #0000ff;">equation</span>}
+<span style="color: #8b4513;">  </span><span style="color: #8b4513;">\bar</span><span style="color: #8b4513;">{X} = </span><span style="color: #8b4513;">\frac</span><span style="color: #8b4513;">{1}{N} </span><span style="color: #8b4513;">\sum</span><span style="color: #8b4513;">_{i=1}^{N} X_{i}</span>
+<span style="color: #a020f0;">\label</span><span style="color: #8b4513;">{</span><span style="color: #008b8b;">eq:sample_mean</span><span style="color: #8b4513;">}</span>
+<span style="color: #a020f0;">\end</span>{<span style="color: #0000ff;">equation</span>}
+
+Note how the equation numbering is handled automatically for you.
+
+<span style="color: #a020f0;">\end</span>{<span style="color: #0000ff;">document</span>}
+</pre>
+
+
+<p>
+Here is what the .pdf file looks like: <a href="code/latexdemo3.pdf">latexdemo3.pdf</a>.
+</p>
+<p>
+Note a couple of things. First, equations are specified using LaTeX
+equation codes. A good summary of all the codes for the various math
+symbols is <a href="http://en.wikibooks.org/wiki/LaTeX/Mathematics">here</a>.
+</p>
+<p>
+Note also that nowhere in the LaTeX document itself did I manually
+specify the Equation numbers. I only specified labels, and then within
+the document I can refer to these labels without having to worry about
+the numbering. As an exercise, try switching the order of the
+equations, and recompile. See how the numbering is automatically
+adjusted for you. Note also that you will likely need to issue the
+<code>pdflatex</code> command twice. The first time you issue it you might see a
+message like this:
+</p>
+
+
+
+<pre class="example">LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+</pre>
+
+
+<p>
+The LaTeX system needs multiple passes to automatically handle all of
+the numbering for elements like equations, sections, tables, figures,
+citations, etc.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2-5" class="outline-3">
+<h3 id="sec-2-5"><span class="section-number-3">2.5</span> Citations &amp; Bibliography</h3>
+<div class="outline-text-3" id="text-2-5">
+
+
+<p>
+In LaTeX, citations and bibliographies are handled by a separate but
+related program (included with LaTeX) called <a href="http://www.bibtex.org">BibTeX</a>. BibTeX files are
+also plain text files, that list bibliography items in a standardized
+format. There is some documentation <a href="http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management">here</a>.
+</p>
+<p>
+Here is an example of a BibTeX file:
+</p>
+
+
+
+<pre class="src src-tex">@article{poldrack2012future,
+  title={The future of fMRI in cognitive neuroscience},
+  author={Poldrack, Russell A},
+  journal={Neuroimage},
+  volume={62},
+  number={2},
+  pages={1216--1220},
+  year={2012},
+  publisher={Elsevier}
+}
+
+@article{myung2003tutorial,
+  title={Tutorial on maximum likelihood estimation},
+  author={Myung, In Jae},
+  journal={Journal of Mathematical Psychology},
+  volume={47},
+  number={1},
+  pages={90--100},
+  year={2003},
+  publisher={Elsevier}
+}
+
+@book{dawkins1996blind,
+  title={The blind watchmaker: Why the evidence of evolution reveals a universe without design},
+  author={Dawkins, Richard},
+  year={1996},
+  publisher={WW Norton \&amp; Company}
+}
+</pre>
+
+
+<p>
+You can see this .bib file has three entries: two journal articles and
+one book. Now within our LaTeX file, if we want to cite any of these articles, we need to do a couple of things.
+</p>
+<p>
+First we need to specify the name of the .bib file containing the
+references using the <code>\bibliography{}</code> command. We also need to
+specify a style for our bibliography using the <code>\bibliographystyle}</code>
+command. There are several styles built-in, see <a href="http://web.reed.edu/cis/help/latex/bibtexstyles.html">Choosing a BibTeX Style</a>. There are also styles you can import using the <code>\usepackage</code>
+command, e.g. the <a href="http://www.ctan.org/tex-archive/biblio/bibtex/contrib/chicago">chicago</a> style, the <a href="http://www.ctan.org/pkg/apacite">apacite</a> style for APA style, and
+the <a href="http://merkel.zoneo.net/Latex/natbib.php">natbib</a> package for more customizable styles. Also see <a href="http://schneider.ncifcrf.gov/latex.html">BibTeX Bibliography and LaTeX Style Formats for Biologists</a> (however slightly
+outdated I think).
+</p>
+<p>
+Finally, we can use the <code>\cite{}</code> command to actually cite
+papers. Here is an example:
+</p>
+
+
+
+<pre class="src src-tex"><span style="color: #b22222;">% </span><span style="color: #b22222;">latexdemo4.tex</span>
+
+<span style="color: #a020f0;">\documentclass</span>{<span style="color: #0000ff;">article</span>}
+
+<span style="color: #a020f0;">\title</span>{<span style="color: #228b22;">A demo document in </span><span style="color: #a020f0;">\LaTeX</span><span style="color: #228b22;">{}</span>}
+<span style="color: #a020f0;">\author</span>{<span style="color: #228b22;">John Doe</span>}
+<span style="color: #a020f0;">\date</span>{<span style="color: #228b22;">\today</span>}
+
+<span style="color: #a020f0;">\usepackage</span>{<span style="color: #0000ff;">chicago</span>}
+
+<span style="color: #a020f0;">\begin</span>{<span style="color: #0000ff;">document</span>}
+
+<span style="color: #696969;">\maketitle</span>
+
+<span style="color: #a020f0;">\section</span><span style="color: #a020f0;">*</span>{<span style="color: #00008b; font-size: 133%; font-weight: bold;">Introduction</span>}
+
+Here is a sentence in which we cite an article on fMRI
+<span style="color: #a020f0;">\cite</span>{<span style="color: #008b8b;">poldrack2012future</span>}. Here is another sentence in which we cite a
+paper on maximum likelihood estimation
+<span style="color: #a020f0;">\cite</span>{<span style="color: #008b8b;">myung2003tutorial</span>}. Finally here is a citation of a book on
+evolution <span style="color: #a020f0;">\cite</span>{<span style="color: #008b8b;">dawkins1996blind</span>}.
+
+Here is a sentence in which we cite all three
+<span style="color: #a020f0;">\cite</span>{<span style="color: #008b8b;">poldrack2012future,myung2003tutorial,dawkins1996blind</span>}.
+
+<span style="color: #a020f0;">\bibliographystyle</span>{<span style="color: #0000ff;">chicago</span>}
+<span style="color: #a020f0;">\bibliography</span>{<span style="color: #008b8b;">latexdemorefs</span>}
+
+<span style="color: #a020f0;">\end</span>{<span style="color: #0000ff;">document</span>}
+</pre>
+
+
+<p>
+To compile this we need to issue a series of commands:
+</p>
+
+
+
+<pre class="src src-sh">pdflatex latexdemo4
+bibtex latexdemo4
+pdflatex latexdemo4
+</pre>
+
+
+<p>
+Here is what the .pdf looks like: <a href="code/latexdemo4.pdf">latexdemo4.pdf</a>.
+</p>
+<p>
+A convenient way to get bibliography entries into .bib format is by
+using <a href="http://scholar.google.com">google scholar</a>. Under each article you find there is a link
+called <b>cite</b>, and when you click that, a window pops up and one of
+the links at the bottom of this window is <b>Import into BibTeX</b>. If you
+click that you will see the entry in .bib format, and you can copy and
+paste it into your .bib file.
+</p>
+<p>
+For the Mac there is a really nice free, open-source program called
+<a href="http://bibdesk.sourceforge.net">BibDesk</a> that provides a pointy-clicky GUI interface to .bib files. You
+can even search Pubmed, google scholar, etc and have the results
+imported automatically into a .bib file.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2-6" class="outline-3">
+<h3 id="sec-2-6"><span class="section-number-3">2.6</span> article template</h3>
+<div class="outline-text-3" id="text-2-6">
+
+
+<p>
+Here is a link to a template for a basic scientific manuscript. There
+are some formatting codes that we haven't seen yet, but you can
+probably guess what they do, and if not you can look them up on google
+to find out. The template includes a title page, a bibliography,
+Figures plus Figure Captions, and all the standard article sections
+(Abstract, Introduction, Methods, Results, Discussion).
+</p>
+<ul>
+<li><a href="code/articletemplate.tex">articletemplate.tex</a>
+</li>
+<li><a href="code/articletemplaterefs.bib">articletemplaterefs.bib</a>
+</li>
+<li><a href="code/articletemplatefigure.pdf">articletemplatefigure.pdf</a>
+</li>
+</ul>
+
+
+<p>
+and the compiled article in .pdf format:
+</p>
+<ul>
+<li><a href="code/articletemplate.pdf">articletemplate.pdf</a>
+</li>
+</ul>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-7" class="outline-3">
+<h3 id="sec-2-7"><span class="section-number-3">2.7</span> Next steps</h3>
+<div class="outline-text-3" id="text-2-7">
+
+
+<p>
+My suggestion is to go through some of the first few sections of
+</p>
+<p>
+I will openly admit that getting to know LaTeX involves somewhat of a
+learning curve. The best place to start is by looking at example
+templates and modifying them to suit your needs.
+</p>
+<p>
+Here are some links to gentle introductions:
+</p>
+<ul>
+<li><a href="http://latex-project.org/intro.html">An introduction to LaTeX</a>
+</li>
+<li><a href="http://en.wikibooks.org/wiki/LaTeX">LaTeX (wikibooks)</a>
+</li>
+<li><a href="http://www.andy-roberts.net/writing/latex">Getting to Grips with LaTeX</a>
+</li>
+<li><a href="http://www.bibtex.org/Using/">How to use BibTeX</a>
+</li>
+<li><a href="http://www.stdout.org/~winston/latex/latexsheet.pdf">LaTeX Cheat Sheet</a> (print this out and keep it handy)
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Markdown</h2>
+<div class="outline-text-2" id="text-3">
+
+
+<p>
+<a href="http://en.wikipedia.org/wiki/Markdown">Markdown</a> is a lightweight markup language originally intended as a way to automatically generate HTML code from easy-to-read formatting codes. It was developed by <a href="http://en.wikipedia.org/wiki/John_Gruber">John Gruber</a> and <a href="http://en.wikipedia.org/wiki/Aaron_Swartz">Aaron Swartz</a>. Since its original conception it has sort of blossomed into a format that has gone way beyond just HTML.
+</p>
+<p>
+Markdown documents can be written in any plain text editor, for indeed at the end of the day (much like LaTeX), Markdown documents are just plain text documents, annotated with special markup codes that specify formatting of common format elements, like headings, subheadings, lists, tables, inline graphics, code snippets (with syntax highlighting), etc. Here is a <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheatsheet</a> that shows you the kind of things that are possible.
+</p>
+<p>
+Many advanced text editors, like <a href="http://www.sublimetext.com">Sublime Text</a>, and others, have Markdown knowledge "built in". The convention is that Markdown files have a <code>.md</code> filename suffix.
+</p>
+<p>
+There are a number of ways to generate output-formatted documents from Markdown. Some text editors can generate HTML previews (and HTML output files) from Markdown &mdash; just google Markdown editors.
+</p>
+<p>
+There are also programs like <a href="http://markedapp.com">Marked</a> that will show you an output-formatted preview, as you edit a Markdown file in any editor (Marked runs in the background).
+</p>
+<p>
+Finally the program called <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> can convert from Markdown (and many other formats) to many output formats including HTML, LaTeX, pdf, MS Word, etc etc.
+</p>
+<p>
+Some people write papers in Markdown format:
+</p>
+<ul>
+<li><a href="http://recurrentprocessing.blogspot.ca/2013/02/write-academic-papers-with-markdown.html">Write academic papers with Markdown</a>
+</li>
+<li><a href="https://github.com/weecology/data-sharing-paper">an example of a scientific manuscript written using Markdown</a> 
+</li>
+<li><a href="http://chronicle.com/blogs/profhacker/markdown-the-syntax-you-probably-already-know/35295">Markdown: The Syntax You (Probably) Already Know</a>
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Reproducible Research</h2>
+<div class="outline-text-2" id="text-4">
+
+
+<p>
+In a typical scientific workflow, one has data analysis code written
+in one language (e.g. R or Python) store in files somewhere, one might
+have Figures generated using another program, and their files stored
+somewhere else, and finally a manuscript in some other program,
+e.g. MS Word, with that file stored somewhere else.
+</p>
+<p>
+This is non-optimal in the long run for a couple of reasons. First, if
+there is ever a change to the data, or a need to re-analyse data, or
+re-generate a Figure, doing so and incorporating that change into your
+manuscript document will involve several error-prone steps, like
+locating the appropriate data analysis code files, performing whatever
+steps are necessary to re-generate the Figure, and then finally
+replacing the old Figure with the new Figure in the manuscript
+document itself. Second, you end up with several different kinds of
+files, sometimes in several different locations. Third, if you want to
+share your data and analysis workflow with colleagues, this depends on
+them (1) being able to re-create the same set of steps as you did, and
+(2) it may depend on them having specific, particular software.
+</p>
+<p>
+The idea behind so-called <a href="http://en.wikipedia.org/wiki/Reproducibility#Reproducible_research">reproducible research</a> is that your data
+analysis, graphical Figures, and manuscript all live in one single
+document&hellip; or at least they are tied together if they are in separate
+files&hellip; and that the document can be automatically prepared
+(e.g. compiling it in LaTeX) and in doing so, will execute the data
+analysis code, and graphical Figure generation, all in one automatic
+step. This is advantageous both for your own organization and also for
+sharing the data + analysis with others.
+</p>
+<p>
+The insertion of code that can be executed, within a document, is
+sometimes called <a href="http://en.wikipedia.org/wiki/Literate_programming">literate programming</a>.
+</p>
+<p>
+Here's a recent paper in PLoS Computational Biology:
+</p>
+<blockquote>
+
+<p>Sandve, G. K., Nekrutenko, A., Taylor, J., &amp; Hovig, E. (2013). <a href="http://www.ploscompbiol.org/article/info:doi/10.1371/journal.pcbi.1003285">Ten Simple Rules for Reproducible Computational Research</a>. PLoS Computational Biology, 9(10), e1003285.
+</p>
+</blockquote>
+
+
+
+</div>
+
+<div id="outline-container-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Sweave</h3>
+<div class="outline-text-3" id="text-4-1">
+
+
+<p>
+One system for reproducible research that is worth looking at is
+<a href="http://www.stat.uni-muenchen.de/~leisch/Sweave/">Sweave</a> (pronounced "ess weave"). Sweave is a tool that allows you to
+directly embed R code for data analysis and/or Figure generation into
+a LaTeX document. Sweave comes included with R so if you've installed
+R, you have Sweave.
+</p>
+<p>
+The workflow using Sweave involves inserting special Sweave codes into
+your LaTeX document which signals R code chunks. The next step is to
+process this .Rnw file into a .tex file, using the command <code>R CMD SWEAVE</code>. Then you can compile the resulting .tex file using
+<code>R CMD pdflatex</code>. Here is a simple example:
+</p>
+
+
+
+<pre class="src src-tex"><span style="color: #b22222;">% </span><span style="color: #b22222;">sweavedemo1.Rnw</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">a very basic Sweave document</span>
+
+<span style="color: #a020f0;">\documentclass</span>{<span style="color: #0000ff;">article</span>}
+
+<span style="color: #a020f0;">\title</span>{<span style="color: #228b22;">My manuscript</span>}
+<span style="color: #a020f0;">\author</span>{<span style="color: #228b22;">John Doe</span>}
+<span style="color: #a020f0;">\date</span>{<span style="color: #228b22;">\today</span>}
+
+<span style="color: #a020f0;">\usepackage</span>[<span style="color: #a0522d;">margin=1.0in</span>]{<span style="color: #0000ff;">geometry</span>}
+
+<span style="color: #a020f0;">\begin</span>{<span style="color: #0000ff;">document</span>}
+
+<span style="color: #696969;">\maketitle</span>
+
+<span style="color: #696969;">\abstract</span>{This is my article. It will be revolutionary. It will overturn all the current theories.}
+
+<span style="color: #a020f0;">\section</span><span style="color: #a020f0;">*</span>{<span style="color: #00008b; font-size: 133%; font-weight: bold;">Introduction</span>}
+
+Hello world. Here is where I do my lit review.
+
+<span style="color: #a020f0;">\section</span><span style="color: #a020f0;">*</span>{<span style="color: #00008b; font-size: 133%; font-weight: bold;">Methods</span>}
+
+I haven't really done anything yet.
+
+<span style="color: #a020f0;">\section</span><span style="color: #a020f0;">*</span>{<span style="color: #00008b; font-size: 133%; font-weight: bold;">Results</span>}
+
+I have a list of numbers. Whoopee. Here is a plot of my 7 numbers:
+
+<span style="color: #bc8f8f;">&lt;&lt;echo=false,fig=true,height=4&gt;&gt;</span>=
+mylist &lt;- c(1,2,3,4,5,4,3)
+mlm &lt;- mean(mylist)
+plot(mylist, type="b", col="blue", lwd=2, xlab="my numbers", ylab="value")
+@
+
+The mean of my list turned out to be <span style="color: #696969;">\Sexpr</span>{round(mlm*100)/100}.
+
+<span style="color: #a020f0;">\section</span><span style="color: #a020f0;">*</span>{<span style="color: #00008b; font-size: 133%; font-weight: bold;">Discussion</span>}
+
+What would you like me to discuss?
+
+<span style="color: #a020f0;">\end</span>{<span style="color: #0000ff;">document</span>}
+</pre>
+
+
+<p>
+We compile this into a .pdf in two steps:
+</p>
+
+
+
+<pre class="src src-sh">R CMD Sweave sweavedemo1.Rnw
+R CMD pdflatex sweavedemo1.tex
+</pre>
+
+
+<p>
+Here is the resulting .pdf file: <a href="code/sweavedemo1.pdf">sweavedemo1.pdf</a>.
+</p>
+<p>
+Notice a couple of things. In the .Rnw document, Sweave code is
+denoted using <code>&lt;&lt;&gt;&gt;</code> separators. Also note that the code is just R
+code, it runs the same as if you are running it independently in an R
+session. Also notice that we can access R variables that have been
+defined in code so far, using the <code>\Sexpr{}</code> command.
+</p>
+<p>
+What this all means, if you are starting to "get it", is that in
+principle you could have all of your data analysis and Figure
+generation code inside your manuscript file. When anything changes
+(new data, or modified analysis) all you would have to do is recompile
+the document, .Rnw -&gt; .tex -&gt; .pdf, and all of the changes will
+propagate automatically. It also makes it really easy to share with
+others, and it means someone else ought to be able to directly run the
+same exact analysis that you published in your paper. This would seem
+like a desirable feature in science.
+</p>
+<p>
+See these links for some more information, and tutorials, about using Sweave:
+</p>
+<ul>
+<li><a href="http://tug.org/pracjourn/2008-1/zahn/zahn.pdf">Learning to Sweave in APA Style</a>
+</li>
+<li><a href="http://users.stat.umn.edu/~geyer/Sweave/">An Sweave Demo</a>
+</li>
+</ul>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Pweave</h3>
+<div class="outline-text-3" id="text-4-2">
+
+
+<p>
+There is a system called <a href="http://mpastell.com/pweave/">Pweave</a> that allows you to do a similar thing
+as Sweave, but with Python code instead of R code. In fact Pweave
+supports not just LaTeX but also HTML and Pandoc formats as well.
+</p>
+<p>
+I don't have much experience yet with Pweave so I will not provide
+sample documents (yet). I will leave it up to you to get started with
+Pweave if you desire Python literate code.
+</p>
+<p>
+Here is a <a href="http://mpastell.com/pweave/texamples.html">LaTeX example</a> using Pweave. You can see that the idea is
+very similar to Sweave.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> MATweave</h3>
+<div class="outline-text-3" id="text-4-3">
+
+
+<p>
+There appears to be a solution out there for integrating MATLAB with LaTeX as well, called <a href="http://staffwww.dcs.shef.ac.uk/people/N.Lawrence/matweave.html">MATweave</a>. I haven't tried it myself but if you're interested in pursuing the reproducible research approach using MATLAB it might be worth checking out.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> iPython notebook</h3>
+<div class="outline-text-3" id="text-4-4">
+
+
+<p>
+Finally, another tool that might be useful to you is the <a href="http://ipython.org/notebook.html">iPython Notebook</a>. This is a tool that comes with <a href="http://ipython.org/index.html">iPython</a> that provides a
+web-based interactive environment for combining Python code, document
+text, graphics, and even rich media such as videos and web pages, all
+in a single document.
+</p>
+<p>
+iPython notebooks can also be saves in an iPython notebook format
+(.ipynb) or as python code (.py). There is even a <a href="http://nbviewer.ipython.org">iPython Notebook Viewer</a> where you can share iPython notebooks online. There is a tool
+called <a href="http://ipython.org/ipython-doc/dev/interactive/nbconvert.html#nbconvert">nbconvert</a> that can convert iPython notebook files into many
+formats including HTML, LaTeX, Markdown, etc.
+</p>
+<p>
+Here is how you start the iPython notebook from the command line, to
+automatically load the SciPy, Numpy, and the matplotlib environment:
+</p>
+
+
+
+<pre class="src src-sh">ipython notebook --pylab=inline
+</pre>
+
+
+<p>
+This should then automatically launch your web browser and show the
+current directory, and any iPython notebook files that reside
+there. To create a new one, click the "New Notebook" button.
+</p>
+<p>
+Here is a link to <a href="https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks">a gallery of interesting iPython Notebooks</a>. There
+are also some sample notebooks on the <a href="http://nbviewer.ipython.org">iPython Notebook Viewer</a>
+homepage.
+</p>
+<p>
+Here are some YouTube videos demonstrating the many features of
+iPython including the iPython Notebook:
+</p>
+<ul>
+<li><a href="http://www.youtube.com/watch?v=xe_ATRmw0KM">iPython in Depth, SciPy2013 Tutorial 1/3</a> (YouTube)
+</li>
+<li><a href="http://www.youtube.com/watch?v=A8VbS-YX2Lo">iPython in Depth, SciPy2013 Tutorial 2/3</a> (YouTube)
+</li>
+<li><a href="http://www.youtube.com/watch?v=4tJKZWWRs6s">iPython in Depth, SciPy2013 Tutorial 3/3</a> (YouTube)
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4-5" class="outline-3">
+<h3 id="sec-4-5"><span class="section-number-3">4.5</span> Including code listings</h3>
+<div class="outline-text-3" id="text-4-5">
+
+
+<p>
+A common situation (e.g. in a course like this one) is where you want to include a code listing, or segments of code, in a document. The tools we have discussed all have the ability to do this.
+</p>
+<p>
+For LaTeX, there is a package called <a href="http://www.ctan.org/tex-archive/macros/latex/contrib/listings/">listings</a> that can include code
+listings in a nicely formatted way that is specific to whatever
+language the code is in. The listings package "knows about" many
+different programming languages. There are lots of customizable
+options for the listing package, see the <a href="http://mirrors.ctan.org/macros/latex/contrib/listings/listings.pdf">documentation</a> for details.
+</p>
+<p>
+For iPython Notebook, of course code blocks are shown inline as part
+of the notebook document itself, you don't need to do anything
+special.
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Some links</h2>
+<div class="outline-text-2" id="text-5">
+
+<ul>
+<li><a href="http://inundata.org/2012/12/04/how-to-ditch-word/">How to ditch Word</a>
+</li>
+<li><a href="http://mbjoseph.github.io/blog/2013/10/30/word/">R and My Divorce From Word</a>
+</li>
+<li><a href="https://github.com/karthikram/markdown_science">Markdown for scientific writing</a>
+</li>
+<li><a href="http://www.surefoss.org/publishing-publizieren/all-you-need-is-text-markdown-via-pandoc-for-academia/">All you need is text &mdash; Markdown (via pandoc) for academia</a>
+</li>
+<li><a href="http://detexify.kirelabs.org/classify.html">Detexify</a> &mdash; a LaTeX symbol classifier (draw using your mouse)
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Assignment</h2>
+<div class="outline-text-2" id="text-6">
+
+
+<p>
+<a href="assignments.html">Assignment</a> 3 is due no later than Sun Nov 3, 2013, 23:59:59 EDT.
+</p>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<hr />Paul Gribble | fall 2013<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license"href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
+</div>
+</body>
+</html>

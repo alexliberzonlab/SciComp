@@ -1,0 +1,111 @@
+#+STARTUP: showall
+
+#+TITLE:     Assignment 1
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/assignments.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+Please send me (by email) a single file containing your documented
+code. I should be able to run your code and see the desired output. If
+you run into problems, especially if you're new to programming, be
+sure to ask for help, either from your classmates and/or from
+me. *Please make sure that your name is indicated somewhere in the
+file*.
+
+* computing prime numbers
+
+A common type of computation is the generate-and-test method, in which
+one systematically generates potential solutions to a problem, and
+then applies a sequence of one or more tests to determine if the
+proposed solution is in fact valid. While one could in principle (and
+under some circumstances one must) generate potential solutions
+randomly or according to some probability distribution, often it is
+more efficient to devise a systematic method for generating all
+candidate solutions. This is sometimes called solving a problem by
+"brute force".
+
+* 1. compute the 1000th prime number
+
+Write a program that computes and prints the 1000th prime number. Time
+how long your program takes to run.
+
+hint: the unix =time= program will time the execution of any command
+e.g. your program. So for example if your program is saved to a file called a01.py then you can time it like this:
+
+#+BEGIN_SRC sh
+time python a01.py
+
+real	0m0.747s
+user	0m0.695s
+sys	0m0.011s
+#+END_SRC
+
+The line called "real" shows the total time taken to run the program,
+in this case $747$ milliseconds. Time your program $10$ times and
+report the average time taken to find the 1000th prime.
+
+To help you get started, here is a rough outline of the stages you could
+follow in writing your code:
+
+- Initialize some state variables
+- Generate all (odd) integers $>1$ as candidates to be prime
+- For each candidate integer, test whether it is prime
+- One easy way to do this is to test whether any other integer $>1$
+  evenly divides the candidate with remainder $0$. To do this, you can
+  use modular arithmetic, for example, the Python expression =a % b=
+  returns the remainder after dividing the integer $a$ by the integer
+  $b$.
+- You might think about which integers you need to check as divisors
+  --- certainly you don't need to go beyond the candidate you are
+  checking, but how much sooner can you stop checking?
+- If the candidate is prime, print out some information so you know
+  where you are in the computation, and update the state variables
+- Stop when you reach some appropriate end condition. In formulating
+  this condition, don't forget that your program did not generate the
+  first prime ($2$).
+
+If you want to check that your code is correctly finding primes, you can go online and find [[http://primes.utm.edu/lists/small/1000.txt][a list of primes]].
+
+* 2. product of the primes
+
+There is a cute result from number theory that states that for
+sufficiently large n the product of the primes less than n is less
+than or equal to $e^{n}$ and that as $n$ grows, this becomes a tight
+bound (that is, the ratio of the product of the primes to $e^{n}$ gets
+close to $1$ as $n$ grows).
+
+Computing a product of a large number of prime numbers can result in a
+very large number, which can potentially cause problems with our
+computation. (We will be talking about how computers deal with numbers
+a bit later in the term.) So we can convert the product of a set of
+primes into a sum of the logarithms of the primes by applying
+logarithms to both parts of this conjecture. In this case, the
+conjecture above reduces to the claim that the sum of the logarithms
+of all the primes less than $n$ is less than $n$, and that as $n$
+grows, the ratio of this sum to $n$ gets close to $1$.
+
+To compute a logarithm, we can use a built in mathematical functions
+from Python. To have access to these functions, you need to get them
+into your environment, which you can do in Python by including this at
+the beginning of your program:
+
+#+BEGIN_SRC python
+from math import *
+#+END_SRC
+
+This will allow you to use the function =log()= in your code,
+e.g. =log(2)= will return the logarithm base $e$ of the number $2$.
+
+Write a program that computes the sum of the logarithms of all the
+primes from $2$ to some number $n$, and print out the sum of the logs
+of the primes, the number $n$, and the ratio of these two
+quantities. Test this for different values of $n$.
+
+You should be able to make only some small changes to your program
+from above to solve this problem as well. While you should see the
+ratio of the sum of the logs of the primes to the value $n$ slowly get
+closer to $1$, it does not approach this limit monotonically. ￼
+

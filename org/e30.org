@@ -1,0 +1,27 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 30
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Egg carton
+
+Assume your cost function $J$ is the following function of two parameters $(x,y)$:
+
+\begin{equation}
+J(x,y) = -20 e^{(-0.2 \sqrt{0.5 (x^{2} + y^{2})})} - e^{(0.5(\mathrm{cos}(2 \pi x) + \mathrm{cos}(2 \pi y)))} + 20 + e
+\end{equation}
+
+*Map the cost landscape*
+
+Compute the cost function $J$ for values of $(x,y)$ ranging from -10.0 to 10.0, and plot the cost landscape (plot $J$ as a function of $(x,y)$).
+
+Hint: It should look something like [[http://www.wolframalpha.com/input/?i%3Dplot%2B-20*e%255E%2528-0.2*sqrt%25280.5*%2528x%255E2%2B%252B%2By%255E2%2529%2529%2529%2B-%2Be%255E%25280.5*%2528cos%25282*pi*x%2529%2B%252Bcos%25282*pi*y%2529%2529%2529%2B%2B%252B%2B20%2B%252B%2B%2Be%2Bover%2B-5%252C5][this]].
+
+*Optimize for (x,y)*
+
+Use whatever optimization method you wish, to find the values of $(x,y)$ that minimize the cost function $J$. Justify that you have found the global minimum and not a local minimum.

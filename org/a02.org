@@ -1,0 +1,180 @@
+#+STARTUP: showall
+
+#+TITLE:     Assignment 2
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/assignments.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Sorting
+
+Learning to program involves several things:
+
+- learning the syntax of a specific programming language (boring)
+- learning the names of functions that do specific common tasks
+  (boring)
+- learning about a common set of programming paradigms --- variable
+  assignment, loops, if-else statements, logical operators, etc (sort
+  of interesting)
+- learning about what functionality is built-in to the language, what
+  things you can add with third-party libraries, and what you will
+  have to program on your own (slightly less boring)
+- learning about algorithms, i.e. ways of solving problems (exciting!)
+
+One of the classic problems that has been used for decades in computer
+science curricula for teaching principles of algorithmic design and
+analysis, is the *sorting problem*.
+
+Said plainly, you are given a list of $n$ items and a function $f$ for
+comparing pairs of items. Your task is to *sort* the list of items,
+typically in increasing order.
+
+So for example you might have a list =L= of $n=10$ integers:
+
+#+BEGIN_SRC python
+L = [2,6,5,4,3,7,8,10,24,3]
+#+END_SRC
+
+We have a function (actually an operator, the =<= operator) for testing whether one item is greater or less than another item:
+
+#+BEGIN_SRC python
+L[3] < L[5]
+True
+#+END_SRC
+
+and so the task in the sorting problem is to produce a new list =LS= in which the items of =L= are sorted in increasing order. The solution to the example problem would be:
+
+#+BEGIN_SRC python
+LS
+[2, 3, 3, 4, 5, 6, 7, 8, 10, 24]
+#+END_SRC
+
+Languages like Python, MATLAB, Octave and R have built-in functions
+for sorting lists. For example in Python we could have typed
+=L.sort()= and our list =L= from above would have been sorted. In R
+the function to sort is called =order()= and in MATLAB it's =sort()=.
+
+* Sorting Algorithms
+
+The question is, though, how exactly do you sort a list of items? What
+is the *algorithm*? In fact many different algorithms have been
+proposed for how to sort a list of items. The [[http://en.wikipedia.org/wiki/Sorting_algorithm][wikipedia page on
+sorting algorithms]] provides a really nice introduction to the range of
+algorithms that have been well described and well studied.
+
+* why sorting?
+
+Why is sorting worth even talking about? It seems like such a tedious problem to spend time solving. There are a couple of reasons.
+
+The scientific reason is that it turns out that sorting is actually a
+very difficult problem to solve /efficiently/. Inefficient sorting
+algorithms are pretty easy to generate. The [[http://en.wikipedia.org/wiki/Bubble_sort][bubble sort]] is a good
+example. It's easy to understand how it works, it's easy to program,
+and it works well for small lists. However it turns out to be a very
+inefficient algorithm as the list size increases (bubble sort is an
+$O(n^{2})$ algorithm). So there is a kind of "arms race" for sorting
+algorithms, i.e. a sort of competition to generate the most efficient
+algorithm. Algorithms differ in terms of their memory load, their
+speed, and their efficiency as list size increases. The wikipedia page
+has a table showing a [[http://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms][comparison of algorithms]] in terms of best,
+averge and worst complexity, memory load, and stability. The [[http://en.wikipedia.org/wiki/Quicksort][quicksort]]
+and [[http://en.wikipedia.org/wiki/Merge_sort][merge sort]] algorithms are generally regarded as the best to date
+in terms of efficiency and implementation.
+
+The practical rationales for studying sorting algorithms are (1) lots
+of everyday problems involving computer programs end up using sorting
+(e.g. databases like in banks, or Revenue Canada, or Google, Faceboob,
+etc). Performing sorts efficiently can have a big impact on the
+usability of these kinds of products.
+
+The other practical reason which applies to us in this course, is that
+studying and implementing sorting algorithms represents a really good
+exercise in how to:
+
+1. characterize a problem to be solved by a computer program
+2. think about a solution
+3. formulate an algorithm
+4. generate code to implement the algorithm
+5. debug your code
+6. test the idea for correctness on a set of examples
+7. analyse the algorithm for efficiency
+
+* Your assignment
+
+The various sorting algorithms listed on the [[http://en.wikipedia.org/wiki/Sorting_algorithm][wikipedia page on sorting]]
+vary greatly in terms of their complexity and their efficiency. If I
+pick one and ask everyone to implement it, then for some of you it
+will be way to easy, for some of you it will be way to hard, and that
+won't be of much use.
+
+Instead what I'm going to do is take a page from [[https://dl.dropboxusercontent.com/u/8011180/2120/asn4.html][Mark Daley's course]]
+and ask you to *choose* a sorting algorithm from the following list,
+and implement it in the language of your choice:
+
+- selection sort
+- insertion sort
+- bubble sort
+- bogosort
+- quick sort
+- merge sort
+
+As we've talked about before, one of the ways in which you will use
+programming in your scientific future, is to first read about an
+algorithm or a set of data analysis steps in a paper, and then go and
+try to implement it yourself. This assignment will help you develop
+those skills, in the context of a problem (sorting) that is relatively
+familiar to you, even if the algorithms aren't.
+
+You can find descriptions of the sorting algorithms on the [[http://en.wikipedia.org/wiki/Sorting_algorithm][wikipedia
+page on sorting]], and in any modern computer science textbook on
+algorithms. You can also search google and find lots of descriptions
+of each.
+
+You will see that for some of these algorithms, there have been many
+optimizations developed that extend the "basic" form of the algorithm
+into something more complex. It's up to you how far down the rabbit
+hole to go. Your task here is to choose an algorithm that suits your
+programming abilities today, and to implement it from scratch. There
+is no particular requirement to implement the fully optimized versions
+of these algorithms. The basic forms are ok for the purposes of this
+assignment.
+
+* don't be lazy
+
+Of course you can also find lots of examples of source code for
+implementing each of these sorting algorithms, online. I'm asking you
+not to simply cut and paste code that you find online and submit that
+as your assignment. That would be lazy and it wouldn't really be that
+useful to you.
+
+* give it a go
+
+Spend some time reading about the algorithms. Spend some time thinking
+about how you would implement them, given the programming skillset
+that you have so far. Spend some time writing and testing code.
+
+When you run into problems, talk to classmates. Come and talk to
+me. I'm perfectly happy to give you pointers and to help clarify concepts.
+
+* do the following
+
+So your assignment then is to:
+
+1. implement one of the sorting algorithms listed above, in the
+   language of your choice. You can assume that your algorithm will
+   operate on lists of integers.
+2. demonstrate that your algorithm works by testing it on some example lists
+3. test the efficiency of your code by analysing (either by timing it,
+   or by counting operations) how it scales as the size of the list
+   increases.
+
+Document your code with comments. Submit both (1) your code, which I
+ought to be able to run without any modifications, and (2) a short
+document that describes how you tested your code for correctness and
+efficiency.
+
+Please send me your completed assignment by email. *Please make sure
+that your name is indicated somewhere in the file*.
+

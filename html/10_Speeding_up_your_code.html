@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>10. Speeding up your code</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="10. Speeding up your code"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="fall 2013"/>
+<meta name="author" content="Paul Gribble"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="mystyle.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+ <a accesskey="h" href="http://www.gribblelab.org/scicomp/index.html"> UP </a>
+ |
+ <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
+</div>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">10. Speeding up your code</h1>
+
+
+
+<hr/>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Array preallocation</a></li>
+<li><a href="#sec-2">2 Vectorization</a></li>
+<li><a href="#sec-3">3 Suppress output</a></li>
+<li><a href="#sec-4">4 Overhead cost of calling a function</a></li>
+<li><a href="#sec-5">5 Passing by reference vs passing by value</a></li>
+<li><a href="#sec-6">6 The algorithm itself</a></li>
+<li><a href="#sec-7">7 Tricks</a></li>
+<li><a href="#sec-8">8 Parallelization</a></li>
+<li><a href="#sec-9">9 Incorporating compiled binaries (e.g. C code)</a></li>
+<li><a href="#sec-10">10 Profiling your code</a></li>
+</ul>
+</div>
+</div>
+
+<hr/>
+
+<p>
+We have already seen some examples in the course so far, of code that runs slowly and code that runs quickly. Here we'll discuss some of the things that contribute to the speed of your code, and strategies for speeding up your programs.
+</p>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Array preallocation</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+There are many cases in which we want to collect the results of many computations together into a single data structure, e.g. a vector or array. One way of doing this is to start with an empty array, and each time through the loop, add a value to it (and hence lengthening it). It turns out this way is very slow. What's much, much faster is to pre-allocate the array (and fill it with whatever values you want, e.g. zeros, or NaNs), and then set each value as you go through the loop to the result of your computation.
+</p>
+<p>
+Here is an example in MATLAB:
+</p>
+
+
+
+<pre class="src src-octave"><span style="color: #b22222;">% </span><span style="color: #b22222;">let's compute the following formula</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">for values between 0 and n:</span>
+<span style="color: #b22222;">%</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">f(i) = (i + f(i-1)) / n</span>
+
+n = 1e5;
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">the slow way:</span>
+<span style="color: #b22222;">%</span>
+tic
+c = [0];
+<span style="color: #a020f0;">for</span> i=2:n
+  c = [c, (i + c(i-1)) / n];
+<span style="color: #a020f0;">end</span>
+toc
+<span style="color: #b22222;">%</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">on my laptop this takes 3.6421 seconds</span>
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">the fast way, with array pre-allocation</span>
+<span style="color: #b22222;">%</span>
+tic
+c = zeros(1,n);
+<span style="color: #a020f0;">for</span> i=2:n
+  c(i) = (i + c(i-1)) / n;
+<span style="color: #a020f0;">end</span>
+toc
+<span style="color: #b22222;">%</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">on my laptop this takes 0.0014 seconds</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">this is over 2,500 times faster than the slow version</span>
+</pre>
+
+
+<p>
+In the slow version, we start with an array of length 1 containing the number zero. Each time through the loop we concatenate the array with the next value, and in this way we "build up" the array.
+</p>
+<p>
+In the fast version, we pre-allocate an array of the required length, fill it with zeros, and then each time through the loop we simply assign the appropriate value to the appropriate array position.
+</p>
+<p>
+The reason the slow version is so slow, is that each time we concatenate the array, several steps take place:
+</p>
+<ol>
+<li>a new array is created that has length one greater than the old array
+</li>
+<li>the old array is copied into the new array
+</li>
+<li>the new value is copied to the end of the new array
+</li>
+</ol>
+
+
+<p>
+As you can imagine, when the array gets large, the copy operation can take a lot of time. It's inefficient to keep copying the array over and over again.
+</p>
+<p>
+With pre-allocation, there is no copying, only assignment, and only single values are assigned.
+</p>
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Vectorization</h2>
+<div class="outline-text-2" id="text-2">
+
+
+<p>
+Many functions in MATLAB, Python and R are "vectorized", that is, they can operate on array as if the function had been applied one by one to each element. An example is the <code>sqrt()</code> function.
+</p>
+<p>
+Here's an example where we have three long arrays, defining 3D points, and our task is compute the length of each vector:
+</p>
+
+
+
+<pre class="src src-octave">n = 1e7;                <span style="color: #b22222;">% </span><span style="color: #b22222;">a big number</span>
+x = rand(1,n);  <span style="color: #b22222;">% </span><span style="color: #b22222;">array of random numbers</span>
+y = rand(1,n);  <span style="color: #b22222;">% </span><span style="color: #b22222;">array of random numbers</span>
+z = rand(1,n);  <span style="color: #b22222;">% </span><span style="color: #b22222;">array of random numbers</span>
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">compute the norm of the 3-D vectors (x,y,z)</span>
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">the slow way</span>
+<span style="color: #b22222;">%</span>
+tic
+norm_slow = zeros(1,n); <span style="color: #b22222;">% </span><span style="color: #b22222;">pre-allocate array</span>
+<span style="color: #a020f0;">for</span> i=1:n
+  norm_slow(i) = sqrt(x(i)^2 + y(i)^2 + z(i)^2);
+<span style="color: #a020f0;">end</span>;
+toc
+<span style="color: #b22222;">%</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">on my laptop this takes 0.23 seconds</span>
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">the vectorized way</span>
+<span style="color: #b22222;">%</span>
+tic
+norm_slow = sqrt(x.^2 + y.^2 + z.^2);
+toc
+<span style="color: #b22222;">%</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">on my laptop this takes 0.02 seconds</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">this is about 10 times faster than the slow version</span>
+</pre>
+
+
+<p>
+When we implement this in a vectorized way, MATLAB (or Python or R) typically uses pre-compiled, optimized functions to execute that part of the code, instead of running it through the interpreter. When we use a for loop, everything happens at the interpreter layer.
+</p>
+<p>
+Two aspects of the code example are vectorized. First, we use the exponent operator in MATLAB on the entire vector <code>x</code>, <code>y</code>, and <code>z</code> (with the dot notation to denote element-by-element exponentiation): <code>x.^2</code>. This exponentiates the entire vector using precompiled optimized code under the hood. Then we use the <code>sqrt()</code> function which also takes the whole array as an argument. Again, optimized precompiled code is used on the entire array rather than stepping through the array in a for loop, at the interpreter level.
+</p>
+<p>
+Another salient example of vectorization is matrix algebra. The matrix algebra operators (e.g. matrix multiplication) make use of highly optimized, pre-compiled routines that are way faster than doing things by hand at the interpreter level, using for loops.
+</p>
+<p>
+Here is a code example:
+</p>
+
+
+
+<pre class="src src-octave"><span style="color: #b22222;">% </span><span style="color: #b22222;">matrix multiplication</span>
+<span style="color: #b22222;">%</span>
+A = rand(400,500);
+B = rand(500,600);
+C = zeros(400,600);
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">the slow way, using for loops at the interpreter level</span>
+<span style="color: #b22222;">%</span>
+tic
+m = size(A,1);
+n = size(A,2);
+p = size(B,1);
+q = size(B,2);
+<span style="color: #a020f0;">for</span> i=1:m
+  <span style="color: #a020f0;">for</span> j=1:q
+    the_sum = 0;
+    <span style="color: #a020f0;">for</span> k=1:p
+      the_sum = the_sum + A(i,k)*B(k,j);
+    <span style="color: #a020f0;">end</span>
+    C(i,j) = the_sum;
+  <span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">end</span>
+toc
+<span style="color: #b22222;">%</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">on my laptop this takes 2.33 seconds</span>
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">the fast way (vectorized)</span>
+<span style="color: #b22222;">%</span>
+C = zeros(400,600);
+tic
+C = A*B;
+toc
+<span style="color: #b22222;">%</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">on my laptop this takes 0.0018 seconds</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">this is over 1,000 times faster than the slow version</span>
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Suppress output</h2>
+<div class="outline-text-2" id="text-3">
+
+
+<p>
+This one might seem obvious, but if you are doing something thousands or millions of times, and each time you print something to the screen, that will slow down your code. Here's an example:
+</p>
+
+
+
+<pre class="src src-octave"><span style="color: #b22222;">% </span><span style="color: #b22222;">suppress output!</span>
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">slow version</span>
+<span style="color: #b22222;">%</span>
+n = 1e5;
+x = zeros(1,n);
+tic
+<span style="color: #a020f0;">for</span> i=1:n
+  tmp = (i*i) + (i/2)
+  x(i) = tmp;
+<span style="color: #a020f0;">end</span>
+toc
+<span style="color: #b22222;">%</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">on my laptop this takes 1.10 seconds</span>
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">fast version</span>
+<span style="color: #b22222;">%</span>
+x = zeros(1,n);
+tic
+<span style="color: #a020f0;">for</span> i=1:n
+  tmp = (i*i) + (i/2);
+  x(i) = tmp;
+<span style="color: #a020f0;">end</span>
+toc
+<span style="color: #b22222;">%</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">on my laptop this takes 0.0009 seconds</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">this is more than 1,000 times faster than the slow version</span>
+</pre>
+
+
+<p>
+As you can see the <b>only</b> difference in these two versions of the code, is that inside the for loop, we don't have a semicolon after the assignment of the <code>tmp</code> variable, which means its value is echoed to the screen. In the fast version we use a semicolon and the output is suppressed.
+</p>
+<p>
+This isn't just a MATLAB specific problem, the same sort of problem arises if you intentionally print out a value to the screen each time through a long for loop. Printing to the screen takes time.
+</p>
+<p>
+Often we want to print values to the screen in a for loop so that we can for example keep track of how far along the computation is, or detect errors. One alternative that avoids the slow execution of printing to the screen every time through the loop, is to print more sporadically. Here is an example where we repeat the above code but we only print to the screen every 10,000 iterations. This still allows you to monitor the progress of the computation, but it doesn't eat up precious time displaying stuff on the screen every single time through the loop:
+</p>
+
+
+
+<pre class="src src-octave"><span style="color: #b22222;">% </span><span style="color: #b22222;">partial suppression of output</span>
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">slow version</span>
+<span style="color: #b22222;">%</span>
+n = 1e6;
+x = zeros(1,n);
+tic
+<span style="color: #a020f0;">for</span> i=1:n
+  tmp = (i*i) + (i/2);
+  x(i) = tmp;
+  disp(tmp);
+<span style="color: #a020f0;">end</span>
+toc
+<span style="color: #b22222;">%</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">on my laptop this takes 6.16 seconds</span>
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">fast version</span>
+<span style="color: #b22222;">%</span>
+x = zeros(1,n);
+tic
+<span style="color: #a020f0;">for</span> i=1:n
+  tmp = (i*i) + (i/2);
+  x(i) = tmp;
+  <span style="color: #a020f0;">if</span> (mod(i,10000)<span style="color: #483d8b;">==</span>0)
+    disp(tmp);
+  <span style="color: #a020f0;">end</span>
+<span style="color: #a020f0;">end</span>
+toc
+<span style="color: #b22222;">%</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">on my laptop this takes 0.056 seconds</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">this is more than 100 times faster than the slow version</span>
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Overhead cost of calling a function</h2>
+<div class="outline-text-2" id="text-4">
+
+
+<p>
+We've talked a lot in the course about the benefits of modularizing your code, and sticking commonly used operations inside functions. This is absolutely a good idea. It is worth noting however that the act of calling a function does involve some "overhead" cost in time, for various things that happen under the hood.
+</p>
+<p>
+Functions in general are a very good idea, but if you put <b>everything</b> into a function, you can start to experience unneccessary slowdowns due to the overhead in calling functions, passing parameters in, and passing results out. Here is a simple example in which we loop through an array and perform a number of calculations on each element. In the slow version we put every single calculation into its own function. In the fast version we don't use functions:
+</p>
+
+
+
+<pre class="src src-octave"><span style="color: #b22222;">% </span><span style="color: #b22222;">overhead cost in using functions</span>
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">slow version: make everything a function!!</span>
+<span style="color: #b22222;">%</span>
+n = 1e6;
+a = 1:n;
+tic
+<span style="color: #a020f0;">for</span> i=1:n
+  tmp1 = my_comp1(i);
+  tmp2 = my_comp2(i);
+  tmp3 = my_comp3(i);
+  tmp4 = my_comp4(i);
+  tmp5 = my_comp5(i);   
+  a(i) = tmp1 + tmp2 + tmp3 + tmp4 + tmp5;
+<span style="color: #a020f0;">end</span>
+toc
+<span style="color: #b22222;">%</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">on my laptop this takes 1.04 seconds</span>
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">fast version: no functions here</span>
+<span style="color: #b22222;">%</span>
+n = 1e6;
+a = 1:n;
+tic
+<span style="color: #a020f0;">for</span> i=1:n
+  tmp1 = i*1;
+  tmp2 = i*2;
+  tmp3 = i*3;
+  tmp4 = i*4;
+  tmp5 = i*5;
+  a(i) = tmp1 + tmp2 + tmp3 + tmp4 + tmp5;
+<span style="color: #a020f0;">end</span>
+toc
+<span style="color: #b22222;">%</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">on my laptop this takes 0.009 seconds</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">this is over 100 times faster than the slow version</span>
+</pre>
+
+
+<p>
+In this case the functions like <code>my_comp1()</code> are:
+</p>
+
+
+
+<pre class="src src-octave"><span style="color: #a020f0;">function</span> out = <span style="color: #0000ff;">my_comp1</span>(i)
+  <span style="color: #a020f0;">return</span> i*1;
+</pre>
+
+
+
+<pre class="src src-octave"><span style="color: #a020f0;">function</span> out = <span style="color: #0000ff;">my_comp2</span>(i)
+  <span style="color: #a020f0;">return</span> i*2;
+</pre>
+
+
+
+<pre class="src src-octave"><span style="color: #a020f0;">function</span> out = <span style="color: #0000ff;">my_comp3</span>(i)
+  <span style="color: #a020f0;">return</span> i*3;
+</pre>
+
+
+
+<pre class="src src-octave"><span style="color: #a020f0;">function</span> out = <span style="color: #0000ff;">my_comp4</span>(i)
+  <span style="color: #a020f0;">return</span> i*4;
+</pre>
+
+
+
+<pre class="src src-octave"><span style="color: #a020f0;">function</span> out = <span style="color: #0000ff;">my_comp5</span>(i)
+  <span style="color: #a020f0;">return</span> i*5;
+</pre>
+
+
+<p>
+It's a silly example but it gets the point across.
+</p>
+
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Passing by reference vs passing by value</h2>
+<div class="outline-text-2" id="text-5">
+
+
+<p>
+In Python and in C, the default behaviour for passing data structures to functions as arguments, is to pass by reference. In MATLAB and R, the default behaviour is to pass by value.
+</p>
+<p>
+To recap, passing by value means that when one calls a function with an input argument (e.g. an array), a copy of that array is made, one that is internal to the function, for the function to operate on. When the function exits, that internal copy is deallocated (destroyed).
+</p>
+<p>
+Passing by reference means that instead, a <b>pointer</b> to the array (in other words, the address of the array in memory) is sent to the function, and the function operates on the original array, via its address.
+</p>
+<p>
+As you can imagine, passing around data structures by value, which involves making copies, can be very inefficient especially if the data structures are large. It takes time to make copies and what's more it eats up memory.
+</p>
+<p>
+On the other hand, there may be times where one specifically wishes to make a copy of a function input, and in that case you might just accept that there is a price to pay.
+</p>
+<p>
+In fact, MATLAB's behaviour is slightly more complex. If you pass an input argument <code>x</code> into a function, and inside the function that input argument is never modified, MATLAB avoids making a copy of it (it passes by reference). On the other hand, if inside of the function, <code>x</code> is altered in some way, MATLAB passes by value.
+</p>
+<p>
+In Python the default behaviour is to pass by reference.
+</p>
+<p>
+In R the default behaviour is to pass by value.
+</p>
+<p>
+In C, complex data structures like arrays are always internally defined as <b>pointers</b> (to the head of the structure) and so the de facto default is to pass by reference.
+</p>
+<p>
+Here is an example, slightly contrived, but it gets the point across that passing large structures by value is slower than passing them by reference.
+</p>
+<p>
+Here is the slow version, in which MATLAB will pass by value, because inside our function we are changing a value of the input x:
+</p>
+
+
+
+<pre class="src src-octave"><span style="color: #a020f0;">function</span> out = <span style="color: #0000ff;">myfunc_slow</span>(x,y)
+  tmp = x(1);
+  x(1) = tmp*2;
+  out = tmp;
+</pre>
+
+
+<p>
+and here is the fast version, where we don't change the value of x, and so MATLAB will pass by reference:
+</p>
+
+
+
+<pre class="src src-octave"><span style="color: #a020f0;">function</span> out = <span style="color: #0000ff;">myfunc_fast</span>(x,y)
+  tmp = x(1);
+  y(1) = tmp*2;
+  out = tmp;
+</pre>
+
+
+<p>
+Here we demonstrate the speed difference:
+</p>
+
+
+
+<pre class="src src-octave">x = rand(1e4,1e4);
+y = [1,2,3];
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">the slow way</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">MATLAB passes x by value</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">because it is altered inside myfunc_slow()</span>
+<span style="color: #b22222;">%</span>
+tic
+<span style="color: #a020f0;">for</span> i=1:20
+  o1 = myfunc_slow(x,y);
+<span style="color: #a020f0;">end</span>
+toc
+<span style="color: #b22222;">%</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">on my laptop this takes 8.55 seconds</span>
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">the fast way</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">MATLAB passes x by reference</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">because it is not altered inside myfunc_fast()</span>
+<span style="color: #b22222;">%</span>
+tic
+<span style="color: #a020f0;">for</span> i=1:20
+  o2 = myfunc_fast(x,y);
+<span style="color: #a020f0;">end</span>
+toc
+<span style="color: #b22222;">%</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">on my laptop this takes 0.0005 seconds</span>
+<span style="color: #b22222;">% </span><span style="color: #b22222;">this is over 17,000 times faster than the slow version</span>
+</pre>
+
+
+<p>
+You will also notice if you pass around large data structures by value, that RAM (random access memory, the internal, temporary memory that your CPU uses) will be eaten up by all of the copies that are made. If your available RAM falls below a certain level, then everything (the entire OS) will slow down. Unix-based operating systems (e.g. Mac OSX, Linux) make use of hard disk space as a temporary "scratch pad" for situations in which available RAM is scarce. This is known as "swap space". The problem is, read/write operations on hard disks (especially spinning platters) are orders of magnitude slower than read/write operations in RAM&hellip; so you still suffer the consequences.
+</p>
+<p>
+As I said, in Python the default behaviour is to pass by reference. If you <b>want</b> a copy of a function input, then you can still get it, by using the <code>copy()</code> command, for example:
+</p>
+
+
+
+<pre class="src src-python"><span style="color: #a020f0;">from</span> numpy <span style="color: #a020f0;">import</span> *
+<span style="color: #a020f0;">from</span> scipy <span style="color: #a020f0;">import</span> rand
+<span style="color: #a020f0;">import</span> time
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">the fast version, in which x is passed by reference</span>
+<span style="color: #b22222;">#</span>
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">myfunc_fast</span>(x,y):
+  <span style="color: #a0522d;">x</span>[0,0] = y
+  <span style="color: #a020f0;">return</span> y
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">the slow version, in which we copy x</span>
+<span style="color: #b22222;">#</span>
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">myfunc_slow</span>(x,y):
+  <span style="color: #a0522d;">xc</span> = copy(x)
+  <span style="color: #a0522d;">xc</span>[0,0] = y
+  <span style="color: #a020f0;">return</span> y
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">test speed</span>
+<span style="color: #b22222;">#</span>
+<span style="color: #a0522d;">x</span> = rand(1e4,1e4)
+<span style="color: #a0522d;">y</span> = 3
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">the slow version</span>
+<span style="color: #b22222;">#</span>
+<span style="color: #a0522d;">t0</span> = time.time()
+<span style="color: #a020f0;">for</span> i <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">range</span>(20):
+  <span style="color: #a0522d;">tmp</span> = myfunc_slow(x,y)
+<span style="color: #a0522d;">t1</span> = time.time()
+<span style="color: #a020f0;">print</span> t1-t0
+<span style="color: #b22222;">#</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">this takes 7.86 seconds on my laptop</span>
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">the fast version</span>
+<span style="color: #b22222;">#</span>
+<span style="color: #a0522d;">t0</span> = time.time()
+<span style="color: #a020f0;">for</span> i <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">range</span>(20):
+  <span style="color: #a0522d;">tmp</span> = myfunc_fast(x,y)
+<span style="color: #a0522d;">t1</span> = time.time()
+<span style="color: #a020f0;">print</span> t1-t0
+<span style="color: #b22222;">#</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">this takes 0.000025 seconds on my laptop</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">this is over 300,000 times faster than the slow version</span>
+</pre>
+
+
+<p>
+In R I don't know of a way to force passing by reference instead of by value (but that doesn't necessarily mean there isn't a way&hellip;). I believe the default behaviour is similar to MATLAB, in that if a function input is not altered, it is passed by reference, otherwise it is passed by value. I haven't verified this however.
+</p>
+<p>
+In C, like in Python, the default is to pass by reference. If you want a copy of a function input, you can use <code>memcpy()</code> to make a copy of the data structure.
+</p>
+
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> The algorithm itself</h2>
+<div class="outline-text-2" id="text-6">
+
+
+<p>
+Of course the other thing to consider when writing code that performs some computational task, is to make sure you're using the most efficient algorithm you can (when you have a choice). Sorting is an example. Why use bubblesort when you know quicksort can be orders of magnitude faster, especially for large lists?
+</p>
+<p>
+Another example is optimization. For certain families of problems, specific optimizers are known to be really fast and efficient. For others, one needs a more generic, more robust optimizer, that may be slower.
+</p>
+<p>
+Whatver operation you're coding up, do a bit of research to find out if someone has developed an algorithm that solves the problem you're solving, only faster.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Tricks</h2>
+<div class="outline-text-2" id="text-7">
+
+
+<p>
+There are often "tricks" and secret handshakes that will speed up code. For example:
+</p>
+
+</div>
+
+<div id="outline-container-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> Python</h3>
+<div class="outline-text-3" id="text-7-1">
+
+
+<p>
+At the beginning of your program, if you include the line:
+</p>
+
+
+
+<pre class="src src-python"><span style="color: #a020f0;">from</span> __future__ <span style="color: #a020f0;">import</span> division 
+</pre>
+
+
+<p>
+This forces floating-point division, and you no longer have to worry about making integers floats before performing division. You can often get around a 2x speedup with this trick.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> C</h3>
+<div class="outline-text-3" id="text-7-2">
+
+
+<p>
+The <code>sqrt()</code> function is known to be slow &hellip; so if you can avoid actually taking square roots, you will have faster code. For example let's say you want to compare the length of a vector <code>(x,y)</code> to some standard, and execute different code depending on the result. Instead of doing this, which uses the slow <code>sqrt()</code> function:
+</p>
+
+
+
+<pre class="src src-c"><span style="color: #228b22;">double</span> <span style="color: #a0522d;">stdlen</span> = 1.234;
+<span style="color: #228b22;">double</span> <span style="color: #a0522d;">veclen</span> = sqrt(x*x + y*y);
+<span style="color: #a020f0;">if</span> (veclen &lt; stdlen) {
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">do something</span>
+}
+<span style="color: #a020f0;">else</span> {
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">do something else</span>
+}
+</pre>
+
+
+<p>
+you could do this instead, which avoids taking the <code>sqrt()</code> but achieves the same result, by instead squaring (which is fast) the standard:
+</p>
+
+
+
+<pre class="src src-c"><span style="color: #228b22;">double</span> <span style="color: #a0522d;">stdlen</span> = 1.234;
+<span style="color: #228b22;">double</span> <span style="color: #a0522d;">veclen</span> = x*x + y*y;
+<span style="color: #a020f0;">if</span> (veclen &lt; (stdlen*stdlen)) {
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">do something</span>
+}
+<span style="color: #a020f0;">else</span> {
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">do something else</span>
+}
+</pre>
+
+
+<p>
+You may come across other "tricks" in these and other languages as well. Let me know and I'll add them here.
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Parallelization</h2>
+<div class="outline-text-2" id="text-8">
+
+
+<p>
+Computers these days, even relatively inexpensive laptops, come with CPUs that have multiple cores. This means that the different "cores" of your CPU can process different information, in parallel. If you can split up the computational work in your program and send it to multiple CPU cores to process in parallel, you could conceivably achieve pretty impressive speedups. We'll talk about parallelization in a separate class:
+<a href="11_Parallel_Computing.html">Parallel Computing</a>.
+</p>
+
+</div>
+
+</div>
+
+<div id="outline-container-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> Incorporating compiled binaries (e.g. C code)</h2>
+<div class="outline-text-2" id="text-9">
+
+
+<p>
+In interpreted languages like MATLAB, Python and R, there are ways to call binary compiled versions of functions instead of calling them directly at the interpreter layer. This in essence can give you the best of both worlds &mdash; the convenience and relative ease of working in an interpreted language (as opposed to a compiled language like C) but at the same time, the ability to call external compiled binaries when you have the need for speed.
+</p>
+<p>
+In MATLAB there is a toolbox called the <b>MATLAB Coder</b> that allows one to generate standalone C and C++ code from MATLAB code. It can also generate so-called MEX functions that are callable from within MATLAB code at the interpreter level. Here is a tutorial: <a href="http://blogs.mathworks.com/loren/2011/11/14/generating-c-code-from-your-matlab-algorithms/">Generating C Code from Your MATLAB Algorithms</a> (Mathworks Inc.). It's worth looking into this if your code runs slowly. During my PhD I was running simulations of a physiologically detailed mathematical model of the arm neuromuscular system, and after compiling a number of the MATLAB functions I wrote for various parts of the arm model, I saw a speedup of 10 to 20 times.
+</p>
+<p>
+In Python there are many options for incorporating compiled code.
+</p>
+<ul>
+<li><a href="http://pypy.org/">PyPy</a>: a fast alternative implementation of the Python language that includes "just in time" compilation, to speed things up
+</li>
+<li><a href="http://cython.org/">Cython</a>: a compiler for Python code as well as Cython code (not exactly Python but close) (<a href="http://docs.cython.org/src/tutorial/cython_tutorial.html">Cython Tutorial</a>)
+</li>
+<li><a href="http://www.swig.org/">SWIG</a>: a tool that connects C and C++ programs with a variety of high level interpreted languages including Python
+</li>
+<li><a href="http://www.boost.org/doc/libs/1_44_0/libs/python/doc/index.html">Boost.Python</a>: a C++ library that enables interoperability between C++ and Python
+</li>
+<li><a href="http://www.cosc.canterbury.ac.nz/greg.ewing/python/Pyrex/">Pyrex</a>: lets you write code that mixes Python and C
+</li>
+<li><a href="http://docs.python.org/3.3/extending/index.html">Extending and Embedding the Python Interpreter</a> is a section in the Python documentation which includes examples of incorporating C code
+</li>
+</ul>
+
+
+<p>
+There is also a SciPy library called <a href="http://docs.scipy.org/doc/scipy/reference/tutorial/weave.html">scipy.weave</a> which actually lets you insert C code, as a Python string, into Python code, and have it compiled. In terms of ease of use, this is perhaps easier than the other options above.
+</p>
+<p>
+In R, there is a section in the R documentation on <a href="http://cran.r-project.org/doc/manuals/R-exts.html">Writing R Extensions</a> that describes how to interface R with C and C++ code. The section on <a href="http://cran.r-project.org/doc/manuals/R-exts.html#System-and-foreign-language-interfaces">System and foreign language interfaces</a> is relevant here.
+</p>
+<p>
+There is nice tutorial by Roger Peng and Jan de Leeuw (UCLA), <a href="http://www.biostat.jhsph.edu/~rpeng/docs/interface.pdf">An Introduction to the .C Interface to R</a> that includes example code. Also see this discussion by John D. Cook on <a href="http://www.johndcook.com/blog/2011/06/30/calling-cpp-from-r/">Calling C++ from R</a>.
+</p>
+
+</div>
+
+</div>
+
+<div id="outline-container-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> Profiling your code</h2>
+<div class="outline-text-2" id="text-10">
+
+
+<p>
+We have seen in example code here, how to time how fast or slow your code executes, but putting specific timer-start and timer-stop expressions around the code segment you want to time (e.g. in MATLAB, the <code>tic</code> and <code>toc</code> commands). There are more powerful tools however that will measure how long all parts of your code take to execute, all in one go, and then give you a report on each section. These are generally called code profilers.
+</p>
+<p>
+In MATLAB there is a tool called the MATLAB Profiler that does this. Here is a section of the MATLAB documentation that describes <a href="http://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html#f9-17087">Profiling for Improving Performance</a>. Here is a video demonstrating how to use it: <a href="http://blogs.mathworks.com/videos/2012/07/11/using-the-matlab-profiler-to-speed-your-code/">Using the MATLAB profiler to speed your code</a>. In fact the profiler doesn't "speed your code", it merely shows you the places in your code where the most time is spent&hellip; but you can use that information to optimize those sections of code for speed.
+</p>
+<p>
+Python includes a profiler library, <code>cProfile</code>, described in a section of the Python documentation here: <a href="http://docs.python.org/2/library/profile.html">The Python Profilers</a>. There is also a discussion here: <a href="http://www.huyng.com/posts/python-performance-analysis/">A guide to analyzing Python performance</a>.
+</p>
+<p>
+In R, in the <code>utils</code> library there is a function called <code>Rprof()</code> that performs profiling on R code. See the documentation here on <a href="http://stat.ethz.ch/R-manual/R-devel/library/utils/html/Rprof.html">Enabling Profiling of R's Execution</a>. 
+</p>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<hr />Paul Gribble | fall 2013<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license"href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 8
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Primality test
+
+Write a function that determines whether a given number is a prime
+number. Remember, a [[http://en.wikipedia.org/wiki/Prime_number][prime number]] is a (natural) number greater than 1
+that is only divisible (with zero remainder) by the number 1, and
+itself. The first few prime numbers are 2,3,5,7,11,13,17,19,23,29, ...
+
+For now you don't have to implement a fancy algorithm for testing
+primeness (e.g. [[http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes][Sieve of Eratosthenes]]). For now, it's ok to implement
+a brute force method.
+
+Hint: you will probably want to use the [[http://en.wikipedia.org/wiki/Modulo_operation][modulo]] operator to test
+whether the remainder is zero after dividing a number n by another
+number m. In Python the modulo operator is =(n % m)=. In
+MATLAB/Octave, modulo is achieved using a function =mod(n, m)=. In R
+the modulo operator is =(n %% m)= and in C the modulo operator looks
+like this: =(n % m)=.
+
+So for example we can test whether the number 5 is prime by testing
+whether =(5 % m)= equals 0 for m=2,3,4.
+
+[[file:e08sol.html][solutions]]
+

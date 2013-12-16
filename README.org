@@ -1,0 +1,25 @@
+#+STARTUP:showall
+#+TITLE:Scientific Computing
+#+AUTHOR:Paul Gribble
+#+DATE:fall 2013
+#+EMAIL:paul [at] gribblelab [dot] org
+
+The goal of this one-semester graduate seminar is to provide you with skills in scientific computing — tools and techniques that you can use
+in your own research. We will focus on learning to think about experiments and data in a computational framework, and we will learn to implement specific data processing and analysis algorithms using a high-level programming language.
+
+The course is designed to achieve four primary goals:
+
+1. to teach you to program in a high-level language such as Python, Matlab, R, and C.
+
+2. to introduce you to Unix (either via the Mac, or GNU/Linux), and to some common computing tools that will help you become more efficient with using your computer for research.
+
+3. to introduce you to some common computational techniques (not necessarily "statistics" per se) for data processing and analysis --— e.g. curve-fitting, simulation, optimization & gradient descent, frequency-domain analysis and filtering, parallel programming, interacting with hardware, organization and storage of data, programming GUIs (graphical user interfaces), and others.
+
+4. to get you to think computationally and algorithmically about data processing, analysis, modeling and visualization.
+
+Even if you don't become a full-fledged programmer yourself, you will have learned enough to know what is possible given today's
+computational resources. This will enable you in the future to design cutting edge experiments and data analysis approaches that take full
+advantage of the computational resources available to you — whether programmed yourself, or by programmers and technicians that you hire.
+
+This work is licensed under a [[http://creativecommons.org/licenses/by-nc-sa/3.0/][Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License]]
+

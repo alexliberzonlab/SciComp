@@ -1,0 +1,36 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 27 solutions
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:t html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/e27.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+* Python
+e27.py
+#+INCLUDE: "../code/e27.py" src python
+
+* MATLAB / Octave
+e27.m
+#+INCLUDE: "../code/e27.m" src octave
+mycostfun1d.m
+#+INCLUDE: "../code/mycostfun1d.m" src octave
+mycostfun2d.m
+#+INCLUDE: "../code/mycostfun2d.m" src octave
+
+* R
+e27.R
+#+INCLUDE: "../code/e27.R" src R
+
+* C
+e27.c
+#+INCLUDE: "../code/e27.c" src c
+- [[file:code/nmsimplex.h][nmsimplex.h]]
+- [[file:code/nmsimplex.c][nmsimplex.c]]
+

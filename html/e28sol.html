@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Exercise 28 solutions</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Exercise 28 solutions"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="fall 2013"/>
+<meta name="author" content="Paul Gribble"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="mystyle.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+ <a accesskey="h" href="http://www.gribblelab.org/scicomp/e28.html"> UP </a>
+ |
+ <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
+</div>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Exercise 28 solutions</h1>
+
+
+
+<hr/>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Python</a></li>
+<li><a href="#sec-2">MATLAB / Octave</a></li>
+<li><a href="#sec-3">R</a></li>
+<li><a href="#sec-4">C</a></li>
+</ul>
+</div>
+</div>
+
+<hr/>
+
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Python</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>e28.py
+</p>
+
+
+<pre class="src src-python"><span style="color: #b22222;"># </span><span style="color: #b22222;">start from ipython --pylab</span>
+
+<span style="color: #a020f0;">from</span> scipy.optimize <span style="color: #a020f0;">import</span> minimize
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">our data</span>
+<span style="color: #a0522d;">x</span> = array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], dtype=<span style="color: #8b2252;">"float"</span>)
+<span style="color: #a0522d;">y</span> = array([18, 5, 17, 38, 40, 106, 188, 234, 344, 484], dtype=<span style="color: #8b2252;">"float"</span>)
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">plot the data</span>
+figure()
+plot(x,y,<span style="color: #8b2252;">'b.'</span>,markersize=15)
+xlabel(<span style="color: #8b2252;">"X"</span>)
+ylabel(<span style="color: #8b2252;">"Y"</span>)
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">define our cost function</span>
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">e28costfun</span>(b,x,y,ff):
+        <span style="color: #a0522d;">y_est</span> = ff(b,x)
+        <span style="color: #a020f0;">return</span> <span style="color: #483d8b;">sum</span>((y_est-y)**2)
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">define the model of the data</span>
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">e28mod</span>(b,x):
+        <span style="color: #a020f0;">return</span> b[0] + b[1]*x + b[2]*(x**2) + b[3]*(x**3)
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">initial guess at beta parameters</span>
+<span style="color: #a0522d;">b0</span> = rand(4,1)
+<span style="color: #b22222;"># </span><span style="color: #b22222;">optimize!</span>
+<span style="color: #a0522d;">opt_result</span> = minimize(e28costfun, b0, method=<span style="color: #8b2252;">"Nelder-Mead"</span>, args=(x,y,e28mod))
+<span style="color: #a020f0;">print</span> opt_result
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">get predicted values of y</span>
+<span style="color: #a0522d;">b</span> = opt_result[<span style="color: #8b2252;">"x"</span>]
+<span style="color: #a0522d;">c</span> = opt_result[<span style="color: #8b2252;">"fun"</span>]
+<span style="color: #a0522d;">xp</span> = linspace(<span style="color: #483d8b;">min</span>(x),<span style="color: #483d8b;">max</span>(x),100)
+<span style="color: #a0522d;">yp</span> = e28mod(b, xp)
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">plot them</span>
+plot(xp, yp, <span style="color: #8b2252;">'r-'</span>, linewidth=2)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">MATLAB / Octave</h2>
+<div class="outline-text-2" id="text-2">
+
+<p>e28.m
+</p>
+
+
+<pre class="src src-octave">x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+y = [18, 5, 17, 38, 40, 106, 188, 234, 344, 484];
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">the "@" symbol denotes a function handle</span>
+b = fminsearch(@e28cost, randn(1,4), [], x, y, @e28mod);
+
+plot(x, y, <span style="color: #8b2252;">'b.'</span>, <span style="color: #8b2252;">'markersize'</span>, 30)
+<span style="color: #a020f0;">hold</span> on
+
+xhat = linspace(min(x),max(x),200);
+yhat = e28mod(b,xhat);
+plot(xhat, yhat, <span style="color: #8b2252;">'g-'</span>, <span style="color: #8b2252;">'linewidth'</span>, 2)
+</pre>
+
+<p>
+e28cost.m
+</p>
+
+
+<pre class="src src-octave"><span style="color: #a020f0;">function</span> out = <span style="color: #0000ff;">e28cost</span>(b,x,y,ff)
+
+        y_est = ff(b,x);
+        out = sum((y_est-y).^2);
+</pre>
+
+<p>
+e28mod.m
+</p>
+
+
+<pre class="src src-octave"><span style="color: #a020f0;">function</span> out = <span style="color: #0000ff;">e28mod</span>(b,x)
+
+        out = b(1) + b(2).*x + b(3).*(x.^2) + b(4).*(x.^3);
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">R</h2>
+<div class="outline-text-2" id="text-3">
+
+<p>e28.R
+</p>
+
+
+<pre class="src src-R"># define the cost function
+e28cost &lt;- function(b,x,y,fmod) {
+        yhat &lt;- fmod(b,x)
+        J &lt;- sum((yhat-y)**2)
+        J
+}
+
+# define the data model
+e28mod &lt;- function(b,x) {
+        yhat &lt;- b[1] + b[2]*x + b[3]*x*x + b[4]*x*x*x
+        yhat
+}
+
+# the data
+x &lt;- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+y &lt;- c(18, 5, 17, 38, 40, 106, 188, 234, 344, 484)
+
+# plot x vs y
+plot(x, y, <span style="color: #8b2252;">"p"</span>, col=<span style="color: #8b2252;">"blue"</span>, pch=19, cex=1.5, xlab=<span style="color: #8b2252;">"X"</span>, ylab=<span style="color: #8b2252;">"Y"</span>)
+
+# initial guess
+b0 &lt;- runif(4)
+
+# optimize!
+optim_res &lt;- optim(par=b0, fn=e28cost, method=<span style="color: #8b2252;">"Nelder-Mead"</span>, gr=NULL, x, y, e28mod)
+print(optim_res)
+b_opt &lt;- optim_res$par
+min_cost &lt;- optim_res$value
+cat(paste(<span style="color: #8b2252;">"initial guess was"</span>, b0, <span style="color: #8b2252;">"\n"</span>))
+cat(paste(<span style="color: #8b2252;">"the optimal value of b is"</span>, b_opt, <span style="color: #8b2252;">"\n"</span>))
+cat(paste(<span style="color: #8b2252;">"the minimum cost found is"</span>, min_cost, <span style="color: #8b2252;">"\n"</span>))
+
+# plot line of best fit
+xhat &lt;- seq(min(x), max(x), (max(x)-min(x))/100)
+yhat &lt;- b_opt[1] + b_opt[2]*xhat + b_opt[3]*xhat*xhat + b_opt[4]*xhat*xhat*xhat
+lines(xhat, yhat, col=<span style="color: #8b2252;">"red"</span>, lwd=2)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">C</h2>
+<div class="outline-text-2" id="text-4">
+
+<p>e28.c
+</p>
+
+
+<pre class="src src-c"><span style="color: #b22222;">// </span><span style="color: #b22222;">e28.c</span>
+<span style="color: #b22222;">// </span><span style="color: #b22222;">compile with: gcc -o e28 e28.c nmsimplex.c</span>
+
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">"nmsimplex.h"</span>
+
+<span style="color: #b22222;">// </span><span style="color: #b22222;">define a struct that will hold extra stuff to be passed</span>
+<span style="color: #b22222;">// </span><span style="color: #b22222;">to the cost function</span>
+<span style="color: #a020f0;">typedef</span> <span style="color: #a020f0;">struct</span> {
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>;            <span style="color: #b22222;">// </span><span style="color: #b22222;">length of x,y arrays</span>
+  <span style="color: #228b22;">double</span> *<span style="color: #a0522d;">x</span>, *<span style="color: #a0522d;">y</span>;    <span style="color: #b22222;">// </span><span style="color: #b22222;">the x,y data arrays</span>
+                    <span style="color: #b22222;">// </span><span style="color: #b22222;">below: a pointer to a function that computes</span>
+                    <span style="color: #b22222;">// </span><span style="color: #b22222;">y estimates based on b, x and n</span>
+  <span style="color: #228b22;">double</span> *(*<span style="color: #0000ff;">modfn</span>)(<span style="color: #228b22;">double</span> <span style="color: #a0522d;">b</span>[], <span style="color: #228b22;">double</span> <span style="color: #a0522d;">x</span>[], <span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>);
+} <span style="color: #228b22;">optim_extras</span>;
+
+<span style="color: #b22222;">// </span><span style="color: #b22222;">our cost function</span>
+<span style="color: #228b22;">double</span> <span style="color: #0000ff;">e28cost</span>(<span style="color: #228b22;">double</span> <span style="color: #a0522d;">b</span>[], <span style="color: #228b22;">void</span> *<span style="color: #a0522d;">extras</span>) {
+  <span style="color: #228b22;">optim_extras</span> *<span style="color: #a0522d;">stuff</span> = (<span style="color: #228b22;">optim_extras</span> *)extras;
+  <span style="color: #228b22;">double</span> <span style="color: #a0522d;">J</span> = 0.0;
+  <span style="color: #228b22;">double</span> *<span style="color: #a0522d;">x</span> = stuff-&gt;x;
+  <span style="color: #228b22;">double</span> *<span style="color: #a0522d;">y</span> = stuff-&gt;y;
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
+  <span style="color: #228b22;">double</span> *(*<span style="color: #a0522d;">fn</span>)() = stuff-&gt;modfn;                 <span style="color: #b22222;">// </span><span style="color: #b22222;">the model function</span>
+  <span style="color: #228b22;">double</span> *<span style="color: #a0522d;">yhat</span> = fn(b, x, stuff-&gt;n);              <span style="color: #b22222;">// </span><span style="color: #b22222;">compute yhat</span>
+  <span style="color: #a020f0;">for</span> (i=0; i&lt;stuff-&gt;n; i++) {
+    J = J + ( (yhat[i]-y[i]) * (yhat[i]-y[i]) );  <span style="color: #b22222;">// </span><span style="color: #b22222;">compute cost</span>
+  }
+  free(yhat);
+  <span style="color: #a020f0;">return</span> J;
+}
+
+<span style="color: #b22222;">// </span><span style="color: #b22222;">our model function to compute yhat from b, x and n</span>
+<span style="color: #228b22;">double</span> *<span style="color: #0000ff;">e28mod</span>(<span style="color: #228b22;">double</span> <span style="color: #a0522d;">b</span>[], <span style="color: #228b22;">double</span> <span style="color: #a0522d;">x</span>[], <span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
+  <span style="color: #228b22;">double</span> *<span style="color: #a0522d;">yhat</span> = malloc(n * <span style="color: #a020f0;">sizeof</span>(<span style="color: #228b22;">double</span>));
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
+  <span style="color: #a020f0;">for</span> (i=0; i&lt;n; i++) {
+    yhat[i] = b[0] + (b[1]*x[i]) + (b[2]*x[i]*x[i]) + (b[3]*x[i]*x[i]*x[i]);
+  }
+  <span style="color: #a020f0;">return</span> yhat;
+}
+
+<span style="color: #b22222;">// </span><span style="color: #b22222;">the main program</span>
+<span style="color: #b22222;">//</span>
+<span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">argc</span>, <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">argv</span>[]) {
+
+  <span style="color: #228b22;">double</span> <span style="color: #a0522d;">x</span>[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  <span style="color: #228b22;">double</span> <span style="color: #a0522d;">y</span>[] = {18, 5, 17, 38, 40, 106, 188, 234, 344, 484};
+
+  <span style="color: #228b22;">optim_extras</span> <span style="color: #a0522d;">stuff</span>;     <span style="color: #b22222;">// </span><span style="color: #b22222;">declare struct of extra stuff</span>
+  stuff.n = 10;           <span style="color: #b22222;">// </span><span style="color: #b22222;">x,y array length</span>
+  stuff.x = x;            <span style="color: #b22222;">// </span><span style="color: #b22222;">x data array</span>
+  stuff.y = y;            <span style="color: #b22222;">// </span><span style="color: #b22222;">y data array</span>
+  stuff.modfn = &amp;e28mod;  <span style="color: #b22222;">// </span><span style="color: #b22222;">the address of the model function e28mod()</span>
+
+  <span style="color: #228b22;">double</span> <span style="color: #a0522d;">b</span>[] = {.1,.1,.1,.1};                                   <span style="color: #b22222;">// </span><span style="color: #b22222;">our initial guess</span>
+  <span style="color: #228b22;">double</span> <span style="color: #a0522d;">f_min</span> = simplex(e28cost, b, 4, 1e-8, 1, <span style="color: #008b8b;">NULL</span>, &amp;stuff); <span style="color: #b22222;">// </span><span style="color: #b22222;">optimize!</span>
+  printf(<span style="color: #8b2252;">"f_min=%f\n"</span>, f_min);
+  printf(<span style="color: #8b2252;">"x_min=(%f,%f,%f,%f)\n"</span>, b[0],b[1],b[2],b[3]);
+
+  <span style="color: #a020f0;">return</span> 0;
+}
+</pre>
+
+<ul>
+<li><a href="code/nmsimplex.h">nmsimplex.h</a>
+</li>
+<li><a href="code/nmsimplex.c">nmsimplex.c</a>
+</li>
+</ul>
+
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<hr />Paul Gribble | fall 2013<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license"href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
+</div>
+</body>
+</html>

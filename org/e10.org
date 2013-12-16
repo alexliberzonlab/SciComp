@@ -1,0 +1,41 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 10
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Numerical Differentiation
+
+The following equation can be used to find an approximate derivative
+of a mathematical function $f(x)$ if $h$ is sufficiently small:
+
+\begin{equation}
+f'(x) \approx \frac{f(x+h)-f(x-h)}{2h}
+\end{equation}
+
+Write a function =diff(f, x, h)= that returns the approximation of the
+derivative of a mathematical function represented by a function
+=f(x)=.
+
+Apply this to differentiate:
+
+- $f(x) = \left( e^{x} \right)$ at $x=0$
+- $f(x) = \left( e^{-2x^{2}} \right)$ at $x=0$
+- $f(x) = \left( \cos x \right)$ at $x = 2\pi$
+- $f(x) = \left( \ln x \right)$ at $x=1$
+
+Use $h = 0.01$
+
+In each case write out the error, i.e., the difference between the
+exact derivative and the result of the approximation.
+
+If you need help finding out what the exact solutions to these
+derivatives are, (1) try to remember your calculus!, (2) ask a
+classmate, (3) google it, or (4) ask me.
+
+[[file:e10sol.html][solutions]]
+

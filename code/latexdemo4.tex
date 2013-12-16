@@ -1,0 +1,29 @@
+% latexdemo4.tex
+
+\documentclass{article}
+
+\title{A demo document in \LaTeX{}}
+\author{John Doe}
+\date{\today}
+
+\usepackage{chicago}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+
+Here is a sentence in which we cite an article on fMRI
+\cite{poldrack2012future}. Here is another sentence in which we cite a
+paper on maximum likelihood estimation
+\cite{myung2003tutorial}. Finally here is a citation of a book on
+evolution \cite{dawkins1996blind}.
+
+Here is a sentence in which we cite all three
+\cite{poldrack2012future,myung2003tutorial,dawkins1996blind}.
+
+\bibliographystyle{chicago}
+\bibliography{latexdemorefs}
+
+\end{document}

@@ -1,0 +1,41 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 2
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* calculate the height of a ball
+Given parabolic flight, the height of a ball $y$ is given by the
+equation:
+
+\begin{equation}
+y = x \tan(\theta) - \left[ \frac{1}{2 v_{0}^{2}} \right] \left[ \frac{g x^{2}}{cos(\theta)^{2}} \right] + y_{0}
+\end{equation}
+
+where $x$ is a horizontal coordinate (metres), $g$ is the acceleration
+of gravity (metres per second per second), $v_{0}$ is the size of the
+initial velocity vector (metres per second) at an angle $\theta$
+(radians) with the x-axis, and $(0,y_{0})$ is the initial position of
+the ball (metres).
+
+Write a program to compute the vertical height of a ball. The program
+should ask the user to input values for $g$, $v_{0}$, $\theta$, $x$,
+and $y_{0}$, and print out a sentence giving the vertical height of
+the ball.
+
+Test your program with this example:
+
+#+BEGIN_SRC example
+enter a value for g: 9.8
+enter a value for v0: 6.789
+enter a value for theta: 0.123
+enter a value for x: 4.5
+enter a value for y0: 5.4
+The vertical height of the ball is:  3.77057803072
+#+END_SRC
+
+[[file:e02sol.html][solutions]]

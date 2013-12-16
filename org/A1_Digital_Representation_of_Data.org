@@ -1,0 +1,273 @@
+#+STARTUP: showall
+
+#+TITLE:     A1. Digital Representation of Data
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: html:t num:t toc:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/index.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+* Binary
+
+At its core, all information on a digital computer is stored in a
+[[http://en.wikipedia.org/wiki/Binary_code][binary]] format. Binary format represents information using a series of
+0s and 1s. If there are $n$ digits of a binary code, one can represent
+$2^{n}$ [[http://en.wikipedia.org/wiki/Bit][bits]] of information.
+
+So for example the binary number denoted by:
+
+#+BEGIN_EXAMPLE
+0001
+#+END_EXAMPLE
+
+represents the number 1. The convention here is called [[http://en.wikipedia.org/wiki/Endianness][little-endian]]
+because the least significant value is on the right, and as one reads
+right to left, the value of each binary digit doubles. So for example
+the number 2 would be represented as:
+
+#+BEGIN_EXAMPLE
+0010
+#+END_EXAMPLE
+
+This is a 4-bit code since there are 4 binary digits. The full list of all values that can be represented using a 4-bit code are:
+
+|--------+---------|
+| Binary | Decimal |
+|--------+---------|
+|   0000 |       0 |
+|   0001 |       1 |
+|   0010 |       2 |
+|   0011 |       3 |
+|   0100 |       4 |
+|   0101 |       5 |
+|   0110 |       6 |
+|   0111 |       7 |
+|   1000 |       8 |
+|   1001 |       9 |
+|   1010 |      10 |
+|   1011 |      11 |
+|   1100 |      12 |
+|   1101 |      13 |
+|   1110 |      14 |
+|   1111 |      15 |
+|--------+---------|
+
+So with a 4-bit binary code one can represent $2^{4} = 16$ different
+values (0-15). Each additional bit doubles the number of values one
+can represent. So a 5-bit code enables us to represent 32 distinct
+values, a 6-bit code 64, a 7-bit code 128 and an 8-bit code 256 values
+(0-255).
+
+Another piece of terminology: a given sequence of binary digits that
+forms the natural unit of data for a given processor (CPU) is called a
+[[http://en.wikipedia.org/wiki/Word_(computer_architecture)][word]].
+
+Have another look at the [[http://www.asciitable.com][ASCII table]]. The standard ASCII table
+represents 128 different characters and the extended ASCII codes
+enable another 128 for a total of 256 characters. How many binary bits
+are used for each?
+
+* Hexadecimal
+
+You will also see in the ASCII table that it gives the decimal
+representation of each character but also the Hexadecimal and Octal
+representations. The [[http://en.wikipedia.org/wiki/Hexadecimal][hexadecimal]] system is a base-16 code and the
+[[http://en.wikipedia.org/wiki/Octal][octal]] system is a base-8 code. Hex values for a single hexadecimal digit can range over:
+
+#+BEGIN_EXAMPLE
+0 1 2 3 4 5 6 7 8 9 A B C D E F
+#+END_EXAMPLE
+
+If we use a 2-digit hex code we can represent $16*16 = 256$ distinct
+values. In computer science, engineering and programming, a common
+practice is to represent successive 4-bit binary sequences using
+single-digit hex codes. 
+
+So here is our table again, with Binary, Decimal and Hexadecimal
+values:
+
+|--------+---------+-------------|
+| Binary | Decimal | Hexadecimal |
+|--------+---------+-------------|
+|   0000 |       0 |           0 |
+|   0001 |       1 |           1 |
+|   0010 |       2 |           2 |
+|   0011 |       3 |           3 |
+|   0100 |       4 |           4 |
+|   0101 |       5 |           5 |
+|   0110 |       6 |           6 |
+|   0111 |       7 |           7 |
+|   1000 |       8 |           8 |
+|   1001 |       9 |           9 |
+|   1010 |      10 |           A |
+|   1011 |      11 |           B |
+|   1100 |      12 |           C |
+|   1101 |      13 |           D |
+|   1110 |      14 |           E |
+|   1111 |      15 |           F |
+|--------+---------+-------------|
+
+If we have 8-bit binary codes we would use successive hex digits to
+represent each 4-bit word of the 8-bit [[http://en.wikipedia.org/wiki/Byte][byte]] (another piece of lingo):
+
+|-----------+---------+-------------|
+| Binary    | Decimal | Hexadecimal |
+|-----------+---------+-------------|
+| 0000 0000 |       0 | 00          |
+| 0000 0001 |       1 | 01          |
+| 0000 0010 |       2 | 02          |
+| ...       |     ... | ...         |
+| 1111 1101 |     253 | FD          |
+| 1111 1110 |     254 | FE          |
+| 1111 1111 |     255 | FF          |
+|-----------+---------+-------------|
+
+The left chunk of 4-bit binary digits (the left word) is represented
+in hex as a single hex digit (0-F) and the next chunk of 4-bit binary
+digits (the right word) is represented as another single hex digit
+(0-F).
+
+Hex is typically used to represent bytes (8-bits long) because it is a
+more compact notation than using 8 binary digits (hex uses just 2 hex
+digits).
+
+* Floating point values
+
+The material above talks about the decimal representation of bytes in
+terms of integer values (e.g. 0-255). Frequently however in science we
+want the ability to represent [[http://en.wikipedia.org/wiki/Real_number][real numbers]] on a continuous scale, for
+example 3.14159, or 5.5, or 0.123, etc. For this, the convention is to
+use [[http://en.wikipedia.org/wiki/Floating_point][floating point]] representations of numbers.
+
+The idea behind the floating point representation is that it allows us
+to represent an approximation of a real number in a way that allows
+for a large number of possible values. Floating point numbers are
+represented to a fixed number of *significant digits* (called
+a *significand*) and then this is scaled using a *base* raised to
+an *exponent*:
+
+\begin{equation}
+s~\mathrm{x}~b^{e}
+\end{equation}
+
+This is related to something you may have come across in high-school
+science, namely [[http://en.wikipedia.org/wiki/Scientific_notation][scientific notation]]. In scientific notation, the base
+is 10 and so a real number like 123456.789 is represented as
+$1.23456789~\mathrm{x}~10^{5}$.
+
+In computers there are different conventions for different CPUs but
+there are standards, like the [[http://en.wikipedia.org/wiki/IEEE_floating_point][IEEE 754]] floating-point standard. As an
+example, a so-called [[http://en.wikipedia.org/wiki/Binary32][single-precision floating point format]] is
+represented in binary (using a base of 2) using 32 bits (4 bytes) and
+a /double precision/ floating point number is represented using 64
+bits (8 bytes). In C you can find out how many bytes are used for
+various types using the =sizeof()= function:
+
+#+BEGIN_SRC c
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+
+  printf("a single precision float uses %ld bytes\n", sizeof(float));
+  printf("a double precision float uses %ld bytes\n", sizeof(double));
+  return 0;
+}
+#+END_SRC
+
+On my macbook pro laptop this results in this output:
+
+#+BEGIN_EXAMPLE
+a single precision float uses 4 bytes
+a double precision float uses 8 bytes
+#+END_EXAMPLE
+
+According to the IEEE 754 standard, a single precision 32-bit binary
+floating point representation is composed of a *1-bit sign bit*
+(signifying whether the number is positive or negative), an *8-bit
+exponent* and a *23-bit significand*. See the various wikipedia pages
+for full details.
+
+There is a key phrase in the description of floating point values
+above, which is that floating point representation allows us to store
+an *approximation* of a real number. If we attempt to represent a
+number that has more significant digits than can be store in a 32-bit
+floating point value, then we have to approximate that real number,
+typically by rounding off the digits that cannot fit in the 32
+bits. This introduces [[http://en.wikipedia.org/wiki/Round-off_error][rounding error]].
+
+Now with 32 bits, or even 64-bits in the case of double precision
+floating point values, rounding error is likely to be relatively
+small. However it's not zero, and depending on what your program is
+doing with these values, the rounding errors can accumulate (for
+example if you're simulating a dynamical system over thousands of time
+steps, and at each time step there is a small rounding error).
+
+We don't need a fancy simulation however to see the results of
+floating point rounding error. Open up your favourite programming
+language (MATLAB, Python, R, C, etc) and type the following (adjust
+the syntax as needed for your language of choice):
+
+#+BEGIN_SRC python
+(0.1 + 0.2) == 0.3
+#+END_SRC
+
+What do you get? In Python I get:
+
+#+BEGIN_SRC python
+>>> (0.1 + 0.2) == 0.3
+False
+#+END_SRC
+
+What's going on here? What's happening is that these decimal numbers,
+0.1, 0.2 and 0.3 are being represented by the computer in a
+binary floating-point format, that is, using a base 2
+representation. The issue is that in base 2, the decimal number
+0.1 cannot be represented precisely, no matter how many bits you
+use. Plug in the decimal number 0.1 into an online
+binary/decimal/hexadecimal converter (such as [[http://www.wolframalpha.com/input/?i=0.1+to+binary][here]]) and you will see
+that the binary representation of 0.1 is an infinitely repeating
+sequence:
+
+#+BEGIN_EXAMPLE
+0.000110011001100110011001100...
+#+END_EXAMPLE
+
+This shouldn't be an unfamiliar situation, if we remember that there
+are also real numbers that cannot be represented precisely in decimal
+format, either, because they involve an infintely repeating
+sequence. For example the real number $\frac{1}{3}$ [[http://www.wolframalpha.com/input/?i=1%2F3+in+decimal][when represented
+in decimal]] is:
+
+#+BEGIN_EXAMPLE
+0.3333333333...
+#+END_EXAMPLE
+
+If we try to represent $\frac{1}{3}$ using $n$ decimal digits then we
+have to chop off the digits to the right that we cannot include,
+thereby rounding the number. We lose some amount of precision that
+depends on how many significant digits we retain in our
+representation.
+
+So the same is true in binary. There are some real numbers that cannot
+be represented precisely in binary floating-point format.
+
+See [[http://ta.twi.tudelft.nl/users/vuik/wi211/disasters.html][here]] for some examples of significant adverse events
+(i.e. disasters) cause by numerical errors.
+
+Rounding can be used to your advantage, if you're in the business of
+stealing from people (see [[http://en.wikipedia.org/wiki/Salami_slicing][salami slicing]]). In the awesomely kitchy
+1980s movie [[http://en.wikipedia.org/wiki/Superman_III][Superman III]], Richard Pryor's character plays a "bumbling
+computer genius" who embezzles a ton of money by stealing a large
+number of "fractions of cents" (which in the movie are said to be
+"lost" anyway due to rounding) from his company's payroll (YouTube
+clip [[http://www.youtube.com/watch?v=iLw9OBV7HYA][here]]).
+
+There is a comprehensive theoretical summary of these issues here:
+[[http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html][What Every Computer Scientist Should Know About Floating-Point
+Arithmetic]].
+

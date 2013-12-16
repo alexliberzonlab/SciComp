@@ -1,0 +1,319 @@
+#+STARTUP: showall
+
+#+TITLE:     1. Introduction
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: html:t num:nil toc:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/index.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+Our main plan for the first class will be to talk about the course
+content, and to get everyone set up on their laptop with an appropriate programming environment.
+
+In our second class we will start in on the first batch of programming
+exercises which will illustrate getting values from the user, printing
+strings, doing arithmetic, and we will be introduced to loops.
+
+* Organization of the course
+
+Last year we tried a new approach to how classes are run, that worked
+well. Instead of me lecturing for an hour, and then you going away and
+attemping programming exercises and assignments, we "inverted the
+classroom". Classroom time was spent working on exercises and
+assignments, and asking questions, and students completed readings and
+went over lecture notes outside of class.
+
+The benefit of this approach from my point of view is that we spend
+time in class in a more interactive way, and (especially earling in
+learning programming techniques) students get more out of classroom
+time than if you were just listening to me blab on and on.
+
+What this does require however is that you come prepared to each
+class, having done the readings and whatever other preparation is
+specified on the schedule.
+
+* Setting up your computing environment
+
+I will be using unix-style tools, sometimes on my Mac and sometimes on
+a linux machine (or in a linux virtual machine). If you have a Mac and
+are running a relatively recent version of Mac OSX then you can
+probably achieve the same functionality by installing unix-based tools
+on your Mac. We will talk about this in class. If you have a Windows
+laptop then your choices may be more limited.
+
+For using linux, you have essentially four choices about how you can
+set things up, assuming you are not already set up to use linux. In
+order of most committed to least committed:
+
+1. Wipe your existing operating system and install linux. There are
+   several flavours (see the [[http://www.gribblelab.org/scicomp/resources.html#sec-11][resources]] page)
+2. Repartition your hard drive and set up a dual-boot system. You can
+   find instructions on the web, e.g. for [[http://www.ubuntu.com/desktop][Ubuntu]], [[https://help.ubuntu.com/community/WindowsDualBoot][Windows Dual Boot]]
+   and [[https://help.ubuntu.com/community/DualBoot/MacOSX][Dual Boot Mac OSX]]. Instructions for other linux flavours can be
+   found easily on the web.
+3. Boot your laptop from an external drive that has a linux boot
+   partition set up. Again, find instructions on the web for your
+   favourite linux flavour.
+4. Run a linux virtual appliance in a virtualization application such
+   as [[https://www.virtualbox.org][VirtualBox]]. I will provide such an appliance that runs [[http://www.debian.org][Debian]]
+   and has all of the software we will need, preinstalled. I will also
+   provide an appliance that runs [[http://www.ubuntu.com/desktop][Ubuntu]] in case you'd like to try
+   that instead. Ubuntu has arguably done a better job of making linux
+   look nice visually. Note that both images will be imported as 20GB
+   virtual machines so you need at least that much space to run
+   them. If you need to, I suggest putting them on an external drive.
+
+If you decide you don't want to use linux, but you do want to use
+Python + SciPy and all of the other python-based scientific packages,
+then I suggest installing the [[https://store.continuum.io/cshop/anaconda/][Anaconda]] distribution from Continuum
+Analytics. It's free and it provides an easy all-in-one Python + SciPy
+system.
+
+If you have decided that you're using MATLAB, then it should not be a
+big deal to get it installed on your machine, whether you're running
+Mac, Windows or even linux.
+
+* Programming Languages
+
+There are many programming languages that are used today for
+scientific computing, and it's likely that you will be exposed to code
+in many languages over the course of your career as a graduate student
+in the sciences.
+
+Unless you decide that you would rather code everything you ever need
+on your own, from scratch, in one language, it's likely that you will
+be using programs, code snippets and libraries written by others, to
+accomplish the tasks you need to complete to do your research and data
+analysis. Life will be better for you if you're somewhat proficient,
+or at least familiar, with several programming languages.
+
+In this course we will learn some basic programming paradigms and
+patterns that are not language specific. We will sometimes be looking
+at example code in different languages. This has the risk of being
+confusing, as different languages have different [[http://en.wikipedia.org/wiki/Syntax_(programming_languages)][syntax]], and the
+differences are sometimes subtle. The benefit however is that you will
+see that with few exceptions, most languages are essentially the same,
+at least in broad strokes, and differ only in their syntax, and in the
+names for various functions. There are some low-level differences
+between [[http://en.wikipedia.org/wiki/Interpreted_language][interpreted]] and [[http://en.wikipedia.org/wiki/Compiled_language][compiled]] languages that we will talk about
+later, that make a big difference in terms of the speed that your code
+runs.
+
+The languages we will be seeing in this course are:
+
+- [[http://www.mathworks.com/products/matlab/][MATLAB]]: commerical, engineering-oriented numerical programming environment
+- [[http://www.gnu.org/software/octave/][GNU Octave]]: free, open-source clone of Matlab
+- [[http://www.python.org][Python]]: free, open-source high level programming language
+- [[http://www.scipy.org][SciPy]]: a Python-based ecosystem for math, science & engineering,
+  that includes:
+  - [[http://www.numpy.org][NumPy]]: library for numerical computing with Python
+  - [[http://matplotlib.org][matplotlib]]: 2D plotting library for Python
+  - [[http://ipython.org][iPython]]: improved interface for interactive computing with Python
+  - [[http://sympy.org/en/index.html][SymPy]]: Python library for symbolic mathematics
+  - [[http://pandas.pydata.org][pandas]]: data structures and data analysis tools for Python
+- [[http://www.r-project.org][R]]: free, open-source language for statistical computing & graphics
+- [[http://en.wikipedia.org/wiki/C_(programming_language)][C]]: a high level, general purpose compiled language
+
+Other languages you may encounter in your travels as a graduate student and as a scientist are:
+
+- [[http://en.wikipedia.org/wiki/C%2B%2B][C++]]: basically an object-oriented ([[http://en.wikipedia.org/wiki/Object-oriented_programming][OOP]]) version of C
+- [[http://en.wikipedia.org/wiki/Objective-C][Objective C]]: another OOP version of C, used primarly by [[https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html][Apple]] to
+  write Mac OSX and iOS applications
+- [[http://en.wikipedia.org/wiki/Java_(programming_language)][Java]]: a general purpose OOP language
+- [[http://en.wikipedia.org/wiki/JavaScript][JavaScript]]: like Java for running inside web browsers
+- [[https://www.ruby-lang.org/en/][Ruby]]: another general purpose OOP language
+- [[http://en.wikipedia.org/wiki/Fortran][Fortran]]: a general purpose compiled language aimed at numerical and
+  scientific computing
+- [[http://www.wolfram.com/mathematica/][Mathematica]]: a commercial environment for mathematical computation
+  and visualization (popular with pure math types, not so much
+  engineers)
+- [[http://www.sagemath.org][Sage]]: a free, open-source math system sort of aimed at being a
+  Mathematica replacement
+
+There are also some new languages that are gaining traction:
+
+- [[http://julialang.org][julia]]: a high-level dynamic language aimed at numerical and
+  technical computing. The love child of Python and C
+- [[http://golang.org][go]]: high-level OOP compiled language designed at Google, sort of a
+  Googly version of C
+
+There are many other languages out there that are still in use but
+these are the ones you are likely to encounter in the scientific and
+numerical computing sphere.
+
+For our purposes, we will be primarily seeing code
+in *Python*, *Matlab/Octave* and *R*. Occasionally I will show you
+a *C* version of a program as an illustration of how much faster a
+compiled language can be compared to an interpreted language (Python,
+Matlab/Octave and R are all interpreted languages).
+
+** Am I supposed to learn $n$ different languages in this course? (where $n>1$)
+
+No. For exercises and assignments you can use whatever language you
+like. I will be providing examples in Python, Matlab/Octave, R and
+occasionally C. My expectation is not that you learn 4 programming
+languages in this course. My expectation is that you learn to program
+in one language of your choosing, and that you at least gain exposure
+to what code looks like in other languages.
+
+In doing so I hope that you'll learn at least two important lessons:
+
+1. you will see that mostly, all high level languages are basically
+   the same, but with different syntax and different names for things
+2. you will become familiar with the range of languages and associated
+   libraries, toolboxes and add-on modules that are available to you
+   as a scientist
+
+** So what language should I use?
+
+The answer to this question is to use the language that will be most
+beneficial for you personally going forward. This could depend on
+things like:
+
+- what language(s) are in common use in your supervisor's lab right now?
+- are there existing toolboxes or libraries for a certain language
+  that you know in advance will be particularly useful to you in your
+  research?
+- Do you want to spend money? (MATLAB costs money and is a
+  proprietary, closed source product; Python, R, Octave and C are free
+  and open source)
+- what language(s) do you already know, and are you interested in
+  refining what you already know, and/or becoming proficient in
+  another language?
+
+If you know you don't need MATLAB (because for example your lab
+already uses MATLAB) then I suggest using Python for the course. Its
+libraries are broader than R, which is mainly a language oriented
+around doing statistics. An easy way to install Python plus all of the
+SciPy toolboxes is using [[https://store.continuum.io/cshop/anaconda/][Anaconda]], which should work on Windows and
+Mac.
+
+If you are interested in another language, come and see me and we can
+make sure it's going to be a suitable plan.
+
+If you already have experience with the interpreted languages we will
+be looking at in this course and you would like to challenge yourself
+and learn some C, then this [[http://www.gribblelab.org/CBootcamp/index.html][C Programming Boot Camp]] might be useful to
+you. There are also tons of resources online, and books, about
+programming in C.
+
+** Editors and IDEs
+
+Many programming language come with a so-called [[http://en.wikipedia.org/wiki/Integrated_development_environment][Integrated Development]]
+Environments or IDE. MATLAB comes with one of these. There is one for
+R called [[http://www.rstudio.com][RStudio]], and there is one for Python/SciPy called [[https://www.enthought.com/products/canopy/][Canopy]]. For
+C there are many. On the Mac, [[https://developer.apple.com/xcode/][Xcode]] is the standard for developing Mac
+OSX and iOS programs. On Windows there are products like [[http://en.wikipedia.org/wiki/Eclipse_(software)][Eclipse]] that
+provide an IDE for several languages.
+
+The basic idea of an IDE is that you get a pretty, graphical
+multi-windowed environment where you can see your code alongside
+various tools such as debuggers, variable lists and memory profiles,
+file systems and directories, and click-and-point menus for access to
+a variety of functions and toolboxes.
+
+In this course I will not be using an IDE, and I would encourage you
+not to use one either. This is not because I think they are
+necessarily a bad idea, but because I think the various conveniences
+they provide promote a certain intellectual laziness especially for
+beginning programmers. For an experienced programmer an IDE can
+certainly increase efficiency. For a beginning programmer however I
+think it's more important to (at least initially) do all of that stuff
+in your head (or with a piece of paper and a pencil). A reading is
+relevant here: [[http://www.paulgraham.com/head.html][Holding a Program in One's Head]].
+
+What I will be doing, and what I suggest you do in the course, is use
+a basic *two window setup*: one window for the code interpreter (or
+compiler) and a second window for your editor (where you edit your
+code).
+
+* A Rough List of Topics
+
+We will talk in our first class about what topics are of interest to
+the class this year. Here is a rough list of potential topics. We will
+start by learning some general principles of programming and then we
+will move on to some of the more useful techniques you might encounter
+for data analysis. We don't cover statistics per se in this course,
+that is saved for next term when I teach /Introduction to Statistics
+Using R/.
+
+** General Programming
+
+- basic data types
+- operators, expressions
+- control flow (loops, conditionals)
+- functions & modularity, variable scope
+- complex data types
+- input & output
+- speeding up your code
+- object-oriented programming OOP
+
+** Data Analysis Topics
+
+- graphical displays of data
+- signals & sampling
+- fourier analysis & filtering
+- numerical integration
+- simulating dynamical systems
+- optimization & gradient descent
+- curve fitting
+- resampling & bootstrapping
+
+** Other Topics
+- document processing & reproducible research
+- [[http://www.stat.uni-muenchen.de/~leisch/Sweave/][Sweave]], [[http://mpastell.com/pweave/][Pweave]], [[http://ipython.org/notebook.html][iPython notebook]]
+
+* What should I do now?
+
+During our first meeting we will be talking about the pros and cons of
+the various ways of getting linux onto your laptop.
+
+A brief note about laptops: I am assuming in this course that you own
+(or you have access to) a laptop computer. If you don't, then it's
+time to buy one. I don't feel particularly uncomfortable asking
+students to buy a laptop, since prices are low enough nowadays that
+you can find a modern, suitable laptop for a few hundred dollars ---
+essentially the cost of buying several high-end textbooks. If this is
+a serious issue for you, let me know and we can talk about what your
+options are.
+
+So your first task in the course is to get your linux setup up and
+running.
+
+Your second task is to write and run a "Hello, World" program in the
+language of your choice. Here is some code for you in a variety of
+languages:
+
+#+BEGIN_SRC python
+# Python
+print "Hello, World"
+#+END_SRC
+
+#+BEGIN_SRC octave
+% MATLAB / Octave
+disp('Hello, World');
+#+END_SRC
+
+#+BEGIN_SRC r
+# R
+cat("Hello, World\n")
+#+END_SRC
+
+#+BEGIN_SRC c
+// C
+// to compile: gcc -o hello hello.c
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+
+  printf("Hello, World\n");
+
+  return 0;
+}
+#+END_SRC
+

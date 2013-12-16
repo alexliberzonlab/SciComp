@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Exercise 15 solutions</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Exercise 15 solutions"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="fall 2013"/>
+<meta name="author" content="Paul Gribble"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="mystyle.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+ <a accesskey="h" href="http://www.gribblelab.org/scicomp/e15.html"> UP </a>
+ |
+ <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
+</div>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Exercise 15 solutions</h1>
+
+
+
+<hr/>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Python</a></li>
+<li><a href="#sec-2">MATLAB / Octave</a></li>
+<li><a href="#sec-3">C</a></li>
+</ul>
+</div>
+</div>
+
+<hr/>
+
+<p>
+<a href="code/cipher1.txt">cipher1.txt</a>
+</p>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Python</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>e15.py
+</p>
+
+
+<pre class="src src-python"><span style="color: #a020f0;">import</span> urllib2      <span style="color: #b22222;"># </span><span style="color: #b22222;">to open file from a URL</span>
+<span style="color: #a020f0;">from</span> numpy <span style="color: #a020f0;">import</span> * <span style="color: #b22222;"># </span><span style="color: #b22222;">for arrays</span>
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">read in the ciphertext file from the interwebs</span>
+<span style="color: #a0522d;">response</span> = urllib2.urlopen(<span style="color: #8b2252;">"http://projecteuler.net/project/cipher1.txt"</span>)
+<span style="color: #a0522d;">responsestring</span> = response.read()
+<span style="color: #a0522d;">cipherascii</span> = fromstring(responsestring, sep=<span style="color: #8b2252;">","</span>, dtype=<span style="color: #8b2252;">"int"</span>)
+<span style="color: #b22222;"># </span><span style="color: #b22222;">now cipherascii is an array of integers corresponding to </span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">ascii codes</span>
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">here's a function to decrypt an array of ascii codes</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">with a repeating decryption key (also ascii codes)</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">using XOR bitwise decryption</span>
+<span style="color: #b22222;">#</span>
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">XORdecrypt</span>(cipherascii, keyascii):
+        <span style="color: #b22222;"># </span><span style="color: #b22222;">initialize plainascii with zeros</span>
+        <span style="color: #a0522d;">plainascii</span> = zeros(shape(cipherascii), dtype=<span style="color: #8b2252;">"int"</span>)
+        <span style="color: #a0522d;">i</span> = 0
+        <span style="color: #a0522d;">keylen</span> = <span style="color: #483d8b;">len</span>(keyascii)
+        <span style="color: #a020f0;">while</span> (i&lt;<span style="color: #483d8b;">len</span>(cipherascii)):
+                <span style="color: #a0522d;">plainascii</span>[i] = cipherascii[i] ^ (keyascii[i % keylen]) <span style="color: #b22222;"># </span><span style="color: #b22222;">note the modulo operator</span>
+                <span style="color: #a0522d;">i</span> = i +1
+                <span style="color: #a020f0;">return</span> plainascii
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">for an example, let's try a guess at a cipherkey</span>
+<span style="color: #b22222;">#</span>
+<span style="color: #a0522d;">cipherkey</span> = <span style="color: #8b2252;">"abc"</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">convert cipherkey to an array of ascii codes</span>
+<span style="color: #a0522d;">keyascii</span> = array(<span style="color: #483d8b;">map</span>(<span style="color: #483d8b;">ord</span>, cipherkey), dtype=<span style="color: #8b2252;">"int"</span>)
+<span style="color: #a0522d;">plainascii</span> = XORdecrypt(cipherascii, keyascii)
+<span style="color: #a0522d;">plainchars</span> = <span style="color: #483d8b;">map</span>(<span style="color: #483d8b;">chr</span>, plainascii)
+<span style="color: #a0522d;">plainstring</span> = <span style="color: #8b2252;">''</span>.join(plainchars)
+<span style="color: #a020f0;">print</span> plainstring <span style="color: #b22222;"># </span><span style="color: #b22222;">nope that doesn't look like English</span>
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">let's wrap that into a nice function</span>
+<span style="color: #b22222;">#</span>
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">getPlaintext</span>(cipherascii, keystring):
+        <span style="color: #a0522d;">keyascii</span> = array(<span style="color: #483d8b;">map</span>(<span style="color: #483d8b;">ord</span>, keystring), dtype=<span style="color: #8b2252;">"int"</span>)
+        <span style="color: #a0522d;">plainascii</span> = XORdecrypt(cipherascii, keyascii)
+        <span style="color: #a0522d;">plainchars</span> = <span style="color: #483d8b;">map</span>(<span style="color: #483d8b;">chr</span>, plainascii)
+        <span style="color: #a0522d;">plainstring</span> = <span style="color: #8b2252;">''</span>.join(plainchars)
+        <span style="color: #a020f0;">return</span> plainstring
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">example:</span>
+<span style="color: #b22222;">#</span>
+<span style="color: #a0522d;">ps</span> = getPlaintext(cipherascii, <span style="color: #8b2252;">"abc"</span>)
+<span style="color: #a020f0;">print</span> ps
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">ok now we can decrypt given a candidate key.</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">now we have to decide if the key was correct</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">i.e. correct if the resulting plaintext is English</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">There are lots of ways we can proceed.</span>
+<span style="color: #b22222;">#</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">Let's try this: we'll write a function that will</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">take a given string of text as input, and return to us</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">a "score" for how "english" it looks. Our "score" will</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">simply be the number of words (separated by spaces) in the</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">text that are found in an English dictionary</span>
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">here's some code that loads english dictionary words</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">that are between three and 8 letters long</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">from /usr/share/dict/words</span>
+<span style="color: #b22222;">#</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">note this uses Python's "list comprehension" notation so</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">it may look rather obscure</span>
+<span style="color: #b22222;">#</span>
+<span style="color: #a0522d;">Ewords</span> = [w.strip().lower() <span style="color: #a020f0;">for</span> w <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">open</span>(<span style="color: #8b2252;">"/usr/share/dict/words"</span>) <span style="color: #a020f0;">if</span> ((<span style="color: #483d8b;">len</span>(w.strip())&gt;=3) <span style="color: #a020f0;">and</span> (<span style="color: #483d8b;">len</span>(w.strip())&lt;=8))]
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">and here's a function to count the number of words,</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">i.e. chunks of text separated by spaces " ",</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">that are found in the dictionary</span>
+<span style="color: #b22222;">#</span>
+<span style="color: #a020f0;">def</span> <span style="color: #0000ff;">EnglishScore</span>(plainstring):
+        <span style="color: #a020f0;">global</span> Ewords 
+        <span style="color: #a0522d;">Pwords</span> = plainstring.split(<span style="color: #8b2252;">" "</span>) <span style="color: #b22222;"># </span><span style="color: #b22222;">split by spaces</span>
+        <span style="color: #a0522d;">ecount</span> = 0
+        <span style="color: #b22222;"># </span><span style="color: #b22222;">for each resulting "word" in the plaintext</span>
+        <span style="color: #a020f0;">for</span> i <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">range</span>(<span style="color: #483d8b;">len</span>(Pwords)):
+                <span style="color: #b22222;"># </span><span style="color: #b22222;">words length 3-8 only</span>
+                <span style="color: #a020f0;">if</span> ( (<span style="color: #483d8b;">len</span>(Pwords[i]) &gt;= 3) <span style="color: #a020f0;">and</span> (<span style="color: #483d8b;">len</span>(Pwords[i]) &lt;= 8) ):
+                        <span style="color: #a020f0;">if</span> Pwords[i] <span style="color: #a020f0;">in</span> Ewords:
+                                <span style="color: #a0522d;">ecount</span> = ecount + 1
+                                <span style="color: #a020f0;">return</span> ecount
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">ok now let's try all possible keys (26 * 26 * 26 = 17576 of them)</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">and for each keep track of the score</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">and then keep the one with the max score</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">'a' is 97, 'z' is 122</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">generate a matrix of all possible keys and initialize them to zero</span>
+<span style="color: #b22222;">#</span>
+<span style="color: #a0522d;">keys</span> = zeros((26*26*26,3), dtype=<span style="color: #8b2252;">"int"</span>)
+<span style="color: #a0522d;">i</span> = 0
+<span style="color: #a020f0;">for</span> i1 <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">range</span>(97,123):
+        <span style="color: #a020f0;">for</span> i2 <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">range</span>(97,123):
+                <span style="color: #a020f0;">for</span> i3 <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">range</span>(97,123):
+                        <span style="color: #a0522d;">keys</span>[i,:] = i1,i2,i3
+                        <span style="color: #a0522d;">i</span> = i + 1
+
+<span style="color: #a020f0;">print</span> shape(keys)
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">let's keep track of each key's score</span>
+<span style="color: #b22222;">#</span>
+<span style="color: #a0522d;">scores</span> = zeros((shape(keys)[0],1)) <span style="color: #b22222;"># </span><span style="color: #b22222;">initialize all to zero</span>
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">ok now let's score plaintext for all keys</span>
+<span style="color: #b22222;">#</span>
+<span style="color: #a0522d;">bestscore</span> = 0.0  <span style="color: #b22222;"># </span><span style="color: #b22222;">best score so far</span>
+<span style="color: #a0522d;">bestkey</span> = <span style="color: #8b2252;">"aaa"</span>  <span style="color: #b22222;"># </span><span style="color: #b22222;">best key so far</span>
+<span style="color: #b22222;"># </span><span style="color: #b22222;">for each row (key)</span>
+<span style="color: #a020f0;">for</span> i <span style="color: #a020f0;">in</span> <span style="color: #483d8b;">range</span>(shape(keys)[0]):
+        <span style="color: #b22222;"># </span><span style="color: #b22222;">slightly obscure code here I admit</span>
+        <span style="color: #a0522d;">keystring</span> = <span style="color: #8b2252;">''</span>.join(<span style="color: #483d8b;">map</span>(<span style="color: #483d8b;">chr</span>,keys[i,:]))
+        <span style="color: #b22222;"># </span><span style="color: #b22222;">get the plaintext</span>
+        <span style="color: #a0522d;">ps</span> = getPlaintext(cipherascii, keystring)
+        <span style="color: #b22222;"># </span><span style="color: #b22222;">score the plaintext</span>
+        <span style="color: #a0522d;">score</span> = EnglishScore(ps)
+        <span style="color: #a0522d;">scores</span>[i] = score
+        <span style="color: #b22222;"># </span><span style="color: #b22222;">is score better than best so far?</span>
+        <span style="color: #a020f0;">if</span> (score &gt; bestscore):
+                <span style="color: #a0522d;">bestkey</span> = keystring
+                <span style="color: #a0522d;">bestscore</span> = score
+                <span style="color: #a020f0;">print</span> <span style="color: #8b2252;">"%6d (%s) score=%3d bestscore = %3d bestkey = %s"</span> % (i,keystring,score,bestscore,bestkey)
+
+<span style="color: #b22222;"># </span><span style="color: #b22222;">and here is the best score, best key and corresponding plaintext</span>
+<span style="color: #b22222;">#</span>
+<span style="color: #a020f0;">print</span> bestscore
+<span style="color: #a020f0;">print</span> bestkey
+<span style="color: #a0522d;">ps</span> = getPlaintext(cipherascii, bestkey)
+<span style="color: #a020f0;">print</span> ps
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">MATLAB / Octave</h2>
+<div class="outline-text-2" id="text-2">
+
+<p>e15.m
+</p>
+
+
+<pre class="src src-octave"><span style="color: #b22222;">% </span><span style="color: #b22222;">load in the cipher1.txt file into an array of ints</span>
+<span style="color: #b22222;">%</span>
+cipher = importdata(<span style="color: #8b2252;">'cipher1.txt'</span>, <span style="color: #8b2252;">','</span>);
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">import a dictionary of English words</span>
+<span style="color: #b22222;">%</span>
+w = importdata(<span style="color: #8b2252;">'/usr/share/dict/words'</span>, <span style="color: #8b2252;">'\n'</span>);
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">test all 26*26*26 = 17576 keys</span>
+<span style="color: #b22222;">%</span>
+alpha = double(<span style="color: #8b2252;">'a'</span>):double(<span style="color: #8b2252;">'z'</span>); <span style="color: #b22222;">% </span><span style="color: #b22222;">97:122</span>
+allkeys = combvec(alpha,alpha,alpha)'; <span style="color: #b22222;">% </span><span style="color: #b22222;">17576 x 3 matrix of all of them</span>
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">let's test all keys</span>
+<span style="color: #b22222;">%</span>
+bestkey = 1;
+bestscore = 0;
+<span style="color: #a020f0;">for</span> i=1:size(allkeys,1)
+  pa = XORdecrypt(cipher, allkeys(i,:)); <span style="color: #b22222;">% </span><span style="color: #b22222;">decrypt into plaintext array</span>
+  p = char(pa);                          <span style="color: #b22222;">% </span><span style="color: #b22222;">convert to characters</span>
+  pw = strsplit(p, <span style="color: #8b2252;">' '</span>);                 <span style="color: #b22222;">% </span><span style="color: #b22222;">split plaintext by ' ' into words</span>
+  <span style="color: #b22222;">% </span><span style="color: #b22222;">count how many plaintext words are found in the dictionary</span>
+  nwords = 0;
+  <span style="color: #a020f0;">for</span> j=1:length(pw)
+    <span style="color: #b22222;">% </span><span style="color: #b22222;">only words length 3 through 8</span>
+    <span style="color: #a020f0;">if</span> ( (length(pw{j}) <span style="color: #483d8b;">&gt;=</span> 3) <span style="color: #483d8b;">&amp;</span> (length(pw{j}) <span style="color: #483d8b;">&lt;=</span> 8) )
+      <span style="color: #a020f0;">if</span> ~isempty(find(strcmp(pw{j},w))) <span style="color: #b22222;">% </span><span style="color: #b22222;">is it in the dictionary?</span>
+        nwords = nwords + 1;
+      <span style="color: #a020f0;">end</span>
+    <span style="color: #a020f0;">end</span>
+  <span style="color: #a020f0;">end</span>
+  <span style="color: #a020f0;">if</span> nwords <span style="color: #483d8b;">&gt;</span> bestscore                  <span style="color: #b22222;">% </span><span style="color: #b22222;">do we have a new best score?</span>
+    bestscore = nwords;
+    bestkey = i;
+  <span style="color: #a020f0;">end</span>
+  disp([num2str(i),<span style="color: #8b2252;">' '</span>,char(allkeys(i,:)),<span style="color: #8b2252;">' score= '</span>,num2str(nwords),<span style="color: #8b2252;">' bestscore= '</span>,num2str(bestscore),<span style="color: #8b2252;">' bestkey= '</span>,char(allkeys(bestkey,:))]);
+<span style="color: #a020f0;">end</span>
+
+<span style="color: #b22222;">% </span><span style="color: #b22222;">here is the best plaintext</span>
+p = char(XOEdecrypt(cipher, allkeys(bestkey,:)));
+disp([<span style="color: #8b2252;">'plaintext:\n'</span>,p]);
+<span style="color: #b22222;">% </span><span style="color: #b22222;">and the key that produced it</span>
+disp([<span style="color: #8b2252;">'best key: '</span>,char(allkeys(bestkey,:))]);
+</pre>
+
+<p>
+XORdecrypt.m
+</p>
+
+
+<pre class="src src-octave"><span style="color: #a020f0;">function</span> out = <span style="color: #0000ff;">XORdecrypt</span>(in,key)
+  out = ones(size(in)) * <span style="color: #a0522d;">NaN</span>; <span style="color: #b22222;">% </span><span style="color: #b22222;">initialize with NaNs</span>
+  keyarray = repmat(key, 1, ceil(length(in)/length(key)));
+  keyarray = keyarray(1:length(in));
+  out = bitxor(in, keyarray);
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">C</h2>
+<div class="outline-text-2" id="text-3">
+
+<p>e15.c
+</p>
+
+
+<pre class="src src-c"><span style="color: #b22222;">// </span><span style="color: #b22222;">to compile: gcc -O3 -o e15 e15.c e15helper.c</span>
+
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdlib.h&gt;</span>
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;string.h&gt;</span>
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">"e15helper.h"</span> <span style="color: #b22222;">// </span><span style="color: #b22222;">header file for e15helper.c</span>
+
+<span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">argc</span>, <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">argv</span>[]) {
+
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">read the cipher1.txt file into a int_array struct</span>
+  <span style="color: #228b22;">int_array</span> *<span style="color: #a0522d;">cipherarray</span> = readCipherFile(<span style="color: #8b2252;">"cipher1.txt"</span>);
+  printf(<span style="color: #8b2252;">"read in %d integers into cipherarray\n"</span>, cipherarray-&gt;n);
+
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">brute force method, try every 3-letter key</span>
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">there are 26*26*26 = 17576 possibilities</span>
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">'a'=97, 'z'=122</span>
+
+  <span style="color: #228b22;">char</span> <span style="color: #a0522d;">key</span>[] = <span style="color: #8b2252;">"aaa"</span>;
+  <span style="color: #228b22;">char</span> <span style="color: #a0522d;">best_key</span>[] = <span style="color: #8b2252;">"aaa"</span>;
+  <span style="color: #228b22;">int_array</span> *<span style="color: #a0522d;">plainarray</span>;
+  <span style="color: #228b22;">double</span> <span style="color: #a0522d;">s</span>, <span style="color: #a0522d;">best_s</span> = 99999.0;
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>,<span style="color: #a0522d;">j</span>,<span style="color: #a0522d;">k</span>;
+  <span style="color: #a020f0;">for</span> (i=97; i&lt;=122; i++) {
+    <span style="color: #a020f0;">for</span> (j=97; j&lt;=122; j++) {
+      <span style="color: #a020f0;">for</span> (k=97; k&lt;=122; k++) {
+        key[0] = i;
+        key[1] = j;
+        key[2] = k;
+        plainarray = XORdecrypt(cipherarray, key);
+        s = EnglishScore(plainarray);
+        <span style="color: #a020f0;">if</span> (s &lt; best_s) {
+          best_s = s;
+          strcpy(best_key, key);
+        }
+        printf(<span style="color: #8b2252;">"%s %5.3f %s %5.3f\n"</span>, key, s, best_key, best_s);
+        int_array_destroy(plainarray);
+      }
+    }
+  }     
+
+  plainarray = XORdecrypt(cipherarray, best_key);
+  <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">plaintext</span> = int_array2string(plainarray);
+  printf(<span style="color: #8b2252;">"plaintext:\n%s\nbest_key:%s\n"</span>, plaintext, best_key);
+
+  free(plaintext);
+  int_array_destroy(plainarray);
+  int_array_destroy(cipherarray);
+  <span style="color: #a020f0;">return</span> 0;
+}
+</pre>
+
+<p>
+e15helper.h
+</p>
+
+
+<pre class="src src-c"><span style="color: #b22222;">// </span><span style="color: #b22222;">define a struct to store an array of ints</span>
+<span style="color: #a020f0;">typedef</span> <span style="color: #a020f0;">struct</span> {
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>;
+  <span style="color: #228b22;">int</span> *<span style="color: #a0522d;">array</span>;
+} <span style="color: #228b22;">int_array</span>;
+
+<span style="color: #b22222;">// </span><span style="color: #b22222;">free memory of an int_array</span>
+<span style="color: #228b22;">void</span> <span style="color: #0000ff;">int_array_destroy</span>(<span style="color: #228b22;">int_array</span> *<span style="color: #a0522d;">ia</span>);
+
+<span style="color: #b22222;">// </span><span style="color: #b22222;">read cipher1.txt and put ints into an int_array</span>
+<span style="color: #228b22;">int_array</span> *<span style="color: #0000ff;">readCipherFile</span>(<span style="color: #228b22;">char</span> <span style="color: #a0522d;">fname</span>[]);
+
+<span style="color: #b22222;">// </span><span style="color: #b22222;">decrypt int_array using 3-character string</span>
+<span style="color: #228b22;">int_array</span> *<span style="color: #0000ff;">XORdecrypt</span>(<span style="color: #228b22;">int_array</span> *<span style="color: #a0522d;">cipherarray</span>, <span style="color: #228b22;">char</span> <span style="color: #a0522d;">key</span>[3]);
+
+<span style="color: #b22222;">// </span><span style="color: #b22222;">convert int_array into a character string</span>
+<span style="color: #228b22;">char</span> *<span style="color: #0000ff;">int_array2string</span>(<span style="color: #228b22;">int_array</span> *<span style="color: #a0522d;">ia</span>);
+
+<span style="color: #b22222;">// </span><span style="color: #b22222;">score an int_array on how "english" it is</span>
+<span style="color: #b22222;">// </span><span style="color: #b22222;">(lower values -&gt; more "english")</span>
+<span style="color: #228b22;">double</span> <span style="color: #0000ff;">EnglishScore</span>(<span style="color: #228b22;">int_array</span> *<span style="color: #a0522d;">b</span>);
+</pre>
+
+<p>
+e15helper.c
+</p>
+
+
+<pre class="src src-c"><span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;string.h&gt;</span>
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdlib.h&gt;</span>
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;math.h&gt;</span>
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">"e15helper.h"</span>
+
+<span style="color: #b22222;">// </span><span style="color: #b22222;">a function to free int_array memory</span>
+<span style="color: #b22222;">//</span>
+<span style="color: #228b22;">void</span> <span style="color: #0000ff;">int_array_destroy</span>(<span style="color: #228b22;">int_array</span> *<span style="color: #a0522d;">ia</span>) {
+  <span style="color: #a020f0;">if</span> (ia-&gt;array != <span style="color: #008b8b;">NULL</span>) free(ia-&gt;array);
+  free(ia);
+}
+
+<span style="color: #b22222;">// </span><span style="color: #b22222;">a function to read the cipher1.txt file and return an int_array</span>
+<span style="color: #b22222;">//</span>
+<span style="color: #228b22;">int_array</span> *<span style="color: #0000ff;">readCipherFile</span>(<span style="color: #228b22;">char</span> <span style="color: #a0522d;">fname</span>[]) {
+  <span style="color: #228b22;">FILE</span> *<span style="color: #a0522d;">fid</span> = fopen(fname, <span style="color: #8b2252;">"r"</span>);  <span style="color: #b22222;">// </span><span style="color: #b22222;">open the ciphertext file</span>
+  <span style="color: #228b22;">long</span> <span style="color: #a0522d;">filesize</span>;
+  fseek(fid, 0L, SEEK_END);       <span style="color: #b22222;">// </span><span style="color: #b22222;">count how many characters in the file</span>
+  filesize = ftell(fid);
+  rewind(fid);
+  <span style="color: #228b22;">char</span> <span style="color: #a0522d;">buf</span>[filesize];             <span style="color: #b22222;">// </span><span style="color: #b22222;">allocate a character buffer to store file contents</span>
+  fscanf(fid, <span style="color: #8b2252;">"%s"</span>, buf);         <span style="color: #b22222;">// </span><span style="color: #b22222;">read in the file into the char buffer</span>
+  fclose(fid);
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">n_cipher</span> = 0;               <span style="color: #b22222;">// </span><span style="color: #b22222;">parse char buffer into an array of integers</span>
+  <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">token</span>;
+  <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">bufcpy</span> = strdup(buf);
+  token = strtok(bufcpy, <span style="color: #8b2252;">","</span>);    <span style="color: #b22222;">// </span><span style="color: #b22222;">split by comma</span>
+  <span style="color: #a020f0;">while</span> (token) {
+    n_cipher++;                   <span style="color: #b22222;">// </span><span style="color: #b22222;">count how many there are</span>
+    token = strtok(<span style="color: #008b8b;">NULL</span>, <span style="color: #8b2252;">","</span>);
+  }
+  free(bufcpy);
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">allocate an array of ints</span>
+  <span style="color: #228b22;">int</span> *<span style="color: #a0522d;">ia</span> = malloc(n_cipher * <span style="color: #a020f0;">sizeof</span>(<span style="color: #228b22;">int</span>));
+  bufcpy = strdup(buf);
+  token = strtok(bufcpy, <span style="color: #8b2252;">","</span>);   <span style="color: #b22222;">// </span><span style="color: #b22222;">read tokens into the int array</span>
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>=0;
+  <span style="color: #a020f0;">while</span> (token) {
+    ia[i] = atoi(token);
+    token = strtok(<span style="color: #008b8b;">NULL</span>, <span style="color: #8b2252;">","</span>);
+    i++;
+  }
+  free(bufcpy);
+  free(token);
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">stick the data into a new int_array struct</span>
+  <span style="color: #228b22;">int_array</span> *<span style="color: #a0522d;">cipherarray</span> = malloc(<span style="color: #a020f0;">sizeof</span>(cipherarray));
+  cipherarray-&gt;n = n_cipher;
+  cipherarray-&gt;array = ia;
+  <span style="color: #a020f0;">return</span> cipherarray;
+}
+
+<span style="color: #b22222;">// </span><span style="color: #b22222;">a function to take a candidate key and the cipherarray and</span>
+<span style="color: #b22222;">// </span><span style="color: #b22222;">produce candidate plaintext int_array</span>
+<span style="color: #b22222;">//</span>
+<span style="color: #228b22;">int_array</span> *<span style="color: #0000ff;">XORdecrypt</span>(<span style="color: #228b22;">int_array</span> *<span style="color: #a0522d;">cipherarray</span>, <span style="color: #228b22;">char</span> <span style="color: #a0522d;">key</span>[3]) {
+  <span style="color: #228b22;">int_array</span> *<span style="color: #a0522d;">plainarray</span> = malloc(<span style="color: #a020f0;">sizeof</span>(int_array));
+  plainarray-&gt;n = cipherarray-&gt;n;
+  plainarray-&gt;array = malloc(plainarray-&gt;n * <span style="color: #a020f0;">sizeof</span>(<span style="color: #228b22;">int</span>));
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>=0;
+  <span style="color: #a020f0;">while</span> (i&lt;plainarray-&gt;n) {
+    plainarray-&gt;array[i] = cipherarray-&gt;array[i] ^ (<span style="color: #228b22;">int</span>) key[i % 3];
+    i++;
+  }
+  <span style="color: #a020f0;">return</span> plainarray;
+}
+
+<span style="color: #b22222;">// </span><span style="color: #b22222;">a function to take an int_array and generate the</span>
+<span style="color: #b22222;">// </span><span style="color: #b22222;">character string equivalent</span>
+<span style="color: #b22222;">//</span>
+<span style="color: #228b22;">char</span> *<span style="color: #0000ff;">int_array2string</span>(<span style="color: #228b22;">int_array</span> *<span style="color: #a0522d;">ia</span>) {
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">leave room for NULL termination</span>
+  <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">ca</span> = malloc( ((ia-&gt;n)+1) * <span style="color: #a020f0;">sizeof</span>(<span style="color: #228b22;">char</span>) );
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
+  <span style="color: #a020f0;">for</span> (i=0; i&lt;ia-&gt;n; i++) {
+    ca[i] = (<span style="color: #228b22;">char</span>) ia-&gt;array[i];
+  }
+  ca[i] = <span style="color: #8b2252;">'\0'</span>; <span style="color: #b22222;">// </span><span style="color: #b22222;">NULL terminate the string</span>
+  <span style="color: #a020f0;">return</span> ca;
+}
+
+<span style="color: #b22222;">// </span><span style="color: #b22222;">a function to take an int_array and score how "English" it is</span>
+<span style="color: #b22222;">// </span><span style="color: #b22222;">according to letter frequencies</span>
+<span style="color: #b22222;">// </span><span style="color: #b22222;">lower values -&gt; more "English"</span>
+<span style="color: #b22222;">//</span>
+<span style="color: #228b22;">double</span> <span style="color: #0000ff;">EnglishScore</span>(<span style="color: #228b22;">int_array</span> *<span style="color: #a0522d;">b</span>) {
+  <span style="color: #b22222;">//</span>
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">based on expected frequencies of single characters in english</span>
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">http://en.wikipedia.org/wiki/Letter_frequency</span>
+  <span style="color: #b22222;">//</span>
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t  u  v  w  x  y  z</span>
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25</span>
+  <span style="color: #b22222;">//</span>
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">frequencies of English a-z</span>
+  <span style="color: #228b22;">double</span> <span style="color: #a0522d;">letterfreqs</span>[] = {      0.08000, 0.01536, 0.02576, 0.03179, 0.12576, 0.03505,
+                                0.01983, 0.06237, 0.06920, 0.00145, 0.00740, 0.04057,
+                                0.02561, 0.06904, 0.07591, 0.01796, 0.00118, 0.05959,
+                                0.06341, 0.09085, 0.02842, 0.00982, 0.02225, 0.00180,
+                                0.01901, 0.00079 };
+
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">bfreqs</span>[256];          <span style="color: #b22222;">// </span><span style="color: #b22222;">to store freqs of plaintext chars</span>
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
+  <span style="color: #a020f0;">for</span> (i=0; i&lt;256; i++) {
+    bfreqs[i] = 0;          <span style="color: #b22222;">// </span><span style="color: #b22222;">initialize to zero</span>
+  }
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">blen</span> = b-&gt;n;
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">ic</span>;
+  <span style="color: #a020f0;">for</span> (i=0; i&lt;blen; i++) {
+    ic = (<span style="color: #228b22;">unsigned</span> <span style="color: #228b22;">int</span>) b-&gt;array[i];
+    <span style="color: #a020f0;">if</span> ((ic &gt;= <span style="color: #8b2252;">'A'</span>) &amp; (ic &lt;= <span style="color: #8b2252;">'Z'</span>)) {    <span style="color: #b22222;">// </span><span style="color: #b22222;">uppercase letter</span>
+      ic += (<span style="color: #8b2252;">'a'</span> - <span style="color: #8b2252;">'A'</span>);                <span style="color: #b22222;">// </span><span style="color: #b22222;">convert to lowercase</span>
+    }
+    bfreqs[ic]++;                  <span style="color: #b22222;">// </span><span style="color: #b22222;">increment counter for the given letter</span>
+  }
+  <span style="color: #228b22;">double</span> <span style="color: #a0522d;">score</span> = 0.0;
+  <span style="color: #228b22;">double</span> <span style="color: #a0522d;">diff</span>;
+  <span style="color: #a020f0;">for</span> (i=0; i&lt;256; i++) {          <span style="color: #b22222;">// </span><span style="color: #b22222;">compare plaintext freqs to English freqs</span>
+    <span style="color: #a020f0;">if</span> ((i &gt;= <span style="color: #8b2252;">'a'</span>) &amp; (i &lt;= <span style="color: #8b2252;">'z'</span>)) { <span style="color: #b22222;">// </span><span style="color: #b22222;">only include a-z</span>
+      diff = ((<span style="color: #228b22;">double</span>) bfreqs[i]) - (letterfreqs[i-<span style="color: #8b2252;">'a'</span>] * ((<span style="color: #228b22;">double</span>) b-&gt;n));
+    }
+    <span style="color: #a020f0;">else</span> {
+      diff = (<span style="color: #228b22;">double</span>) bfreqs[i];
+    }
+    score += fabs(diff) / ((<span style="color: #228b22;">double</span>) b-&gt;n);
+  }
+  <span style="color: #a020f0;">return</span> score;
+}
+</pre>
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<hr />Paul Gribble | fall 2013<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
+</div>
+</body>
+</html>

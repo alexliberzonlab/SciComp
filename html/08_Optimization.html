@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>8. Optimization &amp; Gradient Descent</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="8. Optimization &amp; Gradient Descent"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="fall 2013"/>
+<meta name="author" content="Paul Gribble"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="mystyle.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js">
+/**
+ *
+ * @source: http://orgmode.org/mathjax/MathJax.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ * Copyright (C) 2012-2013  MathJax
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ */
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code below.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code below is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code below.
+*/
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+ <a accesskey="h" href="http://www.gribblelab.org/scicomp/index.html"> UP </a>
+ |
+ <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
+</div>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">8. Optimization &amp; Gradient Descent</h1>
+
+
+
+<hr/>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 What is an optimization problem?</a></li>
+<li><a href="#sec-2">2 Analytic Approaches</a>
+<ul>
+<li><a href="#sec-2-1">2.1 Analytic solution for OLS regression</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 Numerical Approaches</a>
+<ul>
+<li><a href="#sec-3-1">3.1 Local methods</a></li>
+<li><a href="#sec-3-2">3.2 Global methods</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4 Exercises</a></li>
+<li><a href="#sec-5">5 Resources</a></li>
+</ul>
+</div>
+</div>
+
+<hr/>
+
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> What is an optimization problem?</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+In one of our previous exercises we programmed a linear regression, in
+which we fit a line of best fit to \(N\) samples of \((X_{i},Y_{i}\)) data
+(\(i=1 \ldots N\)) according to a linear equation with two parameters,
+\(\beta_{0}\) and \(\beta_{1}\):
+</p>
+
+
+\begin{equation}
+  \hat{Y}_{i} = \beta_{0} + \beta_{1} X_{i} + \epsilon_{i}
+\label{regression_cost_function}
+\end{equation}
+
+<p>
+To find the \(\beta\) parameters corresponding to the regression line,
+we used a formula that I gave you, that I told you was based on a
+procedure called ordinary least squares (OLS). We didn't go into much
+detail at the time, but what OLS does is find the \(\beta\) parameters
+that minimize the sum of squared deviations of the estimated values of
+the data \(Y\) (using given values of \(\beta\)) and the actual values of
+\(Y\). That is, the values of \(\beta_{0}\) and \(\beta_{1}\) that minimize
+\(J\) where:
+</p>
+
+
+\begin{equation}
+  J = \sum_{i=1}^{N} \left( \hat{Y_{i}} - Y_{i} \right)^{2}
+  \label{OLS_equation}
+\end{equation}
+
+<p>
+We can call this function \(J\) a <b>cost function</b>. The goal then, is to
+determine, somehow, the values of the <b>parameters</b> \(\beta_{0}\) and
+\(\beta_{1}\) that <b>minimize</b> the cost function \(J\).
+</p>
+<p>
+This is a classic example of an <b>optimization problem</b>. We want to
+optimize the parameters \(\beta\) so that they minimize the cost
+function \(J\).
+</p>
+<p>
+Optimization problems abound in science, data analysis, statistical
+modeling, and even out there in the real world. Here are a few
+examples, to help you solidify in your mind what optimization is all
+about, and how it may be used. For some problems (e.g. the shower
+example) it is easy to think about how you would find the optimal
+solution. For others, it is not immediately obvious.
+</p>
+<p>
+<b>Your morning shower</b>: A simple example of optimization is when you
+hop in the shower and turn on the hot and cold water taps. What you
+desire is a water temperature that is not too hot, not too cold, but
+"just right". The <i>parameters</i> to be optimized are the relative
+amounts of cold and hot water coming out of the shower head. The <i>cost function</i> is how uncomfortable (whether too cold or too hot) the water
+temperature is for you.
+</p>
+<p>
+<b>Tuning a radio</b>: When you tune a radio (an analog radio) and you're
+searching for a particular radio station, you are performing an
+optimization. The <i>parameter</i> you are optimizing is the position of
+the tuner along the radio spectrum that spans the frequency of the
+radio station you are trying to listen to. The <i>cost function</i> is the
+amount of static that you hear overtop of the radio station signal.
+</p>
+<p>
+<b>Controlling rockets</b>: <a href="http://www.nasa.gov">NASA</a> uses optimization techniques to determine
+the trajectory of rockets and other spacecraft that will reach their
+destination using the least amount of fuel. In this case there are
+<i>parameters</i> that define different trajectories, and a <i>cost</i> function
+that involves the total amount of fuel burn.
+</p>
+<p>
+<b>Travelling salesman</b>: A classic example of an optimization problem is
+the <a href="http://en.wikipedia.org/wiki/Travelling_salesman_problem">Travelling salesman problem</a>. Given a list of cities and the
+distances between each pair of cities, what is the shortest possible
+route that visits each city exactly once and returns to the origin
+city?  (Wikipedia). In this case the <i>parameters</i> to be optimized are
+the order of visiting each city, and the <i>cost</i> is the total distance
+travelled.
+</p>
+<p>
+<b>Finance</b>: Bankers perform portfolio optimization to determine the
+mixture of investments that strike the best balance between risk and
+return. In this case the <i>parameters</i> are the proportions of each type
+of investment (stocks, bonds, real estate, gold, etc) and the <i>cost function</i> is some (generally secret) equation that balances risk and
+return.
+</p>
+<p>
+<b>Statistics</b>: In statistics and data modelling, optimization can be
+used to find the parameters of a model that best fits the observed
+data. In this case the <i>parameters</i> to be optimized are the parameters
+that define the particular model that is being used to model the data
+(e.g. for linear regression, the \(\beta\) values), and the <i>cost function</i> is some measure of goodness-of-fit (actually "badness" of
+fit). In the case of linear regression, the cost function \(J\) is given
+above.
+</p>
+<p>
+<b>The Brain?</b>: Some people theorize that some brain functions
+(e.g. motor control, perception) can be conceptualized as optimization
+problems. For example for motor cortex, the <i>parameters</i> to be
+optimized might be the time-varying pattern of action potentials that
+arrive at \(\alpha\) motoneurons in the spinal cord (and hence activate
+muscles, and move the body) and the <i>cost function</i> might be the
+amount of beer that is spilled as you move the beer stein from the
+tabletop to your mouth.
+</p>
+<p>
+The big question then, is how to determine the parameters that
+minimize the cost function? There are two general
+approaches. The <b>analytic approach</b> is to try to find an analytical
+expression that allows one to directly compute the optimal parameter
+values. This is wonderful when it can be achieved, because direct
+calculation is fast. For linear regression using OLS, the matrix
+equation given above is this analytical expression.
+</p>
+<p>
+For many problems however, it is not possible to find an analytical
+expression that gives the optimal parameter values. In these cases,
+one uses a <b>numerical approach</b> to estimate the optimal parameter
+values (the parameter values that minimize the cost function). As long
+as you can compute the value of the cost function for a given set of
+parameter guesses, then you can pursue a numerical approach to
+optimization. The downside of the numerical approach however is that
+(1) it can take a long time to converge on the solution, and (2) for
+some problems, it can be extremely difficult or practically infeasible
+to converge on the optimal solution.
+</p>
+<p>
+Optimization is a topic that people can (and have) spent their entire
+careers studying. It is one of the most important topics in applied
+mathematics and engineering. We will not attempt to cover the topic in
+any great breadth. Our goal here is to introduce you to the central
+idea, and to get some practical experience using numerical approaches
+to optimization.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Analytic Approaches</h2>
+<div class="outline-text-2" id="text-2">
+
+
+<p>
+In the case of linear regression, there happens to be an analytical
+expression that allows us to directly calculate the \(\beta\) values
+that minimize \(J\). This is the formula that I gave you in the exercise, in matrix format:
+</p>
+
+
+\begin{equation}
+  \hat{\beta} = \left( X^{\top}X \right)^{-1} X^{\top} Y
+\end{equation}
+
+<p>
+In your undergraduate statistics class(es) you may have seen a simpler looking, non-matrix version of this:
+</p>
+
+
+\begin{eqnarray}
+  \hat{\beta_{0}} &= &\bar{Y} - \hat{\beta_{1}}\bar{X}\\
+  \hat{\beta_{1}} &= &\frac{\sum\left(Y_{i}-\bar{Y}\right)\left(X_{i}-\bar{X}\right)}{\sum\left(X_{i}-\bar{X}\right)^{2}}
+\end{eqnarray}
+
+<p>
+How do we come up with analytic expressions like these? The answer is
+<a href="http://en.wikipedia.org/wiki/Calculus">Calculus</a>.
+</p>
+<p>
+It might help to understand the following material by considering a
+simpler optimization problem, where we have a single paramater \(\beta\)
+to be optimized, for example the position of a radio tuner as you hone
+in on your favourite radio station. Call the position of the tuner
+dial \(\beta\). What we want is to find the value of \(\beta\) that
+minimizes the cost function \(J\), where \(J\) is, for example, the amount
+of static that you hear overtop of the radio station signal. Let's say
+we're searching the airwaves for Virgin Radio but you've forgotten the
+frequency (97.5 MHz). We can visualize a hypothetical relationship
+between \(\beta\) and \(J\) graphically:
+</p>
+<p>
+<img src="code/virginradio.jpg" height="400px" alt="code/virginradio.jpg" />
+</p>
+<p>
+As we move the dial under or over the actual (forgotten) frequency for
+Virgin Radio, we get static and the cost function \(J\) increases. The
+farther we move the dial away from the 97.5 MHz frequency, the greater
+the cost function \(J\). What we desire is the frequency (the value of
+\(\beta\)) corresponding to the "bottom" of the cost function, i.e. the
+minimum value of \(J\).
+</p>
+<p>
+We can remember from our high school calculus days that at the minimum
+of a function \(f\), the first <a href="http://en.wikipedia.org/wiki/Derivative">derivative</a> of \(f\) equals zero. With
+respect to our Virgin Radio example, this means that the derivative of
+\(J\) with respect to \(\beta\) is zero at the minimum of \(J\). In equation
+form with calculus notation, what we want to derive is an expression
+that gives us the value of \(\beta\) for which the first derivative of
+\(\beta\) with respect to \(J\) is zero:
+</p>
+
+
+\begin{equation}
+\frac{\partial{J}}{\partial{\hat{\beta}}} = 0
+\end{equation}
+
+<p>
+If we can write an algebraic expression to describe how \(J\) varies
+with \(\beta\), then there's a chance that we can do the differentiation
+and arrive at an analytic expression for the minimum. A very simple
+toy example: let's say we can write \(J(\beta)\) as:
+</p>
+
+
+\begin{equation}
+  J = 10 + \left(\beta - 97.5\right)^{2}
+\end{equation}
+
+<p>
+Now in this little example one doesn't need calculus to see that the
+way to minimize \(J\) is to set \(\beta = 97.5\). Let's pretend however
+that we couldn't see this solution directly (as is often the case with
+more complex cost functions &hellip; for example for linear regression and
+OLS). If we take the derivative of \(J\) with respect to \(\beta\), we
+get:
+</p>
+
+
+\begin{eqnarray}
+  \frac{\partial{J}}{\partial{\beta}} &= &0\\
+  \frac{\partial [ 10 + (\beta-97.5)^{2} ]}{\partial \beta} &= &0\\
+  2\left(\beta - 97.5\right)          &= &0\\
+  2 \beta                             &= &2 (97.5)\\
+  \beta                               &= &97.5
+\end{eqnarray}
+
+<p>
+So in this little example the analytical expression for the optimal
+value of \(\beta\) isn't even an expression per se, it's an actual
+value.
+</p>
+<p>
+Note also that technically, that the slope of a function is zero not only at a minimum but also at a peak. If we truly want to find only minima then we should also look for places where the second derivative (the slope of the slope) is positive. Parameter values where the first derivative is zero and the second derivative is positive, correspond to valleys. Parameter values where the first derivative is zero and the second derivative is negative correspond to peaks. Draw a function with a peak and a valley, then draw the first and second derivatives, to convince yourself that this is true. Here is a place to start:
+</p>
+<p>
+<img src="code/peakvalley.jpg" height="400px" alt="code/peakvalley.jpg" />
+</p>
+
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Analytic solution for OLS regression</h3>
+<div class="outline-text-3" id="text-2-1">
+
+
+<p>
+If you want to see how the solutions for \(\beta_{0}\) and \(\beta_{1}\)
+are derived, for linear regression OLS, you can see <a href="code/OLS_derivation.pdf">this summary</a> by
+Simon Jackman.
+</p>
+<p>
+For some optimization problems, doing the calculus to find an
+analytical expression for the optimal parameter values is
+possible. For many optimization problems however, the calculus simply
+cannot be done. In this case our only option is to pursue a numerical
+approach. This is what we will focus on in this course &mdash; numerical
+approaches to optimization.
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Numerical Approaches</h2>
+<div class="outline-text-2" id="text-3">
+
+
+<p>
+In numerical approaches to optimization, the general idea is that you pursue an <b>iterative</b> approach in which you guess at optimal parameter values, you evaluate the cost, and then you revise your guess. This loop continues until you decide you can no longer reduce the cost.
+</p>
+<p>
+Numerical approaches can be distinguished as <b>local</b> versus <b>global</b> methods. Local methods use only local information about the relationship between cost and parameter values in the local "neighborhood" of the current guess. Global methods involve multiple guesses over a broad range of parameter values, and revised parameter guesses take into account information from all guesses across the entire parameter range.
+</p>
+
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Local methods</h3>
+<div class="outline-text-3" id="text-3-1">
+
+
+<p>
+In local numerical approaches to optimization, the basic idea is to:
+</p>
+<ol>
+<li>start with an <b>initial guess</b> at the optimal parameter values
+</li>
+<li>compute the <b>cost</b> at those parameter values
+</li>
+<li>Is the cost low enough? If yes, stop. If no, continue
+</li>
+<li><b>estimate the local gradient</b> at the current parameter values
+</li>
+<li><b>jump to new parameter values</b> using the local gradient info
+</li>
+<li>go to step 2
+</li>
+</ol>
+
+
+<p>
+Sometimes at step 2, the <b>stopping rule</b> looks at not just the current cost but also other values such as the magnitude of the local gradient. For example if the local gradient gets too shallow then the stopping rule might get triggered.
+</p>
+<p>
+You can think of this all in real-world terms in the following way. Imagine you're heli-skiing in the back-country, and at the end of the day instead of taking you back to Whistler village, your helicopter pilot drops you somewhere on the side of <a href="http://www.whistlerblackcomb.com/the-mountain/weather-and-mountain-stats.aspx">Whistler Mountain</a>. Only problem is, it's extremely foggy and you have no idea where you are, or which way is down to the village. You can only see 3 feet in front of you. All you have on you is an altimeter. What do you do? Probably something akin to the iterative numerical approach of gradient descent.
+</p>
+<p>
+You have to decide which way is downhill, and then ski in that direction. To estimate which way is downhill you could do something like the following: take a step in three directions around a circle, and for each step, check the altimeter and compare the altitude to the altitude at the center of the circle. The step corresponding to the greatest altitude decrease represents the steepest "downhill".
+</p>
+<p>
+Then you have to decide how long to ski in that direction. You could even tailor this ski time to the local gradient of the mountain. The steeper the slope, the smaller the ski time. The shallower the slope, the longer the ski time.
+</p>
+<p>
+When you determine that moving in any direction doesn't decrease your altitude very much, you conclude that you're at the bottom.
+</p>
+<p>
+This is essentially how numerical approaches to optimization work, by doing <b>iterative gradient descent</b>. Think about the ski hill example, and what kinds of things can go wrong with this procedure.
+</p>
+
+</div>
+
+<div id="outline-container-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> Local minima</h4>
+<div class="outline-text-4" id="text-3-1-1">
+
+
+<p>
+One common challenge with complex optimization problems, is the issue of local minima. In the bowl-shaped example of a cost function that we plotted above, there is a single <b>global minimum</b> to the cost function &mdash; one place on the cost landscape where the slope is zero. It happens often however that there are local minima in the cost function &mdash; parameter values that correspond to a flat region of the cost function, where local steps will only increase the cost &mdash; but for which the cost is not the global minimum cost. Here is an example of such a cost function:
+</p>
+<p>
+<img src="code/localminima.jpg" height="400px" alt="code/localminima.jpg" />
+</p>
+<p>
+You can see that there is a single global minimum at a parameter value of about -1 &mdash; but there is a second, local minimum at a parameter value of about 2.2. You can see that if our initial parameter guess was between 1.5 and 3.0, that our local gradient descent procedure would put us at the local minimum, not the global minimum.
+</p>
+<p>
+One strategy to deal with local minima is to run several gradient descent runs, each starting from a different (often randomly chosen) initial parameter guess, and then to take the best one as the global minimum. Ultimately however in the absence of an analytic solution, or a brute force mapping of the entire cost landscape (which is often infeasible) one can never be sure that one isn't at a local versus a global minimum.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3-1-2" class="outline-4">
+<h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> Methods</h4>
+<div class="outline-text-4" id="text-3-1-2">
+
+
+<p>
+A number of effective algorithms have been developed for finding parameter values that minimize a cost function. Some don't assume any pre-existing knowledge of the gradient &hellip; that is, of the derivative of the cost function with respect to the parameters, while some assume that we can compute both the cost and the gradient for a given set of parameter values.
+</p>
+<p>
+In simple <a href="http://en.wikipedia.org/wiki/Gradient_descent">gradient descent</a>, the simple idea is as described above, namely to estimate the local gradient and then take a <b>step</b> in the steepest direction. There are all sorts of ways of defining the step size, and adapting the step size to the steepness of the local gradient. There are also terms one can add that implement <a href="http://www.willamette.edu/~gorr/classes/cs449/momrate.html">momentum</a>, as a scheme to try to avoid local minima. Another strategy is to include randomness, by implementing <a href="http://en.wikipedia.org/wiki/Stochastic_gradient_descent">stochastic gradient descent</a>.
+</p>
+<p>
+In <a href="http://en.wikipedia.org/wiki/Conjugate_gradient_method">conjugate gradient descent</a>, one requires knowledge of the local gradient, and the idea here is that the algorithm tries to compute a more intelligent guess as to the direction of the cost minimum.
+</p>
+<p>
+In <a href="http://en.wikipedia.org/wiki/Newton's_method_in_optimization">Newton's method</a>, one approximates the local gradient using a quadratic function, and then a step is taken towards the minimum of that quadratic function. You can think of this as a slightly more sophisticated version of simple gradient descent, in which one essentially approximates the local gradient as a straight line.
+</p>
+<p>
+The <a href="http://en.wikipedia.org/wiki/Nelder–Mead_method">Nelded-Mead (simplex) method</a> is an iterative approach that is pretty robust, that has an interesting geometric interpretation (see the animation on the wikipedia page) that is not unlike the old toy called <a href="http://youtu.be/l8Dbne0wRaE?t=18s">Wacky Wally</a>.
+</p>
+<p>
+There are more complex algorithms such as <a href="http://en.wikipedia.org/wiki/Levenberg–Marquardt_algorithm">Levenberg-Marquardt</a> and others, which we won't get into here.
+</p>
+<p>
+The bottom line is that there are a range of local methods that vary in their complexity, in their memory requirements, in their iteration speed, and their susceptability to getting stuck in local minima. My approach is to start with the simple ones, and add complexity when needed.
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Global methods</h3>
+<div class="outline-text-3" id="text-3-2">
+
+
+<p>
+In <a href="http://en.wikipedia.org/wiki/Global_optimization">global optimization</a>, the general idea is instead of making a single guess and descending the local gradient, one instead makes a <b>large number of guesses</b> that broadly span the range of the parameters, and one evaluates the cost for all of them. Then the update step uses the costs of the entire set of guesses to determine a new set of guesses. It's also an iterative procedure, and when the stopping rule is triggered, one takes the guess from the current set of guesses that has the lowest cost, as the best estimate of the global minimum.
+</p>
+<p>
+Global methods are well suited to problems that involve many local minima. Going back to our ski hill example, imagine instead of dropping one person on the side of Whistler mountain, rather a platoon of paratroopers is dropped from a plane and scattered all over the entire mountain range. Some will end up in valleys and alpine lakes (local minima) but the chances are good that at least one will end up in whistler village, or close to it. They all radio up to the airplane with their reported altitudes, and on the basis of an analysis of the entire set, a new platoon is dropped, and eventually, someone will end up at the bottom (the global minimum).
+</p>
+<p>
+Two popular global methods you might come across are <a href="http://en.wikipedia.org/wiki/Simulated_annealing">simulated annealing</a> and <a href="http://en.wikipedia.org/wiki/Genetic_algorithm">genetic algorithms</a>. Read up on them.
+</p>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Exercises</h2>
+<div class="outline-text-2" id="text-4">
+
+<ul>
+<li><a href="exercises.html">Exercises</a> 27 through 30 will give you some practice with optimization using Python, R, MATLAB and C.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Resources</h2>
+<div class="outline-text-2" id="text-5">
+
+
+<ul>
+<li><a href="http://www.stanford.edu/~boyd/cvxbook/">Convex Optimization</a> (a book by Stephen Boyd and Lieven Vandenberghe)
+</li>
+<li><a href="http://www.mathworks.com/products/optimization/">MATLAB Optimization Toolbox</a>
+</li>
+<li><a href="http://docs.scipy.org/doc/scipy/reference/optimize.html">SciPy Optimize</a>: Optimization and root finding in Python
+</li>
+<li><a href="http://stat.ethz.ch/R-manual/R-devel/library/stats/html/optim.html">General-purpose Optimization in R</a>
+</li>
+<li><a href="http://cran.r-project.org/web/views/Optimization.html">Optimization packages in R</a>
+</li>
+<li><a href="http://ab-initio.mit.edu/wiki/index.php/NLopt">NLopt</a>, a C library for nonlinear optimization
+</li>
+<li><a href="http://www.gnu.org/software/gsl/manual/html_node/Multidimensional-Minimization.html#Multidimensional-Minimization">multidimensional minimization in gsl</a> (GNU Scientific Library for C)
+</li>
+<li><a href="http://www.mikehutt.com/prog.html">Nelder-Mead Simplex in C</a> (Micheal Hutt)
+</li>
+<li><a href="http://en.wikipedia.org/wiki/Test_functions_for_optimization">Test functions for optimization</a>
+</li>
+</ul>
+
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<hr />Paul Gribble | fall 2013<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
+</div>
+</body>
+</html>

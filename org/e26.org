@@ -1,0 +1,24 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 26
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Surface plot
+
+Define x and y each over a grid [-8,8] in steps of 0.5.
+
+Define r = $\sqrt{x^{2} + y^{2}} + 0.00001$.
+
+Define z = sin(r)/r
+
+Generate the following surface plot:
+
+#+ATTR_HTML: width="400"
+[[file:code/e26plot1.jpg]]
+
+[[file:e26sol.html][solutions]]

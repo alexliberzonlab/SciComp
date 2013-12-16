@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Assignment 4</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Assignment 4"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="fall 2013"/>
+<meta name="author" content="Paul Gribble"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="mystyle.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js">
+/**
+ *
+ * @source: http://orgmode.org/mathjax/MathJax.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ * Copyright (C) 2012-2013  MathJax
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ */
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code below.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code below is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code below.
+*/
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+ <a accesskey="h" href="http://www.gribblelab.org/scicomp/assignments.html"> UP </a>
+ |
+ <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
+</div>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Assignment 4</h1>
+
+
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Preferred Directions of Spiking Neurons</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+In this assignment your task is to write code to analyse a real dataset. You will have to deal with tasks like:
+</p>
+<ul>
+<li>loading in data from multiple files
+</li>
+<li>computing various things for each file
+</li>
+<li>potentially incorporating someone else's code (mine) into your analyses
+</li>
+<li>combining these computations across all files
+</li>
+<li>displaying results graphically
+</li>
+</ul>
+
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">The Data</h3>
+<div class="outline-text-3" id="text-1-1">
+
+
+<p>
+The data come from an experiment in which extracellular potentials were recorded from an electrode inserted in layer 5 of primary motor cortex, during a visually guided arm reaching task (<a href="http://www.gribblelab.org/publications/2001_Nature_scott.pdf">Scott et al., 2001</a>, <a href="http://www.gribblelab.org/publications/2002_Nature_gribble.pdf">Gribble &amp; Scott, 2002</a>).
+</p>
+<p>
+The task was to move the hand from a central start target to one of 8 peripheral targets equally spaced around the circumference of a circle. Each target was presented in random order, and movements to each of the 8 targets were repeated 5 times.
+</p>
+<p>
+For each movement to each target, <b>two quantities</b> were computed:
+</p>
+<ol>
+<li>the mean number of spikes per second over a window starting 150 ms before movement onset (as defined by the acceleration of the hand) and ending at peak hand velocity, and
+
+</li>
+<li>the movement direction (in radians) of the hand at peak acceleration
+</li>
+</ol>
+
+
+<p>
+Here we will consider data recorded from 100 neurons. For each neuron we have two files &mdash; one file contains the movement direction data and a second file contains the neural firing data. For example, for neuron <code>001</code> we have:
+</p>
+<p>
+cell_dirs_001.txt
+</p>
+
+
+<pre class="src src-example">8.4748542e-01   1.1952706e+00   1.7959900e+00   3.2095020e+00   4.2338855e+00   4.7988962e+00   5.4260935e+00   5.7792185e+00
+8.8519623e-01   1.1456351e+00   1.8273681e+00   3.2718287e+00   4.1625064e+00   4.6994474e+00   5.5492588e+00   5.9753649e+00
+8.4209505e-01   1.2769631e+00   1.6570527e+00   3.2343219e+00   4.3258268e+00   4.7441638e+00   5.5040137e+00   5.9171973e+00
+7.4938015e-01   1.1950453e+00   1.5838486e+00   3.1628027e+00   4.2176710e+00   4.6306195e+00   5.4205861e+00   5.7437683e+00
+8.0512714e-01   1.2494470e+00   1.7365013e+00   3.2258285e+00   4.2583196e+00   4.7343349e+00   5.3612792e+00   5.8834072e+00
+</pre>
+
+
+<p>
+cell_spks_001.txt
+</p>
+
+
+<pre class="src src-example">1.0000000e-12   2.6315789e+00   2.2471910e+00   5.2747253e+01   6.9662921e+01   5.2500000e+01   3.7362637e+01   2.6262626e+01
+2.8169014e+00   2.5316456e+00   6.5217391e+00   4.1304348e+01   6.1728395e+01   6.2068966e+01   3.3684211e+01   1.9801980e+01
+5.4054054e+00   1.0000000e-12   1.0000000e-12   2.8235294e+01   7.4074074e+01   5.5172414e+01   3.3663366e+01   2.2448980e+01
+5.2631579e+00   1.0000000e-12   2.4096386e+00   3.5555556e+01   7.7272727e+01   7.3563218e+01   3.7254902e+01   1.6494845e+01
+4.9382716e+00   2.5974026e+00   4.7619048e+00   4.5360825e+01   7.6923077e+01   7.1604938e+01   3.4042553e+01   1.9417476e+01
+</pre>
+
+
+<p>
+For neuron <code>001</code> we have 5 movements (rows) to each of 8 targets (columns). The file <code>cell_dirs_001.txt</code> contains the direction of hand movement (in radians) for each of the 20 movements, and the file <code>cell_spks_001.txt</code> contains the mean activity (spikes per second) over a window beginning 150 ms before movement onset and ending at peak hand velocity.
+</p>
+<p>
+Here is a graphical depiction of the data for neuron <code>001</code>:
+</p>
+<p>
+<img src="code/neuron001.png" width="400" alt="code/neuron001.png" />
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2">The Goal</h3>
+<div class="outline-text-3" id="text-1-2">
+
+
+<p>
+The goal here is to compute the <b>preferred direction</b> of each neuron &mdash; that is, the direction of movement for which the neuron fires most enthusiastically (most spikes per second) &mdash; and to conduct a statistical test of whether each neuron is in fact directionally tuned.
+</p>
+<p>
+The ultimate goal is to look at the <b>distribution of preferred directions</b> across the population of directionally tuned neurons to see if all movement directions are equally represented.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3">The Analyses</h3>
+<div class="outline-text-3" id="text-1-3">
+
+
+<p>
+Computing the preferred direction of a neuron is relatively easy, in cases where the movement directions are spaced equally around the unit circle. In the so-called <i>vector method</i>, all we have to do is sum together individual vectors whose directions represent the directions of movements and magnitudes (vector lengths) represent the spiking rate in those directions. The direction of the resulting vector sum will represent the preferred direction of the neuron. See Georgeopoulos et al., 1986 &amp; 1988 for an example:
+</p>
+<blockquote>
+
+<p>Georgopoulos, A. P., Schwartz, A. B., &amp; Kettner, R. E. (1986). <a href="http://www.sciencemag.org/content/233/4771/1416.short">Neuronal population coding of movement direction</a>. Science, 233(4771), 1416-1419.
+</p>
+<p>
+Georgopoulos, A. P., Kettner, R. E., &amp; Schwartz, A. B. (1988). <a href="http://www.jneurosci.org/content/8/8/2928.short">Primate motor cortex and free arm movements to visual targets in three-dimensional space. II. Coding of the direction of movement by a neuronal population</a>. The Journal of Neuroscience, 8(8), 2928-2937.
+</p>
+</blockquote>
+
+
+<p>
+In our case however we do not have movement directions that are spaced equally around a unit circle. Taking the simple vector sum will result in biases. There are a number of possible solutions to this problem (see <a href="http://www.gribblelab.org/publications/2002_JNeurosciMeth_gribble.pdf">Gribble &amp; Scott 2002</a>).
+</p>
+<p>
+One solution is to fit the unequally-spaced data to a function (such as a cosine function, or a von Mises function), and then determine the movement direction corresponding to the peak of that function. See Equations 30 and 31 in <a href="http://www.gribblelab.org/publications/2002_JNeurosciMeth_gribble.pdf">Gribble &amp; Scott 2002</a> for cosine and von Mises functions. Here is an example of fitting a von Mises function to the first 8-target movement set for neuron 001. We can then simply pick off the hand direction corresponding to the peak, to get the preferred direction of the neuron.
+</p>
+<p>
+<img src="code/vonmisesfit.png" width="400" alt="code/vonmisesfit.png" />
+</p>
+<p>
+The weaknesses of this approach is that fitting functions (e.g. using optimization techniques) can be time consuming since optimization is an inherently iterative procedure, and sometimes the fit may not converge on a global minimum. On ther other hand, computers are fast now and we have strategies to deal with local minima (e.g. re-running the optimizations many times from different initial guesses).
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4">Plate Method</h3>
+<div class="outline-text-3" id="text-1-4">
+
+
+<p>
+Another solution to the problem of non-uniformly spaced directions was proposed in <a href="http://www.gribblelab.org/publications/2002_JNeurosciMeth_gribble.pdf">Gribble &amp; Scott 2002</a>, that involves a series of direct calculations (the so-called <i>plate method</i>). The advantage of this method is that there is no iterative optimization, and so it is faster, and what's more there is no danger of non-convergence.
+</p>
+<p>
+For this assignment I will provide a function called <code>platemethod()</code> that will compute the preferred direction of a neuron given an array of directions and an array of spike counts. You are welcome to use it in your assignment. If you would prefer to use an optimization approach for your assignment, by all means go ahead and do that. You have the knowledge and the tools now to do it.
+</p>
+<ul>
+<li><a href="code/platemethod.m">platemethod.m</a>
+</li>
+<li><a href="code/platemethod.py">platemethod.py</a>
+</li>
+<li><a href="code/platemethod.R">platemethod.R</a>
+</li>
+</ul>
+
+
+<p>
+For those of you interested in programming in C, here is a C version of the plate method code, and an example program:
+</p>
+<ul>
+<li><a href="code/platemethod.h">platemethod.h</a>
+</li>
+<li><a href="code/platemethod.c">platemethod.c</a>
+</li>
+<li><a href="code/goplate.c">goplate.c</a>
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5">Circular statistics</h3>
+<div class="outline-text-3" id="text-1-5">
+
+
+<p>
+For each neuron we have 5 repetitions of 8-target movements. To estimate the PD for each neuron we can take the mean PD for each of the 5 8-target repetitions. Be careful though, taking the mean of angles is not always straightforward. For example, what is the mean of 2 degrees and 358 degrees? If you simply take the arithmetic mean you get ((2+358)/2) = 180 degrees. In fact what you want is 0 deg (or equivalently, 360 deg). The problem is angles "wrap around" 360 deg.
+</p>
+<p>
+There is a branch of statistics that has been developed to adapt common measures and methods to angular data, called circular statistics. For example, see this Wikipedia page for a discussion of how to compute <a href="http://en.wikipedia.org/wiki/Mean_of_circular_quantities">the mean of circular quantities</a>. There are several books on circular statistics including:
+</p>
+<blockquote>
+
+<p>Batschelet, E., Batschelet, E., Batschelet, E., &amp; Batschelet, E. (1981). Circular statistics in biology (Vol. 371). London: Academic Press.
+Chicago 
+</p>
+</blockquote>
+
+
+<p>
+Another way to estimate the PD of the neuron from all the data is to just consider the (5 x 8) data set as a single set of data with 40 movements, and run that throught the plate method (or through your optimizer if you're fitting it to a function). I will leave it up to you to decide how to estimate the mean PD.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6">Statistical test of Tuning</h3>
+<div class="outline-text-3" id="text-1-6">
+
+
+<p>
+You can imagine that for a neuron that is <b>not</b> directionally tuned, if you nevertheless compute a preferred direction for it, and you do this multiple times, with a different set of movements each time, what will happen is that each time you compute a preferred direction, it will be different than the last one &hellip; and over many repetitions, you will get preferred directions all over the place (they will not be very consistent). On the other hand if a neuron is highly tuned, then each time you compute a preferred direction, the result will be consistent from movement set to movement set.
+</p>
+<p>
+To quantitatively test whether a neuron is tuned, we can do the following, as long as we have multiple 8-target movement sets for the neuron (we do in this case, we have 5 repetitions for each target direction).
+</p>
+<ol>
+<li>for each of the 5 8-target movement sets \(i\), compute the preferred direction \(pd_{i}\) of the neuron
+</li>
+<li>construct a vector \(v_{i}\) whose length is \(1\) and whose direction is the preferred direction computed from each 8-movement set \(pd_{i}\)
+</li>
+<li>add the 5 vectors \(v_{i}\) together (vector addition) and compute the length \(r\) of the resulting vector.
+</li>
+</ol>
+
+
+<p>
+The logic is, the more consistent the \(pd\) is over repetitions of the 8-movement target set, the larger \(r\) will be.
+</p>
+<p>
+Now that we have a measure of directional tuning (\(r\)), we can do a statistical test to determine whether \(r\) is "significant" or not. The way we will do this is by using a bootstrapping or resampling technique. Here is what we will do.
+</p>
+<p>
+We will repeat the following procedure a large number of times (e.g. 10,000):
+</p>
+<ol>
+<li>Create a new set of (5 x 8) spike data, by randomly sampling, with replacement, from the original set.
+</li>
+<li>Compute \(r\), the measure of tuning
+</li>
+<li>Save \(r\) to a list (of 10,000 \(r\) values over the 10,000 repetitions of this procedure)
+</li>
+<li>Once we have our 10,000 \(r\) values, determine <b>what proportion</b> of the 10,000 simulated \(r\) values are as large or larger than the empirically observed r value, which we computed above.
+</li>
+</ol>
+
+
+<p>
+The logic here is that in our 10,000 simulations, we are <b>simulating the null hypothesis</b> where the null hypothesis is that the neuron is not directionally tuned, and the spike count for a given direction is random (in this case, randomly sampled from the "population" of (5 x 8) spike counts collected for each neuron). If the actual \(r\) value we compute based on the actual data is less than 5% likely in our simulation of the null hypothesis, we reject the null hypothesis that the neuron is not directionally tuned, and we conclude that it is in fact directionally tuned.
+</p>
+<p>
+For example, if we take neuron 005, I have computed using the plate method that the measure \(r\) of direction tuning is \(r=3.9804\). When I perform a bootstrap test using 10,000 iterations, I get the following distribution of \(r\) values under the null hypothesis (i.e. when I randomly sample with replacement from the original (5 x 8) set of spike data:
+</p>
+<p>
+<img src="code/neuronboot.png" width="400" alt="code/neuronboot.png" />
+</p>
+<p>
+The observed tuning parameter \(r\) is plotted as a vertical red line overtop of the distribution of \(r\) under the null hypothesis, as assessed by the bootstrap test using 10,000 random resamplings (with replacement) of the spike data. As you can see only a small proportion of the bootstrap values of \(r\) are greater than our observed value of \(r=3.9804\). In fact if we count, there are 331 out of 10,000 that are greater than or equal to \(r=3.9804\). This corresponds to \(p = 0.0331\). If we use an alpha value of \(p = 0.05\) as our cutoff for rejecting the null hypothesis, we would indeed reject the null in this case (the null being that the neuron is not directionally tuned) and we would conclude that the neuron is in fact directionally tuned. Actually if we want to be technically correct from a statistical point of view, we would say that the chances are very low that the cell is not directionally tuned&hellip; i.e. assuming the null hypothesis is true, the chance of observing a tuning parameter \(r\) as extreme or more extreme than the one we actually observed is only 3.31 %. If we wanted to be more conservative we could set our alpha level at \(p = 0.01\).
+</p>
+<p>
+When testing your code, perhaps set the number of bootstrap iterations to 1,000 or even 100 for testing pruposes. When you are confident your code is working, set it to 10,000 and go get a coffee.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-7" class="outline-3">
+<h3 id="sec-1-7">Tasks</h3>
+<div class="outline-text-3" id="text-1-7">
+
+
+<p>
+So your tasks are:
+</p>
+<ol>
+<li>Compute an estimate of the preferred direction of each neuron.
+</li>
+<li>Count how many neurons out of 100 are directionally tuned (using whatever alpha level cutoff you wish)
+</li>
+<li>For those neurons that are directionally tuned, graphically display the distribution of preferred directions over the population of neurons.
+</li>
+</ol>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-8" class="outline-3">
+<h3 id="sec-1-8">Some Guidance</h3>
+<div class="outline-text-3" id="text-1-8">
+
+
+<p>
+When I run my code with 10,000 bootstraps on the 100 neurons, here is what I get in terms of neurons that are significantly tuned:
+</p>
+<ul>
+<li>p &lt; .050 : 92 neurons
+</li>
+<li>p &lt; .010 : 78 neurons
+</li>
+<li>p &lt; .005 : 73 neurons
+</li>
+</ul>
+
+
+<p>
+You may not get the exact same numbers as me, since your random selection in your bootstrap will be different &hellip; but you ought to get something relatively close.
+</p>
+<p>
+For p &lt; .05, the neurons that are not significantly tuned, at least in my code, are neurons:
+</p>
+<p>
+41, 42, 43, 55, 56, 66, 76, 85
+</p>
+<p>
+If anyone is really struggling, just come and see me, I can help. I'd rather everyone see the assignment through to the end, even if you need some help, than for some to not finish.
+</p>
+<p>
+As a benchmark, here are the PDs (in radians) of the 5 repetitions for the data from neuron 001, using the supplied platemethod function in MATLAB:
+</p>
+<p>
+4.0845    4.3150    4.3715    4.3153    4.2462
+</p>
+<p>
+You should get something pretty much identical in your Python or R version of the platemethod function.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-9" class="outline-3">
+<h3 id="sec-1-9">Speed Contest</h3>
+<div class="outline-text-3" id="text-1-9">
+
+
+<p>
+Finally, <b>time your code</b>: how long does it take to compute the estimate of the preferred direction, and the bootstrap probability, for all 100 neurons, using 10,000 bootstrap iterations? We will have a contest to see whose code runs the fastest (we will run it on my laptop). The winner gets a prize.
+</p>
+<p>
+Some timing targets for you, run on my current laptop (Apple MacBook Pro Retina, 15-inch, Late 2013, 2.3 GHz Intel Core i7 with 4 CPU cores). Time indicates total time to compute estimate of preferred direction and to compute a bootstrap probability using 10,000 iterations, for all 100 neurons. Note we haven't yet talked about how to parallelize code and take advantage of multiple cores on your CPU, but I've included the times here just to show you how much of an improvement you can get.
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="right" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">Language</th><th scope="col" class="right">Time (sec)</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">MATLAB</td><td class="right">803.4</td></tr>
+<tr><td class="left">MATLAB (parallelized)</td><td class="right">203.1</td></tr>
+<tr><td class="left">C</td><td class="right">6.702</td></tr>
+<tr><td class="left">C (parallelized)</td><td class="right">1.676</td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-10" class="outline-3">
+<h3 id="sec-1-10">Your code</h3>
+<div class="outline-text-3" id="text-1-10">
+
+
+<p>
+When writing your code, assume the data are located in a subdirectory relative to the location of your code, called <code>neurondata/</code>. You can download the data directory here:
+</p>
+<p>
+<a href="code/neurondata.tgz">neurondata.tgz</a>
+</p>
+<p>
+I should be able to put your code in a directory containing <code>neurondata/</code> and run your code without adjusting anything.
+</p>
+<p>
+Please send me your completed assignment by email. Send (1) your code and (2) a short report summarizing the findings from your analyses. <b>Please make sure that your name is indicated somewhere in each file</b>.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<hr />Paul Gribble | fall 2013<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license"href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
+</div>
+</body>
+</html>

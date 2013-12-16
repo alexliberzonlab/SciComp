@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>1. Introduction</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="1. Introduction"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="fall 2013"/>
+<meta name="author" content="Paul Gribble"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="mystyle.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js">
+/**
+ *
+ * @source: http://orgmode.org/mathjax/MathJax.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ * Copyright (C) 2012-2013  MathJax
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ */
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code below.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code below is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code below.
+*/
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+ <a accesskey="h" href="http://www.gribblelab.org/scicomp/index.html"> UP </a>
+ |
+ <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
+</div>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">1. Introduction</h1>
+
+
+
+<hr/>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Organization of the course</a></li>
+<li><a href="#sec-2">Setting up your computing environment</a></li>
+<li><a href="#sec-3">Programming Languages</a></li>
+<li><a href="#sec-4">A Rough List of Topics</a></li>
+<li><a href="#sec-5">What should I do now?</a></li>
+</ul>
+</div>
+</div>
+
+<hr/>
+
+<p>
+Our main plan for the first class will be to talk about the course
+content, and to get everyone set up on their laptop with an appropriate programming environment.
+</p>
+<p>
+In our second class we will start in on the first batch of programming
+exercises which will illustrate getting values from the user, printing
+strings, doing arithmetic, and we will be introduced to loops.
+</p>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Organization of the course</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+Last year we tried a new approach to how classes are run, that worked
+well. Instead of me lecturing for an hour, and then you going away and
+attemping programming exercises and assignments, we "inverted the
+classroom". Classroom time was spent working on exercises and
+assignments, and asking questions, and students completed readings and
+went over lecture notes outside of class.
+</p>
+<p>
+The benefit of this approach from my point of view is that we spend
+time in class in a more interactive way, and (especially earling in
+learning programming techniques) students get more out of classroom
+time than if you were just listening to me blab on and on.
+</p>
+<p>
+What this does require however is that you come prepared to each
+class, having done the readings and whatever other preparation is
+specified on the schedule.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">Setting up your computing environment</h2>
+<div class="outline-text-2" id="text-2">
+
+
+<p>
+I will be using unix-style tools, sometimes on my Mac and sometimes on
+a linux machine (or in a linux virtual machine). If you have a Mac and
+are running a relatively recent version of Mac OSX then you can
+probably achieve the same functionality by installing unix-based tools
+on your Mac. We will talk about this in class. If you have a Windows
+laptop then your choices may be more limited.
+</p>
+<p>
+For using linux, you have essentially four choices about how you can
+set things up, assuming you are not already set up to use linux. In
+order of most committed to least committed:
+</p>
+<ol>
+<li>Wipe your existing operating system and install linux. There are
+   several flavours (see the <a href="http://www.gribblelab.org/scicomp/resources.html#sec-11">resources</a> page)
+</li>
+<li>Repartition your hard drive and set up a dual-boot system. You can
+   find instructions on the web, e.g. for <a href="http://www.ubuntu.com/desktop">Ubuntu</a>, <a href="https://help.ubuntu.com/community/WindowsDualBoot">Windows Dual Boot</a>
+   and <a href="https://help.ubuntu.com/community/DualBoot/MacOSX">Dual Boot Mac OSX</a>. Instructions for other linux flavours can be
+   found easily on the web.
+</li>
+<li>Boot your laptop from an external drive that has a linux boot
+   partition set up. Again, find instructions on the web for your
+   favourite linux flavour.
+</li>
+<li>Run a linux virtual appliance in a virtualization application such
+   as <a href="https://www.virtualbox.org">VirtualBox</a>. I will provide such an appliance that runs <a href="http://www.debian.org">Debian</a>
+   and has all of the software we will need, preinstalled. I will also
+   provide an appliance that runs <a href="http://www.ubuntu.com/desktop">Ubuntu</a> in case you'd like to try
+   that instead. Ubuntu has arguably done a better job of making linux
+   look nice visually. Note that both images will be imported as 20GB
+   virtual machines so you need at least that much space to run
+   them. If you need to, I suggest putting them on an external drive.
+</li>
+</ol>
+
+
+<p>
+If you decide you don't want to use linux, but you do want to use
+Python + SciPy and all of the other python-based scientific packages,
+then I suggest installing the <a href="https://store.continuum.io/cshop/anaconda/">Anaconda</a> distribution from Continuum
+Analytics. It's free and it provides an easy all-in-one Python + SciPy
+system.
+</p>
+<p>
+If you have decided that you're using MATLAB, then it should not be a
+big deal to get it installed on your machine, whether you're running
+Mac, Windows or even linux.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">Programming Languages</h2>
+<div class="outline-text-2" id="text-3">
+
+
+<p>
+There are many programming languages that are used today for
+scientific computing, and it's likely that you will be exposed to code
+in many languages over the course of your career as a graduate student
+in the sciences.
+</p>
+<p>
+Unless you decide that you would rather code everything you ever need
+on your own, from scratch, in one language, it's likely that you will
+be using programs, code snippets and libraries written by others, to
+accomplish the tasks you need to complete to do your research and data
+analysis. Life will be better for you if you're somewhat proficient,
+or at least familiar, with several programming languages.
+</p>
+<p>
+In this course we will learn some basic programming paradigms and
+patterns that are not language specific. We will sometimes be looking
+at example code in different languages. This has the risk of being
+confusing, as different languages have different <a href="http://en.wikipedia.org/wiki/Syntax_(programming_languages)">syntax</a>, and the
+differences are sometimes subtle. The benefit however is that you will
+see that with few exceptions, most languages are essentially the same,
+at least in broad strokes, and differ only in their syntax, and in the
+names for various functions. There are some low-level differences
+between <a href="http://en.wikipedia.org/wiki/Interpreted_language">interpreted</a> and <a href="http://en.wikipedia.org/wiki/Compiled_language">compiled</a> languages that we will talk about
+later, that make a big difference in terms of the speed that your code
+runs.
+</p>
+<p>
+The languages we will be seeing in this course are:
+</p>
+<ul>
+<li><a href="http://www.mathworks.com/products/matlab/">MATLAB</a>: commerical, engineering-oriented numerical programming environment
+</li>
+<li><a href="http://www.gnu.org/software/octave/">GNU Octave</a>: free, open-source clone of Matlab
+</li>
+<li><a href="http://www.python.org">Python</a>: free, open-source high level programming language
+</li>
+<li><a href="http://www.scipy.org">SciPy</a>: a Python-based ecosystem for math, science &amp; engineering,
+  that includes:
+<ul>
+<li><a href="http://www.numpy.org">NumPy</a>: library for numerical computing with Python
+</li>
+<li><a href="http://matplotlib.org">matplotlib</a>: 2D plotting library for Python
+</li>
+<li><a href="http://ipython.org">iPython</a>: improved interface for interactive computing with Python
+</li>
+<li><a href="http://sympy.org/en/index.html">SymPy</a>: Python library for symbolic mathematics
+</li>
+<li><a href="http://pandas.pydata.org">pandas</a>: data structures and data analysis tools for Python
+</li>
+</ul>
+
+</li>
+<li><a href="http://www.r-project.org">R</a>: free, open-source language for statistical computing &amp; graphics
+</li>
+<li><a href="http://en.wikipedia.org/wiki/C_(programming_language)">C</a>: a high level, general purpose compiled language
+</li>
+</ul>
+
+
+<p>
+Other languages you may encounter in your travels as a graduate student and as a scientist are:
+</p>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/C++">C++</a>: basically an object-oriented (<a href="http://en.wikipedia.org/wiki/Object-oriented_programming">OOP</a>) version of C
+</li>
+<li><a href="http://en.wikipedia.org/wiki/Objective-C">Objective C</a>: another OOP version of C, used primarly by <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html">Apple</a> to
+  write Mac OSX and iOS applications
+</li>
+<li><a href="http://en.wikipedia.org/wiki/Java_(programming_language)">Java</a>: a general purpose OOP language
+</li>
+<li><a href="http://en.wikipedia.org/wiki/JavaScript">JavaScript</a>: like Java for running inside web browsers
+</li>
+<li><a href="https://www.ruby-lang.org/en/">Ruby</a>: another general purpose OOP language
+</li>
+<li><a href="http://en.wikipedia.org/wiki/Fortran">Fortran</a>: a general purpose compiled language aimed at numerical and
+  scientific computing
+</li>
+<li><a href="http://www.wolfram.com/mathematica/">Mathematica</a>: a commercial environment for mathematical computation
+  and visualization (popular with pure math types, not so much
+  engineers)
+</li>
+<li><a href="http://www.sagemath.org">Sage</a>: a free, open-source math system sort of aimed at being a
+  Mathematica replacement
+</li>
+</ul>
+
+
+<p>
+There are also some new languages that are gaining traction:
+</p>
+<ul>
+<li><a href="http://julialang.org">julia</a>: a high-level dynamic language aimed at numerical and
+  technical computing. The love child of Python and C
+</li>
+<li><a href="http://golang.org">go</a>: high-level OOP compiled language designed at Google, sort of a
+  Googly version of C
+</li>
+</ul>
+
+
+<p>
+There are many other languages out there that are still in use but
+these are the ones you are likely to encounter in the scientific and
+numerical computing sphere.
+</p>
+<p>
+For our purposes, we will be primarily seeing code
+in <b>Python</b>, <b>Matlab/Octave</b> and <b>R</b>. Occasionally I will show you
+a <b>C</b> version of a program as an illustration of how much faster a
+compiled language can be compared to an interpreted language (Python,
+Matlab/Octave and R are all interpreted languages).
+</p>
+
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1">Am I supposed to learn \(n\) different languages in this course? (where \(n&gt;1\))</h3>
+<div class="outline-text-3" id="text-3-1">
+
+
+<p>
+No. For exercises and assignments you can use whatever language you
+like. I will be providing examples in Python, Matlab/Octave, R and
+occasionally C. My expectation is not that you learn 4 programming
+languages in this course. My expectation is that you learn to program
+in one language of your choosing, and that you at least gain exposure
+to what code looks like in other languages.
+</p>
+<p>
+In doing so I hope that you'll learn at least two important lessons:
+</p>
+<ol>
+<li>you will see that mostly, all high level languages are basically
+   the same, but with different syntax and different names for things
+</li>
+<li>you will become familiar with the range of languages and associated
+   libraries, toolboxes and add-on modules that are available to you
+   as a scientist
+</li>
+</ol>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-2" class="outline-3">
+<h3 id="sec-3-2">So what language should I use?</h3>
+<div class="outline-text-3" id="text-3-2">
+
+
+<p>
+The answer to this question is to use the language that will be most
+beneficial for you personally going forward. This could depend on
+things like:
+</p>
+<ul>
+<li>what language(s) are in common use in your supervisor's lab right now?
+</li>
+<li>are there existing toolboxes or libraries for a certain language
+  that you know in advance will be particularly useful to you in your
+  research?
+</li>
+<li>Do you want to spend money? (MATLAB costs money and is a
+  proprietary, closed source product; Python, R, Octave and C are free
+  and open source)
+</li>
+<li>what language(s) do you already know, and are you interested in
+  refining what you already know, and/or becoming proficient in
+  another language?
+</li>
+</ul>
+
+
+<p>
+If you know you don't need MATLAB (because for example your lab
+already uses MATLAB) then I suggest using Python for the course. Its
+libraries are broader than R, which is mainly a language oriented
+around doing statistics. An easy way to install Python plus all of the
+SciPy toolboxes is using <a href="https://store.continuum.io/cshop/anaconda/">Anaconda</a>, which should work on Windows and
+Mac.
+</p>
+<p>
+If you are interested in another language, come and see me and we can
+make sure it's going to be a suitable plan.
+</p>
+<p>
+If you already have experience with the interpreted languages we will
+be looking at in this course and you would like to challenge yourself
+and learn some C, then this <a href="http://www.gribblelab.org/CBootcamp/index.html">C Programming Boot Camp</a> might be useful to
+you. There are also tons of resources online, and books, about
+programming in C.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3-3" class="outline-3">
+<h3 id="sec-3-3">Editors and IDEs</h3>
+<div class="outline-text-3" id="text-3-3">
+
+
+<p>
+Many programming language come with a so-called <a href="http://en.wikipedia.org/wiki/Integrated_development_environment">Integrated Development</a>
+Environments or IDE. MATLAB comes with one of these. There is one for
+R called <a href="http://www.rstudio.com">RStudio</a>, and there is one for Python/SciPy called <a href="https://www.enthought.com/products/canopy/">Canopy</a>. For
+C there are many. On the Mac, <a href="https://developer.apple.com/xcode/">Xcode</a> is the standard for developing Mac
+OSX and iOS programs. On Windows there are products like <a href="http://en.wikipedia.org/wiki/Eclipse_(software)">Eclipse</a> that
+provide an IDE for several languages.
+</p>
+<p>
+The basic idea of an IDE is that you get a pretty, graphical
+multi-windowed environment where you can see your code alongside
+various tools such as debuggers, variable lists and memory profiles,
+file systems and directories, and click-and-point menus for access to
+a variety of functions and toolboxes.
+</p>
+<p>
+In this course I will not be using an IDE, and I would encourage you
+not to use one either. This is not because I think they are
+necessarily a bad idea, but because I think the various conveniences
+they provide promote a certain intellectual laziness especially for
+beginning programmers. For an experienced programmer an IDE can
+certainly increase efficiency. For a beginning programmer however I
+think it's more important to (at least initially) do all of that stuff
+in your head (or with a piece of paper and a pencil). A reading is
+relevant here: <a href="http://www.paulgraham.com/head.html">Holding a Program in One's Head</a>.
+</p>
+<p>
+What I will be doing, and what I suggest you do in the course, is use
+a basic <b>two window setup</b>: one window for the code interpreter (or
+compiler) and a second window for your editor (where you edit your
+code).
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">A Rough List of Topics</h2>
+<div class="outline-text-2" id="text-4">
+
+
+<p>
+We will talk in our first class about what topics are of interest to
+the class this year. Here is a rough list of potential topics. We will
+start by learning some general principles of programming and then we
+will move on to some of the more useful techniques you might encounter
+for data analysis. We don't cover statistics per se in this course,
+that is saved for next term when I teach <i>Introduction to Statistics Using R</i>.
+</p>
+
+</div>
+
+<div id="outline-container-4-1" class="outline-3">
+<h3 id="sec-4-1">General Programming</h3>
+<div class="outline-text-3" id="text-4-1">
+
+
+<ul>
+<li>basic data types
+</li>
+<li>operators, expressions
+</li>
+<li>control flow (loops, conditionals)
+</li>
+<li>functions &amp; modularity, variable scope
+</li>
+<li>complex data types
+</li>
+<li>input &amp; output
+</li>
+<li>speeding up your code
+</li>
+<li>object-oriented programming OOP
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4-2" class="outline-3">
+<h3 id="sec-4-2">Data Analysis Topics</h3>
+<div class="outline-text-3" id="text-4-2">
+
+
+<ul>
+<li>graphical displays of data
+</li>
+<li>signals &amp; sampling
+</li>
+<li>fourier analysis &amp; filtering
+</li>
+<li>numerical integration
+</li>
+<li>simulating dynamical systems
+</li>
+<li>optimization &amp; gradient descent
+</li>
+<li>curve fitting
+</li>
+<li>resampling &amp; bootstrapping
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4-3" class="outline-3">
+<h3 id="sec-4-3">Other Topics</h3>
+<div class="outline-text-3" id="text-4-3">
+
+<ul>
+<li>document processing &amp; reproducible research
+</li>
+<li><a href="http://www.stat.uni-muenchen.de/~leisch/Sweave/">Sweave</a>, <a href="http://mpastell.com/pweave/">Pweave</a>, <a href="http://ipython.org/notebook.html">iPython notebook</a>
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5">What should I do now?</h2>
+<div class="outline-text-2" id="text-5">
+
+
+<p>
+During our first meeting we will be talking about the pros and cons of
+the various ways of getting linux onto your laptop.
+</p>
+<p>
+A brief note about laptops: I am assuming in this course that you own
+(or you have access to) a laptop computer. If you don't, then it's
+time to buy one. I don't feel particularly uncomfortable asking
+students to buy a laptop, since prices are low enough nowadays that
+you can find a modern, suitable laptop for a few hundred dollars ---
+essentially the cost of buying several high-end textbooks. If this is
+a serious issue for you, let me know and we can talk about what your
+options are.
+</p>
+<p>
+So your first task in the course is to get your linux setup up and
+running.
+</p>
+<p>
+Your second task is to write and run a "Hello, World" program in the
+language of your choice. Here is some code for you in a variety of
+languages:
+</p>
+
+
+
+<pre class="src src-python"><span style="color: #b22222;"># </span><span style="color: #b22222;">Python</span>
+<span style="color: #a020f0;">print</span> <span style="color: #8b2252;">"Hello, World"</span>
+</pre>
+
+
+
+<pre class="src src-octave"><span style="color: #b22222;">% </span><span style="color: #b22222;">MATLAB / Octave</span>
+disp(<span style="color: #8b2252;">'Hello, World'</span>);
+</pre>
+
+
+
+<pre class="src src-r"># R
+cat(<span style="color: #8b2252;">"Hello, World\n"</span>)
+</pre>
+
+
+
+<pre class="src src-c"><span style="color: #b22222;">// </span><span style="color: #b22222;">C</span>
+<span style="color: #b22222;">// </span><span style="color: #b22222;">to compile: gcc -o hello hello.c</span>
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
+
+<span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">argc</span>, <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">argv</span>[]) {
+
+  printf(<span style="color: #8b2252;">"Hello, World\n"</span>);
+
+  <span style="color: #a020f0;">return</span> 0;
+}
+</pre>
+
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<hr />Paul Gribble | fall 2013<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
+</div>
+</body>
+</html>

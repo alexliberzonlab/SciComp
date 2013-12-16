@@ -1,0 +1,23 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 6
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* sum of the first n positive integers
+Write a program that computes the sum of the first $n$ positive
+integers, where $n$ is specified by the user. Let's assume for now
+that $n>0$ and $n<500$. Test it on $n=5$, $n=50$ and $n=500$, the
+output should be:
+
+#+BEGIN_SRC example
+the sum of the first 5 positive integers is: 15
+the sum of the first 50 positive integers is: 1275
+the sum of the first 500 positive integers is: 125250
+#+END_SRC
+
+[[file:e06sol.html][solutions]]

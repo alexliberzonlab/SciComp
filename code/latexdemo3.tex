@@ -1,0 +1,33 @@
+% latexdemo3.tex
+
+\documentclass{article}
+
+\title{A demo document in \LaTeX{}}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+We will see two equations here. Equation \ref{eq:regression_line}
+gives the formula for a line of best fit for a linear
+regression. Equation \ref{eq:sample_mean} gives the formula for the
+mean of a sample. It is not the same as Equation
+\ref{eq:regression_line}.
+
+This is an equation: $\hat{Y} = \beta_{0} + \beta_{1} X$.
+
+\begin{equation}
+  \hat{Y} = \beta_{0} + \beta_{1} X
+\label{eq:regression_line}
+\end{equation}
+
+\begin{equation}
+  \bar{X} = \frac{1}{N} \sum_{i=1}^{N} X_{i}
+\label{eq:sample_mean}
+\end{equation}
+
+Note how the equation numbering is handled automatically for you.
+
+\end{document}

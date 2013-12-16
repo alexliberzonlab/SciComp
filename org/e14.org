@@ -1,0 +1,133 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 14
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Linear Regression
+
+Linear regression is an approach whereby we can model the relationship
+between one /dependent variable/ $Y$ and $m$ /independent variables/
+$X_{j}$ where $j=1:m$. When $j=1$ this is called /simple linear
+regression/. When $j>1$ this is called /multiple regression/.
+
+The independent variables $X_{j}$ are sometimes called /predictor
+variables/. In the general linear modeling approach often used in fMRI
+analysis, for example, the predictor variables $X_{j}$ might be a
+collection of different things, some of which are predictor variables
+(e.g. that code different aspects of the task that the subject is
+performing in the scanner), and some of which are so-called "nuisance
+variables" (like physiological noise, head motion parameters, etc).
+
+Linear regression is called /linear/ because the underlying model
+relating $Y$ to $X_{j}$ is linear:
+
+\begin{equation}
+Y = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} + ... + \beta_{3}X_{3} + \epsilon
+\end{equation}
+
+The $\beta_{j}$ terms represent weights on each predictor
+variable. The $\epsilon$ term represents random "noise" or variance
+that is not predicted by the model. It is typically assumed that
+$\epsilon$ is [[http://en.wikipedia.org/wiki/Normal_distribution][normally distributed]].
+
+We also typically have many individual samples of the dependent
+variable $Y$ and associated values for the dependent variables $X$. If
+we have $n$ cases, we can rewrite the equation with a subscript $i$
+denoting each sample, where $i$ varies from $1$ through $n$:
+
+\begin{equation}
+Y_{i} = \beta_{0} + \beta_{1}X_{i1} + \beta_{2}X_{i2} + ... + \beta_{3}X_{i3} + \epsilon_{i}
+\end{equation}
+
+We can rewrite this as a matrix equation:
+
+\begin{equation}
+Y = X \beta + \epsilon
+\end{equation}
+
+Now $Y$ is a matrix with $n$ rows and $1$ column, and $X$ is a matrix
+with $n$ rows and $m+1$ columns. There is a trick here, which is that
+the first column of the $X$ matrix is a column filled with $1$. This
+is how we incorporate the $\beta_{0}$ constant, that doesn't multiply
+an $X_{j}$ independent variable. Essentially we are saying it is
+multiplied by $1$. Finally, $\beta$ will be a matrix with $m+1$ rows
+and $1$ column --- in other words, a constant $\beta_{0}$ and then one
+$\beta_{j}$ for each independent variable $X_{j}$. The values of
+$\beta$ are the weights on the independent variables $X$ that best
+predict the dependent variable $Y$. The matrix multiplication is
+legal: $(n~1) = (n~[m+1])([m+1]~1)$
+
+* Yay linear algebra
+
+An estimate of the weights $\hat{\beta_{j}}$ can be found using
+[[http://en.wikipedia.org/wiki/Linear_regression#Estimation_methods][ordinary least squares estimation]] using the following matrix equation
+(take my word for it, for now, or you can find proofs on the
+internet):
+
+\begin{equation}
+\hat{\beta} = \left( X^{\top}X \right)^{-1} X^{\top} Y
+\end{equation}
+
+where $X^{\top}$ denotes matrix transpose, $X^{-1}$ denotes matrix
+inverse, and $XY$ denotes matrix multiplication. If your matrix
+algebra is shaky, find a classmate who is on more solid ground (or
+come and talk to me).
+
+Briefly, in ordinary least squares, the values of $\hat{\beta}$ are
+found that minimize the sum of squared differences between the actual
+dependent variable $Y$ and the predicted values $\hat{Y}$ given the
+linear model.
+
+* with some data
+
+Here are some example data:
+|------------+-------------+-------------------|
+| Income ($) | Age (years) | Education (years) |
+|------------+-------------+-------------------|
+|        <c> |         <c> |               <c> |
+|      50000 |          35 |                 4 |
+|      35000 |          40 |                 2 |
+|      80000 |          45 |                 6 |
+|      25000 |          25 |                 0 |
+|      90000 |          70 |                 4 |
+|      75000 |          55 |                 6 |
+|      65000 |          50 |                 4 |
+|      95000 |          60 |                 6 |
+|      70000 |          45 |                 8 |
+|     110000 |          50 |                 8 |
+|------------+-------------+-------------------|
+
+Your task is to estimate a linear model that relates Age and Eduction
+to Income. So your dependent variable $Y$ is Income and your two
+dependent variables $X_{1}$ and $X_{2}$ are Age and Education.
+
+* more hints
+
+Our $X$ matrix will be $10$ rows and $3$ columns. The first column
+will be filled with $1$. The second column will be the Age data and
+the third column will be the Education data. Our $Y$ matrix will be
+$10$ rows and $1$ column and will contain the Income data. Our task
+now is to estimate the weights $\beta$ that when multiplied by $X$
+will best predict $Y$. The $\beta$ matrix will be $3$ rows and $1$
+column.
+
+Note that there are built-in functions to estimate linear models, but
+I don't want you to use them here. I want you to program this from
+scratch.
+
+Your two tasks are:
+
+1. estimate weights $\beta_{0}$, $\beta_{1}$ and $\beta_{2}$, and
+2. generate predicted values of Income
+
+* linear algebra refresher
+
+The [[http://www.khanacademy.org][Khan Academy]] has a series of [[https://www.khanacademy.org/math/algebra/algebra-matrices][matrix tutorials]] that might be useful
+if you need a refresher.
+
+[[file:e14sol.html][solutions]]

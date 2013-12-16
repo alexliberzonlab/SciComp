@@ -1,0 +1,19 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 4
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* sum of the first 10 positive integers
+Write a program that computes the sum of the first 10 positive
+integers. Print the resulting sum to the screen like this:
+
+#+BEGIN_SRC example
+the sum of the first 10 positive integers is: 55
+#+END_SRC
+
+[[file:e04sol.html][solutions]]

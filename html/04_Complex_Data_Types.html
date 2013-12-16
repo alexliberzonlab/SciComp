@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>4. Complex Data Types</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="4. Complex Data Types"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="fall 2013"/>
+<meta name="author" content="Paul Gribble"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="mystyle.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+ <a accesskey="h" href="http://www.gribblelab.org/scicomp/index.html"> UP </a>
+ |
+ <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
+</div>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">4. Complex Data Types</h1>
+
+
+
+<hr/>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Ordered (sequential) data types</a></li>
+<li><a href="#sec-2">2 Unordered collections of named elements</a></li>
+<li><a href="#sec-3">3 Using complex data types</a></li>
+<li><a href="#sec-4">4 Readings</a></li>
+<li><a href="#sec-5">5 Exercises</a></li>
+<li><a href="#sec-6">6 Assignment</a></li>
+</ul>
+</div>
+</div>
+
+<hr/>
+
+<p>
+We have seen numeric data types, characters and strings so far. We can
+also collect several single values together in complex data types to
+keep track of collections of things. These can be ordered or unordered. 
+</p>
+<p>
+Typically ordered types are things like lists, arrays, matrices,
+vectors, etc&hellip; in other words, collections of things where the order
+in the sequence matters, and in which you can access particular
+elements by their location in the sequence.
+</p>
+<p>
+One can also have unordered collections of things, where there is no
+inherent order of things, and you can access particular elements by
+their name, and not their location.
+</p>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Ordered (sequential) data types</h2>
+<div class="outline-text-2" id="text-1">
+
+<ul>
+<li>Python list and tuple
+</li>
+<li>NumPy array vs matrix
+</li>
+<li>MATLAB array and matrix
+</li>
+<li>R vector, matrix and data frame
+</li>
+<li>C array
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Unordered collections of named elements</h2>
+<div class="outline-text-2" id="text-2">
+
+<ul>
+<li>Python dictionary
+</li>
+<li>MATLAB structure
+</li>
+<li>R list
+</li>
+<li>C struct
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Using complex data types</h2>
+<div class="outline-text-2" id="text-3">
+
+
+<p>
+Complex data types such as lists, arrays and matrices are useful in a number of situations:
+</p>
+<ul>
+<li>manipulating entire chunks of data as a unit, e.g. matrix algebra
+</li>
+<li>repeated operations on a set of data where reading each item from a
+  file over and over again is slower than just loading it into memory
+</li>
+<li>plotting data
+</li>
+<li>doing statistics on data
+</li>
+<li>interactively exploring data
+</li>
+</ul>
+
+
+<p>
+A typical workflow with scientific data is somethine like the following:
+</p>
+<ol>
+<li>load data from files into memory, in the form of variables that are
+   complex data types (lists, arrays, matrices, data frames, etc)
+</li>
+<li>apply pre-processing steps to your data (smoothing, averaging,
+   grouping, etc)
+</li>
+<li>interactively explore your data by plotting things, rearranging
+   items, taking averages, doing statistics, etc
+</li>
+<li>perhaps save some intermediate representation of your data so that
+   next time you don't have to load things up from scratch
+</li>
+<li>decide on a set of canonical analyses to apply to your data for
+   your current project (e.g. writing a paper)
+</li>
+<li>decide on a set of canonical plots to generate for your project
+   (e.g. your paper)
+</li>
+</ol>
+
+
+<p>
+The choice of how to represent your data (i.e. what kind of data type
+to use) can have consequences for how easy or difficult it is to
+perform certain operations.
+</p>
+<p>
+For example if your data are time series, like (x,y) hand position
+over time for some number of trials (movements), then probably storing
+each trial as a matrix would be a sensible idea (n rows by 2 columns,
+where each row is a time point and the two columns are x and y
+position).
+</p>
+<p>
+In class we will live demo the different kinds of complex data types
+you will find most useful, and we will go through some exercises that
+are designed to get you comfortable with manipulating data.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Readings</h2>
+<div class="outline-text-2" id="text-4">
+
+<ul>
+<li>have a look through the <a href="http://wiki.scipy.org/Tentative_NumPy_Tutorial">NumPy Tutorial</a> on arrays
+</li>
+<li>look at <a href="http://openbookproject.net/thinkcs/python/english2e/ch09.html">chapter 9</a> (lists) and <a href="http://openbookproject.net/thinkcs/python/english2e/ch12.html">chapter 12</a> (dictionaries) of HTTLACS
+</li>
+<li><a href="http://daleylab.org/lab/">Mark Daley</a> runs an undergraduate computer science course for non-CS
+  biologists, you can look at his notes for <a href="https://dl.dropboxusercontent.com/u/8011180/2120/class8.html">Class #8</a> (lists), <a href="https://dl.dropboxusercontent.com/u/8011180/2120/class9.html">Class #9</a>
+  (Arrays) and <a href="https://dl.dropboxusercontent.com/u/8011180/2120/class10.html">Class # 10</a> (Tuples)
+</li>
+<li>MATLAB users can look through this tutorial on <a href="http://www.mathworks.com/company/newsletters/articles/matrix-indexing-in-matlab.html">Matrix Indexing in MATLAB</a>
+</li>
+<li><a href="http://www.statmethods.net/input/datatypes.html">R Data Types</a>
+</li>
+<li><a href="http://www.gribblelab.org/CBootcamp/6_Complex_Data_Types.html">Complex Data Types in C</a>
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Exercises</h2>
+<div class="outline-text-2" id="text-5">
+
+<ul>
+<li><a href="exercises.html">exercises</a> 12, 13, 14 and 15 all make use of complex data types.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Assignment</h2>
+<div class="outline-text-2" id="text-6">
+
+<ul>
+<li><a href="a02.html">assignment 2</a> on sorting is due no later than Friday Oct 18, 23:59:59 EDT. For your reference here is <a href="http://tycho.usno.navy.mil/simpletime.html">US Naval Observatory Master Clock Time</a>.
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<hr />Paul Gribble | fall 2013<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
+</div>
+</body>
+</html>

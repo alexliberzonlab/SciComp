@@ -1,0 +1,60 @@
+#+STARTUP: showall
+
+#+TITLE:     Assignment 4 Speed Contest Leaderboard
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:2
+#+LINK_UP: http://www.gribblelab.org/scicomp/index.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Leaderboard
+
+Below are the times, in seconds, for running each code submission: 100 neurons, 10,000 bootstrap iterations each. All programs were run on my 2013 Macbook Pro laptop (Retina, 15-inch, Late 2013, 2.3GHz Intel quad-Core i7, 16GB RAM). In cases where the expected finishing time was above 10 minutes (600 seconds), I ran the code for a subset of the entire dataset and extrapolated out to 100 neurons and 10,000 bootstrap iterations.
+
+#+ATTR_HTML: :border="2" :rules="all" :frame="all"
+|-------------+----------+-------------------+-------------|
+| Person      | Language | Notes             |  Time (sec) |
+|-------------+----------+-------------------+-------------|
+| [[file:code/speedcontest/gribble_C_parallel.tgz][gribble]]     | C        | parallel (OpenMP) |         0.9 |
+| [[file:code/speedcontest/gribble_C_serial.tgz][gribble]]     | C        | serial            |         3.9 |
+| [[file:code/speedcontest/matthews.tgz][*matthews*]]  | *MATLAB* | parallel          |       *5.0* |
+| [[file:code/speedcontest/maltseva.tgz][maltseva]]    | MATLAB   | (1)               |        42.7 |
+| [[file:code/speedcontest/gibbings.tgz][gibbings]]    | MATLAB   | parallel          |        69.5 |
+| [[file:code/speedcontest/gibson.tgz][gibson]]      | MATLAB   | parallel          |        93.1 |
+| [[file:code/speedcontest/gribble_MATLAB.tgz][gribble]]     | MATLAB   | parallel          |       152.9 |
+| [[file:code/speedcontest/schuit.tgz][schuit]]      | MATLAB   |                   |       239.2 |
+| [[file:code/speedcontest/fallowfield.tgz][fallowfield]] | MATLAB   |                   |       659.3 |
+| [[file:code/speedcontest/osborne.tgz][osborne]]     | MATLAB   |                   |       752.7 |
+| [[file:code/speedcontest/beukema.tgz][beukema]]     | MATLAB   |                   |       798.0 |
+| [[file:code/speedcontest/cabral.tgz][cabral]]      | MATLAB   |                   |       817.8 |
+| [[file:code/speedcontest/kamkar.tgz][kamkar]]      | MATLAB   |                   |      1246.9 |
+| [[file:code/speedcontest/gribble_Python.tgz][gribble]]     | Python   |                   |      5917.4 |
+| [[file:code/speedcontest/benbrahim.tgz][*benbrahim*]] | *Python* |                   |   *11210.3* |
+| [[file:code/speedcontest/matson.tgz][matson]]      | Python   |                   |     17845.0 |
+| [[file:code/speedcontest/rabi.tgz][rabi]]        | Python   |                   |     18700.0 |
+| [[file:code/speedcontest/gribble_R.tgz][gribble]]     | R        | parallel          |    254845.0 |
+| [[file:code/speedcontest/cross.tgz][*cross*]]     | *R*      |                   | *3473530.0* |
+|-------------+----------+-------------------+-------------|
+
+* Winners
+
+Winners in each language category are indicated in *bold* type.
+
+* Sample solutions
+
+Click on the name of each entrant for a link to download their code.
+
+* Notes
+
+There were several ways in which speedups were achieved:
+
+1. Alter the platemethod() function, in particular, the oneplate() function, so that only the quantities we actually need for this exercise are computed, and those quantities we don't need are skipped. In particular, in the oneplate() method, the =Ix=, =Iy= and =Ixy= quantities are not needed, since in the platemethod() function they are not used to compute =PD=, which for this exercise is the only thing we're interested in. The downside of this approach is of course that some time in the future if you need those other quantities from platemethod(), you would have to reinstate those calculations, or revert to the original platemethod() and oneplate() functions.
+
+2. In general, avoid for-loops. Jacob's MATLAB solution made extensive use of converting for-loops into vectorized expressions. This cut down on execution time immensely. MATLAB in particular is quite slow at doing for loops and rather fast at operating directly on vectors and matrices using vectorized expressions.
+
+3. Parallel code. In each language: C, MATLAB, Python and R, great speedups are achieved by taking advantage of multiple cores.
+
+4. Avoid calling functions. We saw in the class on speeding up your code, that the overhead involved in calling a function is not trivial. By moving code out of modular functions and into a single main function, a significant speedup can be achieved. For example by moving the platemethod() and oneplate() code out of separate functions and into the main code, we avoid the overhead of calling platemethod() and oneplate() tens of thousands of times.
+
+5. Rita's solution involved a trick that is not so much a coding trick but a clever statistical approach. Instead of bootstrapping each 5x8 neuron individually, simulating the null hypothesis for each neuron separately, instead she lumped all 100 neurons together and did a single bootstrap on all neurons together. This of course is much faster than doing 100 separate bootstraps. The statistical assumption this impicitly involves is that all neurons are sampled from the same null hypothesis populations ... or to say it differently, that under the null hypothesis, the random relationship between movement direction and neuronal firing rate is the same relationship, for all 100 neurons. The argument in favour of making this assumption is the the purpose of the bootstrap is to simulate the null hypothesis, and if the null hypothesis is that there is no consistent relationship between movement direction and firing rate, then that is so for all neurons, and we can estimate the distribution of the tuning parameter r, under the null, by lumping together all 100 neurons. The counterargument against this is that the null hypothesis distribution of the tuning parameter r may look different for different neurons, and this is why we need to simulate the null hypothesis separately for each neuron. Now as it turns out, using Rita's approach, she arrived at a very similar answer to the one we get by doing the bootstrap on each of the 100 neurons separately... so perhaps this is an argument in favour of her approach for this dataset. In any case, it's a clever approach, and whether or not you buy into the implicit statistical assumption involved in the approach is up to you.

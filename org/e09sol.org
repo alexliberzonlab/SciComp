@@ -1,0 +1,44 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 9 solutions
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:t html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/e09.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+* Python
+e09.py
+#+INCLUDE: "../code/e09.py" src python
+
+* MATLAB / Octave
+fib.m
+#+INCLUDE: "../code/fib.m" src octave
+e09.m
+#+INCLUDE: "../code/e09.m" src octave
+
+* R
+e09.R
+#+INCLUDE: "../code/e09.R" src R
+
+* C
+e09.c
+#+INCLUDE: "../code/e09.c" src C
+
+* Bonus Question 1
+
+e09b1.py
+#+INCLUDE: "../code/e09b1.py" src python
+
+fibR.m
+#+INCLUDE: "../code/fibR.m" src octave
+e09b1.m
+#+INCLUDE: "../code/e09b1.m" src octave
+
+e09b1.R
+#+INCLUDE: "../code/e09b1.R" src R

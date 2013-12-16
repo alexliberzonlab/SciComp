@@ -1,0 +1,18 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 18
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* opening a jpeg image file
+
+The file [[file:code/e18data.jpg][e18data]] is a JPEG image file, 185x186 pixels and in RGB
+format. Open the file in your programming language of choice and
+compute the mean intensity for the red, green and blue colour
+channels. Express intensity on a scale from 0 to 100.
+
+[[file:e18sol.html][solutions]]

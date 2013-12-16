@@ -1,0 +1,68 @@
+#+STARTUP: showall
+
+#+TITLE:     Scientific Computing
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t
+#+LINK_UP: http://www.gribblelab.org/teaching.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Administrivia
+
+- [[file:welcome_msg.html][welcome message]]
+- [[file:resources.html][a list of resources]]
+- Mondays 2:30---4:30pm in STH 3166, and Wednesdays 2:00---4:00 pm in
+  SSC 8440\\
+  start date: Monday September 9, 2013\\
+  this is a *bring your own laptop* course
+
+* Topics
+
+1. [[file:01_Introduction.html][Introduction]]
+2. [[file:02_Basic_Types_Operators_Expressions.html][Basic Types, Operators & Expressions]]
+3. [[file:03_Functions.html][Functions]]
+4. [[file:04_Complex_Data_Types.html][Complex Data Types]]
+5. [[file:05_File_input_and_output.html][File input and output]]
+6. [[file:06_Graphical_displays.html][Graphical displays of data]]
+7. [[file:07_Document_processing.html][Document processing & Reproducible Research]]
+8. [[file:08_Optimization.html][Optimization & Gradient Descent]]
+9. [[file:09_Signals_sampling_filtering.html][Signals, Sampling, Filtering]]
+10. [[file:10_Speeding_up_your_code.html][Speeding up your code]]
+11. [[file:11_Parallel_Computing.html][Parallel Computing]]
+
+Appendix 1: [[file:A1_Digital_Representation_of_Data.html][Digital Representation of Data]]
+
+* Exercises and Assignments
+- [[file:exercises.html][Exercises]] and sample solutions
+- [[file:assignments.html][Assignments]]
+- [[file:a04_leaderboard.html][Assignment 4 speed contest leaderboard]]
+
+* Schedule
+
+- Sep 11: read over the [[file:welcome_msg.html][welcome message]] and [[file:01:Introduction.html][Introduction]]
+- Sep 16, 18: [[file:02_Basic_Types_Operators_Expressions.html][Basic Types, Operators & Expressions]]
+- Sep 23: [[file:03_Functions.html][Functions]]
+- Sep 30: we will go over more on [[file:03_Functions.html][Functions]], and talk about [[file:a01.html][Assignment 1]]
+- Oct 2: [[file:e11.html][exercise 11]]
+- Oct 7,9: [[file:04_Complex_Data_Types.html][Complex Data Types]]
+- Oct 14: no class due to thanksgiving
+- Oct 16: [[file:05_File_input_and_output.html][File input and output]]
+- Oct 21: [[file:06_Graphical_displays.html][Graphical displays of data]]
+- Oct 23: [[file:07_Document_processing.html][Document processing & reproducible research]]
+- Oct 28,30: [[file:08_Optimization.html][Optimization & Gradient Descent]]
+- Nov 4,6: [[file:09_Signals_and_sampling.html][Signals & Sampling Theory]]
+- Nov 11,13: no class due to SFN meeting
+- Nov 18: [[file:a04.html][assignment 4]] (due Friday, Nov. 29)
+- Nov 20: [[file:10_Speeding_up_your_code.html][Speeding up your code]]
+- Nov 25: [[file:11_Parallel_Computing.html][Parallel Computing]]
+- Nov 27: Parallel Computing exercises
+- Dec 2: no class
+- Dec 4: wrap-up, general Q&A, work on Assignment 4
+
+* These notes
+These notes are available on a [[https://github.com][github]] repository here: [[https://github.com/paulgribble/SciComp][SciComp]]
+
+Do you have ideas about how to improve this course? Please get in
+touch, send me an email at:\\
+paul [at] gribblelab [dot] org

@@ -1,0 +1,29 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 2 solutions
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:t html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/e02.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+* Python
+e02.py
+#+INCLUDE: "../code/e02.py" src python
+
+* MATLAB / Octave
+e02.m
+#+INCLUDE: "../code/e02.m" src octave
+
+* R
+e02.R
+#+INCLUDE: "../code/e02.R" src R
+
+* C
+e02.c
+#+INCLUDE: "../code/e02.c" src C

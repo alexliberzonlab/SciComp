@@ -1,0 +1,169 @@
+#+STARTUP: showall
+
+#+TITLE:     Scientific Computing (Psychology 9040A)
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t
+#+LINK_UP: http://www.gribblelab.org/scicomp/index.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Goals of the course
+
+The goal of this one-semester graduate seminar is to provide you with
+skills in scientific computing --- tools and techniques that you can use
+in your own research. We will focus on learning to think about
+experiments and data in a computational framework, and we will learn
+to implement specific data processing and analysis algorithms using a
+high-level programming language.
+
+The course is designed to achieve four primary goals:
+
+1. to teach you to program in a high-level language such as
+   Python, Matlab, R, and C.
+2. to introduce you to Unix (either via the Mac, or GNU/Linux), and to
+   some common computing tools that will help you become more
+   efficient with using your computer for research.
+3. to introduce you to some common computational techniques
+   (not necessarily "statistics" per se) for data processing and
+   analysis --- e.g. curve-fitting, simulation, optimization & gradient
+   descent, frequency-domain analysis and filtering, parallel
+   programming, interacting with hardware, organization and storage of
+   data, programming GUIs (graphical user interfaces), and others.
+4. to get you to think computationally and algorithmically
+   about data processing, analysis, modeling and visualization.
+
+Even if you don't become a full-fledged programmer yourself, you will
+have learned enough to know what is possible given today's
+computational resources. This will enable you in the future to design
+cutting edge experiments and data analysis approaches that take full
+advantage of the computational resources available to you --- whether
+programmed yourself, or by programmers and technicians that you hire.
+
+* Exercises, Assignments and Grades
+
+Each week we will go over a series of programming exercises that are
+designed to get you going with the concepts we cover each week. The
+exercises are not graded. The idea is for you try have a go, and when
+you have problems, questions, etc, ask each other, and ask me for
+help. The best way to learn programming is to program.
+
+Each week I will set an assignment that will be graded. The course
+grade will be based on the weekly assignments (90% weighting) and a
+"course participation" mark (10% weighting).
+
+The assignments will have several components. Some components will be
+easy, some will be more difficult, and some assignments may contain
+components that are rather challenging. Do your best, and don't be
+afraid to go to each other for help. I'm all in favour of students
+working together on assignments. I just don't want to find out that
+you are handing in work that is not your own. I'm perfectly willing to
+give you hints, so don't hesitate to come to me for help (although do
+make sure that you've given it a good try yourself, first... read this
+blog post, [[http://mattgemmell.com/2008/12/08/what-have-you-tried/][What have you tried?]] by Matt Gemmell --- it's aimed at
+professional programmers but I think it applies equally well to us
+all, in whatever field we work in).
+
+* Which programming language(s)?
+
+The issue of which language to use in the course is an interesting
+one. In the past I have taught the course using only one language to
+demonstrate concepts. Once we used Matlab. Another time we used
+Python. The problem I see with using only one language is that we risk
+turning the course into a "how to use language X" course rather than a
+course in learning computing concepts, and using a given language to
+demonstrate the concepts. On the other hand, there is no doubt that a
+major component of learning to be a competent programmer is learning
+the ins and outs and specific features of a given language.
+
+We will talk about this during the first class and we will decide how
+to proceed this year. My present inclination is to use Python, Matlab,
+R and perhaps even C to demonstrate concepts in the course, and to
+allow students to submit assignments in any of these languages. As I
+said though we will talk about this during our first meeting and
+decide what is best for our class this year.
+
+* Which operating system(s)?
+
+We will be using Unix in the course. The Macintosh OS is unix-based,
+so if you have a mac (and a reasonably recent version of the OS), you
+can use that. If not then I suggest you use GNU/Linux. I won't say you
+can't use Microsoft Windows, but please know that I have no expertise
+with Windows, and I will not be able to help you except to say "stop
+using Windows". We will have a discussion and a tutorial session at
+the beginning of the course about how best to set up your computer to
+use GNU/Linux. You will have several choices.
+
+* Why learn to code?
+
+Learning how to program will significantly enhance your ability to
+conduct scientific research today and in the future. Programming
+skills will provide you with the ability to go beyond what is
+available in pre-packaged analysis tools, and code your own custom
+data processing, analysis and visualization pipelines.
+
+Learning to code is probably one of the most useful general skills you
+can learn as a scientist today. You will learn how to think
+computationally and algorithmically about your experiments and your
+data. You will learn to take full advantage of the enormous
+computational resources available to you --- today's laptops are more
+powerful than the multi-million dollar supercomputers of the 1980s and
+90s.
+
+* List of Topics
+
+1. Introduction, setting up your computing environment
+2. Basic Types, Operators & Expressions
+3. Functions
+4. Complex Data Types and Structures
+5. File input and output
+6. Graphical displays of data
+7. Document processing & reproducible research
+8. Optimization & Gradient Descent
+9. Signals & Sampling Theory
+10. Fourier Analysis & Filtering
+11. Resampling & Bootstrapping
+12. Parallel Computing
+A1. Appendix 1: Digital Representation of Data
+
+* Next steps
+
+Stay tuned... we are going to have fun and learn a lot!
+
+If you already know how to set yourself up to use GNU/Linux, then go
+ahead and complete the setup. I suggest Debian Wheezy or a Debian
+variant such as Ubuntu or Linux Mint. If you know what you're doing,
+feel free to use some other distribution.
+
+My plan more generally is to provide students with a VirtualBox
+virtual appliance running Debian linux that has all of the tools we'll
+be using pre-installed. You can download [[https://www.virtualbox.org][VirtualBox]] (it's free) and
+import the appliance either onto your laptop's hard disk or onto an
+external drive of your choosing. Then you can run Debian in a virtual
+machine without disturbing your existing operating system.
+
+The course notes will be posted online as we go.
+
+If you have questions about the course, please get in touch with me
+at: paul [at] gribblelab [dot] org, or just stop by my office
+(NSC 228) and/or lab (NSC 245G)
+
+* Start Date & Location
+
+- Mondays 2:30---4:30pm in STH 3166, and Wednesdays 2:00---4:00 pm in SSC 8440
+- start date: Monday, September 9, 2013
+
+* These notes
+
+These notes can be viewed (and downloaded) in their entirety from a
+[[https://github.com][github]] repository here: [[https://github.com/paulgribble/SciComp][SciComp]]
+
+** Ideas?
+
+Do you have ideas about how to improve this? Please get in touch, send
+me an email at *paul [at] gribblelab [dot] org*
+
+-----
+
+[[http://imgs.xkcd.com/comics/the_general_problem.png]]
+[ [[http://www.xkcd.com/974/][xkcd 974]] ]

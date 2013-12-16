@@ -1,0 +1,61 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 13
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Variance of a vector
+
+If we have a vector $X$ containing $n$ values, then the unbiased
+[[http://en.wikipedia.org/wiki/Variance#Sample_variance][sample variance]] $s^{2}$ is:
+
+\begin{equation}
+s^{2} = \frac{1}{n-1} \sum_{i=1}^{n} \left( X_{i} - \bar{X} \right)^{2}
+\end{equation}
+
+where $\bar{X}$ is the mean of the vector.
+
+In MATLAB, Python (NumPy) and R there are built-in functions for
+computing the variance of a vector. Conveniently, in all three
+languages the function is called =var()=.
+
+In MATLAB:
+#+BEGIN_SRC octave
+x = [2,1,5,4,8,3,4,3];
+var(x)
+
+ans =
+
+    4.5000
+#+END_SRC
+
+In Python / NumPy: (started using =ipython --pylab=)
+#+BEGIN_SRC python
+x = array([2,1,5,4,8,3,4,3], 'float')
+var(x, ddof=1)
+Out[2]: 4.5
+#+END_SRC
+
+Note above for the Python / NumPy function =var()= the default is for
+the function to compute the biased variance, that is, using a
+denominator equal to $n$ not $n-1$. To force the unbiased variance we
+have to pass the optional argument =ddof= and set it to 1.
+
+In R:
+#+BEGIN_SRC R
+x <- c(2,1,5,4,8,3,4,3)
+var(x)
+[1] 4.5
+#+END_SRC
+
+* from scratch
+
+Write a function called =myvar()= that computes the unbiased variance
+of a list of numbers. Do it from scratch, in other words don't use the
+built-in functions =var()= or =mean()=.
+
+[[file:e13sol.html][solutions]]

@@ -1,0 +1,30 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 37 solutions
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:t html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/e37.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+* MATLAB
+e37.m
+#+INCLUDE: "../code/e37.m" src octave
+
+* iPython
+e37.py
+#+INCLUDE: "../code/e37.py" src python
+
+* R
+e37.R
+#+INCLUDE: "../code/e37.R" src r
+
+* C
+e37.c
+#+INCLUDE: "../code/e37.c" src c
+

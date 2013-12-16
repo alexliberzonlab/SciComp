@@ -1,0 +1,25 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 31
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:2
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Spectrum
+
+The file [[file:code/e31data.txt][e31data.txt]] contains Optotrak measurements of a single-joint elbow rotation over time. The angle between the upper and lower arm (in radians) was sampled at 200 Hz. Here is a plot of the data file:
+
+#+ATTR_HTML: width="600"
+[[file:code/e31fig.jpg]]
+
+Answer the following questions about the data. Use whatever signal processing techniques you wish, to answer each question. Explain the signal processing steps you took, and why.
+
+What is the Nyquist frequency?
+
+Compute and plot the spectrum of the signal, showing what the signal power is at different frequencies.
+
+What does the spectrum reveal about this signal?
+

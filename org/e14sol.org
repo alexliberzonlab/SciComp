@@ -1,0 +1,88 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 14 solutions
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:t html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/e14.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+A note about this exercise. It turns out that solving the regression
+problem $Y = X \beta$ using the OLS equation $\hat{\beta} = \left(
+X^{\top}X \right)^{-1} X^{\top} Y$ is actually numerically not very
+efficient. In particular, taking the inverse of a matrix is typically
+not needed. There is a more advanced method in linear algebra called
+[[http://en.wikipedia.org/wiki/QR_decomposition][QR decomposition]] which is more efficient and more numerically stable
+than having to take the inverse directly. There's a blog post by John
+D. Cook that talks about this in some detail: [[http://www.johndcook.com/blog/2010/01/19/dont-invert-that-matrix/][Don't invert that matrix]].
+
+In MATLAB you can solve the regression equation $Ax=b$ more directly
+by using the /slash operator/:
+
+#+BEGIN_SRC octave
+x = A\b
+#+END_SRC
+
+In NumPy the equivalent is using the =linalg.lstsq()= function from the =linalg= submodule of NumPy:
+
+#+BEGIN_SRC python
+x = linalg.lstsq(a,b)
+#+END_SRC
+
+In R it's the =qr.solve()= function:
+
+#+BEGIN_SRC r
+x = qr.solve(A,b)
+#+END_SRC
+
+In any case, here are solutions using the full OLS equation from the
+exercise, for your reference. It's a good exercise at least to get you
+manipulating matrices and vectors.
+
+* Python
+e14.py
+#+INCLUDE: "../code/e14.py" src python
+
+* MATLAB / Octave
+e14.m
+#+INCLUDE: "../code/e14.m" src octave
+
+* R
+e14.R
+#+INCLUDE: "../code/e14.R" src r
+
+* C
+There are no built-in types for matrices in C. One can have
+multi-dimensional arrays but they are sort of hacked together as
+arrays of pointers to arrays. The best bet for doing matrix stuff in C
+is to use a third party library such as the [[http://www.gnu.org/software/gsl/][GNU Scientific Library]].
+
+To use this library you have to first download it to your machine, and
+then install it. There are installation instructions in the
+documentation. On my Mac I use [[http://brew.sh][Homebrew]] and I just install it by
+opening a Terminal and typing:
+
+#+BEGIN_EXAMPLE
+brew install gsl
+#+END_EXAMPLE
+
+Once installed, you have to link to the library once in your C code
+itself, by including the appropriate header, and second, when
+compiling, by linking to the library itself. See the sample code below
+for an example.
+
+The GSL has many, many useful functions and types for scientific
+programming of all kinds, there is a table of contents [[http://www.gnu.org/software/gsl/manual/html_node/][here]]. Each section has code examples to help get you on your way.
+
+There is also a library called [[http://apophenia.info/][Apophenia]] and a companion book [[http://modelingwithdata.org/about_the_book.html][Modeling
+With Data]] (and [[http://modelingwithdata.org/arch/][blog]]) by Ben Klemens, that provides a rich statistical
+library in C.
+
+e14.c
+#+INCLUDE: "../code/e14.c" src c
+

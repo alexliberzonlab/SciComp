@@ -1,0 +1,42 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 5
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* temperature conversion table
+
+Some people use an approximate formula for quickly converting
+Fahrenheit ($F$) to Celsius ($C$):
+
+\begin{equation}
+	C \approx \hat{C} = (F-30)/2
+\end{equation}
+
+Write a program that prints three columns: $F$, $C$ and the
+approximate value of $\hat{C}$. The table should print for values of
+$F$ from 0 to 100, in steps of 10 degrees, each to two decimal places.
+
+Your program output should look like this:
+
+#+BEGIN_SRC example
+Fahrenheit Celsius C
+      0.00  -17.78 -15.00
+     10.00  -12.22 -10.00
+     20.00   -6.67  -5.00
+     30.00   -1.11   0.00
+     40.00    4.44   5.00
+     50.00   10.00  10.00
+     60.00   15.56  15.00
+     70.00   21.11  20.00
+     80.00   26.67  25.00
+     90.00   32.22  30.00
+#+END_SRC
+
+[[file:e05sol.html][solutions]]
+
+

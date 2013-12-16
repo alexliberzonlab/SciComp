@@ -1,0 +1,24 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 18 solutions
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:t html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/e18.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+* Python
+e18.py
+#+INCLUDE: "../code/e18.py" src python
+
+* MATLAB / Octave
+e18.m
+#+INCLUDE: "../code/e18.m" src octave
+
+* R
+to come...

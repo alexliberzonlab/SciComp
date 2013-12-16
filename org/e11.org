@@ -1,0 +1,63 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 11
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* estimate pi using monte carlo method
+
+The wikipedia article about pi ([[http://en.wikipedia.org/wiki/Pi#Geometry_and_trigonometry][here]]) describes a monte carlo method
+of estimating pi that involves repeated sampling from a random
+distribution.
+
+The basic idea is to imagine a circle of radius $r$ inscribed inside a
+square with side length $2r$. Now imagine placing a dot at some random
+location within the square. Sometimes the dot will be inside the
+circle and sometimes it will not. If you count the number of dots that
+land inside the circle and divide that by the total number of dots,
+that ratio ought to equal $\frac{\pi}{4}$.
+
+As an exercise, implement this method of estimating pi. Write the
+program so that you can use any number of random dots $n$. Start with
+1000 dots and then try larger numbers. See how close you can get to
+the actual value of $\pi$. Here are the [[http://www.geom.uiuc.edu/~huberty/math5337/groupe/digits.html][first 100,000 digits]] of $\pi$.
+
+Note that this algorithm is not a very efficient or fast way of
+getting the digits of $\pi$, but it's a fun programming exercise
+nevertheless and a way to get you coding.
+
+*Hint*: you will need a function that generates random numbers.
+
+In MATLAB and Octave, the =rand()= function samples from a uniform
+(pseudo)random distribution over the interval $(0,1)$. Typing =rand=
+will return a single random value.
+
+In R, the =runif()= function does this. Typing =runif(1)= will return
+a single random value.
+
+In Python, there is a function called =rand()= in the SciPy module, so
+you can load it using =from scipy import rand=. Typing =rand()= will
+return a single random value.
+
+In C there is a =rand()= function but you will have to =#include
+<stdlib.h>= to access it. In C the =rand()= function returns an
+integer between 0 and =RAND_MAX= (a system-specific defined number) so
+to get a single floating point value between 0 and 1 you should do
+something like =(double) rand() / RAND_MAX=
+
+*Hint*: to determine whether each point is inside or outside of the
+circle you can compute the distance between the point and the centre
+of the circle. If this distance is greater than the radius of the
+circle, it must be outside of the circle. Using the [[http://en.wikipedia.org/wiki/Pythagorean_theorem][Pythagorean
+theorem]] you can easily show that the equation for the distance $d$
+between two points $(x_{1},y_{1})$ and $(x_{2},y_{2})$ is:
+
+\begin{equation}
+d = \sqrt{(x_{2}-x_{1})^{2} + (y_{2}-y_{1})^{2}}
+\end{equation}
+
+[[file:e11sol.html][solutions]]

@@ -1,0 +1,95 @@
+#+STARTUP: showall
+
+#+TITLE:     4. Complex Data Types
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: html:t num:t toc:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/index.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+We have seen numeric data types, characters and strings so far. We can
+also collect several single values together in complex data types to
+keep track of collections of things. These can be ordered or unordered. 
+
+Typically ordered types are things like lists, arrays, matrices,
+vectors, etc... in other words, collections of things where the order
+in the sequence matters, and in which you can access particular
+elements by their location in the sequence.
+
+One can also have unordered collections of things, where there is no
+inherent order of things, and you can access particular elements by
+their name, and not their location.
+
+* Ordered (sequential) data types
+- Python list and tuple
+- NumPy array vs matrix
+- MATLAB array and matrix
+- R vector, matrix and data frame
+- C array
+
+* Unordered collections of named elements
+- Python dictionary
+- MATLAB structure
+- R list
+- C struct
+
+* Using complex data types
+
+Complex data types such as lists, arrays and matrices are useful in a number of situations:
+
+- manipulating entire chunks of data as a unit, e.g. matrix algebra
+- repeated operations on a set of data where reading each item from a
+  file over and over again is slower than just loading it into memory
+- plotting data
+- doing statistics on data
+- interactively exploring data
+
+A typical workflow with scientific data is somethine like the following:
+
+1. load data from files into memory, in the form of variables that are
+   complex data types (lists, arrays, matrices, data frames, etc)
+2. apply pre-processing steps to your data (smoothing, averaging,
+   grouping, etc)
+3. interactively explore your data by plotting things, rearranging
+   items, taking averages, doing statistics, etc
+4. perhaps save some intermediate representation of your data so that
+   next time you don't have to load things up from scratch
+5. decide on a set of canonical analyses to apply to your data for
+   your current project (e.g. writing a paper)
+6. decide on a set of canonical plots to generate for your project
+   (e.g. your paper)
+
+The choice of how to represent your data (i.e. what kind of data type
+to use) can have consequences for how easy or difficult it is to
+perform certain operations.
+
+For example if your data are time series, like (x,y) hand position
+over time for some number of trials (movements), then probably storing
+each trial as a matrix would be a sensible idea (n rows by 2 columns,
+where each row is a time point and the two columns are x and y
+position).
+
+In class we will live demo the different kinds of complex data types
+you will find most useful, and we will go through some exercises that
+are designed to get you comfortable with manipulating data.
+
+* Readings
+- have a look through the [[http://wiki.scipy.org/Tentative_NumPy_Tutorial][NumPy Tutorial]] on arrays
+- look at [[http://openbookproject.net/thinkcs/python/english2e/ch09.html][chapter 9]] (lists) and [[http://openbookproject.net/thinkcs/python/english2e/ch12.html][chapter 12]] (dictionaries) of HTTLACS
+- [[http://daleylab.org/lab/][Mark Daley]] runs an undergraduate computer science course for non-CS
+  biologists, you can look at his notes for [[https://dl.dropboxusercontent.com/u/8011180/2120/class8.html][Class #8]] (lists), [[https://dl.dropboxusercontent.com/u/8011180/2120/class9.html][Class #9]]
+  (Arrays) and [[https://dl.dropboxusercontent.com/u/8011180/2120/class10.html][Class # 10]] (Tuples)
+- MATLAB users can look through this tutorial on [[http://www.mathworks.com/company/newsletters/articles/matrix-indexing-in-matlab.html][Matrix Indexing in MATLAB]]
+- [[http://www.statmethods.net/input/datatypes.html][R Data Types]]
+- [[http://www.gribblelab.org/CBootcamp/6_Complex_Data_Types.html][Complex Data Types in C]]
+
+* Exercises
+- [[file:exercises.html][exercises]] 12, 13, 14 and 15 all make use of complex data types.
+
+* Assignment
+- [[file:a02.html][assignment 2]] on sorting is due no later than Friday Oct 18, 23:59:59 EDT. For your reference here is [[http://tycho.usno.navy.mil/simpletime.html][US Naval Observatory Master Clock Time]].

@@ -1,0 +1,54 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 12
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Mean of a vector
+
+If we have a vector $X$ containing $n$ values, then the mean $\bar{X}$
+is:
+
+\begin{equation}
+\bar{X} = \frac{1}{n} \sum_{i=1}^{N} \left( X_{i} \right)
+\end{equation}
+
+In MATLAB, Python (NumPy) and R there are built-in functions for
+computing the mean of a vector. Conveniently, in all three languages
+the function is called =mean()=.
+
+In MATLAB:
+#+BEGIN_SRC octave
+x = [2,1,5,4,8,3,4,3];
+mean(x)
+
+ans =
+
+    3.7500
+#+END_SRC
+
+In Python / NumPy: (started using =ipython --pylab=)
+#+BEGIN_SRC python
+x = array([2,1,5,4,8,3,4,3], 'float')
+mean(x)
+Out[2]: 3.75
+#+END_SRC
+
+In R:
+#+BEGIN_SRC R
+x <- c(2,1,5,4,8,3,4,3)
+mean(x)
+[1] 3.75
+#+END_SRC
+
+* from scratch
+
+Write a function called =mymean()= that computes the mean of a list of
+numbers. Do it from scratch, in other words don't use the built-in
+function =mean()=.
+
+[[file:e12sol.html][solutions]]

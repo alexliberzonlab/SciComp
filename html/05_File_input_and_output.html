@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>5. File input and output</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="5. File input and output"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="fall 2013"/>
+<meta name="author" content="Paul Gribble"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="mystyle.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+ <a accesskey="h" href="http://www.gribblelab.org/scicomp/index.html"> UP </a>
+ |
+ <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
+</div>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">5. File input and output</h1>
+
+
+
+<hr/>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Reading plain text files</a></li>
+<li><a href="#sec-2">2 Reading binary files</a></li>
+<li><a href="#sec-3">3 Reading some common file formats</a></li>
+<li><a href="#sec-4">4 Saving data to files</a></li>
+<li><a href="#sec-5">5 Text (ascii) or Binary?</a></li>
+<li><a href="#sec-6">6 Exercises</a></li>
+</ul>
+</div>
+</div>
+
+<hr/>
+
+<p>
+Most of the time you will be writing programs that analyse data ---
+whether those data are collected from experiments, or generated by
+models and simulations. We will need to be able to read in data from a
+file. It will also be useful to be able to write data out to a file.
+</p>
+<p>
+<a href="http://wiki.scipy.org/Cookbook/InputOutput">This page</a> is a useful summary of file input/output operations in Python/NumPy/SciPy.
+</p>
+<p>
+For MATLAB see documentation pages for <a href="http://www.mathworks.com/help/matlab/data-import-and-export.html">data import and export</a>.
+</p>
+<p>
+For R there is useful documentation for <a href="http://cran.r-project.org/doc/manuals/r-release/R-data.html">R Data Import/Export</a>.
+</p>
+<p>
+For C see the section in the C Bootcamp on <a href="http://www.gribblelab.org/CBootcamp/10_Input_and_Output.html">Input and Output</a> or <a href="http://en.wikipedia.org/wiki/C_file_input/output">C file input/output</a> (Wikipedia) or <a href="http://en.wikibooks.org/wiki/C_Programming/File_IO">C Programming/File IO</a> (wikibooks).
+</p>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Reading plain text files</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+If your data are store in a plain text file (sometimes called an ascii
+file) then each language has built-in functions that we can use to
+read values.
+</p>
+<p>
+Let's say we have a plain text file called <a href="code/data05.txt">data05.txt</a> that looks like this:
+</p>
+
+
+
+<pre class="src src-example">2 3
+4 5
+6 7
+8 9
+</pre>
+
+
+<p>
+<b>Python / NumPy</b>
+</p>
+<p>
+The NumPy function <code>loadtxt()</code> is our friend
+here. Check out the help documentation for a full description. You can
+specify the variable type (e.g. "float" or "int", etc), and you can
+specify the delimiter that separates each column of data. The data are
+loaded into a NumPy array.
+</p>
+
+
+<pre class="src src-python">&gt;&gt;&gt; <span style="color: #a020f0;">from</span> numpy <span style="color: #a020f0;">import</span> loadtxt
+&gt;&gt;&gt; <span style="color: #a0522d;">data</span> = loadtxt(<span style="color: #8b2252;">"data05.txt"</span>, dtype=<span style="color: #8b2252;">"float"</span>, delimiter=<span style="color: #8b2252;">" "</span>)
+&gt;&gt;&gt; data
+array([[2, 3],
+       [4, 5],
+       [6, 7],
+       [8, 9]])
+&gt;&gt;&gt; <span style="color: #483d8b;">type</span>(data)
+&lt;<span style="color: #483d8b;">type</span> <span style="color: #8b2252;">'numpy.ndarray'</span>&gt;
+&gt;&gt;&gt; data[:,0]
+array([2, 4, 6, 8])
+&gt;&gt;&gt; data[:,1]
+array([3, 5, 7, 9])
+</pre>
+
+
+<p>
+<b>MATLAB / Octave</b>
+</p>
+<p>
+There is a rather general purpose function called <code>load()</code> that will
+load all kinds of files. It tries to auto-detect the file type and
+behave appropriately. See the help documentation for a full
+description of all of the options.
+</p>
+
+
+<pre class="src src-octave"><span style="color: #483d8b;">&gt;&gt;</span> data = <span style="color: #a020f0;">load</span>(<span style="color: #8b2252;">'data05.txt'</span>);
+<span style="color: #483d8b;">&gt;&gt;</span> data
+
+data =
+
+     2     3
+     4     5
+     6     7
+     8     9
+
+<span style="color: #483d8b;">&gt;&gt;</span> <span style="color: #a020f0;">whos</span> data
+  Name      Size            Bytes  Class     Attributes
+
+  data      4x2                64  double              
+
+<span style="color: #483d8b;">&gt;&gt;</span> data(:,1)
+
+<span style="color: #a0522d;">ans</span> =
+
+     2
+     4
+     6
+     8
+
+<span style="color: #483d8b;">&gt;&gt;</span> data(:,2)
+
+<span style="color: #a0522d;">ans</span> =
+
+     3
+     5
+     7
+     9
+</pre>
+
+
+<p>
+<b>R</b>
+</p>
+<p>
+In R your best option is to use the <code>read.table()</code> function, which
+loads data into a variable type called a <a href="http://www.r-tutor.com/r-introduction/data-frame">data frame</a>, which is a very
+useful type for storing data tables. See the help documentation for a
+summary of all of the optional arguments (there are many). One of the
+optional arguments is called <code>col.names</code> and allows you to specify the
+names of each column of data. This allows you, if you wish, to access
+the data by name rather than by column number (see example code
+below).
+</p>
+
+
+<pre class="src src-r">&gt; d &lt;- read.table(<span style="color: #8b2252;">"data05.txt"</span>, sep=<span style="color: #8b2252;">" "</span>, col.names=c(<span style="color: #8b2252;">"pizza"</span>,<span style="color: #8b2252;">"cheeseburger"</span>))
+&gt; d
+  pizza cheeseburger
+1     2            3
+2     4            5
+3     6            7
+4     8            9
+&gt; d[,1]
+[1] 2 4 6 8
+&gt; d[,2]
+[1] 3 5 7 9
+&gt; names(d)
+[1] <span style="color: #8b2252;">"pizza"</span>        <span style="color: #8b2252;">"cheeseburger"</span>
+&gt; d[,<span style="color: #8b2252;">"pizza"</span>]
+[1] 2 4 6 8
+&gt; d[,<span style="color: #8b2252;">"cheeseburger"</span>]
+[1] 3 5 7 9
+&gt; d$pizza
+[1] 2 4 6 8
+&gt; d$cheeseburger
+[1] 3 5 7 9
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Reading binary files</h2>
+<div class="outline-text-2" id="text-2">
+
+
+<p>
+A <i>binary</i> file, unlike a plain text file, is not directly readable or
+recognizable. If you try to open a binary file in a text editor you
+will see what appears to be random characters. An ascii file contains
+sequences of <a href="http://en.wikipedia.org/wiki/Byte">bytes</a> (typically 8 <a href="http://en.wikipedia.org/wiki/Bit">bits</a>) that are interpreted, when the
+file is loaded by a text editor, as ascii characters. In contrast, a
+binary file contains bits and bytes that do not necessarily correspond
+to ascii characters. For example, try opening a MS Turd file in a
+plain text editor and you will see lots of interesting stuff
+corresponding to custom binary representations of various properties
+of your document.
+</p>
+<p>
+Why binary files? When you store data in a binary format, it typically
+results in a smaller file than when it is stored in a plaintext
+(ascii) file. Binary files are typically faster to read and write, as
+well.
+</p>
+<p>
+Ascii files follow a prescribed format (sequences of 8-bit bytes,
+interpreted as ascii codes). In contrast, binary files can follow any
+arbitrary format that you want. If you keep the format hidden
+(proprietary) then you can make it so only your program(s) can open
+the data files, and nobody else can (unless they know the
+format). This is not a good thing in science, however, if we want our
+work to be open and available to all. If you store data in a binary
+format then (in my opinion) you ought to also provide the binary
+format, so that the file is accessible to all.
+</p>
+<p>
+<b>An Example</b>
+</p>
+<p>
+There is a file you can download called <a href="code/data05.bin">data05.bin</a> that is in a custom
+binary format (that I made up for the purposes of this example). There
+is a header, followed by the data. The first 16 bytes of the header
+contains a character string (16 characters long). The last two bytes
+contain integers that tell us how many rows and columns (in that
+order) of data there are. Each integer is 4 bytes long. So the total
+header is 24 bytes long. The data follow this and are 4-byte integers
+each. It is ordered row-wise, that is row 1 (v1,v2) followed by row 2
+(v1,v2), etc. For those interested, I generated this data file in C
+using this program: <a href="code/writebinarydata.c">writebinarydata.c</a>.
+</p>
+<p>
+Here is how we would read this file:
+</p>
+<p>
+<b>C</b>
+</p>
+
+
+<pre class="src src-C"><span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
+
+<span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">argc</span>, <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">argv</span>[]) {
+
+  <span style="color: #228b22;">FILE</span> *<span style="color: #a0522d;">fid</span> = fopen(<span style="color: #8b2252;">"data05.bin"</span>, <span style="color: #8b2252;">"r"</span>);
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">read the header</span>
+  <span style="color: #228b22;">char</span> <span style="color: #a0522d;">hs</span>[16];
+  fread(&amp;hs, 16, 1, fid);
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">rows</span>;
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">cols</span>;
+  fread(&amp;rows, 4, 1, fid);
+  fread(&amp;cols, 4, 1, fid);
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">read 5 integer values for each of two variables</span>
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">format is: v1 v2 v1 v2 v1 v2 v1 v2 v1 v2</span>
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">where v1,v2 are each 4 bytes long</span>
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">v1</span>[5];
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">v2</span>[5];
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>;
+  <span style="color: #a020f0;">for</span> (i=0; i&lt;rows; i++) {
+    fread(&amp;(v1[i]), 4, 1, fid);
+    fread(&amp;(v2[i]), 4, 1, fid);
+  }
+  fclose(fid);
+
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">print to screen</span>
+  <span style="color: #a020f0;">for</span> (i=0; i&lt;16; i++) {
+    printf(<span style="color: #8b2252;">"%c"</span>, hs[i]);
+  }
+  printf(<span style="color: #8b2252;">"\nrows=%d, cols=%d\n"</span>, rows, cols);
+  <span style="color: #a020f0;">for</span> (i=0; i&lt;rows; i++) {
+    printf(<span style="color: #8b2252;">"%3d %3d\n"</span>, v1[i], v2[i]); 
+  }
+
+  <span style="color: #a020f0;">return</span> 0;
+}
+</pre>
+
+
+<p>
+<b>MATLAB</b>
+</p>
+
+
+<pre class="src src-octave"><span style="color: #483d8b;">&gt;&gt;</span> fid = fopen(<span style="color: #8b2252;">'data05.bin'</span>, <span style="color: #8b2252;">'r'</span>);
+<span style="color: #483d8b;">&gt;&gt;</span> hs = fread(fid,16,<span style="color: #8b2252;">'int8=&gt;char'</span>)';
+<span style="color: #483d8b;">&gt;&gt;</span> rows = fread(fid, 1, <span style="color: #8b2252;">'int'</span>);
+<span style="color: #483d8b;">&gt;&gt;</span> cols = fread(fid, 1, <span style="color: #8b2252;">'int'</span>);
+<span style="color: #483d8b;">&gt;&gt;</span> d = fread(fid, rows*cols, <span style="color: #8b2252;">'int'</span>);
+<span style="color: #483d8b;">&gt;&gt;</span> d = reshape(d,cols,rows)';
+<span style="color: #483d8b;">&gt;&gt;</span> disp([<span style="color: #8b2252;">'header = '</span>,hs]);
+header = October 15, 2013
+<span style="color: #483d8b;">&gt;&gt;</span> disp([<span style="color: #8b2252;">'rows = '</span>,num2str(rows),<span style="color: #8b2252;">' cols = '</span>,num2str(cols)]);
+rows = 5 cols = 2
+<span style="color: #483d8b;">&gt;&gt;</span> d
+
+d =
+
+     1     2
+     2     4
+     3     6
+     4     8
+     5    10
+
+</pre>
+
+
+<p>
+<b>Python / NumPy</b>
+</p>
+
+
+<pre class="src src-python">&gt;&gt;&gt; <span style="color: #a020f0;">from</span> numpy <span style="color: #a020f0;">import</span> *
+&gt;&gt;&gt; <span style="color: #a0522d;">fd</span> = <span style="color: #483d8b;">open</span>(<span style="color: #8b2252;">"data05.bin"</span>, <span style="color: #8b2252;">"r"</span>)
+&gt;&gt;&gt; <span style="color: #a0522d;">hs</span> = fromfile(fd, dtype=<span style="color: #8b2252;">"&lt;i1"</span>, count=16)
+&gt;&gt;&gt; <span style="color: #a0522d;">hs</span> = <span style="color: #8b2252;">''</span>.join(<span style="color: #483d8b;">map</span>(<span style="color: #483d8b;">chr</span>,<span style="color: #483d8b;">list</span>(hs)))
+&gt;&gt;&gt; <span style="color: #a0522d;">rows</span> = fromfile(fd, dtype=<span style="color: #8b2252;">"&lt;i4"</span>, count=1)[0]
+&gt;&gt;&gt; <span style="color: #a0522d;">cols</span> = fromfile(fd, dtype=<span style="color: #8b2252;">"&lt;i4"</span>, count=1)[0]
+&gt;&gt;&gt; <span style="color: #a0522d;">d</span> = fromfile(fd, dtype=<span style="color: #8b2252;">"&lt;i4"</span>, count=(rows*cols))
+&gt;&gt;&gt; <span style="color: #a0522d;">d</span> = d.reshape((rows,cols))
+&gt;&gt;&gt; fd.close()
+&gt;&gt;&gt; <span style="color: #a020f0;">print</span> <span style="color: #8b2252;">"header = %s"</span> % (hs)
+<span style="color: #a0522d;">header</span> = October 15, 2013
+&gt;&gt;&gt; <span style="color: #a020f0;">print</span> <span style="color: #8b2252;">"rows = %d, cols = %d"</span> % (rows, cols)
+<span style="color: #a0522d;">rows</span> = <span style="color: #a0522d;">5</span>, <span style="color: #a0522d;">cols</span> = 2
+&gt;&gt;&gt; <span style="color: #a020f0;">print</span> d
+[[ 1  2]
+ [ 2  4]
+ [ 3  6]
+ [ 4  8]
+ [ 5 10]]
+</pre>
+
+
+<p>
+<b>R</b>
+</p>
+
+
+<pre class="src src-r">&gt; fd &lt;- file(<span style="color: #8b2252;">"data05.bin"</span>, <span style="color: #8b2252;">"rb"</span>)
+&gt; hs &lt;- rawToChar(as.raw(readBin(fd, integer(), n=16, size=1)))
+&gt; rows &lt;- readBin(fd, integer(), n=1, size=4)
+&gt; cols &lt;- readBin(fd, integer(), n=1, size=4)
+&gt; d &lt;- readBin(fd, integer(), n=(rows*cols), size=4)
+&gt; d &lt;- matrix(d, nrow=rows, ncol = cols, byrow=TRUE)
+&gt; close(fd)
+&gt; cat(<span style="color: #8b2252;">"header = "</span>, hs, <span style="color: #8b2252;">"\n"</span>)
+header =  October 15, 2013 
+&gt; cat(<span style="color: #8b2252;">"rows ="</span>, rows, <span style="color: #8b2252;">"cols ="</span>, cols, <span style="color: #8b2252;">"\n"</span>)
+rows = 5 cols = 2
+&gt; d
+     [,1] [,2]
+[1,]    1    2
+[2,]    2    4
+[3,]    3    6
+[4,]    4    8
+[5,]    5   10
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Reading some common file formats</h2>
+<div class="outline-text-2" id="text-3">
+
+
+<p>
+Each language has its own particular binary file format for storing
+data. MATLAB saves data in binary files with a <code>.mat</code> suffix. The
+<code>save()</code> command does this. The <code>load()</code> command loads <code>.mat</code> files
+back into memory.
+</p>
+<p>
+In R, <code>write.table()</code> will save a data frame to a file, in an ascii
+format. The <code>save()</code> function will save data in a binary format
+specific to R. It can be loaded again using the <code>load()</code> command.
+</p>
+<p>
+In Python, NumPy has a function called <code>save()</code> that will save an
+array to a binary file in NumPy <code>.npy</code> format. The <code>savez()</code> function
+will save several arrays into a binary <code>.npz</code> archive. The <code>load()</code>
+function will load the data back into NumPy.
+</p>
+<p>
+In plain Python (no NumPy involved) there is a way of saving Python
+variables to binary files, in a format called a <code>pickle</code>. See <a href="http://docs.python.org/2/library/pickle.html">pickle - Python object serialization</a> for the details.
+</p>
+<p>
+In C, there is no standard binary format for files, it's up to you to
+design your own.
+</p>
+<p>
+<b>Other common binary file types</b>
+</p>
+<p>
+Each language has the ability to load a number of other commonly used
+binary file types, including image files (jpeg, tiff, etc) and some
+other common types such as Microsoft Excel files.
+</p>
+<p>
+For R, see <a href="http://cran.r-project.org/doc/manuals/r-release/R-data.html">R Data Import/Export</a> for details of the different formats R
+can load. There is even a package to read and write MATLAB <code>.mat</code>
+files, see <a href="http://cran.r-project.org/web/packages/R.matlab/">Package R.matlab</a>.
+</p>
+<p>
+For Python / NumPy, one option to know about is the <a href="http://pandas.pydata.org">pandas</a>
+library. There are a range of file input/output options listed here:
+<a href="http://pandas.pydata.org/pandas-docs/stable/io.html">IO Tools</a>. NumPy also has a number of different file i/o options, see
+<a href="http://docs.scipy.org/doc/numpy/reference/routines.io.html">Input and output</a> for details.
+</p>
+<p>
+In MATLAB there is a function called <code>xlsread()</code> that will read MS
+Excel files, see <a href="http://www.mathworks.com/help/matlab/ref/xlsread.html">here</a> for documentation.
+</p>
+<p>
+For common neuroimaging file formats, e.g. NIfTI and ANALYSE, you can
+find libraries and third-party files for each language that will read
+and write to these formats. Just search on google.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Saving data to files</h2>
+<div class="outline-text-2" id="text-4">
+
+
+<p>
+Each of the file reading methods discussed above has a matching file
+writing function, just see the corresponding documentation for
+details.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Text (ascii) or Binary?</h2>
+<div class="outline-text-2" id="text-5">
+
+
+<p>
+The question of which file format to use as you go forward and write
+programs for analysing your data is an interesting one to
+consider. For long-term archival purposes, I would suggest storing
+your data in an ascii format, so that it remains readable by human
+eyes. There will always be programs to read in ascii files. The risk
+of storing data in a binary format is that (a) whatever program you
+used to save the data will no longer be easily accessible in the
+future, and/or (b) you may not even remember what the binary format
+is. The disadvantage of storing data in an ascii or plain text format
+is that the files will be larger than if they were stored in a binary
+format. The availability and affordability of large amounts of storage
+is growing so quickly however that I don't think one has to worry too
+much about this problem.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Exercises</h2>
+<div class="outline-text-2" id="text-6">
+
+
+<p>
+<a href="exercises.html">Exercises</a> 16, 17 and 18 will get you reading in files of different
+formats.
+</p></div>
+</div>
+</div>
+
+<div id="postamble">
+<hr />Paul Gribble | fall 2013<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
+</div>
+</body>
+</html>

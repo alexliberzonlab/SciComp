@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Scientific Computing (Psychology 9040A)</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Scientific Computing (Psychology 9040A)"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="fall 2013"/>
+<meta name="author" content="Paul Gribble"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="mystyle.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+ <a accesskey="h" href="http://www.gribblelab.org/scicomp/index.html"> UP </a>
+ |
+ <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
+</div>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Scientific Computing (Psychology 9040A)</h1>
+
+
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Goals of the course</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+The goal of this one-semester graduate seminar is to provide you with
+skills in scientific computing &mdash; tools and techniques that you can use
+in your own research. We will focus on learning to think about
+experiments and data in a computational framework, and we will learn
+to implement specific data processing and analysis algorithms using a
+high-level programming language.
+</p>
+<p>
+The course is designed to achieve four primary goals:
+</p>
+<ol>
+<li>to teach you to program in a high-level language such as
+   Python, Matlab, R, and C.
+</li>
+<li>to introduce you to Unix (either via the Mac, or GNU/Linux), and to
+   some common computing tools that will help you become more
+   efficient with using your computer for research.
+</li>
+<li>to introduce you to some common computational techniques
+   (not necessarily "statistics" per se) for data processing and
+   analysis &mdash; e.g. curve-fitting, simulation, optimization &amp; gradient
+   descent, frequency-domain analysis and filtering, parallel
+   programming, interacting with hardware, organization and storage of
+   data, programming GUIs (graphical user interfaces), and others.
+</li>
+<li>to get you to think computationally and algorithmically
+   about data processing, analysis, modeling and visualization.
+</li>
+</ol>
+
+
+<p>
+Even if you don't become a full-fledged programmer yourself, you will
+have learned enough to know what is possible given today's
+computational resources. This will enable you in the future to design
+cutting edge experiments and data analysis approaches that take full
+advantage of the computational resources available to you &mdash; whether
+programmed yourself, or by programmers and technicians that you hire.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">Exercises, Assignments and Grades</h2>
+<div class="outline-text-2" id="text-2">
+
+
+<p>
+Each week we will go over a series of programming exercises that are
+designed to get you going with the concepts we cover each week. The
+exercises are not graded. The idea is for you try have a go, and when
+you have problems, questions, etc, ask each other, and ask me for
+help. The best way to learn programming is to program.
+</p>
+<p>
+Each week I will set an assignment that will be graded. The course
+grade will be based on the weekly assignments (90% weighting) and a
+"course participation" mark (10% weighting).
+</p>
+<p>
+The assignments will have several components. Some components will be
+easy, some will be more difficult, and some assignments may contain
+components that are rather challenging. Do your best, and don't be
+afraid to go to each other for help. I'm all in favour of students
+working together on assignments. I just don't want to find out that
+you are handing in work that is not your own. I'm perfectly willing to
+give you hints, so don't hesitate to come to me for help (although do
+make sure that you've given it a good try yourself, first&hellip; read this
+blog post, <a href="http://mattgemmell.com/2008/12/08/what-have-you-tried/">What have you tried?</a> by Matt Gemmell &mdash; it's aimed at
+professional programmers but I think it applies equally well to us
+all, in whatever field we work in).
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">Which programming language(s)?</h2>
+<div class="outline-text-2" id="text-3">
+
+
+<p>
+The issue of which language to use in the course is an interesting
+one. In the past I have taught the course using only one language to
+demonstrate concepts. Once we used Matlab. Another time we used
+Python. The problem I see with using only one language is that we risk
+turning the course into a "how to use language X" course rather than a
+course in learning computing concepts, and using a given language to
+demonstrate the concepts. On the other hand, there is no doubt that a
+major component of learning to be a competent programmer is learning
+the ins and outs and specific features of a given language.
+</p>
+<p>
+We will talk about this during the first class and we will decide how
+to proceed this year. My present inclination is to use Python, Matlab,
+R and perhaps even C to demonstrate concepts in the course, and to
+allow students to submit assignments in any of these languages. As I
+said though we will talk about this during our first meeting and
+decide what is best for our class this year.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">Which operating system(s)?</h2>
+<div class="outline-text-2" id="text-4">
+
+
+<p>
+We will be using Unix in the course. The Macintosh OS is unix-based,
+so if you have a mac (and a reasonably recent version of the OS), you
+can use that. If not then I suggest you use GNU/Linux. I won't say you
+can't use Microsoft Windows, but please know that I have no expertise
+with Windows, and I will not be able to help you except to say "stop
+using Windows". We will have a discussion and a tutorial session at
+the beginning of the course about how best to set up your computer to
+use GNU/Linux. You will have several choices.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5">Why learn to code?</h2>
+<div class="outline-text-2" id="text-5">
+
+
+<p>
+Learning how to program will significantly enhance your ability to
+conduct scientific research today and in the future. Programming
+skills will provide you with the ability to go beyond what is
+available in pre-packaged analysis tools, and code your own custom
+data processing, analysis and visualization pipelines.
+</p>
+<p>
+Learning to code is probably one of the most useful general skills you
+can learn as a scientist today. You will learn how to think
+computationally and algorithmically about your experiments and your
+data. You will learn to take full advantage of the enormous
+computational resources available to you &mdash; today's laptops are more
+powerful than the multi-million dollar supercomputers of the 1980s and
+90s.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6">List of Topics</h2>
+<div class="outline-text-2" id="text-6">
+
+
+<ol>
+<li>Introduction, setting up your computing environment
+</li>
+<li>Basic Types, Operators &amp; Expressions
+</li>
+<li>Functions
+</li>
+<li>Complex Data Types and Structures
+</li>
+<li>File input and output
+</li>
+<li>Graphical displays of data
+</li>
+<li>Document processing &amp; reproducible research
+</li>
+<li>Optimization &amp; Gradient Descent
+</li>
+<li>Signals &amp; Sampling Theory
+</li>
+<li>Fourier Analysis &amp; Filtering
+</li>
+<li>Resampling &amp; Bootstrapping
+</li>
+<li>Parallel Computing
+</li>
+</ol>
+
+<p>A1. Appendix 1: Digital Representation of Data
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7">Next steps</h2>
+<div class="outline-text-2" id="text-7">
+
+
+<p>
+Stay tuned&hellip; we are going to have fun and learn a lot!
+</p>
+<p>
+If you already know how to set yourself up to use GNU/Linux, then go
+ahead and complete the setup. I suggest Debian Wheezy or a Debian
+variant such as Ubuntu or Linux Mint. If you know what you're doing,
+feel free to use some other distribution.
+</p>
+<p>
+My plan more generally is to provide students with a VirtualBox
+virtual appliance running Debian linux that has all of the tools we'll
+be using pre-installed. You can download <a href="https://www.virtualbox.org">VirtualBox</a> (it's free) and
+import the appliance either onto your laptop's hard disk or onto an
+external drive of your choosing. Then you can run Debian in a virtual
+machine without disturbing your existing operating system.
+</p>
+<p>
+The course notes will be posted online as we go.
+</p>
+<p>
+If you have questions about the course, please get in touch with me
+at: paul [at] gribblelab [dot] org, or just stop by my office
+(NSC 228) and/or lab (NSC 245G)
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-8" class="outline-2">
+<h2 id="sec-8">Start Date &amp; Location</h2>
+<div class="outline-text-2" id="text-8">
+
+
+<ul>
+<li>Mondays 2:30&mdash;4:30pm in STH 3166, and Wednesdays 2:00&mdash;4:00 pm in SSC 8440
+</li>
+<li>start date: Monday, September 9, 2013
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-9" class="outline-2">
+<h2 id="sec-9">These notes</h2>
+<div class="outline-text-2" id="text-9">
+
+
+<p>
+These notes can be viewed (and downloaded) in their entirety from a
+<a href="https://github.com">github</a> repository here: <a href="https://github.com/paulgribble/SciComp">SciComp</a>
+</p>
+
+</div>
+
+<div id="outline-container-9-1" class="outline-3">
+<h3 id="sec-9-1">Ideas?</h3>
+<div class="outline-text-3" id="text-9-1">
+
+
+<p>
+Do you have ideas about how to improve this? Please get in touch, send
+me an email at <b>paul [at] gribblelab [dot] org</b>
+</p>
+
+<hr/>
+
+<p>
+<img src="http://imgs.xkcd.com/comics/the_general_problem.png"  alt="http://imgs.xkcd.com/comics/the_general_problem.png" />
+[ <a href="http://www.xkcd.com/974/">xkcd 974</a> ]
+</p></div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<hr />Paul Gribble | fall 2013<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
+</div>
+</body>
+</html>

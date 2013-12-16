@@ -1,0 +1,29 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 6 solutions
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:t html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/e06.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+* Python
+e06.py
+#+INCLUDE: "../code/e06.py" src python
+
+* MATLAB / Octave
+e06.m
+#+INCLUDE: "../code/e06.m" src octave
+
+* R
+e06.R
+#+INCLUDE: "../code/e06.R" src R
+
+* C
+e06.c
+#+INCLUDE: "../code/e06.c" src C

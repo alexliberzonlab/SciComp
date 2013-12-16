@@ -1,0 +1,104 @@
+#+STARTUP: showall
+
+#+TITLE:     3. Functions
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: html:t num:t toc:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/index.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+Functions are one of the most useful programming facilities that you
+will run into because they allow you to make your code more
+/modular/. We have seen functions already, for example functions to
+print stuff to the screen like =print()= in Python, and =disp()= in
+MATLAB, functions for mathematics like =sqrt()=, and so on. The
+advantage of putting things like these into functions is that we avoid
+the need to write everything from scratch each time we want to repeat
+a common operation. Imagine if every time we wanted to take the square
+root of a number, we had to write an entire algorithm (like Newton's
+method) to do so. It would be ridiculous. By /encapsulating/ this
+operation into a function, all we need to do is write =sqrt()= and the
+program goes and looks up the definition of that function, and
+executes that code, without us having to type it in again, and again.
+
+Here we will be going through how to write our own functions to
+encapsulate our own operations, whatever they may be.
+
+You can even imagine a series of functions that you write to perform
+the various steps of your data analysis, so that each time you collect
+more data in your experiment, you simply have to type:
+
+#+BEGIN_SRC python
+go_my_analysis()
+#+END_SRC
+
+... and all of your data analysis will be repeated, including the
+incorporation of any new data that may be residing in your data
+directory. Of course you have to define what happens inside of
+=go_my_analysis()= for this to be useful. Maybe inside your
+=go_my_analysis()= function you have defined other functions like:
+
+#+BEGIN_SRC python
+load_all_data()
+filter_data()
+average_across_subjects()
+perform_statistics()
+generate_plots()
+save_processed_data()
+#+END_SRC
+
+You get the idea.
+
+The other situation where modularity in your code is useful, is for
+when you want to share code with other people (or use someone else's
+code). If you (or someone else) has a specific input/output
+functionality in mind, then you can swap in and out one of many
+potential functions that claim to achieve the desired functionality,
+as long as it preserves the input/output relationship(s) that you
+specify.
+
+For example, let's say you discover that as part of your data analysis
+you will need to compute the square root of a number, and let's
+pretend that you don't have a function to do so built in to your
+language. (In fact you do of course ... but for the purpose of this
+thought experiment let's imagine you don't.) The input/output
+requirements for your square root function are that it takes as input
+a single floating-point number and returns a single floating point
+number. Now you can go shopping, among your friends, colleagues, or on
+the internet, for an implementation of the square root function, and
+you can simply plug it in to your program and use it, as long as it
+takes a single floating-point number as input, and returns a single
+floating-point number as output. This specification is sometimes
+called the /function prototype/. You might find that several functions
+that you have found work equally well in terms of returning the
+correct answer, but that one in particular is way faster than the rest
+(perhaps it was written by a mathematician who knows some clever
+numerical tricks).
+
+Concepts that you should focus on in your readings, and that we will
+talk about in class, include:
+
+- how to define a function in your language of choice
+- specifying input arguments
+- specifying output arguments (return value(s))
+- variable scope
+- recursion
+
+* Readings
+- [[http://openbookproject.net/thinkcs/python/english2e/ch03.html][chapter 3]] of HTTLACS
+- [[http://openbookproject.net/thinkcs/python/english2e/ch05.html][chapter 5]] of HTTLACS
+- if you're using MATLAB have a look at [[http://www.mathworks.com/help/matlab/functions.html][Functions]] in the MATLAB
+  documentation online
+- if you're using R, have a look at [[http://cran.r-project.org/doc/manuals/R-intro.html#Writing-your-own-functions][Writing your own functions]] in the
+  CRAN R-intro tutorial
+
+* Exercises
+- [[file:exercises.html][exercises]] 8, 9 and 10 will get you writing functions.
+
+* Assignment
+work on [[file:a01.html][assignment 1]]

@@ -1,0 +1,29 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 5 solutions
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:t html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/e05.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+* Python
+e05.py
+#+INCLUDE: "../code/e05.py" src python
+
+* MATLAB / Octave
+e05.m
+#+INCLUDE: "../code/e05.m" src octave
+
+* R
+e05.R
+#+INCLUDE: "../code/e05.R" src R
+
+* C
+e05.c
+#+INCLUDE: "../code/e05.c" src C

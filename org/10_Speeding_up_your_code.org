@@ -1,0 +1,515 @@
+#+STARTUP: showall
+
+#+TITLE:     10. Speeding up your code
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: html:t num:t toc:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/index.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+We have already seen some examples in the course so far, of code that runs slowly and code that runs quickly. Here we'll discuss some of the things that contribute to the speed of your code, and strategies for speeding up your programs.
+
+* Array preallocation
+
+There are many cases in which we want to collect the results of many computations together into a single data structure, e.g. a vector or array. One way of doing this is to start with an empty array, and each time through the loop, add a value to it (and hence lengthening it). It turns out this way is very slow. What's much, much faster is to pre-allocate the array (and fill it with whatever values you want, e.g. zeros, or NaNs), and then set each value as you go through the loop to the result of your computation.
+
+Here is an example in MATLAB:
+
+#+BEGIN_SRC octave
+% let's compute the following formula
+% for values between 0 and n:
+%
+% f(i) = (i + f(i-1)) / n
+
+n = 1e5;
+
+% the slow way:
+%
+tic
+c = [0];
+for i=2:n
+  c = [c, (i + c(i-1)) / n];
+end
+toc
+%
+% on my laptop this takes 3.6421 seconds
+
+% the fast way, with array pre-allocation
+%
+tic
+c = zeros(1,n);
+for i=2:n
+  c(i) = (i + c(i-1)) / n;
+end
+toc
+%
+% on my laptop this takes 0.0014 seconds
+% this is over 2,500 times faster than the slow version
+#+END_SRC
+
+In the slow version, we start with an array of length 1 containing the number zero. Each time through the loop we concatenate the array with the next value, and in this way we "build up" the array.
+
+In the fast version, we pre-allocate an array of the required length, fill it with zeros, and then each time through the loop we simply assign the appropriate value to the appropriate array position.
+
+The reason the slow version is so slow, is that each time we concatenate the array, several steps take place:
+
+1. a new array is created that has length one greater than the old array
+2. the old array is copied into the new array
+3. the new value is copied to the end of the new array
+
+As you can imagine, when the array gets large, the copy operation can take a lot of time. It's inefficient to keep copying the array over and over again.
+
+With pre-allocation, there is no copying, only assignment, and only single values are assigned.
+
+
+* Vectorization
+
+Many functions in MATLAB, Python and R are "vectorized", that is, they can operate on array as if the function had been applied one by one to each element. An example is the =sqrt()= function.
+
+Here's an example where we have three long arrays, defining 3D points, and our task is compute the length of each vector:
+
+#+BEGIN_SRC octave
+n = 1e7;		% a big number
+x = rand(1,n); 	% array of random numbers
+y = rand(1,n); 	% array of random numbers
+z = rand(1,n); 	% array of random numbers
+
+% compute the norm of the 3-D vectors (x,y,z)
+
+% the slow way
+%
+tic
+norm_slow = zeros(1,n); % pre-allocate array
+for i=1:n
+  norm_slow(i) = sqrt(x(i)^2 + y(i)^2 + z(i)^2);
+end;
+toc
+%
+% on my laptop this takes 0.23 seconds
+
+% the vectorized way
+%
+tic
+norm_slow = sqrt(x.^2 + y.^2 + z.^2);
+toc
+%
+% on my laptop this takes 0.02 seconds
+% this is about 10 times faster than the slow version
+#+END_SRC
+
+When we implement this in a vectorized way, MATLAB (or Python or R) typically uses pre-compiled, optimized functions to execute that part of the code, instead of running it through the interpreter. When we use a for loop, everything happens at the interpreter layer.
+
+Two aspects of the code example are vectorized. First, we use the exponent operator in MATLAB on the entire vector =x=, =y=, and =z= (with the dot notation to denote element-by-element exponentiation): =x.^2=. This exponentiates the entire vector using precompiled optimized code under the hood. Then we use the =sqrt()= function which also takes the whole array as an argument. Again, optimized precompiled code is used on the entire array rather than stepping through the array in a for loop, at the interpreter level.
+
+Another salient example of vectorization is matrix algebra. The matrix algebra operators (e.g. matrix multiplication) make use of highly optimized, pre-compiled routines that are way faster than doing things by hand at the interpreter level, using for loops.
+
+Here is a code example:
+
+#+BEGIN_SRC octave
+% matrix multiplication
+%
+A = rand(400,500);
+B = rand(500,600);
+C = zeros(400,600);
+
+% the slow way, using for loops at the interpreter level
+%
+tic
+m = size(A,1);
+n = size(A,2);
+p = size(B,1);
+q = size(B,2);
+for i=1:m
+  for j=1:q
+    the_sum = 0;
+    for k=1:p
+      the_sum = the_sum + A(i,k)*B(k,j);
+    end
+    C(i,j) = the_sum;
+  end
+end
+toc
+%
+% on my laptop this takes 2.33 seconds
+
+% the fast way (vectorized)
+%
+C = zeros(400,600);
+tic
+C = A*B;
+toc
+%
+% on my laptop this takes 0.0018 seconds
+% this is over 1,000 times faster than the slow version
+#+END_SRC
+
+* Suppress output
+
+This one might seem obvious, but if you are doing something thousands or millions of times, and each time you print something to the screen, that will slow down your code. Here's an example:
+
+#+BEGIN_SRC octave
+% suppress output!
+
+% slow version
+%
+n = 1e5;
+x = zeros(1,n);
+tic
+for i=1:n
+  tmp = (i*i) + (i/2)
+  x(i) = tmp;
+end
+toc
+%
+% on my laptop this takes 1.10 seconds
+
+% fast version
+%
+x = zeros(1,n);
+tic
+for i=1:n
+  tmp = (i*i) + (i/2);
+  x(i) = tmp;
+end
+toc
+%
+% on my laptop this takes 0.0009 seconds
+% this is more than 1,000 times faster than the slow version
+#+END_SRC
+
+As you can see the *only* difference in these two versions of the code, is that inside the for loop, we don't have a semicolon after the assignment of the =tmp= variable, which means its value is echoed to the screen. In the fast version we use a semicolon and the output is suppressed.
+
+This isn't just a MATLAB specific problem, the same sort of problem arises if you intentionally print out a value to the screen each time through a long for loop. Printing to the screen takes time.
+
+Often we want to print values to the screen in a for loop so that we can for example keep track of how far along the computation is, or detect errors. One alternative that avoids the slow execution of printing to the screen every time through the loop, is to print more sporadically. Here is an example where we repeat the above code but we only print to the screen every 10,000 iterations. This still allows you to monitor the progress of the computation, but it doesn't eat up precious time displaying stuff on the screen every single time through the loop:
+
+#+BEGIN_SRC octave
+% partial suppression of output
+
+% slow version
+%
+n = 1e6;
+x = zeros(1,n);
+tic
+for i=1:n
+  tmp = (i*i) + (i/2);
+  x(i) = tmp;
+  disp(tmp);
+end
+toc
+%
+% on my laptop this takes 6.16 seconds
+
+% fast version
+%
+x = zeros(1,n);
+tic
+for i=1:n
+  tmp = (i*i) + (i/2);
+  x(i) = tmp;
+  if (mod(i,10000)==0)
+    disp(tmp);
+  end
+end
+toc
+%
+% on my laptop this takes 0.056 seconds
+% this is more than 100 times faster than the slow version
+#+END_SRC
+
+* Overhead cost of calling a function
+
+We've talked a lot in the course about the benefits of modularizing your code, and sticking commonly used operations inside functions. This is absolutely a good idea. It is worth noting however that the act of calling a function does involve some "overhead" cost in time, for various things that happen under the hood.
+
+Functions in general are a very good idea, but if you put *everything* into a function, you can start to experience unneccessary slowdowns due to the overhead in calling functions, passing parameters in, and passing results out. Here is a simple example in which we loop through an array and perform a number of calculations on each element. In the slow version we put every single calculation into its own function. In the fast version we don't use functions:
+
+#+BEGIN_SRC octave
+% overhead cost in using functions
+
+% slow version: make everything a function!!
+%
+n = 1e6;
+a = 1:n;
+tic
+for i=1:n
+  tmp1 = my_comp1(i);
+  tmp2 = my_comp2(i);
+  tmp3 = my_comp3(i);
+  tmp4 = my_comp4(i);
+  tmp5 = my_comp5(i);	
+  a(i) = tmp1 + tmp2 + tmp3 + tmp4 + tmp5;
+end
+toc
+%
+% on my laptop this takes 1.04 seconds
+
+% fast version: no functions here
+%
+n = 1e6;
+a = 1:n;
+tic
+for i=1:n
+  tmp1 = i*1;
+  tmp2 = i*2;
+  tmp3 = i*3;
+  tmp4 = i*4;
+  tmp5 = i*5;
+  a(i) = tmp1 + tmp2 + tmp3 + tmp4 + tmp5;
+end
+toc
+%
+% on my laptop this takes 0.009 seconds
+% this is over 100 times faster than the slow version
+#+END_SRC
+
+In this case the functions like =my_comp1()= are:
+
+#+BEGIN_SRC octave
+function out = my_comp1(i)
+  return i*1;
+#+END_SRC
+
+#+BEGIN_SRC octave
+function out = my_comp2(i)
+  return i*2;
+#+END_SRC
+
+#+BEGIN_SRC octave
+function out = my_comp3(i)
+  return i*3;
+#+END_SRC
+
+#+BEGIN_SRC octave
+function out = my_comp4(i)
+  return i*4;
+#+END_SRC
+
+#+BEGIN_SRC octave
+function out = my_comp5(i)
+  return i*5;
+#+END_SRC
+
+It's a silly example but it gets the point across.
+
+
+* Passing by reference vs passing by value
+
+In Python and in C, the default behaviour for passing data structures to functions as arguments, is to pass by reference. In MATLAB and R, the default behaviour is to pass by value.
+
+To recap, passing by value means that when one calls a function with an input argument (e.g. an array), a copy of that array is made, one that is internal to the function, for the function to operate on. When the function exits, that internal copy is deallocated (destroyed).
+
+Passing by reference means that instead, a *pointer* to the array (in other words, the address of the array in memory) is sent to the function, and the function operates on the original array, via its address.
+
+As you can imagine, passing around data structures by value, which involves making copies, can be very inefficient especially if the data structures are large. It takes time to make copies and what's more it eats up memory.
+
+On the other hand, there may be times where one specifically wishes to make a copy of a function input, and in that case you might just accept that there is a price to pay.
+
+In fact, MATLAB's behaviour is slightly more complex. If you pass an input argument =x= into a function, and inside the function that input argument is never modified, MATLAB avoids making a copy of it (it passes by reference). On the other hand, if inside of the function, =x= is altered in some way, MATLAB passes by value.
+
+In Python the default behaviour is to pass by reference.
+
+In R the default behaviour is to pass by value.
+
+In C, complex data structures like arrays are always internally defined as *pointers* (to the head of the structure) and so the de facto default is to pass by reference.
+
+Here is an example, slightly contrived, but it gets the point across that passing large structures by value is slower than passing them by reference.
+
+Here is the slow version, in which MATLAB will pass by value, because inside our function we are changing a value of the input x:
+
+#+BEGIN_SRC octave
+function out = myfunc_slow(x,y)
+  tmp = x(1);
+  x(1) = tmp*2;
+  out = tmp;
+#+END_SRC
+
+and here is the fast version, where we don't change the value of x, and so MATLAB will pass by reference:
+
+#+BEGIN_SRC octave
+function out = myfunc_fast(x,y)
+  tmp = x(1);
+  y(1) = tmp*2;
+  out = tmp;
+#+END_SRC
+
+Here we demonstrate the speed difference:
+
+#+BEGIN_SRC octave
+x = rand(1e4,1e4);
+y = [1,2,3];
+
+% the slow way
+% MATLAB passes x by value
+% because it is altered inside myfunc_slow()
+%
+tic
+for i=1:20
+  o1 = myfunc_slow(x,y);
+end
+toc
+%
+% on my laptop this takes 8.55 seconds
+
+% the fast way
+% MATLAB passes x by reference
+% because it is not altered inside myfunc_fast()
+%
+tic
+for i=1:20
+  o2 = myfunc_fast(x,y);
+end
+toc
+%
+% on my laptop this takes 0.0005 seconds
+% this is over 17,000 times faster than the slow version
+#+END_SRC
+
+You will also notice if you pass around large data structures by value, that RAM (random access memory, the internal, temporary memory that your CPU uses) will be eaten up by all of the copies that are made. If your available RAM falls below a certain level, then everything (the entire OS) will slow down. Unix-based operating systems (e.g. Mac OSX, Linux) make use of hard disk space as a temporary "scratch pad" for situations in which available RAM is scarce. This is known as "swap space". The problem is, read/write operations on hard disks (especially spinning platters) are orders of magnitude slower than read/write operations in RAM... so you still suffer the consequences.
+
+As I said, in Python the default behaviour is to pass by reference. If you *want* a copy of a function input, then you can still get it, by using the =copy()= command, for example:
+
+#+BEGIN_SRC python
+from numpy import *
+from scipy import rand
+import time
+
+# the fast version, in which x is passed by reference
+#
+def myfunc_fast(x,y):
+  x[0,0] = y
+  return y
+
+# the slow version, in which we copy x
+#
+def myfunc_slow(x,y):
+  xc = copy(x)
+  xc[0,0] = y
+  return y
+
+# test speed
+#
+x = rand(1e4,1e4)
+y = 3
+
+# the slow version
+#
+t0 = time.time()
+for i in range(20):
+  tmp = myfunc_slow(x,y)
+t1 = time.time()
+print t1-t0
+#
+# this takes 7.86 seconds on my laptop
+
+# the fast version
+#
+t0 = time.time()
+for i in range(20):
+  tmp = myfunc_fast(x,y)
+t1 = time.time()
+print t1-t0
+#
+# this takes 0.000025 seconds on my laptop
+# this is over 300,000 times faster than the slow version
+#+END_SRC
+
+In R I don't know of a way to force passing by reference instead of by value (but that doesn't necessarily mean there isn't a way...). I believe the default behaviour is similar to MATLAB, in that if a function input is not altered, it is passed by reference, otherwise it is passed by value. I haven't verified this however.
+
+In C, like in Python, the default is to pass by reference. If you want a copy of a function input, you can use =memcpy()= to make a copy of the data structure.
+
+
+* The algorithm itself
+
+Of course the other thing to consider when writing code that performs some computational task, is to make sure you're using the most efficient algorithm you can (when you have a choice). Sorting is an example. Why use bubblesort when you know quicksort can be orders of magnitude faster, especially for large lists?
+
+Another example is optimization. For certain families of problems, specific optimizers are known to be really fast and efficient. For others, one needs a more generic, more robust optimizer, that may be slower.
+
+Whatver operation you're coding up, do a bit of research to find out if someone has developed an algorithm that solves the problem you're solving, only faster.
+
+* Tricks
+
+There are often "tricks" and secret handshakes that will speed up code. For example:
+
+** Python
+
+At the beginning of your program, if you include the line:
+
+#+BEGIN_SRC python
+from __future__ import division 
+#+END_SRC
+
+This forces floating-point division, and you no longer have to worry about making integers floats before performing division. You can often get around a 2x speedup with this trick.
+
+** C
+
+The =sqrt()= function is known to be slow ... so if you can avoid actually taking square roots, you will have faster code. For example let's say you want to compare the length of a vector =(x,y)= to some standard, and execute different code depending on the result. Instead of doing this, which uses the slow =sqrt()= function:
+
+#+BEGIN_SRC c
+double stdlen = 1.234;
+double veclen = sqrt(x*x + y*y);
+if (veclen < stdlen) {
+  // do something
+}
+else {
+  // do something else
+}
+#+END_SRC
+
+you could do this instead, which avoids taking the =sqrt()= but achieves the same result, by instead squaring (which is fast) the standard:
+
+#+BEGIN_SRC c
+double stdlen = 1.234;
+double veclen = x*x + y*y;
+if (veclen < (stdlen*stdlen)) {
+  // do something
+}
+else {
+  // do something else
+}
+#+END_SRC
+
+You may come across other "tricks" in these and other languages as well. Let me know and I'll add them here.
+
+* Parallelization
+
+Computers these days, even relatively inexpensive laptops, come with CPUs that have multiple cores. This means that the different "cores" of your CPU can process different information, in parallel. If you can split up the computational work in your program and send it to multiple CPU cores to process in parallel, you could conceivably achieve pretty impressive speedups. We'll talk about parallelization in a separate class:
+[[file:11_Parallel_Computing.html][Parallel Computing]].
+
+
+* Incorporating compiled binaries (e.g. C code)
+
+In interpreted languages like MATLAB, Python and R, there are ways to call binary compiled versions of functions instead of calling them directly at the interpreter layer. This in essence can give you the best of both worlds --- the convenience and relative ease of working in an interpreted language (as opposed to a compiled language like C) but at the same time, the ability to call external compiled binaries when you have the need for speed.
+
+In MATLAB there is a toolbox called the *MATLAB Coder* that allows one to generate standalone C and C++ code from MATLAB code. It can also generate so-called MEX functions that are callable from within MATLAB code at the interpreter level. Here is a tutorial: [[http://blogs.mathworks.com/loren/2011/11/14/generating-c-code-from-your-matlab-algorithms/][Generating C Code from Your MATLAB Algorithms]] (Mathworks Inc.). It's worth looking into this if your code runs slowly. During my PhD I was running simulations of a physiologically detailed mathematical model of the arm neuromuscular system, and after compiling a number of the MATLAB functions I wrote for various parts of the arm model, I saw a speedup of 10 to 20 times.
+
+In Python there are many options for incorporating compiled code.
+
+- [[http://pypy.org/][PyPy]]: a fast alternative implementation of the Python language that includes "just in time" compilation, to speed things up
+- [[http://cython.org/][Cython]]: a compiler for Python code as well as Cython code (not exactly Python but close) ([[http://docs.cython.org/src/tutorial/cython_tutorial.html][Cython Tutorial]])
+- [[http://www.swig.org/][SWIG]]: a tool that connects C and C++ programs with a variety of high level interpreted languages including Python
+- [[http://www.boost.org/doc/libs/1_44_0/libs/python/doc/index.html][Boost.Python]]: a C++ library that enables interoperability between C++ and Python
+- [[http://www.cosc.canterbury.ac.nz/greg.ewing/python/Pyrex/][Pyrex]]: lets you write code that mixes Python and C
+- [[http://docs.python.org/3.3/extending/index.html][Extending and Embedding the Python Interpreter]] is a section in the Python documentation which includes examples of incorporating C code
+
+There is also a SciPy library called [[http://docs.scipy.org/doc/scipy/reference/tutorial/weave.html][scipy.weave]] which actually lets you insert C code, as a Python string, into Python code, and have it compiled. In terms of ease of use, this is perhaps easier than the other options above.
+
+In R, there is a section in the R documentation on [[http://cran.r-project.org/doc/manuals/R-exts.html][Writing R Extensions]] that describes how to interface R with C and C++ code. The section on [[http://cran.r-project.org/doc/manuals/R-exts.html#System-and-foreign-language-interfaces][System and foreign language interfaces]] is relevant here.
+
+There is nice tutorial by Roger Peng and Jan de Leeuw (UCLA), [[http://www.biostat.jhsph.edu/~rpeng/docs/interface.pdf][An Introduction to the .C Interface to R]] that includes example code. Also see this discussion by John D. Cook on [[http://www.johndcook.com/blog/2011/06/30/calling-cpp-from-r/][Calling C++ from R]].
+
+
+* Profiling your code
+
+We have seen in example code here, how to time how fast or slow your code executes, but putting specific timer-start and timer-stop expressions around the code segment you want to time (e.g. in MATLAB, the =tic= and =toc= commands). There are more powerful tools however that will measure how long all parts of your code take to execute, all in one go, and then give you a report on each section. These are generally called code profilers.
+
+In MATLAB there is a tool called the MATLAB Profiler that does this. Here is a section of the MATLAB documentation that describes [[http://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html#f9-17087][Profiling for Improving Performance]]. Here is a video demonstrating how to use it: [[http://blogs.mathworks.com/videos/2012/07/11/using-the-matlab-profiler-to-speed-your-code/][Using the MATLAB profiler to speed your code]]. In fact the profiler doesn't "speed your code", it merely shows you the places in your code where the most time is spent... but you can use that information to optimize those sections of code for speed.
+
+Python includes a profiler library, =cProfile=, described in a section of the Python documentation here: [[http://docs.python.org/2/library/profile.html][The Python Profilers]]. There is also a discussion here: [[http://www.huyng.com/posts/python-performance-analysis/][A guide to analyzing Python performance]].
+
+In R, in the =utils= library there is a function called =Rprof()= that performs profiling on R code. See the documentation here on [[http://stat.ethz.ch/R-manual/R-devel/library/utils/html/Rprof.html][Enabling Profiling of R's Execution]]. 
+

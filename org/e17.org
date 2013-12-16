@@ -1,0 +1,16 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 17
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* opening an Excel file
+
+The file [[file:code/e17data.xlsx][e17data.xlsx]] is a Microsoft Excel spreadsheet. Load the file
+and report the mean of each column.
+
+[[file:e17sol.html][solutions]]

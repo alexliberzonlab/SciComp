@@ -1,0 +1,314 @@
+#+STARTUP: showall
+
+#+TITLE:     8. Optimization & Gradient Descent
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: html:t num:t toc:2
+#+LINK_UP: http://www.gribblelab.org/scicomp/index.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+* What is an optimization problem?
+
+In one of our previous exercises we programmed a linear regression, in
+which we fit a line of best fit to $N$ samples of $(X_{i},Y_{i}$) data
+($i=1 \ldots N$) according to a linear equation with two parameters,
+$\beta_{0}$ and $\beta_{1}$:
+
+\begin{equation}
+  \hat{Y}_{i} = \beta_{0} + \beta_{1} X_{i} + \epsilon_{i}
+\label{regression_cost_function}
+\end{equation}
+
+To find the $\beta$ parameters corresponding to the regression line,
+we used a formula that I gave you, that I told you was based on a
+procedure called ordinary least squares (OLS). We didn't go into much
+detail at the time, but what OLS does is find the $\beta$ parameters
+that minimize the sum of squared deviations of the estimated values of
+the data $Y$ (using given values of $\beta$) and the actual values of
+$Y$. That is, the values of $\beta_{0}$ and $\beta_{1}$ that minimize
+$J$ where:
+
+\begin{equation}
+  J = \sum_{i=1}^{N} \left( \hat{Y_{i}} - Y_{i} \right)^{2}
+  \label{OLS_equation}
+\end{equation}
+
+We can call this function $J$ a *cost function*. The goal then, is to
+determine, somehow, the values of the *parameters* $\beta_{0}$ and
+$\beta_{1}$ that *minimize* the cost function $J$.
+
+This is a classic example of an *optimization problem*. We want to
+optimize the parameters $\beta$ so that they minimize the cost
+function $J$.
+
+Optimization problems abound in science, data analysis, statistical
+modeling, and even out there in the real world. Here are a few
+examples, to help you solidify in your mind what optimization is all
+about, and how it may be used. For some problems (e.g. the shower
+example) it is easy to think about how you would find the optimal
+solution. For others, it is not immediately obvious.
+
+*Your morning shower*: A simple example of optimization is when you
+hop in the shower and turn on the hot and cold water taps. What you
+desire is a water temperature that is not too hot, not too cold, but
+"just right". The /parameters/ to be optimized are the relative
+amounts of cold and hot water coming out of the shower head. The /cost
+function/ is how uncomfortable (whether too cold or too hot) the water
+temperature is for you.
+
+*Tuning a radio*: When you tune a radio (an analog radio) and you're
+searching for a particular radio station, you are performing an
+optimization. The /parameter/ you are optimizing is the position of
+the tuner along the radio spectrum that spans the frequency of the
+radio station you are trying to listen to. The /cost function/ is the
+amount of static that you hear overtop of the radio station signal.
+
+*Controlling rockets*: [[http://www.nasa.gov][NASA]] uses optimization techniques to determine
+the trajectory of rockets and other spacecraft that will reach their
+destination using the least amount of fuel. In this case there are
+/parameters/ that define different trajectories, and a /cost/ function
+that involves the total amount of fuel burn.
+
+*Travelling salesman*: A classic example of an optimization problem is
+the [[http://en.wikipedia.org/wiki/Travelling_salesman_problem][Travelling salesman problem]]. Given a list of cities and the
+distances between each pair of cities, what is the shortest possible
+route that visits each city exactly once and returns to the origin
+city?  (Wikipedia). In this case the /parameters/ to be optimized are
+the order of visiting each city, and the /cost/ is the total distance
+travelled.
+
+*Finance*: Bankers perform portfolio optimization to determine the
+mixture of investments that strike the best balance between risk and
+return. In this case the /parameters/ are the proportions of each type
+of investment (stocks, bonds, real estate, gold, etc) and the /cost
+function/ is some (generally secret) equation that balances risk and
+return.
+
+*Statistics*: In statistics and data modelling, optimization can be
+used to find the parameters of a model that best fits the observed
+data. In this case the /parameters/ to be optimized are the parameters
+that define the particular model that is being used to model the data
+(e.g. for linear regression, the $\beta$ values), and the /cost
+function/ is some measure of goodness-of-fit (actually "badness" of
+fit). In the case of linear regression, the cost function $J$ is given
+above.
+
+*The Brain?*: Some people theorize that some brain functions
+(e.g. motor control, perception) can be conceptualized as optimization
+problems. For example for motor cortex, the /parameters/ to be
+optimized might be the time-varying pattern of action potentials that
+arrive at $\alpha$ motoneurons in the spinal cord (and hence activate
+muscles, and move the body) and the /cost function/ might be the
+amount of beer that is spilled as you move the beer stein from the
+tabletop to your mouth.
+
+The big question then, is how to determine the parameters that
+minimize the cost function? There are two general
+approaches. The *analytic approach* is to try to find an analytical
+expression that allows one to directly compute the optimal parameter
+values. This is wonderful when it can be achieved, because direct
+calculation is fast. For linear regression using OLS, the matrix
+equation given above is this analytical expression.
+
+For many problems however, it is not possible to find an analytical
+expression that gives the optimal parameter values. In these cases,
+one uses a *numerical approach* to estimate the optimal parameter
+values (the parameter values that minimize the cost function). As long
+as you can compute the value of the cost function for a given set of
+parameter guesses, then you can pursue a numerical approach to
+optimization. The downside of the numerical approach however is that
+(1) it can take a long time to converge on the solution, and (2) for
+some problems, it can be extremely difficult or practically infeasible
+to converge on the optimal solution.
+
+Optimization is a topic that people can (and have) spent their entire
+careers studying. It is one of the most important topics in applied
+mathematics and engineering. We will not attempt to cover the topic in
+any great breadth. Our goal here is to introduce you to the central
+idea, and to get some practical experience using numerical approaches
+to optimization.
+
+* Analytic Approaches
+
+In the case of linear regression, there happens to be an analytical
+expression that allows us to directly calculate the $\beta$ values
+that minimize $J$. This is the formula that I gave you in the exercise, in matrix format:
+
+\begin{equation}
+  \hat{\beta} = \left( X^{\top}X \right)^{-1} X^{\top} Y
+\end{equation}
+
+In your undergraduate statistics class(es) you may have seen a simpler looking, non-matrix version of this:
+
+\begin{eqnarray}
+  \hat{\beta_{0}} &= &\bar{Y} - \hat{\beta_{1}}\bar{X}\\
+  \hat{\beta_{1}} &= &\frac{\sum\left(Y_{i}-\bar{Y}\right)\left(X_{i}-\bar{X}\right)}{\sum\left(X_{i}-\bar{X}\right)^{2}}
+\end{eqnarray}
+
+How do we come up with analytic expressions like these? The answer is
+[[http://en.wikipedia.org/wiki/Calculus][Calculus]].
+
+It might help to understand the following material by considering a
+simpler optimization problem, where we have a single paramater $\beta$
+to be optimized, for example the position of a radio tuner as you hone
+in on your favourite radio station. Call the position of the tuner
+dial $\beta$. What we want is to find the value of $\beta$ that
+minimizes the cost function $J$, where $J$ is, for example, the amount
+of static that you hear overtop of the radio station signal. Let's say
+we're searching the airwaves for Virgin Radio but you've forgotten the
+frequency (97.5 MHz). We can visualize a hypothetical relationship
+between $\beta$ and $J$ graphically:
+
+#+ATTR_HTML: height="400px"
+[[file:code/virginradio.jpg]]
+
+As we move the dial under or over the actual (forgotten) frequency for
+Virgin Radio, we get static and the cost function $J$ increases. The
+farther we move the dial away from the 97.5 MHz frequency, the greater
+the cost function $J$. What we desire is the frequency (the value of
+$\beta$) corresponding to the "bottom" of the cost function, i.e. the
+minimum value of $J$.
+
+We can remember from our high school calculus days that at the minimum
+of a function $f$, the first [[http://en.wikipedia.org/wiki/Derivative][derivative]] of $f$ equals zero. With
+respect to our Virgin Radio example, this means that the derivative of
+$J$ with respect to $\beta$ is zero at the minimum of $J$. In equation
+form with calculus notation, what we want to derive is an expression
+that gives us the value of $\beta$ for which the first derivative of
+$\beta$ with respect to $J$ is zero:
+
+\begin{equation}
+\frac{\partial{J}}{\partial{\hat{\beta}}} = 0
+\end{equation}
+
+If we can write an algebraic expression to describe how $J$ varies
+with $\beta$, then there's a chance that we can do the differentiation
+and arrive at an analytic expression for the minimum. A very simple
+toy example: let's say we can write $J(\beta)$ as:
+
+\begin{equation}
+  J = 10 + \left(\beta - 97.5\right)^{2}
+\end{equation}
+
+Now in this little example one doesn't need calculus to see that the
+way to minimize $J$ is to set $\beta = 97.5$. Let's pretend however
+that we couldn't see this solution directly (as is often the case with
+more complex cost functions ... for example for linear regression and
+OLS). If we take the derivative of $J$ with respect to $\beta$, we
+get:
+
+\begin{eqnarray}
+  \frac{\partial{J}}{\partial{\beta}} &= &0\\
+  \frac{\partial [ 10 + (\beta-97.5)^{2} ]}{\partial \beta} &= &0\\
+  2\left(\beta - 97.5\right)          &= &0\\
+  2 \beta                             &= &2 (97.5)\\
+  \beta                               &= &97.5
+\end{eqnarray}
+
+So in this little example the analytical expression for the optimal
+value of $\beta$ isn't even an expression per se, it's an actual
+value.
+
+Note also that technically, that the slope of a function is zero not only at a minimum but also at a peak. If we truly want to find only minima then we should also look for places where the second derivative (the slope of the slope) is positive. Parameter values where the first derivative is zero and the second derivative is positive, correspond to valleys. Parameter values where the first derivative is zero and the second derivative is negative correspond to peaks. Draw a function with a peak and a valley, then draw the first and second derivatives, to convince yourself that this is true. Here is a place to start:
+
+#+ATTR_HTML: height="400px"
+[[file:code/peakvalley.jpg]]
+
+** Analytic solution for OLS regression
+
+If you want to see how the solutions for $\beta_{0}$ and $\beta_{1}$
+are derived, for linear regression OLS, you can see [[file:code/OLS_derivation.pdf][this summary]] by
+Simon Jackman.
+
+For some optimization problems, doing the calculus to find an
+analytical expression for the optimal parameter values is
+possible. For many optimization problems however, the calculus simply
+cannot be done. In this case our only option is to pursue a numerical
+approach. This is what we will focus on in this course --- numerical
+approaches to optimization.
+
+* Numerical Approaches
+
+In numerical approaches to optimization, the general idea is that you pursue an *iterative* approach in which you guess at optimal parameter values, you evaluate the cost, and then you revise your guess. This loop continues until you decide you can no longer reduce the cost.
+
+Numerical approaches can be distinguished as *local* versus *global* methods. Local methods use only local information about the relationship between cost and parameter values in the local "neighborhood" of the current guess. Global methods involve multiple guesses over a broad range of parameter values, and revised parameter guesses take into account information from all guesses across the entire parameter range.
+
+** Local methods
+
+In local numerical approaches to optimization, the basic idea is to:
+
+1. start with an *initial guess* at the optimal parameter values
+2. compute the *cost* at those parameter values
+3. Is the cost low enough? If yes, stop. If no, continue
+4. *estimate the local gradient* at the current parameter values
+5. *jump to new parameter values* using the local gradient info
+6. go to step 2
+
+Sometimes at step 2, the *stopping rule* looks at not just the current cost but also other values such as the magnitude of the local gradient. For example if the local gradient gets too shallow then the stopping rule might get triggered.
+
+You can think of this all in real-world terms in the following way. Imagine you're heli-skiing in the back-country, and at the end of the day instead of taking you back to Whistler village, your helicopter pilot drops you somewhere on the side of [[http://www.whistlerblackcomb.com/the-mountain/weather-and-mountain-stats.aspx][Whistler Mountain]]. Only problem is, it's extremely foggy and you have no idea where you are, or which way is down to the village. You can only see 3 feet in front of you. All you have on you is an altimeter. What do you do? Probably something akin to the iterative numerical approach of gradient descent.
+
+You have to decide which way is downhill, and then ski in that direction. To estimate which way is downhill you could do something like the following: take a step in three directions around a circle, and for each step, check the altimeter and compare the altitude to the altitude at the center of the circle. The step corresponding to the greatest altitude decrease represents the steepest "downhill".
+
+Then you have to decide how long to ski in that direction. You could even tailor this ski time to the local gradient of the mountain. The steeper the slope, the smaller the ski time. The shallower the slope, the longer the ski time.
+
+When you determine that moving in any direction doesn't decrease your altitude very much, you conclude that you're at the bottom.
+
+This is essentially how numerical approaches to optimization work, by doing *iterative gradient descent*. Think about the ski hill example, and what kinds of things can go wrong with this procedure.
+
+*** Local minima
+
+One common challenge with complex optimization problems, is the issue of local minima. In the bowl-shaped example of a cost function that we plotted above, there is a single *global minimum* to the cost function --- one place on the cost landscape where the slope is zero. It happens often however that there are local minima in the cost function --- parameter values that correspond to a flat region of the cost function, where local steps will only increase the cost --- but for which the cost is not the global minimum cost. Here is an example of such a cost function:
+
+#+ATTR_HTML: height="400px"
+[[file:code/localminima.jpg]]
+
+You can see that there is a single global minimum at a parameter value of about -1 --- but there is a second, local minimum at a parameter value of about 2.2. You can see that if our initial parameter guess was between 1.5 and 3.0, that our local gradient descent procedure would put us at the local minimum, not the global minimum.
+
+One strategy to deal with local minima is to run several gradient descent runs, each starting from a different (often randomly chosen) initial parameter guess, and then to take the best one as the global minimum. Ultimately however in the absence of an analytic solution, or a brute force mapping of the entire cost landscape (which is often infeasible) one can never be sure that one isn't at a local versus a global minimum.
+
+*** Methods
+
+A number of effective algorithms have been developed for finding parameter values that minimize a cost function. Some don't assume any pre-existing knowledge of the gradient ... that is, of the derivative of the cost function with respect to the parameters, while some assume that we can compute both the cost and the gradient for a given set of parameter values.
+
+In simple [[http://en.wikipedia.org/wiki/Gradient_descent][gradient descent]], the simple idea is as described above, namely to estimate the local gradient and then take a *step* in the steepest direction. There are all sorts of ways of defining the step size, and adapting the step size to the steepness of the local gradient. There are also terms one can add that implement [[http://www.willamette.edu/~gorr/classes/cs449/momrate.html][momentum]], as a scheme to try to avoid local minima. Another strategy is to include randomness, by implementing [[http://en.wikipedia.org/wiki/Stochastic_gradient_descent][stochastic gradient descent]].
+
+In [[http://en.wikipedia.org/wiki/Conjugate_gradient_method][conjugate gradient descent]], one requires knowledge of the local gradient, and the idea here is that the algorithm tries to compute a more intelligent guess as to the direction of the cost minimum.
+
+In [[http://en.wikipedia.org/wiki/Newton's_method_in_optimization][Newton's method]], one approximates the local gradient using a quadratic function, and then a step is taken towards the minimum of that quadratic function. You can think of this as a slightly more sophisticated version of simple gradient descent, in which one essentially approximates the local gradient as a straight line.
+
+The [[http://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method][Nelded-Mead (simplex) method]] is an iterative approach that is pretty robust, that has an interesting geometric interpretation (see the animation on the wikipedia page) that is not unlike the old toy called [[http://youtu.be/l8Dbne0wRaE?t=18s][Wacky Wally]].
+
+There are more complex algorithms such as [[http://en.wikipedia.org/wiki/Levenberg–Marquardt_algorithm][Levenberg-Marquardt]] and others, which we won't get into here.
+
+The bottom line is that there are a range of local methods that vary in their complexity, in their memory requirements, in their iteration speed, and their susceptability to getting stuck in local minima. My approach is to start with the simple ones, and add complexity when needed.
+
+** Global methods
+
+In [[http://en.wikipedia.org/wiki/Global_optimization][global optimization]], the general idea is instead of making a single guess and descending the local gradient, one instead makes a *large number of guesses* that broadly span the range of the parameters, and one evaluates the cost for all of them. Then the update step uses the costs of the entire set of guesses to determine a new set of guesses. It's also an iterative procedure, and when the stopping rule is triggered, one takes the guess from the current set of guesses that has the lowest cost, as the best estimate of the global minimum.
+
+Global methods are well suited to problems that involve many local minima. Going back to our ski hill example, imagine instead of dropping one person on the side of Whistler mountain, rather a platoon of paratroopers is dropped from a plane and scattered all over the entire mountain range. Some will end up in valleys and alpine lakes (local minima) but the chances are good that at least one will end up in whistler village, or close to it. They all radio up to the airplane with their reported altitudes, and on the basis of an analysis of the entire set, a new platoon is dropped, and eventually, someone will end up at the bottom (the global minimum).
+
+Two popular global methods you might come across are [[http://en.wikipedia.org/wiki/Simulated_annealing][simulated annealing]] and [[http://en.wikipedia.org/wiki/Genetic_algorithm][genetic algorithms]]. Read up on them.
+
+
+* Exercises
+- [[file:exercises.html][Exercises]] 27 through 30 will give you some practice with optimization using Python, R, MATLAB and C.
+
+* Resources
+
+- [[http://www.stanford.edu/~boyd/cvxbook/][Convex Optimization]] (a book by Stephen Boyd and Lieven Vandenberghe)
+- [[http://www.mathworks.com/products/optimization/][MATLAB Optimization Toolbox]]
+- [[http://docs.scipy.org/doc/scipy/reference/optimize.html][SciPy Optimize]]: Optimization and root finding in Python
+- [[http://stat.ethz.ch/R-manual/R-devel/library/stats/html/optim.html][General-purpose Optimization in R]]
+- [[http://cran.r-project.org/web/views/Optimization.html][Optimization packages in R]]
+- [[http://ab-initio.mit.edu/wiki/index.php/NLopt][NLopt]], a C library for nonlinear optimization
+- [[http://www.gnu.org/software/gsl/manual/html_node/Multidimensional-Minimization.html#Multidimensional-Minimization][multidimensional minimization in gsl]] (GNU Scientific Library for C)
+- [[http://www.mikehutt.com/prog.html][Nelder-Mead Simplex in C]] (Micheal Hutt)
+- [[http://en.wikipedia.org/wiki/Test_functions_for_optimization][Test functions for optimization]]
+

@@ -1,0 +1,25 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 25 solutions
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:t html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/e25.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+* Python
+e25.py
+#+INCLUDE: "../code/e25.py" src python
+
+* MATLAB / Octave
+e25.m
+#+INCLUDE: "../code/e25.m" src octave
+
+* R
+e25.R
+#+INCLUDE: "../code/e25.R" src R

@@ -1,0 +1,42 @@
+% sweavedemo1.Rnw
+% a very basic Sweave document
+
+\documentclass{article}
+
+\title{My manuscript}
+\author{John Doe}
+\date{\today}
+
+\usepackage[margin=1.0in]{geometry}
+
+\begin{document}
+
+\maketitle
+
+\abstract{This is my article. It will be revolutionary. It will overturn all the current theories.}
+
+\section*{Introduction}
+
+Hello world. Here is where I do my lit review.
+
+\section*{Methods}
+
+I haven't really done anything yet.
+
+\section*{Results}
+
+I have a list of numbers. Whoopee. Here is a plot of my 7 numbers:
+
+<<echo=false,fig=true,height=4>>=
+mylist <- c(1,2,3,4,5,4,3)
+mlm <- mean(mylist)
+plot(mylist, type="b", col="blue", lwd=2, xlab="my numbers", ylab="value")
+@
+
+The mean of my list turned out to be \Sexpr{round(mlm*100)/100}.
+
+\section*{Discussion}
+
+What would you like me to discuss?
+
+\end{document}

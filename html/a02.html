@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Assignment 2</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Assignment 2"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="fall 2013"/>
+<meta name="author" content="Paul Gribble"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="mystyle.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js">
+/**
+ *
+ * @source: http://orgmode.org/mathjax/MathJax.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ * Copyright (C) 2012-2013  MathJax
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ */
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code below.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code below is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code below.
+*/
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+ <a accesskey="h" href="http://www.gribblelab.org/scicomp/assignments.html"> UP </a>
+ |
+ <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
+</div>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Assignment 2</h1>
+
+
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Sorting</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+Learning to program involves several things:
+</p>
+<ul>
+<li>learning the syntax of a specific programming language (boring)
+</li>
+<li>learning the names of functions that do specific common tasks
+  (boring)
+</li>
+<li>learning about a common set of programming paradigms &mdash; variable
+  assignment, loops, if-else statements, logical operators, etc (sort
+  of interesting)
+</li>
+<li>learning about what functionality is built-in to the language, what
+  things you can add with third-party libraries, and what you will
+  have to program on your own (slightly less boring)
+</li>
+<li>learning about algorithms, i.e. ways of solving problems (exciting!)
+</li>
+</ul>
+
+
+<p>
+One of the classic problems that has been used for decades in computer
+science curricula for teaching principles of algorithmic design and
+analysis, is the <b>sorting problem</b>.
+</p>
+<p>
+Said plainly, you are given a list of \(n\) items and a function \(f\) for
+comparing pairs of items. Your task is to <b>sort</b> the list of items,
+typically in increasing order.
+</p>
+<p>
+So for example you might have a list <code>L</code> of \(n=10\) integers:
+</p>
+
+
+
+<pre class="src src-python"><span style="color: #a0522d;">L</span> = [2,6,5,4,3,7,8,10,24,3]
+</pre>
+
+
+<p>
+We have a function (actually an operator, the <code>&lt;</code> operator) for testing whether one item is greater or less than another item:
+</p>
+
+
+
+<pre class="src src-python">L[3] &lt; L[5]
+<span style="color: #008b8b;">True</span>
+</pre>
+
+
+<p>
+and so the task in the sorting problem is to produce a new list <code>LS</code> in which the items of <code>L</code> are sorted in increasing order. The solution to the example problem would be:
+</p>
+
+
+
+<pre class="src src-python">LS
+[2, 3, 3, 4, 5, 6, 7, 8, 10, 24]
+</pre>
+
+
+<p>
+Languages like Python, MATLAB, Octave and R have built-in functions
+for sorting lists. For example in Python we could have typed
+<code>L.sort()</code> and our list <code>L</code> from above would have been sorted. In R
+the function to sort is called <code>order()</code> and in MATLAB it's <code>sort()</code>.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">Sorting Algorithms</h2>
+<div class="outline-text-2" id="text-2">
+
+
+<p>
+The question is, though, how exactly do you sort a list of items? What
+is the <b>algorithm</b>? In fact many different algorithms have been
+proposed for how to sort a list of items. The <a href="http://en.wikipedia.org/wiki/Sorting_algorithm">wikipedia page on sorting algorithms</a> provides a really nice introduction to the range of
+algorithms that have been well described and well studied.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">why sorting?</h2>
+<div class="outline-text-2" id="text-3">
+
+
+<p>
+Why is sorting worth even talking about? It seems like such a tedious problem to spend time solving. There are a couple of reasons.
+</p>
+<p>
+The scientific reason is that it turns out that sorting is actually a
+very difficult problem to solve <i>efficiently</i>. Inefficient sorting
+algorithms are pretty easy to generate. The <a href="http://en.wikipedia.org/wiki/Bubble_sort">bubble sort</a> is a good
+example. It's easy to understand how it works, it's easy to program,
+and it works well for small lists. However it turns out to be a very
+inefficient algorithm as the list size increases (bubble sort is an
+\(O(n^{2})\) algorithm). So there is a kind of "arms race" for sorting
+algorithms, i.e. a sort of competition to generate the most efficient
+algorithm. Algorithms differ in terms of their memory load, their
+speed, and their efficiency as list size increases. The wikipedia page
+has a table showing a <a href="http://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms">comparison of algorithms</a> in terms of best,
+averge and worst complexity, memory load, and stability. The <a href="http://en.wikipedia.org/wiki/Quicksort">quicksort</a>
+and <a href="http://en.wikipedia.org/wiki/Merge_sort">merge sort</a> algorithms are generally regarded as the best to date
+in terms of efficiency and implementation.
+</p>
+<p>
+The practical rationales for studying sorting algorithms are (1) lots
+of everyday problems involving computer programs end up using sorting
+(e.g. databases like in banks, or Revenue Canada, or Google, Faceboob,
+etc). Performing sorts efficiently can have a big impact on the
+usability of these kinds of products.
+</p>
+<p>
+The other practical reason which applies to us in this course, is that
+studying and implementing sorting algorithms represents a really good
+exercise in how to:
+</p>
+<ol>
+<li>characterize a problem to be solved by a computer program
+</li>
+<li>think about a solution
+</li>
+<li>formulate an algorithm
+</li>
+<li>generate code to implement the algorithm
+</li>
+<li>debug your code
+</li>
+<li>test the idea for correctness on a set of examples
+</li>
+<li>analyse the algorithm for efficiency
+</li>
+</ol>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">Your assignment</h2>
+<div class="outline-text-2" id="text-4">
+
+
+<p>
+The various sorting algorithms listed on the <a href="http://en.wikipedia.org/wiki/Sorting_algorithm">wikipedia page on sorting</a>
+vary greatly in terms of their complexity and their efficiency. If I
+pick one and ask everyone to implement it, then for some of you it
+will be way to easy, for some of you it will be way to hard, and that
+won't be of much use.
+</p>
+<p>
+Instead what I'm going to do is take a page from <a href="https://dl.dropboxusercontent.com/u/8011180/2120/asn4.html">Mark Daley's course</a>
+and ask you to <b>choose</b> a sorting algorithm from the following list,
+and implement it in the language of your choice:
+</p>
+<ul>
+<li>selection sort
+</li>
+<li>insertion sort
+</li>
+<li>bubble sort
+</li>
+<li>bogosort
+</li>
+<li>quick sort
+</li>
+<li>merge sort
+</li>
+</ul>
+
+
+<p>
+As we've talked about before, one of the ways in which you will use
+programming in your scientific future, is to first read about an
+algorithm or a set of data analysis steps in a paper, and then go and
+try to implement it yourself. This assignment will help you develop
+those skills, in the context of a problem (sorting) that is relatively
+familiar to you, even if the algorithms aren't.
+</p>
+<p>
+You can find descriptions of the sorting algorithms on the <a href="http://en.wikipedia.org/wiki/Sorting_algorithm">wikipedia page on sorting</a>, and in any modern computer science textbook on
+algorithms. You can also search google and find lots of descriptions
+of each.
+</p>
+<p>
+You will see that for some of these algorithms, there have been many
+optimizations developed that extend the "basic" form of the algorithm
+into something more complex. It's up to you how far down the rabbit
+hole to go. Your task here is to choose an algorithm that suits your
+programming abilities today, and to implement it from scratch. There
+is no particular requirement to implement the fully optimized versions
+of these algorithms. The basic forms are ok for the purposes of this
+assignment.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5">don't be lazy</h2>
+<div class="outline-text-2" id="text-5">
+
+
+<p>
+Of course you can also find lots of examples of source code for
+implementing each of these sorting algorithms, online. I'm asking you
+not to simply cut and paste code that you find online and submit that
+as your assignment. That would be lazy and it wouldn't really be that
+useful to you.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6">give it a go</h2>
+<div class="outline-text-2" id="text-6">
+
+
+<p>
+Spend some time reading about the algorithms. Spend some time thinking
+about how you would implement them, given the programming skillset
+that you have so far. Spend some time writing and testing code.
+</p>
+<p>
+When you run into problems, talk to classmates. Come and talk to
+me. I'm perfectly happy to give you pointers and to help clarify concepts.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7">do the following</h2>
+<div class="outline-text-2" id="text-7">
+
+
+<p>
+So your assignment then is to:
+</p>
+<ol>
+<li>implement one of the sorting algorithms listed above, in the
+   language of your choice. You can assume that your algorithm will
+   operate on lists of integers.
+</li>
+<li>demonstrate that your algorithm works by testing it on some example lists
+</li>
+<li>test the efficiency of your code by analysing (either by timing it,
+   or by counting operations) how it scales as the size of the list
+   increases.
+</li>
+</ol>
+
+
+<p>
+Document your code with comments. Submit both (1) your code, which I
+ought to be able to run without any modifications, and (2) a short
+document that describes how you tested your code for correctness and
+efficiency.
+</p>
+<p>
+Please send me your completed assignment by email. <b>Please make sure that your name is indicated somewhere in the file</b>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<hr />Paul Gribble | fall 2013<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
+</div>
+</body>
+</html>

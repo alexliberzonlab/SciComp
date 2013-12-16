@@ -1,0 +1,56 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 36
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:2
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Estimating your heart rate using your webcam or smartphone
+
+In this exercise we will attempt to estimate your heart rate using a video taken with your webcam or your smartphone.
+
+Here's what you will do to generate the data. First, make sure you're in a brightly lit space (i.e. turn on the lights if you're in a dark room!). Better yet, find a light source like a desk lamp and direct it at your webcam or smartphone camera. Now gently rest the tip of your index finger against the lens of your webcam or smartphone camera. Now start recording a video. Record for 30 seconds. Try not to move your finger, keep everything still.
+
+If you used your smartphone, transfer the video file to your computer. Open it up and look at it on the screen. Here's a sample frame from mine, which was approximately 15 seconds in duration:
+
+#+ATTR_HTML: height="360"
+[[file:code/heartbeat_frame.png]]
+
+Here is a link to the example video: [[file:code/IMG_1383.MOV][IMG\_1383.MOV]]
+
+The idea here is that as your heart pumps blood through your arteries and veins, the amount of light that the camera detects, as it comes through your fingertip, will be modulated by the differences in blood flow. The variation in brightness will be subtle, and so your task is to use signal processing techniques to try to detect it.
+
+Here are some suggestions as to how to proceed. In your language of choice, find a function or a library that will allow you to load in the video file, frame by frame. Each frame will have three channels: red, green and blue. Each frame will contain the brightness of each pixel for each of the three channels red, green and blue. You might as well average over all the pixels in the frame to get an average brightness measure. The signal that you ultimately want is probably the brightness over time (i.e. for each frame of the video).
+
+Here is the mean (over pixels) zero-centered brightness over time, for my 15-sec example video (blue) and a band-pass filtered version (in red):
+
+#+ATTR_HTML: height="400"
+[[file:code/heartbeat_brt.png]]
+
+Here are some other things to consider:
+
+- make sure to get the correct sampling rate (frame rate) of your video file
+- what does a spectrum of the raw signal look like?
+- in what frequency range do you expect your heart rate to reside?
+- consider a band-pass filter around the expected range
+- how will you determine the frequency of your heartbeat?
+- how will you check the accuracy of your estimate of your heart rate?
+
+* The cutting edge
+
+In 2012, some researchers at MIT published a new method for amplifying subtle changes in motion (or other aspects of a video) and visualizing them over time:
+
+#+BEGIN_QUOTE
+[[http://people.csail.mit.edu/mrub/vidmag/][Eulerian Video Magnification for Revealing Subtle Changes in the World]]
+#+END_QUOTE
+
+It's pretty cool stuff. See example videos:
+
+- [[http://youtu.be/e9ASH8IBJ2U][Revealing Invisible Changes in the World]] (layperson version)
+- [[http://youtu.be/ONZcjs1Pjmk][Eulerian Video Magnification]] (more technical version)
+
+[[file:e36sol.html][solutions]]
+

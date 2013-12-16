@@ -1,0 +1,16 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 33
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:2
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* High-pass filter
+
+Implement a high-pass second-order butterworth filter in the language of your choice.
+
+Apply the filter to a 200 Hz signal composed of white noise, and plot the power spectral density before and after applying the filter using a 15 Hz cutoff.
+

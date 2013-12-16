@@ -1,0 +1,33 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 15 solutions
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:t html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/e15.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+[[file:code/cipher1.txt][cipher1.txt]]
+
+* Python
+e15.py
+#+INCLUDE: "../code/e15.py" src python
+
+* MATLAB / Octave
+e15.m
+#+INCLUDE: "../code/e15.m" src octave
+XORdecrypt.m
+#+INCLUDE: "../code/XORdecrypt.m" src octave
+
+* C
+e15.c
+#+INCLUDE: "../code/e15.c" src c
+e15helper.h
+#+INCLUDE: "../code/e15helper.h" src c
+e15helper.c
+#+INCLUDE: "../code/e15helper.c" src c

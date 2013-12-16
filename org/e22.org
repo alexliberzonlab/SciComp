@@ -1,0 +1,36 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 22
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Scatterplot
+
+Let x be a vector starting at 1 and ending at 100. Let y be a vector
+equal to (x * 0.15) + N where N is a vector of random values chosen
+from a gaussian distribution with mean 0.0 and standard deviation 1.0.
+
+Generate a scatterplot of x vs y:
+
+#+ATTR_HTML: width="500"
+[[file:code/e22plot1.jpg]]
+
+(note your specific points might look different than mine, since there
+is random noise)
+
+* A second variable
+
+Let z be equal to ((x * 0.05) + 2) + N where N is a vector of random
+values chosen from a gaussian distribution with mean 0.0 and standard
+deviation 1.5.
+
+Generate a scatterplot of y and z vs x, including a legend:
+
+#+ATTR_HTML: width="500"
+[[file:code/e22plot2.jpg]]
+
+[[file:e22sol.html][solutions]]

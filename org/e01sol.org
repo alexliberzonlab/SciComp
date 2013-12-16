@@ -1,0 +1,29 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 1 solutions
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:t html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/e01.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+* Python
+e01.py
+#+INCLUDE: "../code/e01.py" src python
+
+* MATLAB / Octave
+e01.m
+#+INCLUDE: "../code/e01.m" src octave
+
+* R
+e01.R
+#+INCLUDE: "../code/e01.R" src R
+
+* C
+e01.c
+#+INCLUDE: "../code/e01.c" src C

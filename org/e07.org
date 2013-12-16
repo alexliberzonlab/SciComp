@@ -1,0 +1,55 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 7
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Newton's Method for Square Root
+
+Write a program to estimate the square root of 612 using [[http://en.wikipedia.org/wiki/Newton's_method#Square_root_of_a_number][Newton's
+method]]. Write it so that the number whose square root is to be taken,
+and the number of iterations are both parameters (variables) that can
+be set by the user or the programmer. You can choose the initial guess
+on your own, use whatever you like. I suggest the number $10.0$ as in
+the wikipedia example.
+
+Find the square root of 612 using 5 iterations. Try it again using 10
+iterations.
+
+*Bonus*
+
+Examine the relationship between the square root of 612 as found by
+Newton's method as a function of the number of iterations. Examine
+iterations from 1 through to 10. If you want to get a head start on
+how to visualize data, you can try to plot this relationship.
+
+Repeat this using different starting guesses, e.g. 5, 10, 20, 40, 80
+
+Plotting hints: in MATLAB use the =plot()= command. In R use the
+=plot()= command.
+
+In Python either issue the command:
+
+#+BEGIN_SRC python
+from matplotlib import *
+#+END_SRC
+
+or instead of starting Python, start iPython:
+
+#+BEGIN_SRC sh
+ipython --pylab
+#+END_SRC
+
+and then the =plot= command is already at your disposal.
+
+In C, I would suggest exporting the data to a file and then importing
+it into MATLAB, Python or R to do the plotting.
+
+We will look at graphical displays of data in more detail soon...
+
+[[file:e07sol.html][solutions]]
+

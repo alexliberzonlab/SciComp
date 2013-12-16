@@ -1,0 +1,45 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 27
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+Here the idea is to take a cost function $J$ and in a brute-force way, map out the entire cost landscape --- that is, how $J$ varies across a broad range of parameter values.
+
+* 1D cost landscape
+
+Assume that the cost function $J$ is a function of a single parameter $x$:
+
+\begin{equation}
+J = x e^{(-x^{2})} + \frac{x^{2}}{20}
+\end{equation}
+
+*Map J*
+
+Assume values of $x$ range between -10.0 and +10.0. Generate a plot of the cost function $J$ over this range.
+
+*Optimize x*
+
+Use an optimization method of your choosing to find the value of $x$ that minimizes $J$.
+
+* 2D cost landscape
+
+Assume that the cost function $J$ is a function of two parameters $x$ and $y$:
+
+\begin{equation}
+J = x e^{(-x^{2}-y^{2})} + \frac{x^{2}+y^{2}}{20}
+\end{equation}
+
+*Map J*
+
+Assume values of $x$ and $y$ both range between -3.0 and +3.0. Generate a plot of the cost function $J$ over this range.
+
+*Optimize (x,y)*
+
+Use an optimization method of your choosing to find the $(x,y)$ pair that minimizes $J$.
+
+[[file:e27sol.html][solutions]]

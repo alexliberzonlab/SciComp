@@ -1,0 +1,30 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 11 solutions
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:t html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/e11.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+* Python
+e11.py
+#+INCLUDE: "../code/e11.py" src python
+
+* MATLAB / Octave
+e11.m
+#+INCLUDE: "../code/e11.m" src octave
+
+* R
+e11.R
+#+INCLUDE: "../code/e11.R" src R
+
+* C
+e11.c
+#+INCLUDE: "../code/e11.c" src C
+

@@ -1,0 +1,18 @@
+#+STARTUP: showall
+
+#+TITLE:     Assignment 3
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/assignments.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Document processing & reproducible research
+
+Choose one of these tools, whether it's raw LaTeX or Sweave or Pweave
+or iPython Notebook, and rewrite any three [[file:exercises.html][exercises]] using your tool
+of choice.
+
+Please send me your completed assignment by email. You can submit a single file (e.g. a pdf of the final output) for each exercise separately, or you can also construct a single pdf file, that's fine too. *Please make sure that your name is indicated somewhere in each file*.
+

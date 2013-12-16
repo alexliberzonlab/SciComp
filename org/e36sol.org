@@ -1,0 +1,19 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 36 solutions
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:t html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/e36.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+Here is a link to the example video: [[file:code/IMG_1383.MOV][IMG\_1383.MOV]]
+
+* MATLAB
+e36.m
+#+INCLUDE: "../code/e36.m" src octave

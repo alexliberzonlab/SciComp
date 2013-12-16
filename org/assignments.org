@@ -1,0 +1,14 @@
+#+STARTUP: showall
+
+#+TITLE:     Assignments
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: html:t num:nil toc:1 h:2
+#+LINK_UP: http://www.gribblelab.org/scicomp/index.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+1. [[file:a01.html][computing prime numbers]]
+2. [[file:a02.html][sorting]]
+3. [[file:a03.html][document processing & reproducible research]]
+4. [[file:a04.html][preferred direction of spiking neurons]]

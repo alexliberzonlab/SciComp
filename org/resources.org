@@ -1,0 +1,139 @@
+#+STARTUP: showall
+
+#+TITLE:     Resources
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: html:t num:t toc:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/index.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+* Readings
+- [[http://stackoverflow.com/questions/194812/list-of-freely-available-programming-books/392926#392926][List of freely available programming books]]
+- [[http://www.paulgraham.com/head.html][Holding a Program in One's Head]]
+- [[http://jakevdp.github.io/blog/2013/10/26/big-data-brain-drain/][The Big Data Brain Drain: Why Science is in Trouble]]
+
+* Python
+- [[http://openbookproject.net/thinkcs/python/english2e/][How to Think Like a Computer Scientist: Learning with Python]]
+- [[https://github.com/jrjohansson/scientific-python-lectures][Lectures on scientific computing with Python]]
+- [[http://www.diveintopython.net/toc/index.html][Dive Into Python]]
+- [[http://learnpythonthehardway.org/book/][Learn Python The Hard Way]]
+- [[http://en.wikibooks.org/wiki/Python_Programming][Python Programming wikibook]]
+- [[http://link.springer.com/book/10.1007/978-3-642-18366-9/page/1][A Primer on Scientific Programming with Python]]
+- [[http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/][MIT 6.00 Introduction to Computer Science and Programming]]
+- [[http://www.codecademy.com/learn][Codeacademy]]
+** Scipy, NumPy, matplotlib, pandas
+- [[http://www.scipy.org][SciPy]]
+- [[http://wiki.scipy.org/Cookbook][SciPy Cookbook]]
+- [[http://scikits.appspot.com/scikits][SciKits]]
+- [[http://www.numpy.org][NumPy]]
+- [[http://wiki.scipy.org/NumPy_for_Matlab_Users][NumPy for Matlab Users]]
+- [[http://mathesaurus.sourceforge.net/matlab-numpy.html][Numpy for MATLAB users]] (mathesaurus)
+- [[http://mathesaurus.sourceforge.net/matlab-python-xref.pdf][Matlab commands in NumPy]]
+- [[http://matplotlib.org][matplotlib]]
+- [[http://matplotlib.org/gallery.html][matplotlib gallery]]
+- [[http://docs.enthought.com/mayavi/mayavi/][Mayavi]]
+- [[http://docs.enthought.com/mayavi/mayavi/auto/examples.html][Mayavi gallery]]
+- [[http://pandas.pydata.org][pandas]]: Python Data Analysis Library
+- [[http://www.gregreda.com/2013/10/26/intro-to-pandas-data-structures/][Intro to pandas data structures]]
+** iPython
+- [[http://ipython.org][ipython]]
+- [[http://nbviewer.ipython.org][iPython Notebook Viewer]]
+** Python distributions / installers
+- [[http://fonnesbeck.github.io/ScipySuperpack/][Scipy Superpack]] (Mac)
+- [[http://www.scipy.org/install.html][Installing the Scipy Stack]] (Linux)
+- [[https://store.continuum.io/cshop/anaconda/][Anaconda Python Distribution]] (Mac / Windows / Linux)
+- [[https://www.enthought.com/products/epd/][Enthought Python Distribution / Canopy]] (Mac / Windows / Linux)
+
+* C
+- [[http://cslibrary.stanford.edu/101/EssentialC.pdf][Essential C]]
+- [[http://c.learncodethehardway.org/book/][Learn C The Hard Way]]
+- [[http://www.gnu.org/software/gsl/][GNU Scientific Library]] (documentation [[http://www.gnu.org/software/gsl/manual/html_node/][here]])
+- [[http://modelingwithdata.org/about_the_book.html][Modeling With Data: Tools and Techniques for Scientific Computing]]
+- [[http://modelingwithdata.org/arch/00000046.htm][Why you should teach your stats students C]]
+- [[http://www.unknownroad.com/rtfm/gdbtut/gdbtoc.html][gdb debugger tutorial]]
+- [[http://www.gribblelab.org/CBootcamp/index.html][C Programming Boot Camp]]
+- [[http://apophenia.info][Apophenia]] (C library for working with data and statistical models)
+- [[http://pragprog.com/magazines/2011-03/punk-rock-languages][Punk Rock Languages]]
+
+* R
+- [[http://www.r-project.org][The R Project for Statistical Computing]]
+- [[http://www.rstudio.com/ide/][R Studio]] (graphical IDE)
+- [[http://www.r-bloggers.com/why-use-r/][Why use R?]]
+- [[http://mathesaurus.sourceforge.net/octave-r.html][R for Matlab users]]
+- [[http://www.springer.com/statistics/computational+statistics/book/978-0-387-93836-3][A Beginner's Guide to R]] (Springer)
+- [[http://www.mayin.org/ajayshah/KB/R/index.html][R by example]]
+- [[http://www.gribblelab.org/stats2013/index.html][Introduction to Statistics Using R]] (from winter 2013)
+
+* Matlab
+- [[http://www.mathworks.com/products/matlab/][Matlab]] (Mathworks.com)
+- [[http://www.uwo.ca/its/sitelicense/matlab/][Western site license info]]
+- [[http://www.mathworks.com/academia/student_version/][Matlab student version]]
+- [[http://www.masteringmatlab.com][Mastering MATLAB]] (a good book on learning MATLAB)
+- [[http://www.mathworks.com/help/matlab/index.html][MATLAB documentation]] (Mathworks.com)
+
+* Octave
+- [[http://www.gnu.org/software/octave/][GNU Octave]] (a free, open source, multi-platform Matlab clone)
+- [[http://en.wikibooks.org/wiki/Octave_Programming_Tutorial][Octave Programming Tutorial]]
+- [[http://en.wikibooks.org/wiki/MATLAB_Programming/Differences_between_Octave_and_MATLAB][Differences between Octave and Matlab]]
+
+* LaTeX
+- [[http://www.latex-project.org][LaTeX project site]]
+- [[http://tobi.oetiker.ch/lshort/lshort.pdf][The Not So Short Introduction to LaTeX]]
+- [[http://nitens.org/taraborelli/latex][The Beauty of LaTeX]]
+- [[http://airminded.org/2005/11/18/latex-the-pain-the-pleasure/][LaTeX: the pain, the pleasure]]
+- [[http://openwetware.org/wiki/Word_vs._LaTeX][Word vs. LateX]]
+- [[http://www.osnews.com/story/10766][LaTeX isn't for everyone but it could be for you]]
+- [[http://www.andy-roberts.net/writing/latex][Getting to Grips with LaTeX]]
+- [[http://pierre.chachatelier.fr/latexit/latexit-home.php?lang=en][LaTeXiT equation editor for mac]]
+- [[http://www-h.eng.cam.ac.uk/help/tpl/textprocessing/][Text Processing using LaTeX]]
+- [[http://latexforhumans.wordpress.com][LaTeX for Humans]]
+** BibTex
+- [[http://bibdesk.sourceforge.net][BibDesk]] (a Mac bibliography manager)
+- [[http://bst.maururu.net][LaTeX Bibliography Styles Database]]
+- [[http://schneider.ncifcrf.gov/latex.html][LaTeX Style and BibTeX formats for biologists]]
+** Beamer
+- [[http://www.math.umbc.edu/~rouben/beamer/][A Beamer Quickstart]] (Beamer is a LaTeX class for slide presentations)
+- [[http://www.tug.org/pracjourn/2005-4/mertz/mertz.pdf][Beamer by Example]]
+** Sweave
+- [[http://www.stat.uni-muenchen.de/~leisch/Sweave/][The Sweave Homepage]]
+- [[http://www.tug.org/pracjourn/2008-1/zahn/][Learning to Sweave in APA Style]]
+** Pweave
+- [[http://docs.pweave.googlecode.com/hg/index.html][Pweave - literate programming with Python]]
+- [[http://www.johndcook.com/blog/2012/12/20/basics-of-sweave-and-pweave/][Basics of Sweave and Pweave]]
+ 
+* Emacs
+- [[http://www.gnu.org/software/emacs/tour/][GNU Emacs]]
+- [[https://ccrma.stanford.edu/guides/package/emacs/emacs.html][Emacs Cheat Sheet]]
+- [[http://www.gnu.org/software/auctex/][AucTeX]] - emacs plus LaTeX
+- [[http://gnuvince.wordpress.com/2012/02/19/why-i-still-use-emacs/][Why I Still Use Emacs]]
+- [[http://www.youtube.com/playlist?list=PL7E11B34616530F5E][Kurt Schwehr's emacs tutorials]]
+** Org mode
+- [[http://orgmode.org][Org mode]]
+- [[http://orgmode.org/worg/org-contrib/babel/][Babel: active code in Org-mode]]
+- [[http://www.youtube.com/watch?v=1-dUkyn_fZA][Emacs + org-mode + python in reproducible research; SciPy 2013]]
+
+* Pandoc
+- [[http://johnmacfarlane.net/pandoc/][Pandoc]] a universal document converter
+- [[http://johnmacfarlane.net/pandoc/demos.html][Pandoc examples]]
+
+* virtualization
+- [[https://www.virtualbox.org][VirtualBox]] (Mac, Linux, Windows) free!
+- [[http://www.vmware.com/products/fusion/][VMWare Fusion]] (Mac) and [[http://www.vmware.com/products/workstation][VMWare Workstation]] (Windows, Linux)
+- [[http://www.parallels.com/ca/products/desktop/][Parallels Desktop]] (Mac)
+
+* Linux flavours
+- [[http://www.ubuntu.com/desktop][Ubuntu]] (perhaps easiest to get going with but chock full of crap)
+- [[http://xubuntu.org][xubuntu]] (based on Ubuntu but less graphically intensive desktop interface)
+- [[https://wiki.ubuntu.com/Lubuntu][Lubuntnu]] (lighter still)
+- [[http://linuxmint.com][Linux Mint]] (minty fresh?)
+- [[http://www.debian.org/distrib/][Debian]] (arguably the most stable)
+
+* Other
+- [[http://rosettacode.org/wiki/Main_Page][Rosetta Code]]
+- [[http://software-carpentry.org/v4/index.html][Software Carpentry Lessons]]
+- [[http://mathesaurus.sourceforge.net][Mathesaurus]]

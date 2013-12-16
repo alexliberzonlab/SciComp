@@ -1,0 +1,31 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 8 solutions
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:t html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/e08.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+* Python
+e08.py
+#+INCLUDE: "../code/e08.py" src python
+
+* MATLAB / Octave
+isPrime.m
+#+INCLUDE: "../code/isPrime.m" src octave
+e08.m
+#+INCLUDE: "../code/e08.m" src octave
+
+* R
+e08.R
+#+INCLUDE: "../code/e08.R" src R
+
+* C
+e08.c
+#+INCLUDE: "../code/e08.c" src C

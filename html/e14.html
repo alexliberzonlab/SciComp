@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Exercise 14</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Exercise 14"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="fall 2013"/>
+<meta name="author" content="Paul Gribble"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="mystyle.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js">
+/**
+ *
+ * @source: http://orgmode.org/mathjax/MathJax.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ * Copyright (C) 2012-2013  MathJax
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ */
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code below.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code below is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code below.
+*/
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+ <a accesskey="h" href="http://www.gribblelab.org/scicomp/exercises.html"> UP </a>
+ |
+ <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
+</div>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Exercise 14</h1>
+
+
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Linear Regression</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+Linear regression is an approach whereby we can model the relationship
+between one <i>dependent variable</i> \(Y\) and \(m\) <i>independent variables</i>
+\(X_{j}\) where \(j=1:m\). When \(j=1\) this is called <i>simple linear regression</i>. When \(j&gt;1\) this is called <i>multiple regression</i>.
+</p>
+<p>
+The independent variables \(X_{j}\) are sometimes called <i>predictor variables</i>. In the general linear modeling approach often used in fMRI
+analysis, for example, the predictor variables \(X_{j}\) might be a
+collection of different things, some of which are predictor variables
+(e.g. that code different aspects of the task that the subject is
+performing in the scanner), and some of which are so-called "nuisance
+variables" (like physiological noise, head motion parameters, etc).
+</p>
+<p>
+Linear regression is called <i>linear</i> because the underlying model
+relating \(Y\) to \(X_{j}\) is linear:
+</p>
+
+
+\begin{equation}
+Y = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} + ... + \beta_{3}X_{3} + \epsilon
+\end{equation}
+
+<p>
+The \(\beta_{j}\) terms represent weights on each predictor
+variable. The \(\epsilon\) term represents random "noise" or variance
+that is not predicted by the model. It is typically assumed that
+\(\epsilon\) is <a href="http://en.wikipedia.org/wiki/Normal_distribution">normally distributed</a>.
+</p>
+<p>
+We also typically have many individual samples of the dependent
+variable \(Y\) and associated values for the dependent variables \(X\). If
+we have \(n\) cases, we can rewrite the equation with a subscript \(i\)
+denoting each sample, where \(i\) varies from \(1\) through \(n\):
+</p>
+
+
+\begin{equation}
+Y_{i} = \beta_{0} + \beta_{1}X_{i1} + \beta_{2}X_{i2} + ... + \beta_{3}X_{i3} + \epsilon_{i}
+\end{equation}
+
+<p>
+We can rewrite this as a matrix equation:
+</p>
+
+
+\begin{equation}
+Y = X \beta + \epsilon
+\end{equation}
+
+<p>
+Now \(Y\) is a matrix with \(n\) rows and \(1\) column, and \(X\) is a matrix
+with \(n\) rows and \(m+1\) columns. There is a trick here, which is that
+the first column of the \(X\) matrix is a column filled with \(1\). This
+is how we incorporate the \(\beta_{0}\) constant, that doesn't multiply
+an \(X_{j}\) independent variable. Essentially we are saying it is
+multiplied by \(1\). Finally, \(\beta\) will be a matrix with \(m+1\) rows
+and \(1\) column &mdash; in other words, a constant \(\beta_{0}\) and then one
+\(\beta_{j}\) for each independent variable \(X_{j}\). The values of
+\(\beta\) are the weights on the independent variables \(X\) that best
+predict the dependent variable \(Y\). The matrix multiplication is
+legal: \((n~1) = (n~[m+1])([m+1]~1)\)
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">Yay linear algebra</h2>
+<div class="outline-text-2" id="text-2">
+
+
+<p>
+An estimate of the weights \(\hat{\beta_{j}}\) can be found using
+<a href="http://en.wikipedia.org/wiki/Linear_regression#Estimation_methods">ordinary least squares estimation</a> using the following matrix equation
+(take my word for it, for now, or you can find proofs on the
+internet):
+</p>
+
+
+\begin{equation}
+\hat{\beta} = \left( X^{\top}X \right)^{-1} X^{\top} Y
+\end{equation}
+
+<p>
+where \(X^{\top}\) denotes matrix transpose, \(X^{-1}\) denotes matrix
+inverse, and \(XY\) denotes matrix multiplication. If your matrix
+algebra is shaky, find a classmate who is on more solid ground (or
+come and talk to me).
+</p>
+<p>
+Briefly, in ordinary least squares, the values of \(\hat{\beta}\) are
+found that minimize the sum of squared differences between the actual
+dependent variable \(Y\) and the predicted values \(\hat{Y}\) given the
+linear model.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">with some data</h2>
+<div class="outline-text-2" id="text-3">
+
+
+<p>
+Here are some example data:
+</p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="center" /><col class="center" /><col class="center" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="center">Income ($)</th><th scope="col" class="center">Age (years)</th><th scope="col" class="center">Education (years)</th></tr>
+</thead>
+<tbody>
+<tr><td class="center">50000</td><td class="center">35</td><td class="center">4</td></tr>
+<tr><td class="center">35000</td><td class="center">40</td><td class="center">2</td></tr>
+<tr><td class="center">80000</td><td class="center">45</td><td class="center">6</td></tr>
+<tr><td class="center">25000</td><td class="center">25</td><td class="center">0</td></tr>
+<tr><td class="center">90000</td><td class="center">70</td><td class="center">4</td></tr>
+<tr><td class="center">75000</td><td class="center">55</td><td class="center">6</td></tr>
+<tr><td class="center">65000</td><td class="center">50</td><td class="center">4</td></tr>
+<tr><td class="center">95000</td><td class="center">60</td><td class="center">6</td></tr>
+<tr><td class="center">70000</td><td class="center">45</td><td class="center">8</td></tr>
+<tr><td class="center">110000</td><td class="center">50</td><td class="center">8</td></tr>
+</tbody>
+</table>
+
+
+<p>
+Your task is to estimate a linear model that relates Age and Eduction
+to Income. So your dependent variable \(Y\) is Income and your two
+dependent variables \(X_{1}\) and \(X_{2}\) are Age and Education.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">more hints</h2>
+<div class="outline-text-2" id="text-4">
+
+
+<p>
+Our \(X\) matrix will be \(10\) rows and \(3\) columns. The first column
+will be filled with \(1\). The second column will be the Age data and
+the third column will be the Education data. Our \(Y\) matrix will be
+\(10\) rows and \(1\) column and will contain the Income data. Our task
+now is to estimate the weights \(\beta\) that when multiplied by \(X\)
+will best predict \(Y\). The \(\beta\) matrix will be \(3\) rows and \(1\)
+column.
+</p>
+<p>
+Note that there are built-in functions to estimate linear models, but
+I don't want you to use them here. I want you to program this from
+scratch.
+</p>
+<p>
+Your two tasks are:
+</p>
+<ol>
+<li>estimate weights \(\beta_{0}\), \(\beta_{1}\) and \(\beta_{2}\), and
+</li>
+<li>generate predicted values of Income
+</li>
+</ol>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5">linear algebra refresher</h2>
+<div class="outline-text-2" id="text-5">
+
+
+<p>
+The <a href="http://www.khanacademy.org">Khan Academy</a> has a series of <a href="https://www.khanacademy.org/math/algebra/algebra-matrices">matrix tutorials</a> that might be useful
+if you need a refresher.
+</p>
+<p>
+<a href="e14sol.html">solutions</a>
+</p></div>
+</div>
+</div>
+
+<div id="postamble">
+<hr />Paul Gribble | fall 2013<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
+</div>
+</body>
+</html>

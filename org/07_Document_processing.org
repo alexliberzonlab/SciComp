@@ -1,0 +1,497 @@
+#+STARTUP: showall
+
+#+TITLE:     7. Document Processing & Reproducible Research
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: html:t num:t toc:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/index.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+-----
+[TABLE-OF-CONTENTS]
+-----
+
+* Document Processing
+
+Most of you have experience using programs like Microsoft Word to
+write papers and reports. The reason programs like these are so
+popular is that they are "what you see is what you get" (WYSIWYG) in
+their design. You see a graphical representation of the page, and of
+your document. Stylistic aspects like boldface, underlining, spacing,
+etc, are inserted using menus and buttons. MS Word and programs like
+it are easy to start using immediately. In many ways they mimic the
+[[http://en.wikipedia.org/wiki/Typewriter][typewriter]] (link for those of you who may not know what these ancient
+devices are)... you see a page, and you start typing.
+
+There are however shortcomings of WYSIWYG programs like MS Word,
+especially for larger documents that include features like tables of
+contents, citations and bibliographies, figures and tables,
+etc. Technical documents that include mathematical equations can also
+be rather time consuming to generate in WYSIWYG word processors.
+
+What is the alternative? There is another way of typesetting documents
+that involves *separation of content and style*. Content is specified
+using plain text, and then stylistic aspects are specified using
+/markup/ (special keywords and codes).
+
+One example of this style of document processing is [[http://en.wikipedia.org/wiki/HTML][HTML]]. Page content
+is specified using plain text, and stylistic aspects are specified
+using HTML tags (e.g. <br> for a line break, <div> to define a new
+section, <b> for boldface, etc). Another example is [[http://en.wikipedia.org/wiki/Cascading_Style_Sheets][CSS]] and how it
+works with HTML. An entire web site can be written in a generic way in
+HTML, and by referring to different CSS files, totally different
+stylistic presentations can be implemented. Another example is
+[[http://en.wikipedia.org/wiki/Markdown][Markdown]], in which simple markup tags can be used in a plaintext
+document to denote stylistic features. Markdown documents can be
+translated into HTML and several other formats using programs like
+[[http://johnmacfarlane.net/pandoc/][pandoc]]. Another example, and the one that we will be looking at here,
+is called [[http://www.latex-project.org][LaTeX]] (pronounced "lay-teck").
+
+** Why not MS Word?
+
+Separating style and content frees your mind to focus on your
+thoughts, and writing, without constantly being taken out of the
+moment, to manually implement stylistic features of your document. If
+every time you start a new section, or compose a list, etc, you need
+to mentally pause your thoughts in order to find the menu or submenu
+element or ribbon-bar-button to enlarge the font, make it bold, insert
+bullet points, adjust spacing, etc, then that detracts from the
+continuity of your thoughts. In programs like MS Word, all of these
+stylistic aspects have to be implemented manually, throughout the
+document. In systems like LaTeX, style is specified separately from
+content, all in a single place, and so changing the look of your
+document can be done at a separate time from writing the content.
+
+You all know, if you've ever written a large document like a
+scientific manuscript, that handling things like citations and
+bibliographies, figures, tables, equations, etc can be a huge
+nuisance. There are bibliography managers with citation features, such
+as EndNote, but in my experience they are rather difficult and
+unreliable to use. Imagine you are writing for a journal like Nature
+or Science, in which citations appear as numbers in increasing order
+as the document progresses. Imagine now you have 50 citations, and you
+decide that in the middle of your document, after citation #25, you
+need to add another one. Now you have to go through and manually
+change citations #26-50 to be 27-51. A similar issue exists with
+numbered equations, with Figures, and with Tables. Moving things
+around and you work on subsequent drafts of your article can often
+involve serious busywork in order to manually change citation, figure,
+equation, and table numbering.
+
+In LaTeX, all of this is handled 100% automatically for you. At no
+point do you need to manually number citations, figures, equations,
+tables, sections, subsections, chapters, etc. These things are
+specified using LaTeX markup codes, and when you /compile/ your LaTeX
+plaintext file (which generates a .pdf), all of the numbering is
+handled for you by the LaTeX system. This turns out to be a *huge*
+time saver, especially for long documents like a manuscript, or a
+thesis.
+
+Side note: my PhD thesis (200+ pages) was written using LaTeX, and
+everything including citations, equations, figures, tables, sections,
+even a table of contents with page numbers, is generated automatically
+by LaTeX. What's more, the thesis document itself is now almost 15
+years old, but I can still today compile it and generate a .pdf using
+the original LaTeX plaintext files.
+
+Another reason why I like systems like LaTeX more than programs like
+MS Word is that Word files are encoded in a binary format, and are not
+immediately human-readable. To read a Word file one needs a program
+that knows how to open Word files. What's more, Word file formats have
+changed over the years, and so there is no guarantee that some time in
+the future you will be able to easily open an old Word file. What's
+more, different operating systems (Windows, Linux, Mac OSX) often are
+not 100% compatible and interchangable with respect to Word files. In
+contrast, systems like LaTeX use plain text ascii files. These are
+universally readable and 100% platform independent. LaTeX is also
+open-source and free, whereas MS Word is proprietary and licensed.
+
+Have a look at the following sites to read more about the issue of
+Word vs LaTeX, and content vs style in document processing:
+
+- [[http://www.andy-roberts.net/writing/latex/benefits][Benefits of LaTeX typesetting]]
+- [[http://math.mit.edu/~sswatson/whylatex.html][Why LaTeX?]]
+- [[http://factorgrad.blogspot.ca/2010/07/why-latex-is-superior-to-ms-word.html][Why LaTeX is superior to MS Word]]
+- [[http://www.eng.cam.ac.uk/help/tpl/textprocessing/latex_advocacy.html][Why LaTeX?]]
+- [[http://chronicle.com/blognetwork/castingoutnines/2010/02/21/five-reasons-you-should-use-latex-and-five-tips-for-teaching-it/][Five reasons you should use LaTeX and five tips for teaching it]]
+
+* LaTeX
+
+** installing LaTeX
+
+LaTeX can be installed in Linux by typing:
+
+#+BEGIN_SRC sh
+sudo apt-get install texlive
+#+END_SRC
+
+On the Mac, the [[http://www.tug.org/mactex/][MacTEX]] distribution is the easiest way to go.
+
+On Windows, I've been told that [[http://www.tug.org/protext/][proTeXt]] is the way to go... although I
+have zero experience with it.
+
+** Basic LaTeX document structure
+
+Every LaTeX document must have at the very least, a basic structure that looks like this:
+
+#+INCLUDE: "../code/latexdemo1.tex" src tex
+
+This LaTeX plaintext file can be compiled from the command line by:
+
+#+BEGIN_SRC sh
+pdflatex latexdemo1.tex
+#+END_SRC
+
+Here is what the above document looks like when compiled into a .pdf:
+[[file:code/latexdemo1.pdf][latexdemo1.pdf]]. You can see that it's not very
+interesting. We have our document text, "Hello World!", and we have a
+page number at the bottom.
+
+The =\documentclass= command signifies one of several pre-canned
+[[http://en.wikibooks.org/wiki/LaTeX/Document_Structure#Document_classes][document styles]]. Some of the more relevant ones for us are =article=,
+which provides a basic report style appropriate for scientific
+manuscripts and reports, =report= which provides for longer reports
+containing several chapters, and =book= for actual books. Other styles
+you may find useful are =letter= for writing letters, and =beamer= for
+presentations (i.e. using LateX instead of MS Powerpoint).
+
+The document class command can be supplemented with one of a number of
+optional style options including things like font size, paper format
+(letter, A4, legal, etc), single vs two-columns, portrait vs landscape
+page orientation, etc.
+
+The idea here is that a given document class (e.g. =article=) provides
+a pre-determined systematic document appearance. This can be modified
+by other LaTeX commands. Typically these commands are entered after
+the =\documentclass= command but before the =\begin{document}=
+command.
+
+** Including Packages
+
+In the header between the =\documentclass= and =\begin{document}=
+commands, one can also load LaTeX packages using the
+=\includepackage{}= command. There are a ton of packages available,
+and they all live in a central repository known as [[http://www.ctan.org][CTAN]], the
+Comprehensive TeX Archive Network.
+
+Here is one package that we will use in order to demonstrate the
+various document styles available: the [[http://www.ctan.org/pkg/lipsum][lipsum]] package, which will
+insert chunks of dummy text so that we can see how different styles
+look. Here is an example:
+
+#+INCLUDE: "../code/latexdemo2.tex" src tex
+
+Here is what the .pdf file looks like: [[file:code/latexdemo2.pdf][latexdemo2.pdf]].
+
+The =\lipsum[]= commands mean, generate paragraphs of dummy text. The
+results in a 4-page document that allows you to see the basic
+=article= style. We also see commands for the title, author, and
+date. These are specified in the header, and depending on the
+documentstyle, are rendered differently.
+
+As an exercise, try changing the =\documentclass= to =book=,
+recompile, and see what it looks like. Try =report= and do the
+same. You get the idea. By changing style commands independent of the
+content (which doesn't have to change), we can alter the appearance of
+our document to suit our needs.
+
+** Equations
+
+Let's look at another example document. This time we've introduced
+equations:
+
+#+INCLUDE: "../code/latexdemo3.tex" src tex
+
+Here is what the .pdf file looks like: [[file:code/latexdemo3.pdf][latexdemo3.pdf]].
+
+Note a couple of things. First, equations are specified using LaTeX
+equation codes. A good summary of all the codes for the various math
+symbols is [[http://en.wikibooks.org/wiki/LaTeX/Mathematics][here]].
+
+Note also that nowhere in the LaTeX document itself did I manually
+specify the Equation numbers. I only specified labels, and then within
+the document I can refer to these labels without having to worry about
+the numbering. As an exercise, try switching the order of the
+equations, and recompile. See how the numbering is automatically
+adjusted for you. Note also that you will likely need to issue the
+=pdflatex= command twice. The first time you issue it you might see a
+message like this:
+
+#+BEGIN_EXAMPLE
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+#+END_EXAMPLE
+
+The LaTeX system needs multiple passes to automatically handle all of
+the numbering for elements like equations, sections, tables, figures,
+citations, etc.
+
+** Citations & Bibliography
+
+In LaTeX, citations and bibliographies are handled by a separate but
+related program (included with LaTeX) called [[http://www.bibtex.org][BibTeX]]. BibTeX files are
+also plain text files, that list bibliography items in a standardized
+format. There is some documentation [[http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management][here]].
+
+Here is an example of a BibTeX file:
+
+#+INCLUDE: "../code/latexdemorefs.bib" src tex
+
+You can see this .bib file has three entries: two journal articles and
+one book. Now within our LaTeX file, if we want to cite any of these articles, we need to do a couple of things.
+
+First we need to specify the name of the .bib file containing the
+references using the =\bibliography{}= command. We also need to
+specify a style for our bibliography using the =\bibliographystyle}=
+command. There are several styles built-in, see [[http://web.reed.edu/cis/help/latex/bibtexstyles.html][Choosing a BibTeX
+Style]]. There are also styles you can import using the =\usepackage=
+command, e.g. the [[http://www.ctan.org/tex-archive/biblio/bibtex/contrib/chicago][chicago]] style, the [[http://www.ctan.org/pkg/apacite][apacite]] style for APA style, and
+the [[http://merkel.zoneo.net/Latex/natbib.php][natbib]] package for more customizable styles. Also see [[http://schneider.ncifcrf.gov/latex.html][BibTeX
+Bibliography and LaTeX Style Formats for Biologists]] (however slightly
+outdated I think).
+
+Finally, we can use the =\cite{}= command to actually cite
+papers. Here is an example:
+
+#+INCLUDE: "../code/latexdemo4.tex" src tex
+
+To compile this we need to issue a series of commands:
+
+#+BEGIN_SRC sh
+pdflatex latexdemo4
+bibtex latexdemo4
+pdflatex latexdemo4
+#+END_SRC
+
+Here is what the .pdf looks like: [[file:code/latexdemo4.pdf][latexdemo4.pdf]].
+
+A convenient way to get bibliography entries into .bib format is by
+using [[http://scholar.google.com][google scholar]]. Under each article you find there is a link
+called *cite*, and when you click that, a window pops up and one of
+the links at the bottom of this window is *Import into BibTeX*. If you
+click that you will see the entry in .bib format, and you can copy and
+paste it into your .bib file.
+
+For the Mac there is a really nice free, open-source program called
+[[http://bibdesk.sourceforge.net][BibDesk]] that provides a pointy-clicky GUI interface to .bib files. You
+can even search Pubmed, google scholar, etc and have the results
+imported automatically into a .bib file.
+
+** article template
+
+Here is a link to a template for a basic scientific manuscript. There
+are some formatting codes that we haven't seen yet, but you can
+probably guess what they do, and if not you can look them up on google
+to find out. The template includes a title page, a bibliography,
+Figures plus Figure Captions, and all the standard article sections
+(Abstract, Introduction, Methods, Results, Discussion).
+
+- [[file:code/articletemplate.tex][articletemplate.tex]]
+- [[file:code/articletemplaterefs.bib][articletemplaterefs.bib]]
+- [[file:code/articletemplatefigure.pdf][articletemplatefigure.pdf]]
+
+and the compiled article in .pdf format:
+
+- [[file:code/articletemplate.pdf][articletemplate.pdf]]
+
+
+** Next steps
+
+My suggestion is to go through some of the first few sections of
+
+I will openly admit that getting to know LaTeX involves somewhat of a
+learning curve. The best place to start is by looking at example
+templates and modifying them to suit your needs.
+
+Here are some links to gentle introductions:
+
+- [[http://latex-project.org/intro.html][An introduction to LaTeX]]
+- [[http://en.wikibooks.org/wiki/LaTeX][LaTeX (wikibooks)]]
+- [[http://www.andy-roberts.net/writing/latex][Getting to Grips with LaTeX]]
+- [[http://www.bibtex.org/Using/][How to use BibTeX]]
+- [[http://www.stdout.org/~winston/latex/latexsheet.pdf][LaTeX Cheat Sheet]] (print this out and keep it handy)
+
+* Markdown
+
+[[http://en.wikipedia.org/wiki/Markdown][Markdown]] is a lightweight markup language originally intended as a way to automatically generate HTML code from easy-to-read formatting codes. It was developed by [[http://en.wikipedia.org/wiki/John_Gruber][John Gruber]] and [[http://en.wikipedia.org/wiki/Aaron_Swartz][Aaron Swartz]]. Since its original conception it has sort of blossomed into a format that has gone way beyond just HTML.
+
+Markdown documents can be written in any plain text editor, for indeed at the end of the day (much like LaTeX), Markdown documents are just plain text documents, annotated with special markup codes that specify formatting of common format elements, like headings, subheadings, lists, tables, inline graphics, code snippets (with syntax highlighting), etc. Here is a [[https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet][Markdown Cheatsheet]] that shows you the kind of things that are possible.
+
+Many advanced text editors, like [[http://www.sublimetext.com][Sublime Text]], and others, have Markdown knowledge "built in". The convention is that Markdown files have a =.md= filename suffix.
+
+There are a number of ways to generate output-formatted documents from Markdown. Some text editors can generate HTML previews (and HTML output files) from Markdown --- just google Markdown editors.
+
+There are also programs like [[http://markedapp.com][Marked]] that will show you an output-formatted preview, as you edit a Markdown file in any editor (Marked runs in the background).
+
+Finally the program called [[http://johnmacfarlane.net/pandoc/][Pandoc]] can convert from Markdown (and many other formats) to many output formats including HTML, LaTeX, pdf, MS Word, etc etc.
+
+Some people write papers in Markdown format:
+
+- [[http://recurrentprocessing.blogspot.ca/2013/02/write-academic-papers-with-markdown.html][Write academic papers with Markdown]]
+- [[https://github.com/weecology/data-sharing-paper][an example of a scientific manuscript written using Markdown]] 
+- [[http://chronicle.com/blogs/profhacker/markdown-the-syntax-you-probably-already-know/35295][Markdown: The Syntax You (Probably) Already Know]]
+
+* Reproducible Research
+
+In a typical scientific workflow, one has data analysis code written
+in one language (e.g. R or Python) store in files somewhere, one might
+have Figures generated using another program, and their files stored
+somewhere else, and finally a manuscript in some other program,
+e.g. MS Word, with that file stored somewhere else.
+
+This is non-optimal in the long run for a couple of reasons. First, if
+there is ever a change to the data, or a need to re-analyse data, or
+re-generate a Figure, doing so and incorporating that change into your
+manuscript document will involve several error-prone steps, like
+locating the appropriate data analysis code files, performing whatever
+steps are necessary to re-generate the Figure, and then finally
+replacing the old Figure with the new Figure in the manuscript
+document itself. Second, you end up with several different kinds of
+files, sometimes in several different locations. Third, if you want to
+share your data and analysis workflow with colleagues, this depends on
+them (1) being able to re-create the same set of steps as you did, and
+(2) it may depend on them having specific, particular software.
+
+The idea behind so-called [[http://en.wikipedia.org/wiki/Reproducibility#Reproducible_research][reproducible research]] is that your data
+analysis, graphical Figures, and manuscript all live in one single
+document... or at least they are tied together if they are in separate
+files... and that the document can be automatically prepared
+(e.g. compiling it in LaTeX) and in doing so, will execute the data
+analysis code, and graphical Figure generation, all in one automatic
+step. This is advantageous both for your own organization and also for
+sharing the data + analysis with others.
+
+The insertion of code that can be executed, within a document, is
+sometimes called [[http://en.wikipedia.org/wiki/Literate_programming][literate programming]].
+
+Here's a recent paper in PLoS Computational Biology:
+
+#+BEGIN_QUOTE
+Sandve, G. K., Nekrutenko, A., Taylor, J., & Hovig, E. (2013). [[http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1003285][Ten Simple Rules for Reproducible Computational Research]]. PLoS Computational Biology, 9(10), e1003285.
+#+END_QUOTE
+
+** Sweave
+
+One system for reproducible research that is worth looking at is
+[[http://www.stat.uni-muenchen.de/~leisch/Sweave/][Sweave]] (pronounced "ess weave"). Sweave is a tool that allows you to
+directly embed R code for data analysis and/or Figure generation into
+a LaTeX document. Sweave comes included with R so if you've installed
+R, you have Sweave.
+
+The workflow using Sweave involves inserting special Sweave codes into
+your LaTeX document which signals R code chunks. The next step is to
+process this .Rnw file into a .tex file, using the command =R
+CMD SWEAVE=. Then you can compile the resulting .tex file using
+=R CMD pdflatex=. Here is a simple example:
+
+#+INCLUDE: "../code/sweavedemo1.Rnw" src tex
+
+We compile this into a .pdf in two steps:
+
+#+BEGIN_SRC sh
+R CMD Sweave sweavedemo1.Rnw
+R CMD pdflatex sweavedemo1.tex
+#+END_SRC
+
+Here is the resulting .pdf file: [[file:code/sweavedemo1.pdf][sweavedemo1.pdf]].
+
+Notice a couple of things. In the .Rnw document, Sweave code is
+denoted using =<<>>= separators. Also note that the code is just R
+code, it runs the same as if you are running it independently in an R
+session. Also notice that we can access R variables that have been
+defined in code so far, using the =\Sexpr{}= command.
+
+What this all means, if you are starting to "get it", is that in
+principle you could have all of your data analysis and Figure
+generation code inside your manuscript file. When anything changes
+(new data, or modified analysis) all you would have to do is recompile
+the document, .Rnw -> .tex -> .pdf, and all of the changes will
+propagate automatically. It also makes it really easy to share with
+others, and it means someone else ought to be able to directly run the
+same exact analysis that you published in your paper. This would seem
+like a desirable feature in science.
+
+See these links for some more information, and tutorials, about using Sweave:
+
+- [[http://tug.org/pracjourn/2008-1/zahn/zahn.pdf][Learning to Sweave in APA Style]]
+- [[http://users.stat.umn.edu/~geyer/Sweave/][An Sweave Demo]]
+
+
+** Pweave
+
+There is a system called [[http://mpastell.com/pweave/][Pweave]] that allows you to do a similar thing
+as Sweave, but with Python code instead of R code. In fact Pweave
+supports not just LaTeX but also HTML and Pandoc formats as well.
+
+I don't have much experience yet with Pweave so I will not provide
+sample documents (yet). I will leave it up to you to get started with
+Pweave if you desire Python literate code.
+
+Here is a [[http://mpastell.com/pweave/texamples.html][LaTeX example]] using Pweave. You can see that the idea is
+very similar to Sweave.
+
+** MATweave
+
+There appears to be a solution out there for integrating MATLAB with LaTeX as well, called [[http://staffwww.dcs.shef.ac.uk/people/N.Lawrence/matweave.html][MATweave]]. I haven't tried it myself but if you're interested in pursuing the reproducible research approach using MATLAB it might be worth checking out.
+
+** iPython notebook
+
+Finally, another tool that might be useful to you is the [[http://ipython.org/notebook.html][iPython
+Notebook]]. This is a tool that comes with [[http://ipython.org/index.html][iPython]] that provides a
+web-based interactive environment for combining Python code, document
+text, graphics, and even rich media such as videos and web pages, all
+in a single document.
+
+iPython notebooks can also be saves in an iPython notebook format
+(.ipynb) or as python code (.py). There is even a [[http://nbviewer.ipython.org][iPython Notebook
+Viewer]] where you can share iPython notebooks online. There is a tool
+called [[http://ipython.org/ipython-doc/dev/interactive/nbconvert.html#nbconvert][nbconvert]] that can convert iPython notebook files into many
+formats including HTML, LaTeX, Markdown, etc.
+
+Here is how you start the iPython notebook from the command line, to
+automatically load the SciPy, Numpy, and the matplotlib environment:
+
+#+BEGIN_SRC sh
+ipython notebook --pylab=inline
+#+END_SRC
+
+This should then automatically launch your web browser and show the
+current directory, and any iPython notebook files that reside
+there. To create a new one, click the "New Notebook" button.
+
+Here is a link to [[https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks][a gallery of interesting iPython Notebooks]]. There
+are also some sample notebooks on the [[http://nbviewer.ipython.org][iPython Notebook Viewer]]
+homepage.
+
+Here are some YouTube videos demonstrating the many features of
+iPython including the iPython Notebook:
+
+- [[http://www.youtube.com/watch?v=xe_ATRmw0KM][iPython in Depth, SciPy2013 Tutorial 1/3]] (YouTube)
+- [[http://www.youtube.com/watch?v=A8VbS-YX2Lo][iPython in Depth, SciPy2013 Tutorial 2/3]] (YouTube)
+- [[http://www.youtube.com/watch?v=4tJKZWWRs6s][iPython in Depth, SciPy2013 Tutorial 3/3]] (YouTube)
+
+** Including code listings
+
+A common situation (e.g. in a course like this one) is where you want to include a code listing, or segments of code, in a document. The tools we have discussed all have the ability to do this.
+
+For LaTeX, there is a package called [[http://www.ctan.org/tex-archive/macros/latex/contrib/listings/][listings]] that can include code
+listings in a nicely formatted way that is specific to whatever
+language the code is in. The listings package "knows about" many
+different programming languages. There are lots of customizable
+options for the listing package, see the [[http://mirrors.ctan.org/macros/latex/contrib/listings/listings.pdf][documentation]] for details.
+
+For iPython Notebook, of course code blocks are shown inline as part
+of the notebook document itself, you don't need to do anything
+special.
+
+* Some links
+- [[http://inundata.org/2012/12/04/how-to-ditch-word/][How to ditch Word]]
+- [[http://mbjoseph.github.io/blog/2013/10/30/word/][R and My Divorce From Word]]
+- [[https://github.com/karthikram/markdown_science][Markdown for scientific writing]]
+- [[http://www.surefoss.org/publishing-publizieren/all-you-need-is-text-markdown-via-pandoc-for-academia/][All you need is text --- Markdown (via pandoc) for academia]]
+- [[http://detexify.kirelabs.org/classify.html][Detexify]] --- a LaTeX symbol classifier (draw using your mouse)
+
+* Assignment
+
+[[file:assignments.html][Assignment]] 3 is due no later than Sun Nov 3, 2013, 23:59:59 EDT.
+

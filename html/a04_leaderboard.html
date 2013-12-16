@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Assignment 4 Speed Contest Leaderboard</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Assignment 4 Speed Contest Leaderboard"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="fall 2013"/>
+<meta name="author" content="Paul Gribble"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="mystyle.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+ <a accesskey="h" href="http://www.gribblelab.org/scicomp/index.html"> UP </a>
+ |
+ <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
+</div>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Assignment 4 Speed Contest Leaderboard</h1>
+
+
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Leaderboard</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+Below are the times, in seconds, for running each code submission: 100 neurons, 10,000 bootstrap iterations each. All programs were run on my 2013 Macbook Pro laptop (Retina, 15-inch, Late 2013, 2.3GHz Intel quad-Core i7, 16GB RAM). In cases where the expected finishing time was above 10 minutes (600 seconds), I ran the code for a subset of the entire dataset and extrapolated out to 100 neurons and 10,000 bootstrap iterations.
+</p>
+<table  border="2" cellspacing="0" cellpadding="6" rules="all" frame="all">
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="right" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">Person</th><th scope="col" class="left">Language</th><th scope="col" class="left">Notes</th><th scope="col" class="right">Time (sec)</th></tr>
+</thead>
+<tbody>
+<tr><td class="left"><a href="code/speedcontest/gribble_C_parallel.tgz" :border="2" :rules="all" :frame="all">gribble</a></td><td class="left">C</td><td class="left">parallel (OpenMP)</td><td class="right">0.9</td></tr>
+<tr><td class="left"><a href="code/speedcontest/gribble_C_serial.tgz" :border="2" :rules="all" :frame="all">gribble</a></td><td class="left">C</td><td class="left">serial</td><td class="right">3.9</td></tr>
+<tr><td class="left"><a href="code/speedcontest/matthews.tgz" :border="2" :rules="all" :frame="all"><b>matthews</b></a></td><td class="left"><b>MATLAB</b></td><td class="left">parallel</td><td class="right"><b>5.0</b></td></tr>
+<tr><td class="left"><a href="code/speedcontest/maltseva.tgz" :border="2" :rules="all" :frame="all">maltseva</a></td><td class="left">MATLAB</td><td class="left">(1)</td><td class="right">42.7</td></tr>
+<tr><td class="left"><a href="code/speedcontest/gibbings.tgz" :border="2" :rules="all" :frame="all">gibbings</a></td><td class="left">MATLAB</td><td class="left">parallel</td><td class="right">69.5</td></tr>
+<tr><td class="left"><a href="code/speedcontest/gibson.tgz" :border="2" :rules="all" :frame="all">gibson</a></td><td class="left">MATLAB</td><td class="left">parallel</td><td class="right">93.1</td></tr>
+<tr><td class="left"><a href="code/speedcontest/gribble_MATLAB.tgz" :border="2" :rules="all" :frame="all">gribble</a></td><td class="left">MATLAB</td><td class="left">parallel</td><td class="right">152.9</td></tr>
+<tr><td class="left"><a href="code/speedcontest/schuit.tgz" :border="2" :rules="all" :frame="all">schuit</a></td><td class="left">MATLAB</td><td class="left"></td><td class="right">239.2</td></tr>
+<tr><td class="left"><a href="code/speedcontest/fallowfield.tgz" :border="2" :rules="all" :frame="all">fallowfield</a></td><td class="left">MATLAB</td><td class="left"></td><td class="right">659.3</td></tr>
+<tr><td class="left"><a href="code/speedcontest/osborne.tgz" :border="2" :rules="all" :frame="all">osborne</a></td><td class="left">MATLAB</td><td class="left"></td><td class="right">752.7</td></tr>
+<tr><td class="left"><a href="code/speedcontest/beukema.tgz" :border="2" :rules="all" :frame="all">beukema</a></td><td class="left">MATLAB</td><td class="left"></td><td class="right">798.0</td></tr>
+<tr><td class="left"><a href="code/speedcontest/cabral.tgz" :border="2" :rules="all" :frame="all">cabral</a></td><td class="left">MATLAB</td><td class="left"></td><td class="right">817.8</td></tr>
+<tr><td class="left"><a href="code/speedcontest/kamkar.tgz" :border="2" :rules="all" :frame="all">kamkar</a></td><td class="left">MATLAB</td><td class="left"></td><td class="right">1246.9</td></tr>
+<tr><td class="left"><a href="code/speedcontest/gribble_Python.tgz" :border="2" :rules="all" :frame="all">gribble</a></td><td class="left">Python</td><td class="left"></td><td class="right">5917.4</td></tr>
+<tr><td class="left"><a href="code/speedcontest/benbrahim.tgz" :border="2" :rules="all" :frame="all"><b>benbrahim</b></a></td><td class="left"><b>Python</b></td><td class="left"></td><td class="right"><b>11210.3</b></td></tr>
+<tr><td class="left"><a href="code/speedcontest/matson.tgz" :border="2" :rules="all" :frame="all">matson</a></td><td class="left">Python</td><td class="left"></td><td class="right">17845.0</td></tr>
+<tr><td class="left"><a href="code/speedcontest/rabi.tgz" :border="2" :rules="all" :frame="all">rabi</a></td><td class="left">Python</td><td class="left"></td><td class="right">18700.0</td></tr>
+<tr><td class="left"><a href="code/speedcontest/gribble_R.tgz" :border="2" :rules="all" :frame="all">gribble</a></td><td class="left">R</td><td class="left">parallel</td><td class="right">254845.0</td></tr>
+<tr><td class="left"><a href="code/speedcontest/cross.tgz" :border="2" :rules="all" :frame="all"><b>cross</b></a></td><td class="left"><b>R</b></td><td class="left"></td><td class="right"><b>3473530.0</b></td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">Winners</h2>
+<div class="outline-text-2" id="text-2">
+
+
+<p>
+Winners in each language category are indicated in <b>bold</b> type.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">Sample solutions</h2>
+<div class="outline-text-2" id="text-3">
+
+
+<p>
+Click on the name of each entrant for a link to download their code.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">Notes</h2>
+<div class="outline-text-2" id="text-4">
+
+
+<p>
+There were several ways in which speedups were achieved:
+</p>
+<ol>
+<li>Alter the platemethod() function, in particular, the oneplate() function, so that only the quantities we actually need for this exercise are computed, and those quantities we don't need are skipped. In particular, in the oneplate() method, the <code>Ix</code>, <code>Iy</code> and <code>Ixy</code> quantities are not needed, since in the platemethod() function they are not used to compute <code>PD</code>, which for this exercise is the only thing we're interested in. The downside of this approach is of course that some time in the future if you need those other quantities from platemethod(), you would have to reinstate those calculations, or revert to the original platemethod() and oneplate() functions.
+
+</li>
+<li>In general, avoid for-loops. Jacob's MATLAB solution made extensive use of converting for-loops into vectorized expressions. This cut down on execution time immensely. MATLAB in particular is quite slow at doing for loops and rather fast at operating directly on vectors and matrices using vectorized expressions.
+
+</li>
+<li>Parallel code. In each language: C, MATLAB, Python and R, great speedups are achieved by taking advantage of multiple cores.
+
+</li>
+<li>Avoid calling functions. We saw in the class on speeding up your code, that the overhead involved in calling a function is not trivial. By moving code out of modular functions and into a single main function, a significant speedup can be achieved. For example by moving the platemethod() and oneplate() code out of separate functions and into the main code, we avoid the overhead of calling platemethod() and oneplate() tens of thousands of times.
+
+</li>
+<li>Rita's solution involved a trick that is not so much a coding trick but a clever statistical approach. Instead of bootstrapping each 5x8 neuron individually, simulating the null hypothesis for each neuron separately, instead she lumped all 100 neurons together and did a single bootstrap on all neurons together. This of course is much faster than doing 100 separate bootstraps. The statistical assumption this impicitly involves is that all neurons are sampled from the same null hypothesis populations &hellip; or to say it differently, that under the null hypothesis, the random relationship between movement direction and neuronal firing rate is the same relationship, for all 100 neurons. The argument in favour of making this assumption is the the purpose of the bootstrap is to simulate the null hypothesis, and if the null hypothesis is that there is no consistent relationship between movement direction and firing rate, then that is so for all neurons, and we can estimate the distribution of the tuning parameter r, under the null, by lumping together all 100 neurons. The counterargument against this is that the null hypothesis distribution of the tuning parameter r may look different for different neurons, and this is why we need to simulate the null hypothesis separately for each neuron. Now as it turns out, using Rita's approach, she arrived at a very similar answer to the one we get by doing the bootstrap on each of the 100 neurons separately&hellip; so perhaps this is an argument in favour of her approach for this dataset. In any case, it's a clever approach, and whether or not you buy into the implicit statistical assumption involved in the approach is up to you.
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<hr />Paul Gribble | fall 2013<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license"href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
+</div>
+</body>
+</html>

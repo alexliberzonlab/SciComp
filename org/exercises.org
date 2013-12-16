@@ -1,0 +1,52 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercises
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:t html:t num:nil h:1
+#+LINK_UP: http://www.gribblelab.org/scicomp/index.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+1. [[file:e01.html][temperature conversion]]
+2. [[file:e02.html][calculate the height of a ball]]
+3. [[file:e03.html][cooking the perfect egg]]
+4. [[file:e04.html][sum of the first 10 positive integers]]
+5. [[file:e05.html][temperature conversion table]]
+6. [[file:e06.html][sum of the first n positive integers]]
+7. [[file:e07.html][newton's method for square root]]
+8. [[file:e08.html][primality test]]
+9. [[file:e09.html][Fibonacci numbers]]
+10. [[file:e10.html][Numerical Differentiation]]
+11. [[file:e11.html][estimate pi using monte carlo method]]
+12. [[file:e12.html][mean of a vector]]
+13. [[file:e13.html][variance of a vector]]
+14. [[file:e14.html][linear regression]]
+15. [[file:e15.html][XOR decryption]]
+16. [[file:e16.org][opening a .csv file]]
+17. [[file:e17.html][opening an Excel file]]
+18. [[file:e18.html][opening a JPEG image file]]
+19. [[file:e19.html][line plot]]
+20. [[file:e20.html][bar plot]]
+21. [[file:e21.html][multiline plot]]
+22. [[file:e22.html][scatterplot]]
+23. [[file:e23.html][subplots]]
+24. [[file:e24.html][histograms]]
+25. [[file:e25.html][line of best fit]]
+26. [[file:e26.html][surface plot]]
+27. [[file:e27.html][cost landscapes]]
+28. [[file:e28.html][curve fitting]]
+29. [[file:e29.html][local minima]]
+30. [[file:e30.html][egg carton]]
+31. [[file:e31.html][Spectrum of a signal]]
+32. [[file:e32.org][Scoring kinematics]]
+33. [[file:e33.html][high-pass filter]]
+34. [[file:e34.html][band-pass filter]]
+35. [[file:e35.html][band-stop filter]]
+36. [[file:e36.html][estimate your heart rate using your webcam or smartphone]]
+37. [[file:e37.html][parallel for loop]]
+38. [[file:e38.html][parallel bootstrap]]
+
+#+BEGIN_COMMENT
+- 
+#+END_COMMENT

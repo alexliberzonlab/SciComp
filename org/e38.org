@@ -1,0 +1,40 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 38
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:2
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Parallel bootstrap
+
+As we saw in [[file:a04.html][Assignment 4]], we can use random resampling with replacement to simulate drawing samples from a population, and then we can quantitatively assess the probability of the null hypothesis.
+
+Assume we have the following sample of data, =x=:
+
+#+BEGIN_EXAMPLE
+3 5 4 3 6 7 -1 2 -3 -4 2 -5 3 2 -1
+#+END_EXAMPLE
+
+and a second sample, =y=:
+
+#+BEGIN_EXAMPLE
+2 7 4 7 6 9 -1 3 -2 -1 3 -1 2 4 2
+#+END_EXAMPLE
+
+The mean of the sample $x$ is 1.533 and the mean of sample $y$ is 2.933. Let's compute a statistic we'll call $d_{samp}$ which is the difference between means, $\bar{y}-\bar{x}$ which in this case is equal to $d_{samp}=1.400$.
+
+The null hypothesis is that the samples were taken from a single population with the same mean, and so $d_{pop}=0.00$, and any departure from this in our sample statistic $d_{samp}$ is due to random sampling error.
+
+*Question 1*
+
+Use bootstrapping to compute the probability of the null hypothesis, with one million bootstrap (re)samples.
+
+*Question 2*
+
+Rewrite your solution to question 1, to parallelize the bootstrap. In other words execute the one million bootstrap iterations in parallel, with the work spread over your available compute cores.
+
+[[file:e38sol.html][solutions]]
+

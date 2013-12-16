@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>3. Functions</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="3. Functions"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="fall 2013"/>
+<meta name="author" content="Paul Gribble"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="mystyle.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+ <a accesskey="h" href="http://www.gribblelab.org/scicomp/index.html"> UP </a>
+ |
+ <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
+</div>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">3. Functions</h1>
+
+
+
+<hr/>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Readings</a></li>
+<li><a href="#sec-2">2 Exercises</a></li>
+<li><a href="#sec-3">3 Assignment</a></li>
+</ul>
+</div>
+</div>
+
+<hr/>
+
+<p>
+Functions are one of the most useful programming facilities that you
+will run into because they allow you to make your code more
+<i>modular</i>. We have seen functions already, for example functions to
+print stuff to the screen like <code>print()</code> in Python, and <code>disp()</code> in
+MATLAB, functions for mathematics like <code>sqrt()</code>, and so on. The
+advantage of putting things like these into functions is that we avoid
+the need to write everything from scratch each time we want to repeat
+a common operation. Imagine if every time we wanted to take the square
+root of a number, we had to write an entire algorithm (like Newton's
+method) to do so. It would be ridiculous. By <i>encapsulating</i> this
+operation into a function, all we need to do is write <code>sqrt()</code> and the
+program goes and looks up the definition of that function, and
+executes that code, without us having to type it in again, and again.
+</p>
+<p>
+Here we will be going through how to write our own functions to
+encapsulate our own operations, whatever they may be.
+</p>
+<p>
+You can even imagine a series of functions that you write to perform
+the various steps of your data analysis, so that each time you collect
+more data in your experiment, you simply have to type:
+</p>
+
+
+
+<pre class="src src-python">go_my_analysis()
+</pre>
+
+
+<p>
+&hellip; and all of your data analysis will be repeated, including the
+incorporation of any new data that may be residing in your data
+directory. Of course you have to define what happens inside of
+<code>go_my_analysis()</code> for this to be useful. Maybe inside your
+<code>go_my_analysis()</code> function you have defined other functions like:
+</p>
+
+
+
+<pre class="src src-python">load_all_data()
+filter_data()
+average_across_subjects()
+perform_statistics()
+generate_plots()
+save_processed_data()
+</pre>
+
+
+<p>
+You get the idea.
+</p>
+<p>
+The other situation where modularity in your code is useful, is for
+when you want to share code with other people (or use someone else's
+code). If you (or someone else) has a specific input/output
+functionality in mind, then you can swap in and out one of many
+potential functions that claim to achieve the desired functionality,
+as long as it preserves the input/output relationship(s) that you
+specify.
+</p>
+<p>
+For example, let's say you discover that as part of your data analysis
+you will need to compute the square root of a number, and let's
+pretend that you don't have a function to do so built in to your
+language. (In fact you do of course &hellip; but for the purpose of this
+thought experiment let's imagine you don't.) The input/output
+requirements for your square root function are that it takes as input
+a single floating-point number and returns a single floating point
+number. Now you can go shopping, among your friends, colleagues, or on
+the internet, for an implementation of the square root function, and
+you can simply plug it in to your program and use it, as long as it
+takes a single floating-point number as input, and returns a single
+floating-point number as output. This specification is sometimes
+called the <i>function prototype</i>. You might find that several functions
+that you have found work equally well in terms of returning the
+correct answer, but that one in particular is way faster than the rest
+(perhaps it was written by a mathematician who knows some clever
+numerical tricks).
+</p>
+<p>
+Concepts that you should focus on in your readings, and that we will
+talk about in class, include:
+</p>
+<ul>
+<li>how to define a function in your language of choice
+</li>
+<li>specifying input arguments
+</li>
+<li>specifying output arguments (return value(s))
+</li>
+<li>variable scope
+</li>
+<li>recursion
+</li>
+</ul>
+
+
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Readings</h2>
+<div class="outline-text-2" id="text-1">
+
+<ul>
+<li><a href="http://openbookproject.net/thinkcs/python/english2e/ch03.html">chapter 3</a> of HTTLACS
+</li>
+<li><a href="http://openbookproject.net/thinkcs/python/english2e/ch05.html">chapter 5</a> of HTTLACS
+</li>
+<li>if you're using MATLAB have a look at <a href="http://www.mathworks.com/help/matlab/functions.html">Functions</a> in the MATLAB
+  documentation online
+</li>
+<li>if you're using R, have a look at <a href="http://cran.r-project.org/doc/manuals/R-intro.html#Writing-your-own-functions">Writing your own functions</a> in the
+  CRAN R-intro tutorial
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Exercises</h2>
+<div class="outline-text-2" id="text-2">
+
+<ul>
+<li><a href="exercises.html">exercises</a> 8, 9 and 10 will get you writing functions.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Assignment</h2>
+<div class="outline-text-2" id="text-3">
+
+<p>work on <a href="a01.html">assignment 1</a>
+</p></div>
+</div>
+</div>
+
+<div id="postamble">
+<hr />Paul Gribble | fall 2013<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+#+STARTUP: showall
+
+#+TITLE:     Exercise 37
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      fall 2013
+#+OPTIONS: toc:nil html:t num:nil h:2
+#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+
+* Parallel for loop
+
+Here is a serial version of a simple MATLAB program that iterates through a for loop, printing to the screen each time. Your task is to parallelize that for loop so that iterations are distributed among available compute cores. If you're not writing in MATLAB, or you don't have the MATLAB Parallel Computing Toolbox installed, then you will also need to translate the code into another language such as Python, R, C, etc and parallelize that code.
+
+Note that this is an "embarrasingly parallel" problem, i.e. each iteration of the for loop is completely independent of the others.
+
+Also note that in MATLAB, R and in C, you will likely not see the loop iterations appear in sequential order, once the loop is parallelized. In IPython if you use the parallel =map()= construct then you will see them in sequential order. As far as I know there isn't a parallel for loop in Python, as such, one has to use a =map()= construct.
+
+#+BEGIN_SRC octave
+for i=1:10
+  disp(['hello from iteration #',num2str(i)]);
+end
+#+END_SRC
+
+[[file:e37sol.html][solutions]]
+
