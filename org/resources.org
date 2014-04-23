@@ -132,6 +132,7 @@
 - [[https://wiki.ubuntu.com/Lubuntu][Lubuntnu]] (lighter still)
 - [[http://linuxmint.com][Linux Mint]] (minty fresh?)
 - [[http://www.debian.org/distrib/][Debian]] (arguably the most stable)
+- [[http://crunchbang.org][CrunchBang]] (a nimble Openbox Linux Distro)... nice, Debian-based, no nonsense
 
 * Other
 - [[http://rosettacode.org/wiki/Main_Page][Rosetta Code]]
