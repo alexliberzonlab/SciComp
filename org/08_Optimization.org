@@ -98,6 +98,17 @@ function/ is some measure of goodness-of-fit (actually "badness" of
 fit). In the case of linear regression, the cost function $J$ is given
 above.
 
+*Machine Learning*: Many methods in machine learning, including
+classification, prediction, etc, are based on optimization: finding
+the values of model parameters that minimize some cost function. In
+logistic regression, support vector machines, etc, we find the
+parameter values that minimize the errors in classifying inputs as
+belonging to one category vs another (e.g. spam vs non-smap email, or
+benign vs cancerous tumours, etc). In artificial neural network
+models, we use optimization to find the values of neuron-to-neuron
+weights that minimize the network's errors on an input-output training
+set.
+
 *The Brain?*: Some people theorize that some brain functions
 (e.g. motor control, perception) can be conceptualized as optimization
 problems. For example for motor cortex, the /parameters/ to be
