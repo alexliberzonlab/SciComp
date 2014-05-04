@@ -92,6 +92,7 @@
 - [[http://pierre.chachatelier.fr/latexit/latexit-home.php?lang=en][LaTeXiT equation editor for mac]]
 - [[http://www-h.eng.cam.ac.uk/help/tpl/textprocessing/][Text Processing using LaTeX]]
 - [[http://latexforhumans.wordpress.com][LaTeX for Humans]]
+- [[https://github.com/paulgribble/latex][https://github.com/paulgribble/latex]] - some LaTeX templates
 ** BibTex
 - [[http://bibdesk.sourceforge.net][BibDesk]] (a Mac bibliography manager)
 - [[http://bst.maururu.net][LaTeX Bibliography Styles Database]]
