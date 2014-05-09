@@ -26,6 +26,7 @@
 - [[http://link.springer.com/book/10.1007/978-3-642-18366-9/page/1][A Primer on Scientific Programming with Python]]
 - [[http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-00-introduction-to-computer-science-and-programming-fall-2008/][MIT 6.00 Introduction to Computer Science and Programming]]
 - [[http://www.codecademy.com/learn][Codeacademy]]
+- [[http://jakevdp.github.io/blog/2014/05/09/why-python-is-slow/][Why Python is Slow]]
 ** Scipy, NumPy, matplotlib, pandas
 - [[http://www.scipy.org][SciPy]]
 - [[http://wiki.scipy.org/Cookbook][SciPy Cookbook]]
