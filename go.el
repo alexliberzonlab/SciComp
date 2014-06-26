@@ -18,14 +18,14 @@
         ("SciComp_html"
          :base-directory "html/"
          :base-extension "css\\|html"
-         :publishing-directory "/ssh:admin@leviathan.ssc.uwo.ca:~/gribblelab.org/SciComp/"
+         :publishing-directory "/ssh:plg@toro.ssc.uwo.ca:~/gribblelab.org/SciComp/"
          :publishing-function org-publish-attachment
          :recursive t
          )
         ("SciComp_code"
          :base-directory "code/"
          :base-extension "m\\|r\\|py\\|c\\|h\\|txt\\|csv\\|xls\\|jpg\\|pdf\\|tex\\|bib\\|png\\|tgz\\|MOV"
-         :publishing-directory "/ssh:admin@leviathan.ssc.uwo.ca:~/gribblelab.org/SciComp/code/"
+         :publishing-directory "/ssh:plg@toro.ssc.uwo.ca:~/gribblelab.org/SciComp/code/"
          :publishing-function org-publish-attachment
          :recursive t
          )

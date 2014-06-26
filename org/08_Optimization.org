@@ -322,4 +322,4 @@ Two popular global methods you might come across are [[http://en.wikipedia.org/w
 - [[http://www.gnu.org/software/gsl/manual/html_node/Multidimensional-Minimization.html#Multidimensional-Minimization][multidimensional minimization in gsl]] (GNU Scientific Library for C)
 - [[http://www.mikehutt.com/prog.html][Nelder-Mead Simplex in C]] (Micheal Hutt)
 - [[http://en.wikipedia.org/wiki/Test_functions_for_optimization][Test functions for optimization]]
-
+- [[http://www.cs.cmu.edu/~quake-papers/painless-conjugate-gradient.pdf][An Introduction to the Conjugate Gradient Method Without the Agonizing Pain]]
