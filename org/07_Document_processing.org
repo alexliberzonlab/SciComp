@@ -484,6 +484,15 @@ For iPython Notebook, of course code blocks are shown inline as part
 of the notebook document itself, you don't need to do anything
 special.
 
+** knitr
+
+There is another package called [[http://yihui.name/knitr/][knitr]] which is very much like Sweave,
+but incorporates a number of fixes and simplifications that improve on
+some of the long-standing issues and gotchas with Sweave.
+
+In addition, knitr can work with either LaTeX or Markdown input
+files. See the [[http://yihui.name/knitr/][main knitr website]] for links to examples.
+
 * Some links
 - [[http://inundata.org/2012/12/04/how-to-ditch-word/][How to ditch Word]]
 - [[http://mbjoseph.github.io/blog/2013/10/30/word/][R and My Divorce From Word]]
