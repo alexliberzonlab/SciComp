@@ -408,6 +408,14 @@ XORdecrypt.m
   <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">plaintext</span> = int_array2string(plainarray);
   printf(<span style="color: #8b2252;">"plaintext:\n%s\nbest_key:%s\n"</span>, plaintext, best_key);
 
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">project Euler actually asks for the sum of the ASCII values in the plaintext</span>
+  <span style="color: #b22222;">//</span>
+  <span style="color: #228b22;">long</span> <span style="color: #228b22;">int</span> <span style="color: #a0522d;">the_sum</span> = 0;
+  <span style="color: #a020f0;">for</span> (i=0; i&lt;plainarray-&gt;n; i++) {
+    the_sum = the_sum + plainarray-&gt;array[i];
+  }
+  printf(<span style="color: #8b2252;">"sum of ASCII values in plaintext = %ld\n"</span>, the_sum);
+
   free(plaintext);
   int_array_destroy(plainarray);
   int_array_destroy(cipherarray);
