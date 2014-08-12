@@ -42,6 +42,14 @@ int main(int argc, char *argv[]) {
   char *plaintext = int_array2string(plainarray);
   printf("plaintext:\n%s\nbest_key:%s\n", plaintext, best_key);
 
+  // project Euler actually asks for the sum of the ASCII values in the plaintext
+  //
+  long int the_sum = 0;
+  for (i=0; i<plainarray->n; i++) {
+    the_sum = the_sum + plainarray->array[i];
+  }
+  printf("sum of ASCII values in plaintext = %ld\n", the_sum);
+
   free(plaintext);
   int_array_destroy(plainarray);
   int_array_destroy(cipherarray);
