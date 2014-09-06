@@ -3,7 +3,7 @@
 #+TITLE:     4. Complex Data Types
 #+AUTHOR:    Paul Gribble
 #+EMAIL:     paul@gribblelab.org
-#+DATE:      fall 2013
+#+DATE:      fall 2014
 #+OPTIONS: html:t num:t toc:1
 #+LINK_UP: http://www.gribblelab.org/scicomp/index.html
 #+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
@@ -92,4 +92,4 @@ are designed to get you comfortable with manipulating data.
 - [[file:exercises.html][exercises]] 12, 13, 14 and 15 all make use of complex data types.
 
 * Assignment
-- [[file:a02.html][assignment 2]] on sorting is due no later than Friday Oct 18, 23:59:59 EDT. For your reference here is [[http://tycho.usno.navy.mil/simpletime.html][US Naval Observatory Master Clock Time]].
+- [[file:a02.html][assignment 2]] on sorting is due no later than Friday Oct 17, 23:59:59 EDT. For your reference here is [[http://tycho.usno.navy.mil/simpletime.html][US Naval Observatory Master Clock Time]].

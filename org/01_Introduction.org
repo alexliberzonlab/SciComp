@@ -3,7 +3,7 @@
 #+TITLE:     1. Introduction
 #+AUTHOR:    Paul Gribble
 #+EMAIL:     paul@gribblelab.org
-#+DATE:      fall 2013
+#+DATE:      fall 2014
 #+OPTIONS: html:t num:nil toc:1
 #+LINK_UP: http://www.gribblelab.org/scicomp/index.html
 #+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
@@ -23,8 +23,8 @@ strings, doing arithmetic, and we will be introduced to loops.
 
 Last year we tried a new approach to how classes are run, that worked
 well. Instead of me lecturing for an hour, and then you going away and
-attemping programming exercises and assignments, we "inverted the
-classroom". Classroom time was spent working on exercises and
+attemping programming exercises and assignments, we "[[https://en.wikipedia.org/wiki/Flipped_classroom][flipped the
+classroom]]". Classroom time was spent working on exercises and
 assignments, and asking questions, and students completed readings and
 went over lecture notes outside of class.
 
@@ -42,9 +42,9 @@ specified on the schedule.
 I will be using unix-style tools, sometimes on my Mac and sometimes on
 a linux machine (or in a linux virtual machine). If you have a Mac and
 are running a relatively recent version of Mac OSX then you can
-probably achieve the same functionality by installing unix-based tools
-on your Mac. We will talk about this in class. If you have a Windows
-laptop then your choices may be more limited.
+achieve the same functionality by installing unix-based tools on your
+Mac. We will talk about this in class. If you have a Windows laptop
+then your choices may be more limited.
 
 For using linux, you have essentially four choices about how you can
 set things up, assuming you are not already set up to use linux. In
@@ -60,13 +60,9 @@ order of most committed to least committed:
    partition set up. Again, find instructions on the web for your
    favourite linux flavour.
 4. Run a linux virtual appliance in a virtualization application such
-   as [[https://www.virtualbox.org][VirtualBox]]. I will provide such an appliance that runs [[http://www.debian.org][Debian]]
-   and has all of the software we will need, preinstalled. I will also
-   provide an appliance that runs [[http://www.ubuntu.com/desktop][Ubuntu]] in case you'd like to try
-   that instead. Ubuntu has arguably done a better job of making linux
-   look nice visually. Note that both images will be imported as 20GB
-   virtual machines so you need at least that much space to run
-   them. If you need to, I suggest putting them on an external drive.
+   as [[https://www.virtualbox.org][VirtualBox]]. Note that virtual appliances will take up space on
+   your internal hard drive. If you need to, I suggest putting them on
+   an external drive.
 
 If you decide you don't want to use linux, but you do want to use
 Python + SciPy and all of the other python-based scientific packages,
@@ -141,6 +137,7 @@ There are also some new languages that are gaining traction:
   technical computing. The love child of Python and C
 - [[http://golang.org][go]]: high-level OOP compiled language designed at Google, sort of a
   Googly version of C
+- [[https://developer.apple.com/swift/][Swift]]: a new programming language from Apple for iOS and OS X
 
 There are many other languages out there that are still in use but
 these are the ones you are likely to encounter in the scientific and
@@ -186,21 +183,29 @@ things like:
   refining what you already know, and/or becoming proficient in
   another language?
 
-If you know you don't need MATLAB (because for example your lab
-already uses MATLAB) then I suggest using Python for the course. Its
-libraries are broader than R, which is mainly a language oriented
-around doing statistics. An easy way to install Python plus all of the
-SciPy toolboxes is using [[https://store.continuum.io/cshop/anaconda/][Anaconda]], which should work on Windows and
-Mac.
+In the absence of other constraints imposed upon you, I suggest using
+Python for the course. Its libraries are broader than R, which is
+mainly a language oriented around doing statistics. An easy way to
+install Python plus all of the SciPy toolboxes is using [[https://store.continuum.io/cshop/anaconda/][Anaconda]],
+which should work on Windows and Mac.
 
-If you are interested in another language, come and see me and we can
-make sure it's going to be a suitable plan.
+It could be that there is pressure on you from your supervisor or the
+other people in your lab to learn a particular language, e.g. if the
+rest of your lab already uses MATLAB, then perhaps it would be best
+for you to learn MATLAB. If this is the case, then it's probably a
+good idea to follow their advice.
+
+If you are still unsure about which language to use, come and see me
+and we can make sure it's going to be a suitable plan. Also keep in
+mind that it's absolutely fine from my point of view for you to switch
+languages during the course. I won't hold you to a particular choice
+at the outset.
 
 If you already have experience with the interpreted languages we will
 be looking at in this course and you would like to challenge yourself
-and learn some C, then this [[http://www.gribblelab.org/CBootcamp/index.html][C Programming Boot Camp]] might be useful to
-you. There are also tons of resources online, and books, about
-programming in C.
+and learn some C, then reading through this [[http://www.gribblelab.org/CBootcamp/index.html][C Programming Boot Camp]]
+might be useful to you. There are also tons of resources online, and
+books, about programming in C.
 
 ** Editors and IDEs
 
@@ -230,7 +235,9 @@ relevant here: [[http://www.paulgraham.com/head.html][Holding a Program in One's
 What I will be doing, and what I suggest you do in the course, is use
 a basic *two window setup*: one window for the code interpreter (or
 compiler) and a second window for your editor (where you edit your
-code).
+code). If you really, really want to use an IDE then I won't stop
+you---but I probably won't be able to help much if you have questions
+about how it works.
 
 * A Rough List of Topics
 
@@ -271,19 +278,20 @@ Using R/.
 * What should I do now?
 
 During our first meeting we will be talking about the pros and cons of
-the various ways of getting linux onto your laptop.
+the various ways of getting linux onto your laptop, and whether you
+will be OK just using Mac OS X or Windows.
 
 A brief note about laptops: I am assuming in this course that you own
 (or you have access to) a laptop computer. If you don't, then it's
 time to buy one. I don't feel particularly uncomfortable asking
-students to buy a laptop, since prices are low enough nowadays that
-you can find a modern, suitable laptop for a few hundred dollars ---
-essentially the cost of buying several high-end textbooks. If this is
-a serious issue for you, let me know and we can talk about what your
-options are.
+students to buy a laptop in today's market, since prices are low
+enough nowadays that you can find a modern, suitable laptop for a few
+hundred dollars --- essentially the cost of buying several high-end
+textbooks. If this is a serious issue for you, let me know and we can
+talk about what your options are.
 
-So your first task in the course is to get your linux setup up and
-running.
+So your first task in the course is to get your computer set up and
+running for the programming language of your choice.
 
 Your second task is to write and run a "Hello, World" program in the
 language of your choice. Here is some code for you in a variety of
@@ -310,9 +318,7 @@ cat("Hello, World\n")
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {
-
   printf("Hello, World\n");
-
   return 0;
 }
 #+END_SRC

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="1. Introduction"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="fall 2013"/>
+<meta name="generated" content="fall 2014"/>
 <meta name="author" content="Paul Gribble"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -248,8 +248,7 @@ strings, doing arithmetic, and we will be introduced to loops.
 <p>
 Last year we tried a new approach to how classes are run, that worked
 well. Instead of me lecturing for an hour, and then you going away and
-attemping programming exercises and assignments, we "inverted the
-classroom". Classroom time was spent working on exercises and
+attemping programming exercises and assignments, we "<a href="https://en.wikipedia.org/wiki/Flipped_classroom">flipped the classroom</a>". Classroom time was spent working on exercises and
 assignments, and asking questions, and students completed readings and
 went over lecture notes outside of class.
 </p>
@@ -277,9 +276,9 @@ specified on the schedule.
 I will be using unix-style tools, sometimes on my Mac and sometimes on
 a linux machine (or in a linux virtual machine). If you have a Mac and
 are running a relatively recent version of Mac OSX then you can
-probably achieve the same functionality by installing unix-based tools
-on your Mac. We will talk about this in class. If you have a Windows
-laptop then your choices may be more limited.
+achieve the same functionality by installing unix-based tools on your
+Mac. We will talk about this in class. If you have a Windows laptop
+then your choices may be more limited.
 </p>
 <p>
 For using linux, you have essentially four choices about how you can
@@ -300,13 +299,9 @@ order of most committed to least committed:
    favourite linux flavour.
 </li>
 <li>Run a linux virtual appliance in a virtualization application such
-   as <a href="https://www.virtualbox.org">VirtualBox</a>. I will provide such an appliance that runs <a href="http://www.debian.org">Debian</a>
-   and has all of the software we will need, preinstalled. I will also
-   provide an appliance that runs <a href="http://www.ubuntu.com/desktop">Ubuntu</a> in case you'd like to try
-   that instead. Ubuntu has arguably done a better job of making linux
-   look nice visually. Note that both images will be imported as 20GB
-   virtual machines so you need at least that much space to run
-   them. If you need to, I suggest putting them on an external drive.
+   as <a href="https://www.virtualbox.org">VirtualBox</a>. Note that virtual appliances will take up space on
+   your internal hard drive. If you need to, I suggest putting them on
+   an external drive.
 </li>
 </ol>
 
@@ -430,6 +425,8 @@ There are also some new languages that are gaining traction:
 <li><a href="http://golang.org">go</a>: high-level OOP compiled language designed at Google, sort of a
   Googly version of C
 </li>
+<li><a href="https://developer.apple.com/swift/">Swift</a>: a new programming language from Apple for iOS and OS X
+</li>
 </ul>
 
 
@@ -508,23 +505,32 @@ things like:
 
 
 <p>
-If you know you don't need MATLAB (because for example your lab
-already uses MATLAB) then I suggest using Python for the course. Its
-libraries are broader than R, which is mainly a language oriented
-around doing statistics. An easy way to install Python plus all of the
-SciPy toolboxes is using <a href="https://store.continuum.io/cshop/anaconda/">Anaconda</a>, which should work on Windows and
-Mac.
+In the absence of other constraints imposed upon you, I suggest using
+Python for the course. Its libraries are broader than R, which is
+mainly a language oriented around doing statistics. An easy way to
+install Python plus all of the SciPy toolboxes is using <a href="https://store.continuum.io/cshop/anaconda/">Anaconda</a>,
+which should work on Windows and Mac.
 </p>
 <p>
-If you are interested in another language, come and see me and we can
-make sure it's going to be a suitable plan.
+It could be that there is pressure on you from your supervisor or the
+other people in your lab to learn a particular language, e.g. if the
+rest of your lab already uses MATLAB, then perhaps it would be best
+for you to learn MATLAB. If this is the case, then it's probably a
+good idea to follow their advice.
+</p>
+<p>
+If you are still unsure about which language to use, come and see me
+and we can make sure it's going to be a suitable plan. Also keep in
+mind that it's absolutely fine from my point of view for you to switch
+languages during the course. I won't hold you to a particular choice
+at the outset.
 </p>
 <p>
 If you already have experience with the interpreted languages we will
 be looking at in this course and you would like to challenge yourself
-and learn some C, then this <a href="http://www.gribblelab.org/CBootcamp/index.html">C Programming Boot Camp</a> might be useful to
-you. There are also tons of resources online, and books, about
-programming in C.
+and learn some C, then reading through this <a href="http://www.gribblelab.org/CBootcamp/index.html">C Programming Boot Camp</a>
+might be useful to you. There are also tons of resources online, and
+books, about programming in C.
 </p>
 </div>
 
@@ -565,7 +571,9 @@ relevant here: <a href="http://www.paulgraham.com/head.html">Holding a Program i
 What I will be doing, and what I suggest you do in the course, is use
 a basic <b>two window setup</b>: one window for the code interpreter (or
 compiler) and a second window for your editor (where you edit your
-code).
+code). If you really, really want to use an IDE then I won't stop
+you&mdash;but I probably won't be able to help much if you have questions
+about how it works.
 </p>
 </div>
 </div>
@@ -670,21 +678,22 @@ that is saved for next term when I teach <i>Introduction to Statistics Using R</
 
 <p>
 During our first meeting we will be talking about the pros and cons of
-the various ways of getting linux onto your laptop.
+the various ways of getting linux onto your laptop, and whether you
+will be OK just using Mac OS X or Windows.
 </p>
 <p>
 A brief note about laptops: I am assuming in this course that you own
 (or you have access to) a laptop computer. If you don't, then it's
 time to buy one. I don't feel particularly uncomfortable asking
-students to buy a laptop, since prices are low enough nowadays that
-you can find a modern, suitable laptop for a few hundred dollars ---
-essentially the cost of buying several high-end textbooks. If this is
-a serious issue for you, let me know and we can talk about what your
-options are.
+students to buy a laptop in today's market, since prices are low
+enough nowadays that you can find a modern, suitable laptop for a few
+hundred dollars &mdash; essentially the cost of buying several high-end
+textbooks. If this is a serious issue for you, let me know and we can
+talk about what your options are.
 </p>
 <p>
-So your first task in the course is to get your linux setup up and
-running.
+So your first task in the course is to get your computer set up and
+running for the programming language of your choice.
 </p>
 <p>
 Your second task is to write and run a "Hello, World" program in the
@@ -717,9 +726,7 @@ cat(<span style="color: #8b2252;">"Hello, World\n"</span>)
 <span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
 
 <span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">argc</span>, <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">argv</span>[]) {
-
   printf(<span style="color: #8b2252;">"Hello, World\n"</span>);
-
   <span style="color: #a020f0;">return</span> 0;
 }
 </pre>
@@ -730,7 +737,7 @@ cat(<span style="color: #8b2252;">"Hello, World\n"</span>)
 </div>
 
 <div id="postamble">
-<hr />Paul Gribble | fall 2013<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license"href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
+<hr />Paul Gribble | fall 2014<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license"href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
 </div>
 </body>
 </html>

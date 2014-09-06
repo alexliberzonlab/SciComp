@@ -3,7 +3,7 @@
 #+TITLE:     Scientific Computing (Psychology 9040A)
 #+AUTHOR:    Paul Gribble
 #+EMAIL:     paul@gribblelab.org
-#+DATE:      fall 2013
+#+DATE:      fall 2014
 #+OPTIONS: toc:nil html:t
 #+LINK_UP: http://www.gribblelab.org/scicomp/index.html
 #+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
@@ -131,18 +131,16 @@ A1. Appendix 1: Digital Representation of Data
 Stay tuned... we are going to have fun and learn a lot!
 
 If you already know how to set yourself up to use GNU/Linux, then go
-ahead and complete the setup. I suggest Debian Wheezy or a Debian
-variant such as Ubuntu or Linux Mint. If you know what you're doing,
-feel free to use some other distribution.
+ahead and complete the setup. I suggest Ubuntu or Debian or another
+Debian variant like Linux Mint. If you know what you're doing, feel
+free to use some other distribution.
 
-My plan more generally is to provide students with a VirtualBox
-virtual appliance running Debian linux that has all of the tools we'll
-be using pre-installed. You can download [[https://www.virtualbox.org][VirtualBox]] (it's free) and
-import the appliance either onto your laptop's hard disk or onto an
-external drive of your choosing. Then you can run Debian in a virtual
+One option is to use [[https://www.virtualbox.org][VirtualBox]] to create a virtual appliance running
+GNU/Linux that lives either onto your laptop's hard disk or onto an
+external drive of your choosing. Then you can run linux in a virtual
 machine without disturbing your existing operating system.
 
-The course notes will be posted online as we go.
+The course notes will be posted and updated online as we go.
 
 If you have questions about the course, please get in touch with me
 at: paul [at] gribblelab [dot] org, or just stop by my office
@@ -150,8 +148,8 @@ at: paul [at] gribblelab [dot] org, or just stop by my office
 
 * Start Date & Location
 
-- Mondays 2:30---4:30pm in STH 3166, and Wednesdays 2:00---4:00 pm in SSC 8440
-- start date: Monday, September 9, 2013
+- Mondays and Wednesdays 2:30---4:00pm in STH 3166
+- start date: Monday, September 8, 2014
 
 * These notes
 

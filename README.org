@@ -1,7 +1,7 @@
 #+STARTUP:showall
 #+TITLE:Scientific Computing
 #+AUTHOR:Paul Gribble
-#+DATE:fall 2013
+#+DATE:fall 2014
 #+EMAIL:paul [at] gribblelab [dot] org
 
 The goal of this one-semester graduate seminar is to provide you with skills in scientific computing — tools and techniques that you can use

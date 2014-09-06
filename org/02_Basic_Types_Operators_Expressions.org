@@ -3,7 +3,7 @@
 #+TITLE:     2. Basic Types, Operators & Expressions
 #+AUTHOR:    Paul Gribble
 #+EMAIL:     paul@gribblelab.org
-#+DATE:      fall 2013
+#+DATE:      fall 2014
 #+OPTIONS: html:t num:t toc:1
 #+LINK_UP: http://www.gribblelab.org/scicomp/index.html
 #+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
@@ -54,7 +54,7 @@ get used to the idea of seeing mathematical expressions and equations,
 and tranlsating them into programs that run on your computer.
 
 * Assignment
-[[file:a01.html][Assignment 1]] is due no later than Sunday Sep 29, 2013, 23:59:59
+[[file:a01.html][Assignment 1]] is due no later than Sunday Sep 21, 2014, 23:59:59
 EDT. For your reference here is
 [[http://tycho.usno.navy.mil/simpletime.html][US Naval Observatory
 Master Clock Time]]. Please send me your solution by email to paul
