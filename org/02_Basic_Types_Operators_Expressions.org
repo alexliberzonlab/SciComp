@@ -46,6 +46,9 @@ about how best to approach it.
 - iteration: the [[http://en.wikibooks.org/wiki/Python_Programming/Loops][Loops]] section of PP
 - tuples: the [[http://www.diveintopython.net/native_data_types/tuples.html][Tuples]] section of /Dive Into Python/ (DIP) and the
   [[http://docs.python.org/2/tutorial/datastructures.html#tuples-and-sequences][Tuples and Sequences]] section of the /Python Tutorial/ (PT)
+- also have a look through [[file:A1_Digital_Representation_of_Data.html][Digital Representation of Data]] if you
+  haven't been exposed before to how digital computers represent
+  information
 
 * Exercises
 [[file:exercises.html][Exercises]] 1 through 7 are designed to get you writing some basic
