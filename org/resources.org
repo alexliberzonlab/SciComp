@@ -13,9 +13,9 @@
 -----
 
 * Readings
-- [[https://github.com/vhf/free-programming-books/blob/master/free-programming-books.md][List of freely available programming books]]
 - [[http://www.paulgraham.com/head.html][Holding a Program in One's Head]]
 - [[http://jakevdp.github.io/blog/2013/10/26/big-data-brain-drain/][The Big Data Brain Drain: Why Science is in Trouble]]
+- [[https://github.com/vhf/free-programming-books/blob/master/free-programming-books.md][List of freely available programming books]]
 
 * Python
 - [[http://openbookproject.net/thinkcs/python/english2e/][How to Think Like a Computer Scientist: Learning with Python]]
