@@ -140,3 +140,4 @@
 - [[http://rosettacode.org/wiki/Main_Page][Rosetta Code]]
 - [[http://software-carpentry.org/v4/index.html][Software Carpentry Lessons]]
 - [[http://mathesaurus.sourceforge.net][Mathesaurus]]
+- [[http://sebastianraschka.com/Articles/2014_matrix_cheatsheet_table.html][Matrix Cheatsheet Table (MATLAB/Octave vs Python/NumPy vs R)]]
