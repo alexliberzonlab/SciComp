@@ -502,5 +502,5 @@ files. See the [[http://yihui.name/knitr/][main knitr website]] for links to exa
 
 * Assignment
 
-[[file:assignments.html][Assignment]] 3 is due no later than Sun Nov 3, 2013, 23:59:59 EDT.
+[[file:assignments.html][Assignment]] 3 is due no later than Sun Nov 2, 2013, 23:59:59 EDT.
 
