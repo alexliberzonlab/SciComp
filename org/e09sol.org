@@ -32,13 +32,24 @@ e09.c
 
 * Bonus Question 1
 
+*Python*
+
 e09b1.py
 #+INCLUDE: "../code/e09b1.py" src python
+
+*MATLAB / Octave*
 
 fibR.m
 #+INCLUDE: "../code/fibR.m" src octave
 e09b1.m
 #+INCLUDE: "../code/e09b1.m" src octave
 
+*R*
+
 e09b1.R
 #+INCLUDE: "../code/e09b1.R" src R
+
+*C*
+
+e09b1.c
+#+INCLUDE: "../code/e09b1.c" src C

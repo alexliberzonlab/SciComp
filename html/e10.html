@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="Exercise 10"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="fall 2013"/>
+<meta name="generated" content="fall 2014"/>
 <meta name="author" content="Paul Gribble"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -230,7 +230,7 @@ f'(x) \approx \frac{f(x+h)-f(x-h)}{2h}
 \end{equation}
 
 <p>
-Write a function <code>diff(f, x, h)</code> that returns the approximation of the
+Write a function <code>numdiff(f, x, h)</code> that returns the approximation of the
 derivative of a mathematical function represented by a function
 <code>f(x)</code>.
 </p>
@@ -240,9 +240,9 @@ Apply this to differentiate:
 <ul>
 <li>\(f(x) = \left( e^{x} \right)\) at \(x=0\)
 </li>
-<li>\(f(x) = \left( e^{-2x^{2}} \right)\) at \(x=0\)
+<li>\(f(x) = \left( e^{-2x^{2}} \right)\) at \(x=1\)
 </li>
-<li>\(f(x) = \left( \cos x \right)\) at \(x = 2\pi\)
+<li>\(f(x) = \left( \cos x \right)\) at \(x = \pi/2\)
 </li>
 <li>\(f(x) = \left( \ln x \right)\) at \(x=1\)
 </li>
@@ -254,12 +254,20 @@ Use \(h = 0.01\)
 </p>
 <p>
 In each case write out the error, i.e., the difference between the
-exact derivative and the result of the approximation.
+exact derivative and the result of the approximation. Use 10 decimal
+places of precision.
 </p>
 <p>
 If you need help finding out what the exact solutions to these
 derivatives are, (1) try to remember your calculus!, (2) ask a
-classmate, (3) google it, or (4) ask me.
+classmate, (3) google it, or (4) ask me (at which point I will direct
+you to <a href="http://www.wolframalpha.com">WolframAlpha</a>).
+</p>
+<p>
+<i>hint</i>: the \(\ln()\) function (logarithm, base \(e\)) is typically called
+<code>log()</code> in programming languages like Python, MATLAB / Octave, R and
+C, whereas the logarithm, base 10 (typically referred to in math class
+as \(\mathrm{log}()\), is typically called <code>log10()</code>.
 </p>
 <p>
 <a href="e10sol.html">solutions</a>
@@ -269,7 +277,7 @@ classmate, (3) google it, or (4) ask me.
 </div>
 
 <div id="postamble">
-<hr />Paul Gribble | fall 2013<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license"href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
+<hr />Paul Gribble | fall 2014<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license"href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
 </div>
 </body>
 </html>

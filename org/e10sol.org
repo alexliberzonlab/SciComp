@@ -12,13 +12,11 @@
 [TABLE-OF-CONTENTS]
 -----
 
-coming soon...
-
-#+BEGIN_COMMENT
 * Python
 e10.py
-##+INCLUDE: "../code/e10.py" src python
+#+INCLUDE: "../code/e10.py" src python
 
+#+BEGIN_COMMENT
 * MATLAB / Octave
 e10.m
 ##+INCLUDE: "../code/e10.m" src octave

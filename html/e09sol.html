@@ -312,6 +312,9 @@ cat(<span style="color: #8b2252;">"Fibonacci number"</span>,n,<span style="color
 
 
 <p>
+<b>Python</b>
+</p>
+<p>
 e09b1.py
 </p>
 
@@ -329,6 +332,9 @@ e09b1.py
 </pre>
 
 
+<p>
+<b>MATLAB / Octave</b>
+</p>
 <p>
 fibR.m
 </p>
@@ -356,6 +362,9 @@ disp([<span style="color: #8b2252;">'Fibonacci number '</span>,num2str(n),<span 
 
 
 <p>
+<b>R</b>
+</p>
+<p>
 e09b1.R
 </p>
 
@@ -374,6 +383,42 @@ e09b1.R
 
 n &lt;- as.integer(readline(<span style="color: #8b2252;">"Which Fibonacci number do you want? "</span>))
 cat(<span style="color: #8b2252;">"Fibonacci number"</span>,n,<span style="color: #8b2252;">"is equal to"</span>,fibR(n),<span style="color: #8b2252;">"\n"</span>)
+</pre>
+
+
+<p>
+<b>C</b>
+</p>
+<p>
+e09b1.c
+</p>
+
+
+<pre class="src src-C"><span style="color: #b22222;">// </span><span style="color: #b22222;">compile with: gcc -o e09b1 e09b1.c</span>
+
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
+
+<span style="color: #228b22;">int</span> <span style="color: #0000ff;">fibR</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>) {
+  <span style="color: #a020f0;">if</span> (n==1) {
+    <span style="color: #a020f0;">return</span> 0;
+  }
+  <span style="color: #a020f0;">else</span> <span style="color: #a020f0;">if</span> (n==2) {
+    <span style="color: #a020f0;">return</span> 1;
+  }
+  <span style="color: #a020f0;">else</span> {
+    <span style="color: #a020f0;">return</span> fibR(n-2) + fibR(n-1);
+  }
+}
+
+<span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">argc</span>, <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">argv</span>[]) {
+
+  <span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>;
+  printf(<span style="color: #8b2252;">"Which Fibonacci number do you want? "</span>);
+  scanf(<span style="color: #8b2252;">"%d"</span>, &amp;n);
+  printf(<span style="color: #8b2252;">"Fibonacci number %d is equal to %d\n"</span>, n, fibR(n));
+
+  <span style="color: #a020f0;">return</span> 0;
+}
 </pre>
 
 </div>
