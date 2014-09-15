@@ -101,4 +101,4 @@ talk about in class, include:
 - [[file:exercises.html][exercises]] 8, 9 and 10 will get you writing functions.
 
 * Assignment
-work on [[file:a01.html][assignment 1]]
+work on [[file:assignments.html][assignment]] 1
