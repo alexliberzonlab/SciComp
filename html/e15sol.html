@@ -139,7 +139,7 @@ for the JavaScript code in this tag.
 <hr/>
 
 <p>
-<a href="code/cipher1.txt">cipher1.txt</a>
+<a href="code/p059_cipher.txt">p059_cipher.txt</a>
 </p>
 
 <div id="outline-container-1" class="outline-2">
@@ -154,7 +154,7 @@ for the JavaScript code in this tag.
 <span style="color: #a020f0;">from</span> numpy <span style="color: #a020f0;">import</span> * <span style="color: #b22222;"># </span><span style="color: #b22222;">for arrays</span>
 
 <span style="color: #b22222;"># </span><span style="color: #b22222;">read in the ciphertext file from the interwebs</span>
-<span style="color: #a0522d;">response</span> = urllib2.urlopen(<span style="color: #8b2252;">"http://projecteuler.net/project/cipher1.txt"</span>)
+<span style="color: #a0522d;">response</span> = urllib2.urlopen(<span style="color: #8b2252;">"https://projecteuler.net/project/resources/p059_cipher.txt"</span>)
 <span style="color: #a0522d;">responsestring</span> = response.read()
 <span style="color: #a0522d;">cipherascii</span> = fromstring(responsestring, sep=<span style="color: #8b2252;">","</span>, dtype=<span style="color: #8b2252;">"int"</span>)
 <span style="color: #b22222;"># </span><span style="color: #b22222;">now cipherascii is an array of integers corresponding to </span>
@@ -172,7 +172,7 @@ for the JavaScript code in this tag.
         <span style="color: #a020f0;">while</span> (i&lt;<span style="color: #483d8b;">len</span>(cipherascii)):
                 <span style="color: #a0522d;">plainascii</span>[i] = cipherascii[i] ^ (keyascii[i % keylen]) <span style="color: #b22222;"># </span><span style="color: #b22222;">note the modulo operator</span>
                 <span style="color: #a0522d;">i</span> = i +1
-                <span style="color: #a020f0;">return</span> plainascii
+        <span style="color: #a020f0;">return</span> plainascii
 
 <span style="color: #b22222;"># </span><span style="color: #b22222;">for an example, let's try a guess at a cipherkey</span>
 <span style="color: #b22222;">#</span>
@@ -232,7 +232,7 @@ for the JavaScript code in this tag.
                 <span style="color: #a020f0;">if</span> ( (<span style="color: #483d8b;">len</span>(Pwords[i]) &gt;= 3) <span style="color: #a020f0;">and</span> (<span style="color: #483d8b;">len</span>(Pwords[i]) &lt;= 8) ):
                         <span style="color: #a020f0;">if</span> Pwords[i] <span style="color: #a020f0;">in</span> Ewords:
                                 <span style="color: #a0522d;">ecount</span> = ecount + 1
-                                <span style="color: #a020f0;">return</span> ecount
+        <span style="color: #a020f0;">return</span> ecount
 
 <span style="color: #b22222;"># </span><span style="color: #b22222;">ok now let's try all possible keys (26 * 26 * 26 = 17576 of them)</span>
 <span style="color: #b22222;"># </span><span style="color: #b22222;">and for each keep track of the score</span>
@@ -296,7 +296,7 @@ for the JavaScript code in this tag.
 
 <pre class="src src-octave"><span style="color: #b22222;">% </span><span style="color: #b22222;">load in the cipher1.txt file into an array of ints</span>
 <span style="color: #b22222;">%</span>
-cipher = importdata(<span style="color: #8b2252;">'cipher1.txt'</span>, <span style="color: #8b2252;">','</span>);
+cipher = importdata(<span style="color: #8b2252;">'p059_cipher.txt'</span>, <span style="color: #8b2252;">','</span>);
 
 <span style="color: #b22222;">% </span><span style="color: #b22222;">import a dictionary of English words</span>
 <span style="color: #b22222;">%</span>
@@ -373,8 +373,8 @@ XORdecrypt.m
 
 <span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">argc</span>, <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">argv</span>[]) {
 
-  <span style="color: #b22222;">// </span><span style="color: #b22222;">read the cipher1.txt file into a int_array struct</span>
-  <span style="color: #228b22;">int_array</span> *<span style="color: #a0522d;">cipherarray</span> = readCipherFile(<span style="color: #8b2252;">"cipher1.txt"</span>);
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">read the p059_cipher.txt file into a int_array struct</span>
+  <span style="color: #228b22;">int_array</span> *<span style="color: #a0522d;">cipherarray</span> = readCipherFile(<span style="color: #8b2252;">"p059_cipher.txt"</span>);
   printf(<span style="color: #8b2252;">"read in %d integers into cipherarray\n"</span>, cipherarray-&gt;n);
 
   <span style="color: #b22222;">// </span><span style="color: #b22222;">brute force method, try every 3-letter key</span>
@@ -469,7 +469,7 @@ e15helper.c
   free(ia);
 }
 
-<span style="color: #b22222;">// </span><span style="color: #b22222;">a function to read the cipher1.txt file and return an int_array</span>
+<span style="color: #b22222;">// </span><span style="color: #b22222;">a function to read the p059_cipher.txt file and return an int_array</span>
 <span style="color: #b22222;">//</span>
 <span style="color: #228b22;">int_array</span> *<span style="color: #0000ff;">readCipherFile</span>(<span style="color: #228b22;">char</span> <span style="color: #a0522d;">fname</span>[]) {
   <span style="color: #228b22;">FILE</span> *<span style="color: #a0522d;">fid</span> = fopen(fname, <span style="color: #8b2252;">"r"</span>);  <span style="color: #b22222;">// </span><span style="color: #b22222;">open the ciphertext file</span>

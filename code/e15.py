@@ -2,7 +2,7 @@ import urllib2      # to open file from a URL
 from numpy import * # for arrays
 
 # read in the ciphertext file from the interwebs
-response = urllib2.urlopen("http://projecteuler.net/project/cipher1.txt")
+response = urllib2.urlopen("https://projecteuler.net/project/resources/p059_cipher.txt")
 responsestring = response.read()
 cipherascii = fromstring(responsestring, sep=",", dtype="int")
 # now cipherascii is an array of integers corresponding to 
@@ -20,7 +20,7 @@ def XORdecrypt(cipherascii, keyascii):
         while (i<len(cipherascii)):
                 plainascii[i] = cipherascii[i] ^ (keyascii[i % keylen]) # note the modulo operator
                 i = i +1
-                return plainascii
+        return plainascii
 
 # for an example, let's try a guess at a cipherkey
 #
@@ -80,7 +80,7 @@ def EnglishScore(plainstring):
                 if ( (len(Pwords[i]) >= 3) and (len(Pwords[i]) <= 8) ):
                         if Pwords[i] in Ewords:
                                 ecount = ecount + 1
-                                return ecount
+        return ecount
 
 # ok now let's try all possible keys (26 * 26 * 26 = 17576 of them)
 # and for each keep track of the score

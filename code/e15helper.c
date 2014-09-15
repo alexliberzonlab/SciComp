@@ -11,7 +11,7 @@ void int_array_destroy(int_array *ia) {
   free(ia);
 }
 
-// a function to read the cipher1.txt file and return an int_array
+// a function to read the p059_cipher.txt file and return an int_array
 //
 int_array *readCipherFile(char fname[]) {
   FILE *fid = fopen(fname, "r");  // open the ciphertext file

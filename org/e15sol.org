@@ -12,7 +12,7 @@
 [TABLE-OF-CONTENTS]
 -----
 
-[[file:code/cipher1.txt][cipher1.txt]]
+[[file:code/p059_cipher.txt][p059\_cipher.txt]]
 
 * Python
 e15.py

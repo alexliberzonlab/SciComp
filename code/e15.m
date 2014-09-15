@@ -2,7 +2,7 @@
 
 % load in the cipher1.txt file into an array of ints
 %
-cipher = importdata('cipher1.txt', ',');
+cipher = importdata('p059_cipher.txt', ',');
 
 % import a dictionary of English words
 %

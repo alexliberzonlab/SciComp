@@ -3,7 +3,7 @@
 #+TITLE:     Exercise 15
 #+AUTHOR:    Paul Gribble
 #+EMAIL:     paul@gribblelab.org
-#+DATE:      fall 2013
+#+DATE:      fall 2014
 #+OPTIONS: toc:nil html:t num:nil h:1
 #+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
 #+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
@@ -47,7 +47,7 @@ using a sufficiently long password key for security, but short enough
 to be memorable.
 
 Your task has been made easy, as *the encryption key consists of three
-lower case characters*. Using [[http://projecteuler.net/project/cipher1.txt][cipher1.txt]] (right click and 'Save
+lower case characters*. Using [[https://projecteuler.net/project/resources/p059_cipher.txt][p059\_cipher.txt]] (right click and 'Save
 Link/Target As...'), a file containing the encrypted ASCII codes, and
 the knowledge that *the plain text must contain common English words*,
 decrypt the message and find the sum of the ASCII values in the
@@ -124,7 +124,7 @@ or not.
 Here is some sample code that illustrates how to generate plaintext
 given the ciphertext and a candidate encryption key.
 
-The first 5 ciphertext values in [[http://projecteuler.net/project/cipher1.txt][cipher1.txt]] are
+The first 5 ciphertext values in [[https://projecteuler.net/project/resources/p059_cipher.txt][p059\_cipher.txt]] are
 =79,59,12,2,79=. Let's assume that our candidate encryption key is
 =abc=. Here is how you would use the candidate encryption key to
 generate the first 5 characters of plaintext from the first 5 values

@@ -7,8 +7,8 @@
 
 int main(int argc, char *argv[]) {
 	
-  // read the cipher1.txt file into a int_array struct
-  int_array *cipherarray = readCipherFile("cipher1.txt");
+  // read the p059_cipher.txt file into a int_array struct
+  int_array *cipherarray = readCipherFile("p059_cipher.txt");
   printf("read in %d integers into cipherarray\n", cipherarray->n);
 
   // brute force method, try every 3-letter key
