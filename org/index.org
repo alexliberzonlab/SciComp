@@ -38,12 +38,12 @@ Appendix 1: [[file:A1_Digital_Representation_of_Data.html][Digital Representatio
 
 * Schedule
 
-- Sep 8,10: read over the [[file:welcome_msg.html][welcome message]] and [[file:01:Introduction.html][Introduction]]
-- Sep 15,17: [[file:02_Basic_Types_Operators_Expressions.html][Basic Types, Operators & Expressions]]
-- Sep 22: [[file:03_Functions.html][Functions]]
+- Sep 8: read over the [[file:welcome_msg.html][welcome message]] and [[file:01:Introduction.html][Introduction]]
+- Sep 10: [[file:02_Basic_Types_Operators_Expressions.html][Basic Types, Operators & Expressions]]
+- Sep 15,17: [[file:03_Functions.html][Functions]]
+- Sep 22: more on [[file:03_Functions.html][Functions]], and we'll talk about [[file:a01.html][Assignment 1]]
 - Sep 24: no class, Paul is away
-- Sep 29: more on [[file:03_Functions.html][Functions]], and we'll talk about [[file:a01.html][Assignment 1]]
-- Oct 1: [[file:e11.html][exercise 11]]
+- Sep 29, Oct 1: [[file:e11.html][exercise 11]] & intro to [[file:04_Complex_Data_Types.html][Complex Data Types]]
 - Oct 6,8: [[file:04_Complex_Data_Types.html][Complex Data Types]]
 - Oct 13: no class due to thanksgiving
 - Oct 16: [[file:05_File_input_and_output.html][File input and output]]
