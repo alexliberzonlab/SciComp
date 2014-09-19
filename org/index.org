@@ -38,7 +38,7 @@ Appendix 1: [[file:A1_Digital_Representation_of_Data.html][Digital Representatio
 
 * Schedule
 
-- Sep 8: read over the [[file:welcome_msg.html][welcome message]] and [[file:01:Introduction.html][Introduction]]
+- Sep 8: read over the [[file:welcome_msg.html][welcome message]] and [[file:01_Introduction.html][Introduction]]
 - Sep 10: [[file:02_Basic_Types_Operators_Expressions.html][Basic Types, Operators & Expressions]]
 - Sep 15,17: [[file:03_Functions.html][Functions]]
 - Sep 22: more on [[file:03_Functions.html][Functions]], and we'll talk about [[file:a01.html][Assignment 1]]
