@@ -43,7 +43,8 @@ Appendix 1: [[file:A1_Digital_Representation_of_Data.html][Digital Representatio
 - Sep 15,17: [[file:03_Functions.html][Functions]]
 - Sep 22: more on [[file:03_Functions.html][Functions]], and we'll talk about [[file:a01.html][Assignment 1]]
 - Sep 24: no class, Paul is away
-- Sep 29, Oct 1: [[file:e11.html][exercise 11]] & intro to [[file:04_Complex_Data_Types.html][Complex Data Types]]
+- Sep 29: [[file:e11.html][exercise 11]] & intro to [[file:04_Complex_Data_Types.html][Complex Data Types]]
+- Oct 1: class cancelled
 - Oct 6,8: [[file:04_Complex_Data_Types.html][Complex Data Types]]
 - Oct 13: no class due to thanksgiving
 - Oct 16: [[file:05_File_input_and_output.html][File input and output]]
