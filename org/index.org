@@ -51,8 +51,8 @@ Appendix 1: [[file:A1_Digital_Representation_of_Data.html][Digital Representatio
 - Oct 20: [[file:06_Graphical_displays.html][Graphical displays of data]]
 - Oct 22: [[file:07_Document_processing.html][Document processing & reproducible research]]
 - Oct 27,29: [[file:08_Optimization.html][Optimization & Gradient Descent]]
-- Nov 3,5: [[file:09_Signals_and_sampling.html][Signals & Sampling Theory]]
-- Nov 10,12: review & flex time
+- Nov 3,5: no class, Paul is away
+- Nov 10,12:  [[file:09_Signals_and_sampling.html][Signals & Sampling Theory]]
 - Nov 17,19: no class due to SFN meeting
 - Nov 24: [[file:a04.html][assignment 4]] (due Friday, Dec. 5)
 - Nov 26: [[file:10_Speeding_up_your_code.html][Speeding up your code]]
