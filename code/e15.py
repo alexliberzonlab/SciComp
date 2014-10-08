@@ -119,7 +119,7 @@ for i in range(shape(keys)[0]):
         if (score > bestscore):
                 bestkey = keystring
                 bestscore = score
-                print "%6d (%s) score=%3d bestscore = %3d bestkey = %s" % (i,keystring,score,bestscore,bestkey)
+        print "%6d (%s) score=%3d bestscore = %3d bestkey = %s" % (i,keystring,score,bestscore,bestkey)
 
 # and here is the best score, best key and corresponding plaintext
 #

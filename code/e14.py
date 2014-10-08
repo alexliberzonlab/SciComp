@@ -11,7 +11,7 @@ edu = array([4,2,6,0,4,6,4,6,8,8],"float")
 Y = inc
 # matrix of independent variables
 # including a column of 1s
-X = array([ones((len(age),1)), age, edu])
+X = array([ones(len(age)), age, edu])
 X = transpose(X)
 
 # find beta weights for:
