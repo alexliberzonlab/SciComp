@@ -39,7 +39,7 @@ for i=1:size(allkeys,1)
 end
 
 % here is the best plaintext
-p = char(XOEdecrypt(cipher, allkeys(bestkey,:)));
+p = char(XORdecrypt(cipher, allkeys(bestkey,:)));
 disp(['plaintext:\n',p]);
 % and the key that produced it
 disp(['best key: ',char(allkeys(bestkey,:))]);

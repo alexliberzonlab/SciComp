@@ -333,7 +333,7 @@ bestscore = 0;
 <span style="color: #a020f0;">end</span>
 
 <span style="color: #b22222;">% </span><span style="color: #b22222;">here is the best plaintext</span>
-p = char(XOEdecrypt(cipher, allkeys(bestkey,:)));
+p = char(XORdecrypt(cipher, allkeys(bestkey,:)));
 disp([<span style="color: #8b2252;">'plaintext:\n'</span>,p]);
 <span style="color: #b22222;">% </span><span style="color: #b22222;">and the key that produced it</span>
 disp([<span style="color: #8b2252;">'best key: '</span>,char(allkeys(bestkey,:))]);
