@@ -62,4 +62,4 @@ plots.
 * Exercises
 
 The best way to learn the various graphical commands is to write
-code. Have a go at [[file:exercises.html][exercises]] 19 through xxx.
+code. Have a go at [[file:exercises.html][exercises]] 19 through 26.
