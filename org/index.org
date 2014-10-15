@@ -47,8 +47,8 @@ Appendix 1: [[file:A1_Digital_Representation_of_Data.html][Digital Representatio
 - Oct 1: class cancelled
 - Oct 6,8: [[file:04_Complex_Data_Types.html][Complex Data Types]]
 - Oct 13: no class due to thanksgiving
-- Oct 16: [[file:05_File_input_and_output.html][File input and output]]
-- Oct 20: [[file:06_Graphical_displays.html][Graphical displays of data]]
+- Oct 15: [[file:06_Graphical_displays.html][Graphical displays of data]]
+- Oct 20: [[file:05_File_input_and_output.html][File input and output]]
 - Oct 22: [[file:07_Document_processing.html][Document processing & reproducible research]]
 - Oct 27,29: [[file:08_Optimization.html][Optimization & Gradient Descent]]
 - Nov 3,5: no class, Paul is away
