@@ -129,12 +129,13 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1 Reading plain text files</a></li>
-<li><a href="#sec-2">2 Reading binary files</a></li>
-<li><a href="#sec-3">3 Reading some common file formats</a></li>
-<li><a href="#sec-4">4 Saving data to files</a></li>
-<li><a href="#sec-5">5 Text (ascii) or Binary?</a></li>
-<li><a href="#sec-6">6 Exercises</a></li>
+<li><a href="#sec-1">1 ASCII vs binary files</a></li>
+<li><a href="#sec-2">2 Reading plain text files</a></li>
+<li><a href="#sec-3">3 Reading binary files</a></li>
+<li><a href="#sec-4">4 Reading some common file formats</a></li>
+<li><a href="#sec-5">5 Saving data to files</a></li>
+<li><a href="#sec-6">6 Text (ascii) or Binary?</a></li>
+<li><a href="#sec-7">7 Exercises</a></li>
 </ul>
 </div>
 </div>
@@ -161,8 +162,34 @@ For C see the section in the C Bootcamp on <a href="http://www.gribblelab.org/CB
 </p>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Reading plain text files</h2>
+<h2 id="sec-1"><span class="section-number-2">1</span> ASCII vs binary files</h2>
 <div class="outline-text-2" id="text-1">
+
+
+<p>
+There are two types of file formats, ASCII files (otherwise known as
+plain text files) and binary files. In fact, this is a lie and there
+really is only one file type, namely binary files, since all data are
+ultimately stored as 0s and 1s (binary)&hellip; but we have conventions,
+like the ASCII code, which allow us to make assumptions, to make life
+easier&hellip; so we know that if a (binary) file is coded using a series
+of bytes, each of which corresponds to an ASCII code, then this file
+is in fact a "plain text" or "ascii" file (and you can read it using
+any plain text editor like vim, emacs, sublime text, notepad, even MS
+Turd will open plain text files).
+</p>
+<p>
+If what I just said sounds like gibberish to you then you might want
+to look at the following refresher on digital representation of
+data: <a href="A1_Digital_Representation_of_Data.html">A1. Digital Representation of Data</a>, and also have a look at this web page on <a href="http://www.cs.umd.edu/class/sum2003/cmsc311/Notes/BitOp/asciiBin.html">Ascii vs. Binary Files</a>.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Reading plain text files</h2>
+<div class="outline-text-2" id="text-2">
 
 
 <p>
@@ -301,9 +328,9 @@ below).
 
 </div>
 
-<div id="outline-container-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> Reading binary files</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Reading binary files</h2>
+<div class="outline-text-2" id="text-3">
 
 
 <p>
@@ -481,9 +508,9 @@ rows = 5 cols = 2
 
 </div>
 
-<div id="outline-container-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Reading some common file formats</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Reading some common file formats</h2>
+<div class="outline-text-2" id="text-4">
 
 
 <p>
@@ -543,9 +570,9 @@ and write to these formats. Just search on google.
 
 </div>
 
-<div id="outline-container-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Saving data to files</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Saving data to files</h2>
+<div class="outline-text-2" id="text-5">
 
 
 <p>
@@ -557,9 +584,9 @@ details.
 
 </div>
 
-<div id="outline-container-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> Text (ascii) or Binary?</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Text (ascii) or Binary?</h2>
+<div class="outline-text-2" id="text-6">
 
 
 <p>
@@ -581,9 +608,9 @@ much about this problem.
 
 </div>
 
-<div id="outline-container-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> Exercises</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Exercises</h2>
+<div class="outline-text-2" id="text-7">
 
 
 <p>

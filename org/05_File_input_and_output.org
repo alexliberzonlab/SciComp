@@ -26,6 +26,23 @@ For R there is useful documentation for [[http://cran.r-project.org/doc/manuals/
 For C see the section in the C Bootcamp on [[http://www.gribblelab.org/CBootcamp/10_Input_and_Output.html][Input and Output]] or [[http://en.wikipedia.org/wiki/C_file_input/output][C file
 input/output]] (Wikipedia) or [[http://en.wikibooks.org/wiki/C_Programming/File_IO][C Programming/File IO]] (wikibooks).
 
+* ASCII vs binary files
+
+There are two types of file formats, ASCII files (otherwise known as
+plain text files) and binary files. In fact, this is a lie and there
+really is only one file type, namely binary files, since all data are
+ultimately stored as 0s and 1s (binary)... but we have conventions,
+like the ASCII code, which allow us to make assumptions, to make life
+easier... so we know that if a (binary) file is coded using a series
+of bytes, each of which corresponds to an ASCII code, then this file
+is in fact a "plain text" or "ascii" file (and you can read it using
+any plain text editor like vim, emacs, sublime text, notepad, even MS
+Turd will open plain text files).
+
+If what I just said sounds like gibberish to you then you might want
+to look at the following refresher on digital representation of
+data: [[file:A1_Digital_Representation_of_Data.html][A1. Digital Representation of Data]], and also have a look at this web page on [[http://www.cs.umd.edu/class/sum2003/cmsc311/Notes/BitOp/asciiBin.html][Ascii vs. Binary Files]].
+
 * Reading plain text files
 
 If your data are store in a plain text file (sometimes called an ascii
