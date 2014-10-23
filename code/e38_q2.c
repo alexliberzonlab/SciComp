@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <omp.h>
 
 // helper functions (see below)
@@ -10,6 +11,9 @@ double mean(double x[], int n);
 void randperm(int perm[], int n);
 
 int main(int argc, char *argv[]) {
+
+  // initialize random seed based on current time
+  srand((unsigned) time(NULL));
 
   // Question 2
 

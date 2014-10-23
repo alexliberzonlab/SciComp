@@ -216,6 +216,7 @@ matlabpool close
 
 <span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
 <span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdlib.h&gt;</span>
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;time.h&gt;</span>
 
 <span style="color: #b22222;">// </span><span style="color: #b22222;">helper functions (see below)</span>
 <span style="color: #b22222;">//</span>
@@ -223,6 +224,9 @@ matlabpool close
 <span style="color: #228b22;">void</span> <span style="color: #0000ff;">randperm</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">perm</span>[], <span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>);
 
 <span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">argc</span>, <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">argv</span>[]) {
+
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">initialize random seed based on current time</span>
+  srand((<span style="color: #228b22;">unsigned</span>) time(<span style="color: #008b8b;">NULL</span>));
 
   <span style="color: #b22222;">// </span><span style="color: #b22222;">Question 1</span>
 
@@ -290,6 +294,7 @@ e38_q2.c
 
 <span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
 <span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdlib.h&gt;</span>
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;time.h&gt;</span>
 <span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;omp.h&gt;</span>
 
 <span style="color: #b22222;">// </span><span style="color: #b22222;">helper functions (see below)</span>
@@ -298,6 +303,9 @@ e38_q2.c
 <span style="color: #228b22;">void</span> <span style="color: #0000ff;">randperm</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">perm</span>[], <span style="color: #228b22;">int</span> <span style="color: #a0522d;">n</span>);
 
 <span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">argc</span>, <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">argv</span>[]) {
+
+  <span style="color: #b22222;">// </span><span style="color: #b22222;">initialize random seed based on current time</span>
+  srand((<span style="color: #228b22;">unsigned</span>) time(<span style="color: #008b8b;">NULL</span>));
 
   <span style="color: #b22222;">// </span><span style="color: #b22222;">Question 2</span>
 
