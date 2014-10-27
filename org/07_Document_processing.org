@@ -500,6 +500,7 @@ files. See the [[http://yihui.name/knitr/][main knitr website]] for links to exa
 - [[http://www.surefoss.org/publishing-publizieren/all-you-need-is-text-markdown-via-pandoc-for-academia/][All you need is text --- Markdown (via pandoc) for academia]]
 - [[http://detexify.kirelabs.org/classify.html][Detexify]] --- a LaTeX symbol classifier (draw using your mouse)
 - [[https://www.writelatex.com][writeLaTeX]] --- online collaborative LaTeX Editor (with templates)
+- [[http://www.methods.co.nz/asciidoc/index.html][AsciiDoc]] --- Text based document generation
 
 * Assignment
 
