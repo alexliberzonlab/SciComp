@@ -226,7 +226,7 @@ ylabel(<span style="color: #8b2252;">'cost function J'</span>)
 
 <pre class="src src-octave"><span style="color: #b22222;">% </span><span style="color: #b22222;">part 1: 1D cost landscape</span>
 
-<span style="color: #b22222;">% </span><span style="color: #b22222;">Map J</span>
+<span style="color: #b22222;">%% </span><span style="color: #b22222;">Map J</span>
 
 x = linspace(-10,10,201); <span style="color: #b22222;">% </span><span style="color: #b22222;">sample from -10 to +10 in 200 steps</span>
 <span style="color: #a0522d;">J</span> = mycostfun1d(x);       <span style="color: #b22222;">% </span><span style="color: #b22222;">compute cost function over all values</span>
@@ -235,7 +235,7 @@ plot(x,<span style="color: #a0522d;">J</span>,<span style="color: #8b2252;">'b-'
 xlabel(<span style="color: #8b2252;">'X'</span>);
 ylabel(<span style="color: #8b2252;">'J'</span>);
 
-<span style="color: #b22222;">% </span><span style="color: #b22222;">Optimize x</span>
+<span style="color: #b22222;">%% </span><span style="color: #b22222;">Optimize x</span>
 
 X0 = -8.0;                                <span style="color: #b22222;">% </span><span style="color: #b22222;">initial guess</span>
 [Xf,FVAL] = fminsearch(<span style="color: #8b2252;">'mycostfun1d'</span>, X0); <span style="color: #b22222;">% </span><span style="color: #b22222;">optimize!</span>
@@ -245,7 +245,7 @@ plot([Xf,Xf], get(gca,<span style="color: #8b2252;">'ylim'</span>), <span style=
 
 <span style="color: #b22222;">% </span><span style="color: #b22222;">part 2: 2D cost landscape</span>
 
-<span style="color: #b22222;">% </span><span style="color: #b22222;">Map J</span>
+<span style="color: #b22222;">%% </span><span style="color: #b22222;">Map J</span>
 
 x = linspace(-10,10,51); <span style="color: #b22222;">% </span><span style="color: #b22222;">sample from -10 to +10 in 50 steps</span>
 y = linspace(-10,10,51);
@@ -260,7 +260,7 @@ xlabel(<span style="color: #8b2252;">'X'</span>);
 ylabel(<span style="color: #8b2252;">'Y'</span>);
 zlabel(<span style="color: #8b2252;">'J'</span>);
 
-<span style="color: #b22222;">% </span><span style="color: #b22222;">Optimize (x,y)</span>
+<span style="color: #b22222;">%% </span><span style="color: #b22222;">Optimize (x,y)</span>
 
 X0 = [-8.0, 8.0];                          <span style="color: #b22222;">% </span><span style="color: #b22222;">initial guess</span>
 [Xf,FVAL] = fminsearch(<span style="color: #8b2252;">'mycostfun2d'</span>, X0); <span style="color: #b22222;">% </span><span style="color: #b22222;">optimize!</span>

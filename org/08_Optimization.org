@@ -103,7 +103,7 @@ classification, prediction, etc, are based on optimization: finding
 the values of model parameters that minimize some cost function. In
 logistic regression, support vector machines, etc, we find the
 parameter values that minimize the errors in classifying inputs as
-belonging to one category vs another (e.g. spam vs non-smap email, or
+belonging to one category vs another (e.g. spam vs non-spam email, or
 benign vs cancerous tumours, etc). In artificial neural network
 models, we use optimization to find the values of neuron-to-neuron
 weights that minimize the network's errors on an input-output training
@@ -124,7 +124,8 @@ approaches. The *analytic approach* is to try to find an analytical
 expression that allows one to directly compute the optimal parameter
 values. This is wonderful when it can be achieved, because direct
 calculation is fast. For linear regression using OLS, the matrix
-equation given above is this analytical expression.
+equation given in the exercise (and shown below) is this analytical
+expression.
 
 For many problems however, it is not possible to find an analytical
 expression that gives the optimal parameter values. In these cases,
@@ -262,7 +263,7 @@ In local numerical approaches to optimization, the basic idea is to:
 
 Sometimes at step 2, the *stopping rule* looks at not just the current cost but also other values such as the magnitude of the local gradient. For example if the local gradient gets too shallow then the stopping rule might get triggered.
 
-You can think of this all in real-world terms in the following way. Imagine you're heli-skiing in the back-country, and at the end of the day instead of taking you back to Whistler village, your helicopter pilot drops you somewhere on the side of [[http://www.whistlerblackcomb.com/the-mountain/weather-and-mountain-stats.aspx][Whistler Mountain]]. Only problem is, it's extremely foggy and you have no idea where you are, or which way is down to the village. You can only see 3 feet in front of you. All you have on you is an altimeter. What do you do? Probably something akin to the iterative numerical approach of gradient descent.
+You can think of this all in real-world terms in the following way. Imagine you're heli-skiing in the back-country, and at the end of the day instead of taking you back to Whistler village, your helicopter pilot drops you somewhere on the side of [[http://www.whistlerblackcomb.com/the-mountain/weather-and-mountain-stats.aspx][Whistler Mountain]]. Only problem is, it's extremely foggy and you have no idea where you are, or which way is down to the village. You can only see 3 feet in front of you. All you have on you is an altimeter. What do you do? Probably something akin to the iterative numerical approach of *gradient descent*.
 
 You have to decide which way is downhill, and then ski in that direction. To estimate which way is downhill you could do something like the following: take a step in three directions around a circle, and for each step, check the altimeter and compare the altitude to the altitude at the center of the circle. The step corresponding to the greatest altitude decrease represents the steepest "downhill".
 
@@ -293,7 +294,7 @@ In [[http://en.wikipedia.org/wiki/Conjugate_gradient_method][conjugate gradient 
 
 In [[http://en.wikipedia.org/wiki/Newton's_method_in_optimization][Newton's method]], one approximates the local gradient using a quadratic function, and then a step is taken towards the minimum of that quadratic function. You can think of this as a slightly more sophisticated version of simple gradient descent, in which one essentially approximates the local gradient as a straight line.
 
-The [[http://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method][Nelded-Mead (simplex) method]] is an iterative approach that is pretty robust, that has an interesting geometric interpretation (see the animation on the wikipedia page) that is not unlike the old toy called [[http://youtu.be/l8Dbne0wRaE?t=18s][Wacky Wally]].
+The [[http://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method][Nelder-Mead (simplex) method]] is an iterative approach that is pretty robust, that has an interesting geometric interpretation (see the animation on the wikipedia page) that is not unlike the old toy called [[http://youtu.be/l8Dbne0wRaE?t=18s][Wacky Wally]].
 
 There are more complex algorithms such as [[http://en.wikipedia.org/wiki/Levenberg–Marquardt_algorithm][Levenberg-Marquardt]] and others, which we won't get into here.
 

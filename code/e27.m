@@ -1,6 +1,6 @@
 % part 1: 1D cost landscape
 
-% Map J
+%% Map J
 
 x = linspace(-10,10,201); % sample from -10 to +10 in 200 steps
 J = mycostfun1d(x);       % compute cost function over all values
@@ -9,7 +9,7 @@ plot(x,J,'b-','linewidth',2);
 xlabel('X');
 ylabel('J');
 
-% Optimize x
+%% Optimize x
 
 X0 = -8.0;                                % initial guess
 [Xf,FVAL] = fminsearch('mycostfun1d', X0); % optimize!
@@ -19,7 +19,7 @@ plot([Xf,Xf], get(gca,'ylim'), 'color','r', 'linewidth',2);
 
 % part 2: 2D cost landscape
 
-% Map J
+%% Map J
 
 x = linspace(-10,10,51); % sample from -10 to +10 in 50 steps
 y = linspace(-10,10,51);
@@ -34,7 +34,7 @@ xlabel('X');
 ylabel('Y');
 zlabel('J');
 
-% Optimize (x,y)
+%% Optimize (x,y)
 
 X0 = [-8.0, 8.0];                          % initial guess
 [Xf,FVAL] = fminsearch('mycostfun2d', X0); % optimize!
