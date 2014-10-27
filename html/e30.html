@@ -220,12 +220,31 @@ for the JavaScript code below.
 
 
 <p>
-Assume your cost function \(J\) is the following function of two parameters \((x,y)\):
+Assume your cost function \(J\) is the following function of two
+parameters \((x,y)\):
 </p>
 
 
 \begin{equation}
-J(x,y) = -20 e^{(-0.2 \sqrt{0.5 (x^{2} + y^{2})})} - e^{(0.5(\mathrm{cos}(2 \pi x) + \mathrm{cos}(2 \pi y)))} + 20 + e
+J(x,y) = -20 e^{A} - e^{B} + 20 + e
+\end{equation}
+
+<p>
+where
+</p>
+
+
+\begin{equation}
+A = -0.2 \sqrt{0.5 (x^{2} + y^{2})}
+\end{equation}
+
+<p>
+and
+</p>
+
+
+\begin{equation}
+B = 0.5 \left[ \mathrm{cos}(2 \pi x) + \mathrm{cos}(2 \pi y) \right]
 \end{equation}
 
 <p>

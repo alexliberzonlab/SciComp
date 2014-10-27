@@ -17,6 +17,13 @@ x = 0:0.01:3;
 y = sin(2*pi*x) + randn(size(x))*0.5;
 #+END_SRC
 
+Here's what the data look like (yours may look slightly different
+since the y values involve random values):
+
+#+CAPTION: (x,y) data for Exercise 29
+#+ATTR_HTML: width="500"
+[[file:code/e29fig.jpg]]
+
 Your task is to fit a function of the following form to the data:
 
 \begin{equation}
