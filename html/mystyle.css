@@ -52,3 +52,11 @@ h2 {
     font-size: 14pt;
     line-height: 1.0;
 }
+
+pre.src {
+    background-color: #F3F5F7;
+}
+
+.example {
+    background-color: #F3F5F7;
+}
