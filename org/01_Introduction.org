@@ -11,7 +11,8 @@
 -----
 
 Our main plan for the first class will be to talk about the course
-content, and to get everyone set up on their laptop with an appropriate programming environment.
+content, and to get everyone set up on their laptop with an
+appropriate programming environment.
 
 In our second class we will start in on the first batch of programming
 exercises which will illustrate getting values from the user, printing
@@ -19,34 +20,22 @@ strings, doing arithmetic, and we will be introduced to loops.
 
 * Organization of the course
 
-Last year we tried a new approach to how classes are run, that worked
-well. Instead of me lecturing for an hour, and then you going away and
-attemping programming exercises and assignments, we "[[https://en.wikipedia.org/wiki/Flipped_classroom][flipped the
-classroom]]". Classroom time was spent working on exercises and
-assignments, and asking questions, and students completed readings and
-went over lecture notes outside of class.
-
-The benefit of this approach from my point of view is that we spend
-time in class in a more interactive way, and (especially earling in
-learning programming techniques) students get more out of classroom
-time than if you were just listening to me blab on and on.
-
-What this does require however is that you come prepared to each
-class, having done the readings and whatever other preparation is
-specified on the schedule.
+Typically we will start each topic with a short presentation by myself
+on the main concepts. We will spend the rest of the time (and in some
+cases the next class) working on programming exercises, hands-on.
 
 * Setting up your computing environment
 
 I will be using unix-style tools, sometimes on my Mac and sometimes on
 a linux machine (or in a linux virtual machine). If you have a Mac and
 are running a relatively recent version of Mac OSX then you can
-achieve the same functionality by installing unix-based tools on your
-Mac. We will talk about this in class. If you have a Windows laptop
-then your choices may be more limited.
+achieve essentially the same functionality. We will talk about this in
+class. If you have a Windows laptop then your choices may be more
+limited.
 
-For using linux, you have essentially four choices about how you can
-set things up, assuming you are not already set up to use linux. In
-order of most committed to least committed:
+If you want to use linux, you have essentially four choices about how
+you can set things up, assuming you are not already set up to use
+linux. In order of most committed to least committed:
 
 1. Wipe your existing operating system and install linux. There are
    several flavours (see the [[http://www.gribblelab.org/scicomp/resources.html#sec-11][resources]] page)
@@ -141,11 +130,11 @@ There are many other languages out there that are still in use but
 these are the ones you are likely to encounter in the scientific and
 numerical computing sphere.
 
-For our purposes, we will be primarily seeing code
-in *Python*, *Matlab/Octave* and *R*. Occasionally I will show you
-a *C* version of a program as an illustration of how much faster a
-compiled language can be compared to an interpreted language (Python,
-Matlab/Octave and R are all interpreted languages).
+For our purposes, we will be primarily seeing code in *Python*,
+*MATLAB/Octave* and *R*. Occasionally I will show you a *C* version of
+a program as an illustration of how much faster a compiled language
+can be compared to an interpreted language (Python, Matlab/Octave and
+R are all interpreted languages).
 
 ** Am I supposed to learn $n$ different languages in this course? (where $n>1$)
 
@@ -176,21 +165,19 @@ things like:
   research?
 - Do you want to spend money? (MATLAB costs money and is a
   proprietary, closed source product; Python, R, Octave and C are free
-  and open source)
+  and open source) --- although at present, Western has a site license
+  for MATLAB, so it is available for you to install free of charge
 - what language(s) do you already know, and are you interested in
   refining what you already know, and/or becoming proficient in
   another language?
 
 In the absence of other constraints imposed upon you, I suggest using
-Python for the course. Its libraries are broader than R, which is
-mainly a language oriented around doing statistics. An easy way to
-install Python plus all of the SciPy toolboxes is using [[https://store.continuum.io/cshop/anaconda/][Anaconda]],
-which should work on Windows and Mac.
+MATLAB for the course.
 
 It could be that there is pressure on you from your supervisor or the
 other people in your lab to learn a particular language, e.g. if the
-rest of your lab already uses MATLAB, then perhaps it would be best
-for you to learn MATLAB. If this is the case, then it's probably a
+rest of your lab already uses Python/SciPy, then perhaps it would be
+best for you to learn that. If this is the case, then it's probably a
 good idea to follow their advice.
 
 If you are still unsure about which language to use, come and see me
@@ -204,38 +191,6 @@ be looking at in this course and you would like to challenge yourself
 and learn some C, then reading through this [[http://www.gribblelab.org/CBootcamp/index.html][C Programming Boot Camp]]
 might be useful to you. There are also tons of resources online, and
 books, about programming in C.
-
-** Editors and IDEs
-
-Many programming language come with a so-called [[http://en.wikipedia.org/wiki/Integrated_development_environment][Integrated Development]]
-Environments or IDE. MATLAB comes with one of these. There is one for
-R called [[http://www.rstudio.com][RStudio]], and there is one for Python/SciPy called [[https://www.enthought.com/products/canopy/][Canopy]]. For
-C there are many. On the Mac, [[https://developer.apple.com/xcode/][Xcode]] is the standard for developing Mac
-OSX and iOS programs. On Windows there are products like [[http://en.wikipedia.org/wiki/Eclipse_(software)][Eclipse]] that
-provide an IDE for several languages.
-
-The basic idea of an IDE is that you get a pretty, graphical
-multi-windowed environment where you can see your code alongside
-various tools such as debuggers, variable lists and memory profiles,
-file systems and directories, and click-and-point menus for access to
-a variety of functions and toolboxes.
-
-In this course I will not be using an IDE, and I would encourage you
-not to use one either. This is not because I think they are
-necessarily a bad idea, but because I think the various conveniences
-they provide promote a certain intellectual laziness especially for
-beginning programmers. For an experienced programmer an IDE can
-certainly increase efficiency. For a beginning programmer however I
-think it's more important to (at least initially) do all of that stuff
-in your head (or with a piece of paper and a pencil). A reading is
-relevant here: [[http://www.paulgraham.com/head.html][Holding a Program in One's Head]].
-
-What I will be doing, and what I suggest you do in the course, is use
-a basic *two window setup*: one window for the code interpreter (or
-compiler) and a second window for your editor (where you edit your
-code). If you really, really want to use an IDE then I won't stop
-you---but I probably won't be able to help much if you have questions
-about how it works.
 
 * A Rough List of Topics
 
