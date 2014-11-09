@@ -1,65 +1,96 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Exercise 27 solutions</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
-<meta name="title" content="Exercise 27 solutions"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="generated" content="fall 2014"/>
-<meta name="author" content="Paul Gribble"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<!-- 2014-11-08 Sat 19:08 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Paul Gribble" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
-  .todo   { color: red; }
+  .todo   { font-family: monospace; color: red; }
   .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
   }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
     background: #ffffcc;
   }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
   textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="mystyle.css" /><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-52544521-1', 'auto');ga('send', 'pageview');</script>
+</style>
+<link rel="stylesheet"
+                         href="mystyle.css"
+                         type="text/css"/><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-52544521-1', 'auto');ga('send', 'pageview');</script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -106,25 +137,14 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-
 </head>
 <body>
-<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+<div id="org-div-home-and-up">
  <a accesskey="h" href="http://www.gribblelab.org/scicomp/e27.html"> UP </a>
  |
  <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
-</div>
-
-<div id="preamble">
-
-</div>
-
-<div id="content">
+</div><div id="content">
 <h1 class="title">Exercise 27 solutions</h1>
-
-
-
-<hr/>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
@@ -136,17 +156,15 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
+<hr  />
 
-<hr/>
-
-
-<div id="outline-container-1" class="outline-2">
+<div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1">Python</h2>
 <div class="outline-text-2" id="text-1">
-
-<p>e27.py
+<p>
+e27.py
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-python"><span style="color: #b22222;"># </span><span style="color: #b22222;">start from ipython --pylab</span>
 
@@ -210,123 +228,119 @@ ylabel(<span style="color: #8b2252;">'cost function J'</span>)
 <span style="color: #a020f0;">print</span> <span style="color: #8b2252;">"the optimal value of (x,y) is "</span> + <span style="color: #483d8b;">str</span>(X_opt)
 <span style="color: #a020f0;">print</span> <span style="color: #8b2252;">"the minimum cost found is "</span> + <span style="color: #483d8b;">str</span>(min_cost)
 </pre>
-
-
+</div>
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-2" class="outline-2">
+<div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2">MATLAB / Octave</h2>
 <div class="outline-text-2" id="text-2">
-
-<p>e27.m
+<p>
+e27.m
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-octave"><span style="color: #b22222;">% </span><span style="color: #b22222;">part 1: 1D cost landscape</span>
 
 <span style="color: #b22222;">%% </span><span style="color: #b22222;">Map J</span>
 
-x = linspace(-10,10,201); <span style="color: #b22222;">% </span><span style="color: #b22222;">sample from -10 to +10 in 200 steps</span>
-<span style="color: #a0522d;">J</span> = mycostfun1d(x);       <span style="color: #b22222;">% </span><span style="color: #b22222;">compute cost function over all values</span>
-figure                    <span style="color: #b22222;">% </span><span style="color: #b22222;">visualize the cost landscape</span>
-plot(x,<span style="color: #a0522d;">J</span>,<span style="color: #8b2252;">'b-'</span>,<span style="color: #8b2252;">'linewidth'</span>,2);
-xlabel(<span style="color: #8b2252;">'X'</span>);
-ylabel(<span style="color: #8b2252;">'J'</span>);
+x <span style="color: #483d8b;">=</span> linspace(<span style="color: #483d8b;">-</span>10<span style="color: #483d8b;">,</span>10<span style="color: #483d8b;">,</span>201)<span style="color: #483d8b;">;</span> <span style="color: #b22222;">% sample from -10 to +10 in 200 steps</span>
+J <span style="color: #483d8b;">=</span> mycostfun1d(x)<span style="color: #483d8b;">;</span>       <span style="color: #b22222;">% compute cost function over all values</span>
+figure                    <span style="color: #b22222;">% visualize the cost landscape</span>
+plot(x<span style="color: #483d8b;">,</span>J<span style="color: #483d8b;">,</span><span style="color: #8b2252;">'b-'</span><span style="color: #483d8b;">,</span><span style="color: #8b2252;">'linewidth'</span><span style="color: #483d8b;">,</span>2)<span style="color: #483d8b;">;</span>
+xlabel(<span style="color: #8b2252;">'X'</span>)<span style="color: #483d8b;">;</span>
+ylabel(<span style="color: #8b2252;">'J'</span>)<span style="color: #483d8b;">;</span>
 
 <span style="color: #b22222;">%% </span><span style="color: #b22222;">Optimize x</span>
 
-X0 = 4.0;                                <span style="color: #b22222;">% </span><span style="color: #b22222;">initial guess</span>
-[Xf,FVAL] = fminsearch(<span style="color: #8b2252;">'mycostfun1d'</span>, X0); <span style="color: #b22222;">% </span><span style="color: #b22222;">optimize!</span>
-<span style="color: #a020f0;">hold</span> on
-plot([Xf,Xf], get(gca,<span style="color: #8b2252;">'ylim'</span>), <span style="color: #8b2252;">'color'</span>,<span style="color: #8b2252;">'r--'</span>, <span style="color: #8b2252;">'linewidth'</span>,2);
+X0 <span style="color: #483d8b;">=</span> 4.0<span style="color: #483d8b;">;</span>                                <span style="color: #b22222;">% initial guess</span>
+[Xf<span style="color: #483d8b;">,</span>FVAL] <span style="color: #483d8b;">=</span> fminsearch(<span style="color: #8b2252;">'mycostfun1d'</span><span style="color: #483d8b;">,</span> X0)<span style="color: #483d8b;">;</span> <span style="color: #b22222;">% optimize!</span>
+hold on
+plot([Xf<span style="color: #483d8b;">,</span>Xf]<span style="color: #483d8b;">,</span> get(gca<span style="color: #483d8b;">,</span><span style="color: #8b2252;">'ylim'</span>)<span style="color: #483d8b;">,</span> <span style="color: #8b2252;">'color'</span><span style="color: #483d8b;">,</span><span style="color: #8b2252;">'r--'</span><span style="color: #483d8b;">,</span> <span style="color: #8b2252;">'linewidth'</span><span style="color: #483d8b;">,</span>2)<span style="color: #483d8b;">;</span>
 
 
 <span style="color: #b22222;">% </span><span style="color: #b22222;">part 2: 2D cost landscape</span>
 
 <span style="color: #b22222;">%% </span><span style="color: #b22222;">Map J</span>
 
-x = linspace(-3,3,51); <span style="color: #b22222;">% </span><span style="color: #b22222;">sample from -3 to +3 in 50 steps</span>
-y = linspace(-3,3,51);
-XY = combvec(x,y);
-<span style="color: #a0522d;">J</span> = mycostfun2d(XY');     <span style="color: #b22222;">% </span><span style="color: #b22222;">compute cost function over all values</span>
-[Y,X] = meshgrid(x,y);    <span style="color: #b22222;">% </span><span style="color: #b22222;">reshape into matrix form</span>
-Z = reshape(<span style="color: #a0522d;">J</span>,length(x),length(y));
-figure                    <span style="color: #b22222;">% </span><span style="color: #b22222;">visualize the cost landscape</span>
-meshc(X,Y,Z);
+x <span style="color: #483d8b;">=</span> linspace(<span style="color: #483d8b;">-</span>3<span style="color: #483d8b;">,</span>3<span style="color: #483d8b;">,</span>51)<span style="color: #483d8b;">;</span> <span style="color: #b22222;">% sample from -3 to +3 in 50 steps</span>
+y <span style="color: #483d8b;">=</span> linspace(<span style="color: #483d8b;">-</span>3<span style="color: #483d8b;">,</span>3<span style="color: #483d8b;">,</span>51)<span style="color: #483d8b;">;</span>
+XY <span style="color: #483d8b;">=</span> combvec(x<span style="color: #483d8b;">,</span>y)<span style="color: #483d8b;">;</span>
+J <span style="color: #483d8b;">=</span> mycostfun2d(XY<span style="color: #483d8b;">'</span>)<span style="color: #483d8b;">;</span>     <span style="color: #b22222;">% compute cost function over all values</span>
+[Y<span style="color: #483d8b;">,</span>X] <span style="color: #483d8b;">=</span> meshgrid(x<span style="color: #483d8b;">,</span>y)<span style="color: #483d8b;">;</span>    <span style="color: #b22222;">% reshape into matrix form</span>
+Z <span style="color: #483d8b;">=</span> reshape(J<span style="color: #483d8b;">,</span>length(x)<span style="color: #483d8b;">,</span>length(y))<span style="color: #483d8b;">;</span>
+figure                    <span style="color: #b22222;">% visualize the cost landscape</span>
+meshc(X<span style="color: #483d8b;">,</span>Y<span style="color: #483d8b;">,</span>Z)<span style="color: #483d8b;">;</span>
 shading flat
-xlabel(<span style="color: #8b2252;">'X'</span>);
-ylabel(<span style="color: #8b2252;">'Y'</span>);
-zlabel(<span style="color: #8b2252;">'J'</span>);
+xlabel(<span style="color: #8b2252;">'X'</span>)<span style="color: #483d8b;">;</span>
+ylabel(<span style="color: #8b2252;">'Y'</span>)<span style="color: #483d8b;">;</span>
+zlabel(<span style="color: #8b2252;">'J'</span>)<span style="color: #483d8b;">;</span>
 
 <span style="color: #b22222;">%% </span><span style="color: #b22222;">Optimize (x,y)</span>
 
-X0 = [2.5, 2.5];                          <span style="color: #b22222;">% </span><span style="color: #b22222;">initial guess</span>
-[Xf,FVAL] = fminsearch(<span style="color: #8b2252;">'mycostfun2d'</span>, X0); <span style="color: #b22222;">% </span><span style="color: #b22222;">optimize!</span>
-<span style="color: #a020f0;">hold</span> on
-z0 = get(gca,<span style="color: #8b2252;">'zlim'</span>);
-z0 = z0(1);
-plot3([Xf(1),Xf(1)],[get(gca,<span style="color: #8b2252;">'ylim'</span>)],[z0 z0],<span style="color: #8b2252;">'color'</span>,<span style="color: #8b2252;">'r'</span>,<span style="color: #8b2252;">'linewidth'</span>,2);
-plot3([get(gca,<span style="color: #8b2252;">'xlim'</span>)],[Xf(2),Xf(2)],[z0 z0],<span style="color: #8b2252;">'color'</span>,<span style="color: #8b2252;">'r'</span>,<span style="color: #8b2252;">'linewidth'</span>,2);
+X0 <span style="color: #483d8b;">=</span> [2.5<span style="color: #483d8b;">,</span> 2.5]<span style="color: #483d8b;">;</span>                          <span style="color: #b22222;">% initial guess</span>
+[Xf<span style="color: #483d8b;">,</span>FVAL] <span style="color: #483d8b;">=</span> fminsearch(<span style="color: #8b2252;">'mycostfun2d'</span><span style="color: #483d8b;">,</span> X0)<span style="color: #483d8b;">;</span> <span style="color: #b22222;">% optimize!</span>
+hold on
+z0 <span style="color: #483d8b;">=</span> get(gca<span style="color: #483d8b;">,</span><span style="color: #8b2252;">'zlim'</span>)<span style="color: #483d8b;">;</span>
+z0 <span style="color: #483d8b;">=</span> z0(1)<span style="color: #483d8b;">;</span>
+plot3([Xf(1)<span style="color: #483d8b;">,</span>Xf(1)]<span style="color: #483d8b;">,</span>[get(gca<span style="color: #483d8b;">,</span><span style="color: #8b2252;">'ylim'</span>)]<span style="color: #483d8b;">,</span>[z0 z0]<span style="color: #483d8b;">,</span><span style="color: #8b2252;">'color'</span><span style="color: #483d8b;">,</span><span style="color: #8b2252;">'r'</span><span style="color: #483d8b;">,</span><span style="color: #8b2252;">'linewidth'</span><span style="color: #483d8b;">,</span>2)<span style="color: #483d8b;">;</span>
+plot3([get(gca<span style="color: #483d8b;">,</span><span style="color: #8b2252;">'xlim'</span>)]<span style="color: #483d8b;">,</span>[Xf(2)<span style="color: #483d8b;">,</span>Xf(2)]<span style="color: #483d8b;">,</span>[z0 z0]<span style="color: #483d8b;">,</span><span style="color: #8b2252;">'color'</span><span style="color: #483d8b;">,</span><span style="color: #8b2252;">'r'</span><span style="color: #483d8b;">,</span><span style="color: #8b2252;">'linewidth'</span><span style="color: #483d8b;">,</span>2)<span style="color: #483d8b;">;</span>
 </pre>
-
+</div>
 <p>
 mycostfun1d.m
 </p>
+<div class="org-src-container">
 
-
-<pre class="src src-octave"><span style="color: #a020f0;">function</span> <span style="color: #a0522d;">J</span> = <span style="color: #0000ff;">mycostfun1d</span>(X)
+<pre class="src src-octave"><span style="color: #a020f0;">function</span> J <span style="color: #483d8b;">=</span> <span style="color: #0000ff;">mycostfun1d</span>(X)
 <span style="color: #b22222;">%</span>
 <span style="color: #b22222;">% </span><span style="color: #b22222;">note use of dot notation on .* and ./ operators</span>
 <span style="color: #b22222;">% </span><span style="color: #b22222;">this enables the computation to happen for</span>
 <span style="color: #b22222;">% </span><span style="color: #b22222;">vector values of x</span>
 <span style="color: #b22222;">%</span>
-<span style="color: #a0522d;">J</span> = (X .* exp(-X.*X)) + ((X.*X)./20);
+J <span style="color: #483d8b;">=</span> (X <span style="color: #483d8b;">.*</span> exp(<span style="color: #483d8b;">-</span>X<span style="color: #483d8b;">.*</span>X)) <span style="color: #483d8b;">+</span> ((X<span style="color: #483d8b;">.*</span>X)<span style="color: #483d8b;">./</span>20)<span style="color: #483d8b;">;</span>
 </pre>
-
+</div>
 <p>
 mycostfun2d.m
 </p>
+<div class="org-src-container">
 
-
-<pre class="src src-octave"><span style="color: #a020f0;">function</span> <span style="color: #a0522d;">J</span> = <span style="color: #0000ff;">mycostfun2d</span>(X)
+<pre class="src src-octave"><span style="color: #a020f0;">function</span> J <span style="color: #483d8b;">=</span> <span style="color: #0000ff;">mycostfun2d</span>(X)
 <span style="color: #b22222;">%</span>
 <span style="color: #b22222;">% </span><span style="color: #b22222;">note use of dot notation on .* and ./ operators</span>
 <span style="color: #b22222;">% </span><span style="color: #b22222;">this enables the computation to happen for</span>
 <span style="color: #b22222;">% </span><span style="color: #b22222;">vector values of x</span>
 <span style="color: #b22222;">%</span>
-x = X(:,1);
-y = X(:,2);
-<span style="color: #a0522d;">J</span> = (x .* exp(-(x.*x)-(y.*y))) + (((x.*x)+(y.*y))./20);
+x <span style="color: #483d8b;">=</span> X(<span style="color: #483d8b;">:,</span>1)<span style="color: #483d8b;">;</span>
+y <span style="color: #483d8b;">=</span> X(<span style="color: #483d8b;">:,</span>2)<span style="color: #483d8b;">;</span>
+J <span style="color: #483d8b;">=</span> (x <span style="color: #483d8b;">.*</span> exp(<span style="color: #483d8b;">-</span>(x<span style="color: #483d8b;">.*</span>x)<span style="color: #483d8b;">-</span>(y<span style="color: #483d8b;">.*</span>y))) <span style="color: #483d8b;">+</span> (((x<span style="color: #483d8b;">.*</span>x)<span style="color: #483d8b;">+</span>(y<span style="color: #483d8b;">.*</span>y))<span style="color: #483d8b;">./</span>20)<span style="color: #483d8b;">;</span>
 </pre>
-
-
+</div>
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-3" class="outline-2">
+<div id="outline-container-sec-3" class="outline-2">
 <h2 id="sec-3">R</h2>
 <div class="outline-text-2" id="text-3">
-
-<p>e27.R
+<p>
+e27.R
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-R"># part 1: 1D cost landscape
 
 # define the cost function
 mycostfun &lt;- function(x) {
-        J &lt;- (x * exp(-(x**2))) + ((x**2)/20.0)
-        J
+	J &lt;- (x * exp(-(x**2))) + ((x**2)/20.0)
+	J
 }
 
 # Map J
 
 x &lt;- seq(-10, 10, 0.1)
 J &lt;- mycostfun(x)
-plot(x, J, <span style="color: #8b2252;">"l"</span>, col=<span style="color: #8b2252;">"blue"</span>, lwd=2, xlab=<span style="color: #8b2252;">"parameter value x"</span>, ylab=<span style="color: #8b2252;">"cost function J"</span>)
+plot(x, J, "l", col="blue", lwd=2, xlab="parameter value x", ylab="cost function J")
 
 # Optimize x
 
@@ -334,22 +348,22 @@ plot(x, J, <span style="color: #8b2252;">"l"</span>, col=<span style="color: #8b
 x0 &lt;- -5.0
 
 # optimize!
-optim_res &lt;- optim(x0, mycostfun, method=<span style="color: #8b2252;">"Nelder-Mead"</span>)
+optim_res &lt;- optim(x0, mycostfun, method="Nelder-Mead")
 print(optim_res)
 
 x_opt &lt;- optim_res$par
 min_cost &lt;- optim_res$value
 
-cat(paste(<span style="color: #8b2252;">"initial guess was"</span>, x0, <span style="color: #8b2252;">"\n"</span>))
-cat(paste(<span style="color: #8b2252;">"the optimal value of x is"</span>, x_opt, <span style="color: #8b2252;">"\n"</span>))
-cat(paste(<span style="color: #8b2252;">"the minimum cost found is"</span>, min_cost, <span style="color: #8b2252;">"\n"</span>))
+cat(paste("initial guess was", x0, "\n"))
+cat(paste("the optimal value of x is", x_opt, "\n"))
+cat(paste("the minimum cost found is", min_cost, "\n"))
 
 # note that R gives us a warning about using Nelder-Mead for
-# one-dimensional optimization and suggests we use the <span style="color: #8b2252;">"Brent"</span>
+# one-dimensional optimization and suggests we use the "Brent"
 # method instead. You could try this as an exercise... You will
 # need to give optim() lower and upper bounds on the parameter, e.g.:
 
-optim_res &lt;- optim(x0, mycostfun, method=<span style="color: #8b2252;">"Brent"</span>, lower=-20.0, upper=20.0)
+optim_res &lt;- optim(x0, mycostfun, method="Brent", lower=-20.0, upper=20.0)
 print(optim_res)
 
 
@@ -361,19 +375,17 @@ xxx
 
 # Optimize (x,y)
 </pre>
-
-
+</div>
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-4" class="outline-2">
+<div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4">C</h2>
 <div class="outline-text-2" id="text-4">
-
-<p>e27.c
+<p>
+e27.c
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-c"><span style="color: #b22222;">// </span><span style="color: #b22222;">e27.c</span>
 <span style="color: #b22222;">// </span><span style="color: #b22222;">compile with: gcc -o e27 e27.c nmsimplex.c</span>
@@ -405,20 +417,17 @@ xxx
   <span style="color: #a020f0;">return</span> 0;
 }
 </pre>
-
-<ul>
+</div>
+<ul class="org-ul">
 <li><a href="code/nmsimplex.h">nmsimplex.h</a>
 </li>
 <li><a href="code/nmsimplex.c">nmsimplex.c</a>
 </li>
 </ul>
-
-
 </div>
 </div>
 </div>
-
-<div id="postamble">
+<div id="postamble" class="status">
 <hr />Paul Gribble | fall 2014<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license"href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
 </div>
 </body>

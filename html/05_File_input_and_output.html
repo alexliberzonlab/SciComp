@@ -1,65 +1,96 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>5. File input and output</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
-<meta name="title" content="5. File input and output"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="generated" content="fall 2014"/>
-<meta name="author" content="Paul Gribble"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<!-- 2014-11-08 Sat 19:08 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Paul Gribble" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
-  .todo   { color: red; }
+  .todo   { font-family: monospace; color: red; }
   .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
   }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
     background: #ffffcc;
   }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
   textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="mystyle.css" /><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-52544521-1', 'auto');ga('send', 'pageview');</script>
+</style>
+<link rel="stylesheet"
+                         href="mystyle.css"
+                         type="text/css"/><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-52544521-1', 'auto');ga('send', 'pageview');</script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -106,113 +137,102 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-
 </head>
 <body>
-<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+<div id="org-div-home-and-up">
  <a accesskey="h" href="http://www.gribblelab.org/scicomp/index.html"> UP </a>
  |
  <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
-</div>
-
-<div id="preamble">
-
-</div>
-
-<div id="content">
+</div><div id="content">
 <h1 class="title">5. File input and output</h1>
-
-
-
-<hr/>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1 ASCII vs binary files</a></li>
-<li><a href="#sec-2">2 Reading plain text files</a></li>
-<li><a href="#sec-3">3 Reading binary files</a></li>
-<li><a href="#sec-4">4 Reading some common file formats</a></li>
-<li><a href="#sec-5">5 Saving data to files</a></li>
-<li><a href="#sec-6">6 Text (ascii) or Binary?</a></li>
-<li><a href="#sec-7">7 Exercises</a></li>
+<li><a href="#sec-1">1. ASCII vs binary files</a></li>
+<li><a href="#sec-2">2. Reading plain text files</a></li>
+<li><a href="#sec-3">3. Reading binary files</a></li>
+<li><a href="#sec-4">4. Reading some common file formats</a></li>
+<li><a href="#sec-5">5. Saving data to files</a></li>
+<li><a href="#sec-6">6. Text (ascii) or Binary?</a></li>
+<li><a href="#sec-7">7. Exercises</a></li>
 </ul>
 </div>
 </div>
-
-<hr/>
+<hr  />
 
 <p>
-Most of the time you will be writing programs that analyse data ---
+Most of the time you will be writing programs that analyse data &#x2014;
 whether those data are collected from experiments, or generated by
 models and simulations. We will need to be able to read in data from a
 file. It will also be useful to be able to write data out to a file.
 </p>
+
 <p>
 <a href="http://wiki.scipy.org/Cookbook/InputOutput">This page</a> is a useful summary of file input/output operations in Python/NumPy/SciPy.
 </p>
+
 <p>
 For MATLAB see documentation pages for <a href="http://www.mathworks.com/help/matlab/data-import-and-export.html">data import and export</a>.
 </p>
+
 <p>
 For R there is useful documentation for <a href="http://cran.r-project.org/doc/manuals/r-release/R-data.html">R Data Import/Export</a>.
 </p>
+
 <p>
-For C see the section in the C Bootcamp on <a href="http://www.gribblelab.org/CBootcamp/10_Input_and_Output.html">Input and Output</a> or <a href="http://en.wikipedia.org/wiki/C_file_input/output">C file input/output</a> (Wikipedia) or <a href="http://en.wikibooks.org/wiki/C_Programming/File_IO">C Programming/File IO</a> (wikibooks).
+For C see the section in the C Bootcamp on <a href="http://www.gribblelab.org/CBootcamp/10_Input_and_Output.html">Input and Output</a> or <a href="http://en.wikipedia.org/wiki/C_file_input/output">C file
+input/output</a> (Wikipedia) or <a href="http://en.wikibooks.org/wiki/C_Programming/File_IO">C Programming/File IO</a> (wikibooks).
 </p>
 
-<div id="outline-container-1" class="outline-2">
+<div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1"><span class="section-number-2">1</span> ASCII vs binary files</h2>
 <div class="outline-text-2" id="text-1">
-
-
 <p>
 There are two types of file formats, ASCII files (otherwise known as
 plain text files) and binary files. In fact, this is a lie and there
 really is only one file type, namely binary files, since all data are
-ultimately stored as 0s and 1s (binary)&hellip; but we have conventions,
+ultimately stored as 0s and 1s (binary)&#x2026; but we have conventions,
 like the ASCII code, which allow us to make assumptions, to make life
-easier&hellip; so we know that if a (binary) file is coded using a series
+easier&#x2026; so we know that if a (binary) file is coded using a series
 of bytes, each of which corresponds to an ASCII code, then this file
 is in fact a "plain text" or "ascii" file (and you can read it using
 any plain text editor like vim, emacs, sublime text, notepad, even MS
 Turd will open plain text files).
 </p>
+
 <p>
 If what I just said sounds like gibberish to you then you might want
 to look at the following refresher on digital representation of
 data: <a href="A1_Digital_Representation_of_Data.html">A1. Digital Representation of Data</a>, and also have a look at this web page on <a href="http://www.cs.umd.edu/class/sum2003/cmsc311/Notes/BitOp/asciiBin.html">Ascii vs. Binary Files</a>.
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-2" class="outline-2">
+<div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2"><span class="section-number-2">2</span> Reading plain text files</h2>
 <div class="outline-text-2" id="text-2">
-
-
 <p>
 If your data are store in a plain text file (sometimes called an ascii
 file) then each language has built-in functions that we can use to
 read values.
 </p>
+
 <p>
 Let's say we have a plain text file called <a href="code/data05.txt">data05.txt</a> that looks like this:
 </p>
 
-
-
-<pre class="src src-example">2 3
+<pre class="example">
+2 3
 4 5
 6 7
 8 9
 </pre>
 
-
 <p>
 <b>Python / NumPy</b>
 </p>
+
 <p>
 The NumPy function <code>loadtxt()</code> is our friend
 here. Check out the help documentation for a full description. You can
@@ -220,7 +240,7 @@ specify the variable type (e.g. "float" or "int", etc), and you can
 specify the delimiter that separates each column of data. The data are
 loaded into a NumPy array.
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-python">&gt;&gt;&gt; <span style="color: #a020f0;">from</span> numpy <span style="color: #a020f0;">import</span> loadtxt
 &gt;&gt;&gt; <span style="color: #a0522d;">data</span> = loadtxt(<span style="color: #8b2252;">"data05.txt"</span>, dtype=<span style="color: #8b2252;">"float"</span>, delimiter=<span style="color: #8b2252;">" "</span>)
@@ -236,57 +256,59 @@ array([2, 4, 6, 8])
 &gt;&gt;&gt; data[:,1]
 array([3, 5, 7, 9])
 </pre>
-
+</div>
 
 <p>
 <b>MATLAB / Octave</b>
 </p>
+
 <p>
 There is a rather general purpose function called <code>load()</code> that will
 load all kinds of files. It tries to auto-detect the file type and
 behave appropriately. See the help documentation for a full
 description of all of the options.
 </p>
+<div class="org-src-container">
 
-
-<pre class="src src-octave"><span style="color: #483d8b;">&gt;&gt;</span> data = <span style="color: #a020f0;">load</span>(<span style="color: #8b2252;">'data05.txt'</span>);
+<pre class="src src-octave"><span style="color: #483d8b;">&gt;&gt;</span> data <span style="color: #483d8b;">=</span> load(<span style="color: #8b2252;">'data05.txt'</span>)<span style="color: #483d8b;">;</span>
 <span style="color: #483d8b;">&gt;&gt;</span> data
 
-data =
+data <span style="color: #483d8b;">=</span>
 
      2     3
      4     5
      6     7
      8     9
 
-<span style="color: #483d8b;">&gt;&gt;</span> <span style="color: #a020f0;">whos</span> data
+<span style="color: #483d8b;">&gt;&gt;</span> whos data
   Name      Size            Bytes  Class     Attributes
 
   data      4x2                64  double              
 
-<span style="color: #483d8b;">&gt;&gt;</span> data(:,1)
+<span style="color: #483d8b;">&gt;&gt;</span> data(<span style="color: #483d8b;">:,</span>1)
 
-<span style="color: #a0522d;">ans</span> =
+ans <span style="color: #483d8b;">=</span>
 
      2
      4
      6
      8
 
-<span style="color: #483d8b;">&gt;&gt;</span> data(:,2)
+<span style="color: #483d8b;">&gt;&gt;</span> data(<span style="color: #483d8b;">:,</span>2)
 
-<span style="color: #a0522d;">ans</span> =
+ans <span style="color: #483d8b;">=</span>
 
      3
      5
      7
      9
 </pre>
-
+</div>
 
 <p>
 <b>R</b>
 </p>
+
 <p>
 In R your best option is to use the <code>read.table()</code> function, which
 loads data into a variable type called a <a href="http://www.r-tutor.com/r-introduction/data-frame">data frame</a>, which is a very
@@ -297,9 +319,9 @@ names of each column of data. This allows you, if you wish, to access
 the data by name rather than by column number (see example code
 below).
 </p>
+<div class="org-src-container">
 
-
-<pre class="src src-r">&gt; d &lt;- read.table(<span style="color: #8b2252;">"data05.txt"</span>, sep=<span style="color: #8b2252;">" "</span>, col.names=c(<span style="color: #8b2252;">"pizza"</span>,<span style="color: #8b2252;">"cheeseburger"</span>))
+<pre class="src src-r">&gt; d &lt;- read.table("data05.txt", sep=" ", col.names=c("pizza","cheeseburger"))
 &gt; d
   pizza cheeseburger
 1     2            3
@@ -311,28 +333,24 @@ below).
 &gt; d[,2]
 [1] 3 5 7 9
 &gt; names(d)
-[1] <span style="color: #8b2252;">"pizza"</span>        <span style="color: #8b2252;">"cheeseburger"</span>
-&gt; d[,<span style="color: #8b2252;">"pizza"</span>]
+[1] "pizza"        "cheeseburger"
+&gt; d[,"pizza"]
 [1] 2 4 6 8
-&gt; d[,<span style="color: #8b2252;">"cheeseburger"</span>]
+&gt; d[,"cheeseburger"]
 [1] 3 5 7 9
 &gt; d$pizza
 [1] 2 4 6 8
 &gt; d$cheeseburger
 [1] 3 5 7 9
 </pre>
-
-
-
+</div>
+</div>
 </div>
 
-</div>
 
-<div id="outline-container-3" class="outline-2">
+<div id="outline-container-sec-3" class="outline-2">
 <h2 id="sec-3"><span class="section-number-2">3</span> Reading binary files</h2>
 <div class="outline-text-2" id="text-3">
-
-
 <p>
 A <i>binary</i> file, unlike a plain text file, is not directly readable or
 recognizable. If you try to open a binary file in a text editor you
@@ -345,12 +363,14 @@ plain text editor and you will see lots of interesting stuff
 corresponding to custom binary representations of various properties
 of your document.
 </p>
+
 <p>
 Why binary files? When you store data in a binary format, it typically
 results in a smaller file than when it is stored in a plaintext
 (ascii) file. Binary files are typically faster to read and write, as
 well.
 </p>
+
 <p>
 Ascii files follow a prescribed format (sequences of 8-bit bytes,
 interpreted as ascii codes). In contrast, binary files can follow any
@@ -362,9 +382,11 @@ work to be open and available to all. If you store data in a binary
 format then (in my opinion) you ought to also provide the binary
 format, so that the file is accessible to all.
 </p>
+
 <p>
 <b>An Example</b>
 </p>
+
 <p>
 There is a file you can download called <a href="code/data05.bin">data05.bin</a> that is in a custom
 binary format (that I made up for the purposes of this example). There
@@ -377,13 +399,15 @@ each. It is ordered row-wise, that is row 1 (v1,v2) followed by row 2
 (v1,v2), etc. For those interested, I generated this data file in C
 using this program: <a href="code/writebinarydata.c">writebinarydata.c</a>.
 </p>
+
 <p>
 Here is how we would read this file:
 </p>
+
 <p>
 <b>C</b>
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-C"><span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
 
@@ -421,40 +445,39 @@ Here is how we would read this file:
   <span style="color: #a020f0;">return</span> 0;
 }
 </pre>
-
+</div>
 
 <p>
 <b>MATLAB</b>
 </p>
+<div class="org-src-container">
 
-
-<pre class="src src-octave"><span style="color: #483d8b;">&gt;&gt;</span> fid = fopen(<span style="color: #8b2252;">'data05.bin'</span>, <span style="color: #8b2252;">'r'</span>);
-<span style="color: #483d8b;">&gt;&gt;</span> hs = fread(fid,16,<span style="color: #8b2252;">'int8=&gt;char'</span>)';
-<span style="color: #483d8b;">&gt;&gt;</span> rows = fread(fid, 1, <span style="color: #8b2252;">'int'</span>);
-<span style="color: #483d8b;">&gt;&gt;</span> cols = fread(fid, 1, <span style="color: #8b2252;">'int'</span>);
-<span style="color: #483d8b;">&gt;&gt;</span> d = fread(fid, rows*cols, <span style="color: #8b2252;">'int'</span>);
-<span style="color: #483d8b;">&gt;&gt;</span> d = reshape(d,cols,rows)';
-<span style="color: #483d8b;">&gt;&gt;</span> disp([<span style="color: #8b2252;">'header = '</span>,hs]);
-header = October 15, 2013
-<span style="color: #483d8b;">&gt;&gt;</span> disp([<span style="color: #8b2252;">'rows = '</span>,num2str(rows),<span style="color: #8b2252;">' cols = '</span>,num2str(cols)]);
-rows = 5 cols = 2
+<pre class="src src-octave"><span style="color: #483d8b;">&gt;&gt;</span> fid <span style="color: #483d8b;">=</span> fopen(<span style="color: #8b2252;">'data05.bin'</span><span style="color: #483d8b;">,</span> <span style="color: #8b2252;">'r'</span>)<span style="color: #483d8b;">;</span>
+<span style="color: #483d8b;">&gt;&gt;</span> hs <span style="color: #483d8b;">=</span> fread(fid<span style="color: #483d8b;">,</span>16<span style="color: #483d8b;">,</span><span style="color: #8b2252;">'int8=&gt;char'</span>)<span style="color: #483d8b;">';</span>
+<span style="color: #483d8b;">&gt;&gt;</span> rows <span style="color: #483d8b;">=</span> fread(fid<span style="color: #483d8b;">,</span> 1<span style="color: #483d8b;">,</span> <span style="color: #8b2252;">'int'</span>)<span style="color: #483d8b;">;</span>
+<span style="color: #483d8b;">&gt;&gt;</span> cols <span style="color: #483d8b;">=</span> fread(fid<span style="color: #483d8b;">,</span> 1<span style="color: #483d8b;">,</span> <span style="color: #8b2252;">'int'</span>)<span style="color: #483d8b;">;</span>
+<span style="color: #483d8b;">&gt;&gt;</span> d <span style="color: #483d8b;">=</span> fread(fid<span style="color: #483d8b;">,</span> rows<span style="color: #483d8b;">*</span>cols<span style="color: #483d8b;">,</span> <span style="color: #8b2252;">'int'</span>)<span style="color: #483d8b;">;</span>
+<span style="color: #483d8b;">&gt;&gt;</span> d <span style="color: #483d8b;">=</span> reshape(d<span style="color: #483d8b;">,</span>cols<span style="color: #483d8b;">,</span>rows)<span style="color: #483d8b;">';</span>
+<span style="color: #483d8b;">&gt;&gt;</span> disp([<span style="color: #8b2252;">'header = '</span><span style="color: #483d8b;">,</span>hs])<span style="color: #483d8b;">;</span>
+header <span style="color: #483d8b;">=</span> October 15<span style="color: #483d8b;">,</span> 2013
+<span style="color: #483d8b;">&gt;&gt;</span> disp([<span style="color: #8b2252;">'rows = '</span><span style="color: #483d8b;">,</span>num2str(rows)<span style="color: #483d8b;">,</span><span style="color: #8b2252;">' cols = '</span><span style="color: #483d8b;">,</span>num2str(cols)])<span style="color: #483d8b;">;</span>
+rows <span style="color: #483d8b;">=</span> 5 cols <span style="color: #483d8b;">=</span> 2
 <span style="color: #483d8b;">&gt;&gt;</span> d
 
-d =
+d <span style="color: #483d8b;">=</span>
 
      1     2
      2     4
      3     6
      4     8
      5    10
-
 </pre>
-
+</div>
 
 <p>
 <b>Python / NumPy</b>
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-python">&gt;&gt;&gt; <span style="color: #a020f0;">from</span> numpy <span style="color: #a020f0;">import</span> *
 &gt;&gt;&gt; <span style="color: #a0522d;">fd</span> = <span style="color: #483d8b;">open</span>(<span style="color: #8b2252;">"data05.bin"</span>, <span style="color: #8b2252;">"r"</span>)
@@ -476,23 +499,23 @@ d =
  [ 4  8]
  [ 5 10]]
 </pre>
-
+</div>
 
 <p>
 <b>R</b>
 </p>
+<div class="org-src-container">
 
-
-<pre class="src src-r">&gt; fd &lt;- file(<span style="color: #8b2252;">"data05.bin"</span>, <span style="color: #8b2252;">"rb"</span>)
+<pre class="src src-r">&gt; fd &lt;- file("data05.bin", "rb")
 &gt; hs &lt;- rawToChar(as.raw(readBin(fd, integer(), n=16, size=1)))
 &gt; rows &lt;- readBin(fd, integer(), n=1, size=4)
 &gt; cols &lt;- readBin(fd, integer(), n=1, size=4)
 &gt; d &lt;- readBin(fd, integer(), n=(rows*cols), size=4)
 &gt; d &lt;- matrix(d, nrow=rows, ncol = cols, byrow=TRUE)
 &gt; close(fd)
-&gt; cat(<span style="color: #8b2252;">"header = "</span>, hs, <span style="color: #8b2252;">"\n"</span>)
+&gt; cat("header = ", hs, "\n")
 header =  October 15, 2013 
-&gt; cat(<span style="color: #8b2252;">"rows ="</span>, rows, <span style="color: #8b2252;">"cols ="</span>, cols, <span style="color: #8b2252;">"\n"</span>)
+&gt; cat("rows =", rows, "cols =", cols, "\n")
 rows = 5 cols = 2
 &gt; d
      [,1] [,2]
@@ -502,93 +525,94 @@ rows = 5 cols = 2
 [4,]    4    8
 [5,]    5   10
 </pre>
-
-
+</div>
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-4" class="outline-2">
+<div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4"><span class="section-number-2">4</span> Reading some common file formats</h2>
 <div class="outline-text-2" id="text-4">
-
-
 <p>
 Each language has its own particular binary file format for storing
 data. MATLAB saves data in binary files with a <code>.mat</code> suffix. The
 <code>save()</code> command does this. The <code>load()</code> command loads <code>.mat</code> files
 back into memory.
 </p>
+
 <p>
 In R, <code>write.table()</code> will save a data frame to a file, in an ascii
 format. The <code>save()</code> function will save data in a binary format
 specific to R. It can be loaded again using the <code>load()</code> command.
 </p>
+
 <p>
 In Python, NumPy has a function called <code>save()</code> that will save an
 array to a binary file in NumPy <code>.npy</code> format. The <code>savez()</code> function
 will save several arrays into a binary <code>.npz</code> archive. The <code>load()</code>
 function will load the data back into NumPy.
 </p>
+
 <p>
 In plain Python (no NumPy involved) there is a way of saving Python
-variables to binary files, in a format called a <code>pickle</code>. See <a href="http://docs.python.org/2/library/pickle.html">pickle - Python object serialization</a> for the details.
+variables to binary files, in a format called a <code>pickle</code>. See <a href="http://docs.python.org/2/library/pickle.html">pickle -
+Python object serialization</a> for the details.
 </p>
+
 <p>
 In C, there is no standard binary format for files, it's up to you to
 design your own.
 </p>
+
 <p>
 <b>Other common binary file types</b>
 </p>
+
 <p>
 Each language has the ability to load a number of other commonly used
 binary file types, including image files (jpeg, tiff, etc) and some
 other common types such as Microsoft Excel files.
 </p>
+
 <p>
 For R, see <a href="http://cran.r-project.org/doc/manuals/r-release/R-data.html">R Data Import/Export</a> for details of the different formats R
 can load. There is even a package to read and write MATLAB <code>.mat</code>
 files, see <a href="http://cran.r-project.org/web/packages/R.matlab/">Package R.matlab</a>.
 </p>
+
 <p>
 For Python / NumPy, one option to know about is the <a href="http://pandas.pydata.org">pandas</a>
 library. There are a range of file input/output options listed here:
 <a href="http://pandas.pydata.org/pandas-docs/stable/io.html">IO Tools</a>. NumPy also has a number of different file i/o options, see
 <a href="http://docs.scipy.org/doc/numpy/reference/routines.io.html">Input and output</a> for details.
 </p>
+
 <p>
 In MATLAB there is a function called <code>xlsread()</code> that will read MS
 Excel files, see <a href="http://www.mathworks.com/help/matlab/ref/xlsread.html">here</a> for documentation.
 </p>
+
 <p>
 For common neuroimaging file formats, e.g. NIfTI and ANALYSE, you can
 find libraries and third-party files for each language that will read
 and write to these formats. Just search on google.
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-5" class="outline-2">
+<div id="outline-container-sec-5" class="outline-2">
 <h2 id="sec-5"><span class="section-number-2">5</span> Saving data to files</h2>
 <div class="outline-text-2" id="text-5">
-
-
 <p>
 Each of the file reading methods discussed above has a matching file
 writing function, just see the corresponding documentation for
 details.
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-6" class="outline-2">
+<div id="outline-container-sec-6" class="outline-2">
 <h2 id="sec-6"><span class="section-number-2">6</span> Text (ascii) or Binary?</h2>
 <div class="outline-text-2" id="text-6">
-
-
 <p>
 The question of which file format to use as you go forward and write
 programs for analysing your data is an interesting one to
@@ -605,22 +629,19 @@ is growing so quickly however that I don't think one has to worry too
 much about this problem.
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-7" class="outline-2">
+<div id="outline-container-sec-7" class="outline-2">
 <h2 id="sec-7"><span class="section-number-2">7</span> Exercises</h2>
 <div class="outline-text-2" id="text-7">
-
-
 <p>
 <a href="exercises.html">Exercises</a> 16, 17 and 18 will get you reading in files of different
 formats.
-</p></div>
+</p>
 </div>
 </div>
-
-<div id="postamble">
+</div>
+<div id="postamble" class="status">
 <hr />Paul Gribble | fall 2014<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license"href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
 </div>
 </body>

@@ -1,65 +1,96 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Exercise 15 solutions</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
-<meta name="title" content="Exercise 15 solutions"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="generated" content="fall 2014"/>
-<meta name="author" content="Paul Gribble"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<!-- 2014-11-08 Sat 19:08 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Paul Gribble" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
-  .todo   { color: red; }
+  .todo   { font-family: monospace; color: red; }
   .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
   }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
     background: #ffffcc;
   }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
   textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="mystyle.css" /><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-52544521-1', 'auto');ga('send', 'pageview');</script>
+</style>
+<link rel="stylesheet"
+                         href="mystyle.css"
+                         type="text/css"/><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-52544521-1', 'auto');ga('send', 'pageview');</script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -106,25 +137,14 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-
 </head>
 <body>
-<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+<div id="org-div-home-and-up">
  <a accesskey="h" href="http://www.gribblelab.org/scicomp/e15.html"> UP </a>
  |
  <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
-</div>
-
-<div id="preamble">
-
-</div>
-
-<div id="content">
+</div><div id="content">
 <h1 class="title">Exercise 15 solutions</h1>
-
-
-
-<hr/>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
@@ -135,20 +155,19 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-
-<hr/>
+<hr  />
 
 <p>
-<a href="code/p059_cipher.txt">p059_cipher.txt</a>
+<a href="code/p059_cipher.txt">p059\<sub>cipher</sub>.txt</a>
 </p>
 
-<div id="outline-container-1" class="outline-2">
+<div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1">Python</h2>
 <div class="outline-text-2" id="text-1">
-
-<p>e15.py
+<p>
+e15.py
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-python"><span style="color: #a020f0;">import</span> urllib2      <span style="color: #b22222;"># </span><span style="color: #b22222;">to open file from a URL</span>
 <span style="color: #a020f0;">from</span> numpy <span style="color: #a020f0;">import</span> * <span style="color: #b22222;"># </span><span style="color: #b22222;">for arrays</span>
@@ -280,96 +299,92 @@ for the JavaScript code in this tag.
 <span style="color: #a0522d;">ps</span> = getPlaintext(cipherascii, bestkey)
 <span style="color: #a020f0;">print</span> ps
 </pre>
-
-
+</div>
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-2" class="outline-2">
+<div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2">MATLAB / Octave</h2>
 <div class="outline-text-2" id="text-2">
-
-<p>e15.m
+<p>
+e15.m
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-octave"><span style="color: #b22222;">% </span><span style="color: #b22222;">load in the cipher1.txt file into an array of ints</span>
 <span style="color: #b22222;">%</span>
-cipher = importdata(<span style="color: #8b2252;">'p059_cipher.txt'</span>, <span style="color: #8b2252;">','</span>);
+cipher <span style="color: #483d8b;">=</span> importdata(<span style="color: #8b2252;">'p059_cipher.txt'</span><span style="color: #483d8b;">,</span> <span style="color: #8b2252;">','</span>)<span style="color: #483d8b;">;</span>
 
 <span style="color: #b22222;">% </span><span style="color: #b22222;">import a dictionary of English words</span>
 <span style="color: #b22222;">%</span>
-w = importdata(<span style="color: #8b2252;">'/usr/share/dict/words'</span>, <span style="color: #8b2252;">'\n'</span>);
+w <span style="color: #483d8b;">=</span> importdata(<span style="color: #8b2252;">'/usr/share/dict/words'</span><span style="color: #483d8b;">,</span> <span style="color: #8b2252;">'\n'</span>)<span style="color: #483d8b;">;</span>
 
 <span style="color: #b22222;">% </span><span style="color: #b22222;">test all 26*26*26 = 17576 keys</span>
 <span style="color: #b22222;">%</span>
-alpha = double(<span style="color: #8b2252;">'a'</span>):double(<span style="color: #8b2252;">'z'</span>); <span style="color: #b22222;">% </span><span style="color: #b22222;">97:122</span>
-allkeys = combvec(alpha,alpha,alpha)'; <span style="color: #b22222;">% </span><span style="color: #b22222;">17576 x 3 matrix of all of them</span>
+alpha <span style="color: #483d8b;">=</span> double(<span style="color: #8b2252;">'a'</span>)<span style="color: #483d8b;">:</span>double(<span style="color: #8b2252;">'z'</span>)<span style="color: #483d8b;">;</span> <span style="color: #b22222;">% 97:122</span>
+allkeys <span style="color: #483d8b;">=</span> combvec(alpha<span style="color: #483d8b;">,</span>alpha<span style="color: #483d8b;">,</span>alpha)<span style="color: #483d8b;">';</span> <span style="color: #b22222;">% 17576 x 3 matrix of all of them</span>
 
 <span style="color: #b22222;">% </span><span style="color: #b22222;">let's test all keys</span>
 <span style="color: #b22222;">%</span>
-bestkey = 1;
-bestscore = 0;
-<span style="color: #a020f0;">for</span> i=1:size(allkeys,1)
-  pa = XORdecrypt(cipher, allkeys(i,:)); <span style="color: #b22222;">% </span><span style="color: #b22222;">decrypt into plaintext array</span>
-  p = char(pa);                          <span style="color: #b22222;">% </span><span style="color: #b22222;">convert to characters</span>
-  pw = strsplit(p, <span style="color: #8b2252;">' '</span>);                 <span style="color: #b22222;">% </span><span style="color: #b22222;">split plaintext by ' ' into words</span>
-  <span style="color: #b22222;">% </span><span style="color: #b22222;">count how many plaintext words are found in the dictionary</span>
-  nwords = 0;
-  <span style="color: #a020f0;">for</span> j=1:length(pw)
-    <span style="color: #b22222;">% </span><span style="color: #b22222;">only words length 3 through 8</span>
+bestkey <span style="color: #483d8b;">=</span> 1<span style="color: #483d8b;">;</span>
+bestscore <span style="color: #483d8b;">=</span> 0<span style="color: #483d8b;">;</span>
+<span style="color: #a020f0;">for</span> i<span style="color: #483d8b;">=</span>1<span style="color: #483d8b;">:</span>size(allkeys<span style="color: #483d8b;">,</span>1)
+  pa <span style="color: #483d8b;">=</span> XORdecrypt(cipher<span style="color: #483d8b;">,</span> allkeys(i<span style="color: #483d8b;">,:</span>))<span style="color: #483d8b;">;</span> <span style="color: #b22222;">% decrypt into plaintext array</span>
+  p <span style="color: #483d8b;">=</span> char(pa)<span style="color: #483d8b;">;</span>                          <span style="color: #b22222;">% convert to characters</span>
+  pw <span style="color: #483d8b;">=</span> strsplit(p<span style="color: #483d8b;">,</span> <span style="color: #8b2252;">' '</span>)<span style="color: #483d8b;">;</span>                 <span style="color: #b22222;">% split plaintext by ' ' into words</span>
+  <span style="color: #b22222;">% count how many plaintext words are found in the dictionary</span>
+  nwords <span style="color: #483d8b;">=</span> 0<span style="color: #483d8b;">;</span>
+  <span style="color: #a020f0;">for</span> j<span style="color: #483d8b;">=</span>1<span style="color: #483d8b;">:</span>length(pw)
+    <span style="color: #b22222;">% only words length 3 through 8</span>
     <span style="color: #a020f0;">if</span> ( (length(pw{j}) <span style="color: #483d8b;">&gt;=</span> 3) <span style="color: #483d8b;">&amp;</span> (length(pw{j}) <span style="color: #483d8b;">&lt;=</span> 8) )
-      <span style="color: #a020f0;">if</span> ~isempty(find(strcmp(pw{j},w))) <span style="color: #b22222;">% </span><span style="color: #b22222;">is it in the dictionary?</span>
-        nwords = nwords + 1;
+      <span style="color: #a020f0;">if</span> <span style="color: #483d8b;">~</span>isempty(find(strcmp(pw{j}<span style="color: #483d8b;">,</span>w))) <span style="color: #b22222;">% is it in the dictionary?</span>
+        nwords <span style="color: #483d8b;">=</span> nwords <span style="color: #483d8b;">+</span> 1<span style="color: #483d8b;">;</span>
       <span style="color: #a020f0;">end</span>
     <span style="color: #a020f0;">end</span>
   <span style="color: #a020f0;">end</span>
-  <span style="color: #a020f0;">if</span> nwords <span style="color: #483d8b;">&gt;</span> bestscore                  <span style="color: #b22222;">% </span><span style="color: #b22222;">do we have a new best score?</span>
-    bestscore = nwords;
-    bestkey = i;
+  <span style="color: #a020f0;">if</span> nwords <span style="color: #483d8b;">&gt;</span> bestscore                  <span style="color: #b22222;">% do we have a new best score?</span>
+    bestscore <span style="color: #483d8b;">=</span> nwords<span style="color: #483d8b;">;</span>
+    bestkey <span style="color: #483d8b;">=</span> i<span style="color: #483d8b;">;</span>
   <span style="color: #a020f0;">end</span>
-  disp([num2str(i),<span style="color: #8b2252;">' '</span>,char(allkeys(i,:)),<span style="color: #8b2252;">' score= '</span>,num2str(nwords),<span style="color: #8b2252;">' bestscore= '</span>,num2str(bestscore),<span style="color: #8b2252;">' bestkey= '</span>,char(allkeys(bestkey,:))]);
+  disp([num2str(i)<span style="color: #483d8b;">,</span><span style="color: #8b2252;">' '</span><span style="color: #483d8b;">,</span>char(allkeys(i<span style="color: #483d8b;">,:</span>))<span style="color: #483d8b;">,</span><span style="color: #8b2252;">' score= '</span><span style="color: #483d8b;">,</span>num2str(nwords)<span style="color: #483d8b;">,</span><span style="color: #8b2252;">' bestscore= '</span><span style="color: #483d8b;">,</span>num2str(bestscore)<span style="color: #483d8b;">,</span><span style="color: #8b2252;">' bestkey= '</span><span style="color: #483d8b;">,</span>char(allkeys(bestkey<span style="color: #483d8b;">,:</span>))])<span style="color: #483d8b;">;</span>
 <span style="color: #a020f0;">end</span>
 
 <span style="color: #b22222;">% </span><span style="color: #b22222;">here is the best plaintext</span>
-p = char(XORdecrypt(cipher, allkeys(bestkey,:)));
-disp([<span style="color: #8b2252;">'plaintext:\n'</span>,p]);
+p <span style="color: #483d8b;">=</span> char(XORdecrypt(cipher<span style="color: #483d8b;">,</span> allkeys(bestkey<span style="color: #483d8b;">,:</span>)))<span style="color: #483d8b;">;</span>
+disp([<span style="color: #8b2252;">'plaintext:\n'</span><span style="color: #483d8b;">,</span>p])<span style="color: #483d8b;">;</span>
 <span style="color: #b22222;">% </span><span style="color: #b22222;">and the key that produced it</span>
-disp([<span style="color: #8b2252;">'best key: '</span>,char(allkeys(bestkey,:))]);
+disp([<span style="color: #8b2252;">'best key: '</span><span style="color: #483d8b;">,</span>char(allkeys(bestkey<span style="color: #483d8b;">,:</span>))])<span style="color: #483d8b;">;</span>
 </pre>
-
+</div>
 <p>
 XORdecrypt.m
 </p>
+<div class="org-src-container">
 
-
-<pre class="src src-octave"><span style="color: #a020f0;">function</span> out = <span style="color: #0000ff;">XORdecrypt</span>(in,key)
-  out = ones(size(in)) * <span style="color: #a0522d;">NaN</span>; <span style="color: #b22222;">% </span><span style="color: #b22222;">initialize with NaNs</span>
-  keyarray = repmat(key, 1, ceil(length(in)/length(key)));
-  keyarray = keyarray(1:length(in));
-  out = bitxor(in, keyarray);
+<pre class="src src-octave"><span style="color: #a020f0;">function</span> out <span style="color: #483d8b;">=</span> <span style="color: #0000ff;">XORdecrypt</span>(in<span style="color: #483d8b;">,</span>key)
+  out <span style="color: #483d8b;">=</span> ones(size(in)) <span style="color: #483d8b;">*</span> NaN<span style="color: #483d8b;">;</span> <span style="color: #b22222;">% initialize with NaNs</span>
+  keyarray <span style="color: #483d8b;">=</span> repmat(key<span style="color: #483d8b;">,</span> 1<span style="color: #483d8b;">,</span> ceil(length(in)<span style="color: #483d8b;">/</span>length(key)))<span style="color: #483d8b;">;</span>
+  keyarray <span style="color: #483d8b;">=</span> keyarray(1<span style="color: #483d8b;">:</span>length(in))<span style="color: #483d8b;">;</span>
+  out <span style="color: #483d8b;">=</span> bitxor(in<span style="color: #483d8b;">,</span> keyarray)<span style="color: #483d8b;">;</span>
 </pre>
-
-
+</div>
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-3" class="outline-2">
+<div id="outline-container-sec-3" class="outline-2">
 <h2 id="sec-3">C</h2>
 <div class="outline-text-2" id="text-3">
-
-<p>e15.c
+<p>
+e15.c
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-c"><span style="color: #b22222;">// </span><span style="color: #b22222;">to compile: gcc -O3 -o e15 e15.c e15helper.c</span>
 
 <span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
 <span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdlib.h&gt;</span>
 <span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;string.h&gt;</span>
-<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">"e15helper.h"</span> <span style="color: #b22222;">// </span><span style="color: #b22222;">header file for e15helper.c</span>
+<span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">"e15helper.h"</span>  <span style="color: #b22222;">// </span><span style="color: #b22222;">header file for e15helper.c</span>
 
 <span style="color: #228b22;">int</span> <span style="color: #0000ff;">main</span>(<span style="color: #228b22;">int</span> <span style="color: #a0522d;">argc</span>, <span style="color: #228b22;">char</span> *<span style="color: #a0522d;">argv</span>[]) {
 
@@ -422,11 +437,11 @@ XORdecrypt.m
   <span style="color: #a020f0;">return</span> 0;
 }
 </pre>
-
+</div>
 <p>
 e15helper.h
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-c"><span style="color: #b22222;">// </span><span style="color: #b22222;">define a struct to store an array of ints</span>
 <span style="color: #a020f0;">typedef</span> <span style="color: #a020f0;">struct</span> {
@@ -450,11 +465,11 @@ e15helper.h
 <span style="color: #b22222;">// </span><span style="color: #b22222;">(lower values -&gt; more "english")</span>
 <span style="color: #228b22;">double</span> <span style="color: #0000ff;">EnglishScore</span>(<span style="color: #228b22;">int_array</span> *<span style="color: #a0522d;">b</span>);
 </pre>
-
+</div>
 <p>
 e15helper.c
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-c"><span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
 <span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;string.h&gt;</span>
@@ -490,7 +505,7 @@ e15helper.c
   }
   free(bufcpy);
   <span style="color: #b22222;">// </span><span style="color: #b22222;">allocate an array of ints</span>
-  <span style="color: #228b22;">int</span> *<span style="color: #a0522d;">ia</span> = malloc(n_cipher * <span style="color: #a020f0;">sizeof</span>(<span style="color: #228b22;">int</span>));
+  <span style="color: #228b22;">int</span> *<span style="color: #a0522d;">ia</span> = malloc(<span style="color: #228b22;">n_cipher</span> * <span style="color: #a020f0;">sizeof</span>(<span style="color: #228b22;">int</span>));
   bufcpy = strdup(buf);
   token = strtok(bufcpy, <span style="color: #8b2252;">","</span>);   <span style="color: #b22222;">// </span><span style="color: #b22222;">read tokens into the int array</span>
   <span style="color: #228b22;">int</span> <span style="color: #a0522d;">i</span>=0;
@@ -584,12 +599,11 @@ e15helper.c
   <span style="color: #a020f0;">return</span> score;
 }
 </pre>
-
 </div>
 </div>
 </div>
-
-<div id="postamble">
+</div>
+<div id="postamble" class="status">
 <hr />Paul Gribble | fall 2014<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license"href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
 </div>
 </body>

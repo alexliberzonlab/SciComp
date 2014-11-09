@@ -5,11 +5,9 @@
 #+EMAIL:     paul@gribblelab.org
 #+DATE:      fall 2014
 #+OPTIONS: html:t num:t toc:2
-#+LINK_UP: http://www.gribblelab.org/scicomp/index.html
-#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+#+HTML_LINK_UP: http://www.gribblelab.org/scicomp/index.html
+#+HTML_LINK_HOME: http://www.gribblelab.org/scicomp/index.html
 
------
-[TABLE-OF-CONTENTS]
 -----
 
 * What is an optimization problem?
@@ -176,7 +174,7 @@ we're searching the airwaves for Virgin Radio but you've forgotten the
 frequency (97.5 MHz). We can visualize a hypothetical relationship
 between $\beta$ and $J$ graphically:
 
-#+ATTR_HTML: height="400px"
+#+ATTR_HTML: :height 400px
 [[file:code/virginradio.jpg]]
 
 As we move the dial under or over the actual (forgotten) frequency for
@@ -228,7 +226,7 @@ value.
 
 Note also that technically, that the slope of a function is zero not only at a minimum but also at a peak. If we truly want to find only minima then we should also look for places where the second derivative (the slope of the slope) is positive. Parameter values where the first derivative is zero and the second derivative is positive, correspond to valleys. Parameter values where the first derivative is zero and the second derivative is negative correspond to peaks. Draw a function with a peak and a valley, then draw the first and second derivatives, to convince yourself that this is true. Here is a place to start:
 
-#+ATTR_HTML: height="400px"
+#+ATTR_HTML: :height 400px
 [[file:code/peakvalley.jpg]]
 
 ** Analytic solution for OLS regression
@@ -277,7 +275,7 @@ This is essentially how numerical approaches to optimization work, by doing *ite
 
 One common challenge with complex optimization problems, is the issue of local minima. In the bowl-shaped example of a cost function that we plotted above, there is a single *global minimum* to the cost function --- one place on the cost landscape where the slope is zero. It happens often however that there are local minima in the cost function --- parameter values that correspond to a flat region of the cost function, where local steps will only increase the cost --- but for which the cost is not the global minimum cost. Here is an example of such a cost function:
 
-#+ATTR_HTML: height="400px"
+#+ATTR_HTML: :height 400px
 [[file:code/localminima.jpg]]
 
 You can see that there is a single global minimum at a parameter value of about -1 --- but there is a second, local minimum at a parameter value of about 2.2. You can see that if our initial parameter guess was between 1.5 and 3.0, that our local gradient descent procedure would put us at the local minimum, not the global minimum.

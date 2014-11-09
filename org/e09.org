@@ -5,8 +5,8 @@
 #+EMAIL:     paul@gribblelab.org
 #+DATE:      fall 2014
 #+OPTIONS: toc:nil html:t num:nil h:1
-#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
-#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+#+HTML_LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+HTML_LINK_HOME: http://www.gribblelab.org/scicomp/index.html
 
 * Fibonacci numbers
 

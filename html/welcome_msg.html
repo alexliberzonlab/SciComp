@@ -1,65 +1,96 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Scientific Computing (Psychology 9040A)</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
-<meta name="title" content="Scientific Computing (Psychology 9040A)"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="generated" content="fall 2014"/>
-<meta name="author" content="Paul Gribble"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<!-- 2014-11-08 Sat 19:08 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Paul Gribble" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
-  .todo   { color: red; }
+  .todo   { font-family: monospace; color: red; }
   .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
   }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
     background: #ffffcc;
   }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
   textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="mystyle.css" /><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-52544521-1', 'auto');ga('send', 'pageview');</script>
+</style>
+<link rel="stylesheet"
+                         href="mystyle.css"
+                         type="text/css"/><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-52544521-1', 'auto');ga('send', 'pageview');</script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -106,78 +137,65 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-
 </head>
 <body>
-<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+<div id="org-div-home-and-up">
  <a accesskey="h" href="http://www.gribblelab.org/scicomp/index.html"> UP </a>
  |
  <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
-</div>
-
-<div id="preamble">
-
-</div>
-
-<div id="content">
+</div><div id="content">
 <h1 class="title">Scientific Computing (Psychology 9040A)</h1>
 
-
-
-<div id="outline-container-1" class="outline-2">
+<div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1">Goals of the course</h2>
 <div class="outline-text-2" id="text-1">
-
-
 <p>
 The goal of this one-semester graduate seminar is to provide you with
-skills in scientific computing &mdash; tools and techniques that you can use
+skills in scientific computing &#x2014; tools and techniques that you can use
 in your own research. We will focus on learning to think about
 experiments and data in a computational framework, and we will learn
 to implement specific data processing and analysis algorithms using a
 high-level programming language.
 </p>
+
 <p>
 The course is designed to achieve four primary goals:
 </p>
-<ol>
+
+<ol class="org-ol">
 <li>to teach you to program in a high-level language such as
-   Python, Matlab, R, and C.
+Python, Matlab, R, and C.
 </li>
 <li>to introduce you to Unix (either via the Mac, or GNU/Linux), and to
-   some common computing tools that will help you become more
-   efficient with using your computer for research.
+some common computing tools that will help you become more
+efficient with using your computer for research.
 </li>
 <li>to introduce you to some common computational techniques
-   (not necessarily "statistics" per se) for data processing and
-   analysis &mdash; e.g. curve-fitting, simulation, optimization &amp; gradient
-   descent, frequency-domain analysis and filtering, parallel
-   programming, interacting with hardware, organization and storage of
-   data, programming GUIs (graphical user interfaces), and others.
+(not necessarily "statistics" per se) for data processing and
+analysis &#x2014; e.g. curve-fitting, simulation, optimization &amp; gradient
+descent, frequency-domain analysis and filtering, parallel
+programming, interacting with hardware, organization and storage of
+data, programming GUIs (graphical user interfaces), and others.
 </li>
 <li>to get you to think computationally and algorithmically
-   about data processing, analysis, modeling and visualization.
+about data processing, analysis, modeling and visualization.
 </li>
 </ol>
-
 
 <p>
 Even if you don't become a full-fledged programmer yourself, you will
 have learned enough to know what is possible given today's
 computational resources. This will enable you in the future to design
 cutting edge experiments and data analysis approaches that take full
-advantage of the computational resources available to you &mdash; whether
+advantage of the computational resources available to you &#x2014; whether
 programmed yourself, or by programmers and technicians that you hire.
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-2" class="outline-2">
+<div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2">Exercises, Assignments and Grades</h2>
 <div class="outline-text-2" id="text-2">
-
-
 <p>
 Each week we will go over a series of programming exercises that are
 designed to get you going with the concepts we cover each week. The
@@ -185,11 +203,13 @@ exercises are not graded. The idea is for you try have a go, and when
 you have problems, questions, etc, ask each other, and ask me for
 help. The best way to learn programming is to program.
 </p>
+
 <p>
 Each week I will set an assignment that will be graded. The course
 grade will be based on the weekly assignments (90% weighting) and a
 "course participation" mark (10% weighting).
 </p>
+
 <p>
 The assignments will have several components. Some components will be
 easy, some will be more difficult, and some assignments may contain
@@ -198,20 +218,17 @@ afraid to go to each other for help. I'm all in favour of students
 working together on assignments. I just don't want to find out that
 you are handing in work that is not your own. I'm perfectly willing to
 give you hints, so don't hesitate to come to me for help (although do
-make sure that you've given it a good try yourself, first&hellip; read this
-blog post, <a href="http://mattgemmell.com/2008/12/08/what-have-you-tried/">What have you tried?</a> by Matt Gemmell &mdash; it's aimed at
+make sure that you've given it a good try yourself, first&#x2026; read this
+blog post, <a href="http://mattgemmell.com/2008/12/08/what-have-you-tried/">What have you tried?</a> by Matt Gemmell &#x2014; it's aimed at
 professional programmers but I think it applies equally well to us
 all, in whatever field we work in).
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-3" class="outline-2">
+<div id="outline-container-sec-3" class="outline-2">
 <h2 id="sec-3">Which programming language(s)?</h2>
 <div class="outline-text-2" id="text-3">
-
-
 <p>
 The issue of which language to use in the course is an interesting
 one. In the past I have taught the course using only one language to
@@ -223,6 +240,7 @@ demonstrate the concepts. On the other hand, there is no doubt that a
 major component of learning to be a competent programmer is learning
 the ins and outs and specific features of a given language.
 </p>
+
 <p>
 We will talk about this during the first class and we will decide how
 to proceed this year. My present inclination is to use Python, Matlab,
@@ -232,14 +250,11 @@ said though we will talk about this during our first meeting and
 decide what is best for our class this year.
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-4" class="outline-2">
+<div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4">Which operating system(s)?</h2>
 <div class="outline-text-2" id="text-4">
-
-
 <p>
 We will be using Unix in the course. The Macintosh OS is unix-based,
 so if you have a mac (and a reasonably recent version of the OS), you
@@ -251,14 +266,11 @@ the beginning of the course about how best to set up your computer to
 use GNU/Linux. You will have several choices.
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-5" class="outline-2">
+<div id="outline-container-sec-5" class="outline-2">
 <h2 id="sec-5">Why learn to code?</h2>
 <div class="outline-text-2" id="text-5">
-
-
 <p>
 Learning how to program will significantly enhance your ability to
 conduct scientific research today and in the future. Programming
@@ -266,25 +278,23 @@ skills will provide you with the ability to go beyond what is
 available in pre-packaged analysis tools, and code your own custom
 data processing, analysis and visualization pipelines.
 </p>
+
 <p>
 Learning to code is probably one of the most useful general skills you
 can learn as a scientist today. You will learn how to think
 computationally and algorithmically about your experiments and your
 data. You will learn to take full advantage of the enormous
-computational resources available to you &mdash; today's laptops are more
+computational resources available to you &#x2014; today's laptops are more
 powerful than the multi-million dollar supercomputers of the 1980s and
 90s.
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-6" class="outline-2">
+<div id="outline-container-sec-6" class="outline-2">
 <h2 id="sec-6">List of Topics</h2>
 <div class="outline-text-2" id="text-6">
-
-
-<ol>
+<ol class="org-ol">
 <li>Introduction, setting up your computing environment
 </li>
 <li>Basic Types, Operators &amp; Expressions
@@ -310,95 +320,85 @@ powerful than the multi-million dollar supercomputers of the 1980s and
 <li>Parallel Computing
 </li>
 </ol>
-
-<p>A1. Appendix 1: Digital Representation of Data
+<p>
+A1. Appendix 1: Digital Representation of Data
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-7" class="outline-2">
+<div id="outline-container-sec-7" class="outline-2">
 <h2 id="sec-7">Next steps</h2>
 <div class="outline-text-2" id="text-7">
-
-
 <p>
-Stay tuned&hellip; we are going to have fun and learn a lot!
+Stay tuned&#x2026; we are going to have fun and learn a lot!
 </p>
+
 <p>
 If you already know how to set yourself up to use GNU/Linux, then go
 ahead and complete the setup. I suggest Ubuntu or Debian or another
 Debian variant like Linux Mint. If you know what you're doing, feel
 free to use some other distribution.
 </p>
+
 <p>
 One option is to use <a href="https://www.virtualbox.org">VirtualBox</a> to create a virtual appliance running
 GNU/Linux that lives either onto your laptop's hard disk or onto an
 external drive of your choosing. Then you can run linux in a virtual
 machine without disturbing your existing operating system.
 </p>
+
 <p>
 The course notes will be posted and updated online as we go.
 </p>
+
 <p>
 If you have questions about the course, please get in touch with me
 at: paul [at] gribblelab [dot] org, or just stop by my office
 (NSC 228) and/or lab (NSC 245G)
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-8" class="outline-2">
+<div id="outline-container-sec-8" class="outline-2">
 <h2 id="sec-8">Start Date &amp; Location</h2>
 <div class="outline-text-2" id="text-8">
-
-
-<ul>
-<li>Mondays and Wednesdays 2:30&mdash;4:00pm in STH 3166
+<ul class="org-ul">
+<li>Mondays and Wednesdays 2:30&#x2014;4:00pm in STH 3166
 </li>
 <li>start date: Monday, September 8, 2014
 </li>
 </ul>
-
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-9" class="outline-2">
+<div id="outline-container-sec-9" class="outline-2">
 <h2 id="sec-9">These notes</h2>
 <div class="outline-text-2" id="text-9">
-
-
 <p>
 These notes can be viewed (and downloaded) in their entirety from a
 <a href="https://github.com">github</a> repository here: <a href="https://github.com/paulgribble/SciComp">SciComp</a>
 </p>
-
 </div>
 
-<div id="outline-container-9-1" class="outline-3">
+<div id="outline-container-sec-9-1" class="outline-3">
 <h3 id="sec-9-1">Ideas?</h3>
 <div class="outline-text-3" id="text-9-1">
-
-
 <p>
 Do you have ideas about how to improve this? Please get in touch, send
 me an email at <b>paul [at] gribblelab [dot] org</b>
 </p>
 
-<hr/>
+<hr  />
 
 <p>
-<img src="http://imgs.xkcd.com/comics/the_general_problem.png"  alt="http://imgs.xkcd.com/comics/the_general_problem.png" />
+<img src="http://imgs.xkcd.com/comics/the_general_problem.png" alt="the_general_problem.png" />
 [ <a href="http://www.xkcd.com/974/">xkcd 974</a> ]
-</p></div>
+</p>
 </div>
 </div>
 </div>
-
-<div id="postamble">
+</div>
+<div id="postamble" class="status">
 <hr />Paul Gribble | fall 2014<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license"href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
 </div>
 </body>

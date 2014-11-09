@@ -1,65 +1,96 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Exercise 15</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
-<meta name="title" content="Exercise 15"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="generated" content="fall 2014"/>
-<meta name="author" content="Paul Gribble"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<!-- 2014-11-08 Sat 19:08 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Paul Gribble" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
-  .todo   { color: red; }
+  .todo   { font-family: monospace; color: red; }
   .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
   }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
     background: #ffffcc;
   }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
   textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="mystyle.css" /><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-52544521-1', 'auto');ga('send', 'pageview');</script>
+</style>
+<link rel="stylesheet"
+                         href="mystyle.css"
+                         type="text/css"/><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-52544521-1', 'auto');ga('send', 'pageview');</script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -106,57 +137,8 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js">
-/**
- *
- * @source: http://orgmode.org/mathjax/MathJax.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/mathjax/MathJax.js.
- *
- * Copyright (C) 2012-2013  MathJax
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/mathjax/MathJax.js.
- *
- */
-
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code below.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code below is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code below.
-*/
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
     MathJax.Hub.Config({
         // Only one of the two following lines, depending on user settings
@@ -199,54 +181,50 @@ for the JavaScript code below.
 </script>
 </head>
 <body>
-<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+<div id="org-div-home-and-up">
  <a accesskey="h" href="http://www.gribblelab.org/scicomp/exercises.html"> UP </a>
  |
  <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
-</div>
-
-<div id="preamble">
-
-</div>
-
-<div id="content">
+</div><div id="content">
 <h1 class="title">Exercise 15</h1>
-
-
 <p>
 <b>note</b> this exercise is particularly challenging. If you are a
 beginniner programmer, enter at your own risk!
 </p>
 
-<div id="outline-container-1" class="outline-2">
+<div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1">XOR decryption</h2>
 <div class="outline-text-2" id="text-1">
-
-
 <p>
 There is a site called <a href="http://projecteuler.net">Project Euler</a> that lists a set of challening
 mathematical / computer programming problems.
 </p>
+
 <p>
 This exercise is Project Euler <a href="http://projecteuler.net/problem=59">Problem 59</a>, "XOR decryption":
 </p>
+
 <p>
 Each character on a computer is assigned a unique code and the
 preferred standard is ASCII (American Standard Code for Information
 Interchange). For example, uppercase A = 65, asterisk (*) = 42, and
 lowercase k = 107.
 </p>
+
 <p>
 A modern encryption method is to take a text file, convert the bytes
 to ASCII, then <b>XOR each byte with a given value</b>, taken from a secret
-key. The advantage with the XOR function is that <b>using the same encryption key on the cipher text, restores the plain text</b>; for
+key. The advantage with the XOR function is that <b>using the same
+encryption key on the cipher text, restores the plain text</b>; for
 example, 65 XOR 42 = 107, then 107 XOR 42 = 65.
 </p>
+
 <p>
 You can read about how bitwise XOR works on Wikipedia: <a href="http://en.wikipedia.org/wiki/Bitwise_operation#XOR">bitwise XOR</a> or
 <a href="http://www.xcprod.com/titan/XCSB-DOC/binary_xor.html">here</a>. Below I show you code snippets in Python, R and MATLAB for how
 to achieve bitwise XOR using integers.
 </p>
+
 <p>
 For unbreakable encryption, the key is the same length as the plain
 text message, and the key is made up of random bytes. The user would
@@ -254,6 +232,7 @@ keep the encrypted message and the encryption key in different
 locations, and without both "halves", it is impossible to decrypt the
 message.
 </p>
+
 <p>
 Unfortunately, this method is impractical for most users, so the
 modified method is to use a password as a key. If the password is
@@ -262,22 +241,21 @@ cyclically throughout the message. The balance for this method is
 using a sufficiently long password key for security, but short enough
 to be memorable.
 </p>
+
 <p>
-Your task has been made easy, as <b>the encryption key consists of three lower case characters</b>. Using <a href="https://projecteuler.net/project/resources/p059_cipher.txt">p059_cipher.txt</a> (right click and 'Save
-Link/Target As&hellip;'), a file containing the encrypted ASCII codes, and
+Your task has been made easy, as <b>the encryption key consists of three
+lower case characters</b>. Using <a href="https://projecteuler.net/project/resources/p059_cipher.txt">p059\<sub>cipher</sub>.txt</a> (right click and 'Save
+Link/Target As&#x2026;'), a file containing the encrypted ASCII codes, and
 the knowledge that <b>the plain text must contain common English words</b>,
 decrypt the message and find the sum of the ASCII values in the
 original text.
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-2" class="outline-2">
+<div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2">Hints</h2>
 <div class="outline-text-2" id="text-2">
-
-
 <p>
 You will need three components to your program. <b>First</b> you will need
 some facility to generate candidate encryption keys. <b>Second</b> you will
@@ -289,14 +267,11 @@ in English and so you'll need some facility for deciding whether a
 certain plaintext is in English or not.
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-3" class="outline-2">
+<div id="outline-container-sec-3" class="outline-2">
 <h2 id="sec-3">Candidate encryption keys</h2>
 <div class="outline-text-2" id="text-3">
-
-
 <p>
 We know that the encryption key consists of three lower case
 characters, and so we know there are \((26)(26)(26) = 17576\) possible
@@ -306,20 +281,18 @@ it's English. One of them will be the correct one, you just have to
 find it.
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-4" class="outline-2">
+<div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4">XOR in Python, MATLAB and R</h2>
 <div class="outline-text-2" id="text-4">
-
-
 <p>
 In Python the function that returns the numerical ascii code for a
 letter is <code>ord()</code>. So for example <code>ord('a')</code> returns <code>97</code>. The
 function that goes the other way, that returns a character given a
 code, is <code>chr()</code> so for example <code>chr(97)</code> returns <code>a</code>. To apply the XOR operator to two numbers we can use the <code>^</code> operator, so for example <code>ord('a') ^ ord('b')</code> returns <code>3</code>.
 </p>
+
 <p>
 In MATLAB the <code>double()</code> function will return the ascii code for a
 letter, so <code>double('a')</code> returns <code>97</code>. Going the other way, the
@@ -327,6 +300,7 @@ letter, so <code>double('a')</code> returns <code>97</code>. Going the other way
 <code>char(97)</code> returns <code>a</code>. In MATLAB the <code>bitxor()</code> function will perform
 the XOR operation we need here.
 </p>
+
 <p>
 In R there are the <code>charToRaw()</code> and <code>rawToChar()</code> functions but they
 require a bit of TLC to work as you wish. Here are two wrapper
@@ -336,12 +310,12 @@ function goes the other way, so <code>chr(97)</code> returns <code>a</code>. Don
 about the details here for now.
 </p>
 
-
+<div class="org-src-container">
 
 <pre class="src src-R">asc &lt;- function(x) { strtoi(charToRaw(x),16L) }
 chr &lt;- function(n) { rawToChar(as.raw(n)) }
 </pre>
-
+</div>
 
 <p>
 In R the XOR function <code>bitXor()</code> in the <code>bitops</code> package is what we
@@ -349,24 +323,23 @@ need. So first load the <code>bitops</code> library using: <code>library(bitops)
 then the <code>bitXor()</code> function will be available to us.
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-5" class="outline-2">
+<div id="outline-container-sec-5" class="outline-2">
 <h2 id="sec-5">Is the plaintext English?</h2>
 <div class="outline-text-2" id="text-5">
-
-
 <p>
 One possibility is to simply take the words in the candidate plaintext
 and see if they are found in an english dictionary. On Unix machines
 (Linux, Mac OS X) you have a dictionary file in:
 <code>/usr/share/dict/words</code>.
 </p>
+
 <p>
 Another possibility is to search the candidate plaintext for common
 English words such as "the" or "and" and so on.
 </p>
+
 <p>
 Another possibility is to examine the relative frequencies of various
 letters in the candidate plaintext, and compare them to known
@@ -376,29 +349,28 @@ function to determine whether a given candidate plaintext is English
 or not.
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-6" class="outline-2">
+<div id="outline-container-sec-6" class="outline-2">
 <h2 id="sec-6">Super Hints</h2>
 <div class="outline-text-2" id="text-6">
-
-
 <p>
 Here is some sample code that illustrates how to generate plaintext
 given the ciphertext and a candidate encryption key.
 </p>
+
 <p>
-The first 5 ciphertext values in <a href="https://projecteuler.net/project/resources/p059_cipher.txt">p059_cipher.txt</a> are
+The first 5 ciphertext values in <a href="https://projecteuler.net/project/resources/p059_cipher.txt">p059\<sub>cipher</sub>.txt</a> are
 <code>79,59,12,2,79</code>. Let's assume that our candidate encryption key is
 <code>abc</code>. Here is how you would use the candidate encryption key to
 generate the first 5 characters of plaintext from the first 5 values
 in the ciphertext:
 </p>
+
 <p>
 In Python:
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-python"><span style="color: #a0522d;">plaintext</span> = <span style="color: #8b2252;">""</span>
 <span style="color: #a0522d;">plaintext</span> += <span style="color: #483d8b;">chr</span>(79 ^ <span style="color: #483d8b;">ord</span>(<span style="color: #8b2252;">'a'</span>))
@@ -408,45 +380,45 @@ In Python:
 <span style="color: #a0522d;">plaintext</span> += <span style="color: #483d8b;">chr</span>(79 ^ <span style="color: #483d8b;">ord</span>(<span style="color: #8b2252;">'b'</span>))
 <span style="color: #a020f0;">print</span> <span style="color: #8b2252;">"plaintext = %s"</span> % (plaintext)
 </pre>
-
+</div>
 
 <p>
 In MATLAB:
 </p>
+<div class="org-src-container">
 
-
-<pre class="src src-octave">plaintext = <span style="color: #8b2252;">''</span>;
-plaintext = [plaintext char(bitxor(79, double(<span style="color: #8b2252;">'a'</span>)))];
-plaintext = [plaintext char(bitxor(59, double(<span style="color: #8b2252;">'b'</span>)))];
-plaintext = [plaintext char(bitxor(12, double(<span style="color: #8b2252;">'c'</span>)))];
-plaintext = [plaintext char(bitxor(2, double(<span style="color: #8b2252;">'a'</span>)))];
-plaintext = [plaintext char(bitxor(79, double(<span style="color: #8b2252;">'b'</span>)))];
-disp([<span style="color: #8b2252;">'plaintext = '</span>,plaintext]);
+<pre class="src src-octave">plaintext <span style="color: #483d8b;">=</span> <span style="color: #8b2252;">''</span><span style="color: #483d8b;">;</span>
+plaintext <span style="color: #483d8b;">=</span> [plaintext char(bitxor(79<span style="color: #483d8b;">,</span> double(<span style="color: #8b2252;">'a'</span>)))]<span style="color: #483d8b;">;</span>
+plaintext <span style="color: #483d8b;">=</span> [plaintext char(bitxor(59<span style="color: #483d8b;">,</span> double(<span style="color: #8b2252;">'b'</span>)))]<span style="color: #483d8b;">;</span>
+plaintext <span style="color: #483d8b;">=</span> [plaintext char(bitxor(12<span style="color: #483d8b;">,</span> double(<span style="color: #8b2252;">'c'</span>)))]<span style="color: #483d8b;">;</span>
+plaintext <span style="color: #483d8b;">=</span> [plaintext char(bitxor(2<span style="color: #483d8b;">,</span> double(<span style="color: #8b2252;">'a'</span>)))]<span style="color: #483d8b;">;</span>
+plaintext <span style="color: #483d8b;">=</span> [plaintext char(bitxor(79<span style="color: #483d8b;">,</span> double(<span style="color: #8b2252;">'b'</span>)))]<span style="color: #483d8b;">;</span>
+disp([<span style="color: #8b2252;">'plaintext = '</span><span style="color: #483d8b;">,</span>plaintext])<span style="color: #483d8b;">;</span>
 </pre>
-
+</div>
 
 <p>
 In R:
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-R">asc &lt;- function(x) { strtoi(charToRaw(x),16L) }
 chr &lt;- function(n) { rawToChar(as.raw(n)) }
 library(bitops)
-plaintext = <span style="color: #8b2252;">""</span>
-plaintext = paste(plaintext, chr(bitXor(79, asc('a'))), sep=<span style="color: #8b2252;">""</span>)
-plaintext = paste(plaintext, chr(bitXor(59, asc('b'))), sep=<span style="color: #8b2252;">""</span>)
-plaintext = paste(plaintext, chr(bitXor(12, asc('c'))), sep=<span style="color: #8b2252;">""</span>)
-plaintext = paste(plaintext, chr(bitXor(2, asc('a'))), sep=<span style="color: #8b2252;">""</span>)
-plaintext = paste(plaintext, chr(bitXor(79, asc('b'))), sep=<span style="color: #8b2252;">""</span>)
-cat(<span style="color: #8b2252;">"plaintext = "</span>, plaintext,<span style="color: #8b2252;">"\n"</span>)
+plaintext = ""
+plaintext = paste(plaintext, chr(bitXor(79, asc('a'))), sep="")
+plaintext = paste(plaintext, chr(bitXor(59, asc('b'))), sep="")
+plaintext = paste(plaintext, chr(bitXor(12, asc('c'))), sep="")
+plaintext = paste(plaintext, chr(bitXor(2, asc('a'))), sep="")
+plaintext = paste(plaintext, chr(bitXor(79, asc('b'))), sep="")
+cat("plaintext = ", plaintext,"\n")
 </pre>
-
+</div>
 
 <p>
 In C:
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-c"><span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
 
@@ -462,15 +434,15 @@ In C:
   <span style="color: #a020f0;">return</span> 0;
 }
 </pre>
-
+</div>
 
 <p>
 <a href="e15sol.html">solutions</a>
-</p></div>
+</p>
 </div>
 </div>
-
-<div id="postamble">
+</div>
+<div id="postamble" class="status">
 <hr />Paul Gribble | fall 2014<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license"href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
 </div>
 </body>

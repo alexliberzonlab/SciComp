@@ -5,11 +5,9 @@
 #+EMAIL:     paul@gribblelab.org
 #+DATE:      fall 2014
 #+OPTIONS: html:t num:nil toc:1
-#+LINK_UP: http://www.gribblelab.org/scicomp/index.html
-#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+#+HTML_LINK_UP: http://www.gribblelab.org/scicomp/index.html
+#+HTML_LINK_HOME: http://www.gribblelab.org/scicomp/index.html
 
------
-[TABLE-OF-CONTENTS]
 -----
 
 Our main plan for the first class will be to talk about the course

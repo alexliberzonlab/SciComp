@@ -5,8 +5,8 @@
 #+EMAIL:     paul@gribblelab.org
 #+DATE:      fall 2014
 #+OPTIONS: toc:nil html:t num:nil h:2
-#+LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
-#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+#+HTML_LINK_UP: http://www.gribblelab.org/scicomp/exercises.html
+#+HTML_LINK_HOME: http://www.gribblelab.org/scicomp/index.html
 
 * Estimating your heart rate using your webcam or smartphone
 
@@ -16,7 +16,7 @@ Here's what you will do to generate the data. First, make sure you're in a brigh
 
 If you used your smartphone, transfer the video file to your computer. Open it up and look at it on the screen. Here's a sample frame from mine, which was approximately 15 seconds in duration:
 
-#+ATTR_HTML: height="360"
+#+ATTR_HTML: :height 360
 [[file:code/heartbeat_frame.png]]
 
 Here is a link to the example video: [[file:code/IMG_1383.MOV][IMG\_1383.MOV]]
@@ -27,7 +27,7 @@ Here are some suggestions as to how to proceed. In your language of choice, find
 
 Here is the mean (over pixels) zero-centered brightness over time, for my 15-sec example video (blue) and a band-pass filtered version (in red):
 
-#+ATTR_HTML: height="400"
+#+ATTR_HTML: :height 400
 [[file:code/heartbeat_brt.png]]
 
 Here are some other things to consider:

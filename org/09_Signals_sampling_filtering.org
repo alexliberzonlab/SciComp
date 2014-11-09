@@ -5,16 +5,21 @@
 #+EMAIL:     paul@gribblelab.org
 #+DATE:      fall 2014
 #+OPTIONS: html:t num:t toc:1
-#+LINK_UP: http://www.gribblelab.org/scicomp/index.html
-#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+#+HTML_HTML_LINK_UP: http://www.gribblelab.org/scicomp/index.html
+#+HTML_HTML_LINK_HOME: http://www.gribblelab.org/scicomp/index.html
 
 -----
-[TABLE-OF-CONTENTS]
------
 
-Whereas signals in nature (such as sound waves, magnetic fields, hand position, electromyograms (EMG), electroencephalograms (EEG), extra-cellular potentials, etc) vary continuously, often in science we measure these signals by *sampling* them repeatedly over time, at some *sampling frequency*. The resulting collection of measurements is a *discretized* representation of the original continuous signal.
+Whereas signals in nature (such as sound waves, magnetic fields, hand
+position, electromyograms (EMG), electroencephalograms (EEG),
+extra-cellular potentials, etc) vary continuously, often in science we
+measure these signals by *sampling* them repeatedly over time, at some
+*sampling frequency*. The resulting collection of measurements is a
+*discretized* representation of the original continuous signal.
 
-Before we get into *sampling theory* however we should first talk about how signals can be represented both in the *time domain* and in the *frequency domain*.
+Before we get into *sampling theory* however we should first talk
+about how signals can be represented both in the *time domain* and in
+the *frequency domain*.
 
 * Time domain representation of signals
 
@@ -32,13 +37,18 @@ w = \frac{2 \pi}{T}
 
 We can visualize the signal by plotting its magnitude as a function of time:
 
-#+ATTR_HTML: width="400"
+#+ATTR_HTML: :width 400
 [[file:code/signal_timedomain.jpg]]
 
 
 * Frequency domain representation of signals
 
-We can also represent signals in the frequency domain. This requires some understanding of the [[http://en.wikipedia.org/wiki/Fourier_series][Fourier series]]. The idea of the Fourier series is that all periodic signals can be represented by (decomposed into) the sum of a set of pure sines and cosines that differ in frequency and period. See the wikipedia link for lots of details and a helpful animation.
+We can also represent signals in the frequency domain. This requires
+some understanding of the [[http://en.wikipedia.org/wiki/Fourier_series][Fourier series]]. The idea of the Fourier
+series is that all periodic signals can be represented by (decomposed
+into) the sum of a set of pure sines and cosines that differ in
+frequency and period. See the wikipedia link for lots of details and a
+helpful animation.
 
 \begin{equation}
 s(t) = \frac{a_{0}}{2} + \sum_{n=1}^{\infty} \left[a_{n}\mathrm{cos}(nwt) + b_{n}\mathrm{sin}(nwt)\right]
@@ -81,12 +91,12 @@ a plot and see why this is so.
 
 Below we see a solid blue line showing a 2 Hz signal, a magenta dashed line showing a 4 Hz signal, and a green dashed line showing a 8 Hz signal. Now imagine we sample these signals at 2 Hz, indicated by the vertical red lines. Notice that at the sample points (vertical red lines), the 2 Hz, 4 Hz and 8 Hz signals overlap with identical values. This means that on the basis of our 2 Hz samples, we cannot distinguish between frequencies of 2, 4 and 8 Hz. What's more, what this means is that if the signal we are actually sampling at 2 Hz has significant signal power at frequencies above the Nyquist (1 Hz) then the power at these higher frequencies will influence our estimates of the magnitude coefficients corresponding to frequencies below the Nyquist... in other words the high-frequency power will be aliased into the lower frequency estimates.
 
-#+ATTR_HTML: width="600"
+#+ATTR_HTML: :width 600
 [[file:code/signal_aliasing.jpg]]
 
 Below is another example taken from the [[http://en.wikipedia.org/wiki/Aliasing][wikipedia article on aliasing]]. Here we have two sinusoids --- one at 0.1 Hz (blue) and another at 0.9 Hz (red). We sample both at a sampling rate of 1 Hz (vertical green lines). You can see that at the sample points, both the 0.1 Hz and 0.9 Hz sinusoids "hit" the sample points and thus both would influence our estimates of the power at the 0.1 Hz frequency. Since the sampling rate is 1 Hz, the Nyquist frequency (the maximum frequency we can distinguish) is 0.5 Hz ... and so any power in the signal above 0.5 Hz (such as 0.9 Hz) will be aliased down into the lower frequencies (in this case into the 0.1 Hz band).
 
-#+ATTR_HTML: width="600"
+#+ATTR_HTML: :width 600
 [[file:code/signal_aliasingsines.jpg]]
 
 So the message here is that in advance, before choosing your sampling rate, you should have some knowledge about the highest frequency that you (a) are interested in identifying; and (b) you think is a real component in the signal (as opposed to random noise). In cases where you have no a priori knowledge about the expected frequency content, one strategy is to remove high frequency components /before sampling/. This can be accomplished using low-pass filtering --- sometimes called anti-aliasing filters. Once the signal has been sampled, it's too late to perform anti-aliasing.
@@ -99,7 +109,7 @@ For a given signal, the collection of magnitude coefficients gives a description
 
 Here is an example of a power spectrum for a pure 10 Hz signal, sampled at 100 Hz.
 
-#+ATTR_HTML: width="600"
+#+ATTR_HTML: :width 600
 [[file:code/signal_spectrum10.jpg]]
 
 The magnitude values are zero for every frequency except 10 Hz. We haven't plotted the phase coefficients. The set of magnitude and phase coefficients derived from a Fourier analysis is a complete description of the underlying signal, with one caveat --- only frequencies up to the Nyquist are represented. So the idea here is that one can go between the original time-domain representation of the signal and this frequency domain  representation of the signal without losing information. As we shall see below in the section on filtering, we can perform operations in the frequency domain and then transform back into the time domain. 
@@ -134,7 +144,7 @@ xlabel("FREQUENCY (Hz)")
 savefig("signal_3freqs.jpg", dpi=150)
 #+END_SRC
 
-#+ATTR_HTML: height="600"
+#+ATTR_HTML: :height 600
 [[file:code/signal_3freqs.jpg]]
 
 We can see that the power spectrum has revealed peaks at 6, 10 and 13 Hz... which we know is correct, since we designed our signal from scratch.
@@ -162,7 +172,7 @@ psd(y, Fs=200)
 savefig("signal_50_psd.jpg", dpi=150)
 #+END_SRC
 
-#+ATTR_HTML: height="600"
+#+ATTR_HTML: :height 600
 [[file:code/signal_50_psd.jpg]]
 
 You can see that the peak at 50 Hz stands nicely above all the noise, about 20 dB above the noise, in fact (-20 dB corresponds to 1/10th the power, see below).
@@ -212,7 +222,7 @@ specgram(mtlb,256,Fs,256,230)
 sound(mtlb)
 #+END_SRC
 
-#+ATTR_HTML: width="400"
+#+ATTR_HTML: :width 400
 [[file:code/signal_specgram.jpg]]
 
 * Inverse Fast Fourier transform (IFFT)
@@ -257,7 +267,7 @@ ylabel("RECONSTRUCTED SIGNAL")
 savefig("signal_3freqs_ifft.jpg", dpi=150)
 #+END_SRC
 
-#+ATTR_HTML: height="600"
+#+ATTR_HTML: :height 600
 [[file:code/signal_3freqs_ifft.jpg]]
 
 You can see above that the original signal is reconstructed in its entirety, simply on the basis of its frequency domain representation (the FFT).
@@ -311,7 +321,7 @@ ylabel("RECONSTRUCTED SIGNAL")
 savefig("signal_3freqs_filt.jpg", dpi=150)
 #+END_SRC
 
-#+ATTR_HTML: height="600"
+#+ATTR_HTML: :height 600
 [[file:code/signal_3freqs_filt.jpg]]
 
 This is an extremely simple minded way of filtering a signal, but it illustrates the underlying concepts. There are an entire range of algorithms for filtering that are designed to manipulate frequency ranges, and they differ in a number of respects including how quickly they alter the frequencies in question, how they affect the phase information in the signal, and a number of other things we won't go into here. There are entire signal processing textbooks oriented around this topic, so if you're interested in details, I can point you towards some good sources.
@@ -346,7 +356,7 @@ or dB/octave (an octave is a doubling in frequency).
 
 Let's look at some examples of filter characteristics.
 
-#+ATTR_HTML: width="400"
+#+ATTR_HTML: :width 400
 [[file:code/signal_bode.jpg]]
 
 Here the blue trace shows the power spectrum for the unfiltered signal. The red
@@ -357,7 +367,7 @@ lowpass, which has a higher roll-off.
 
 Here are the corresponding signals shown in the time-domain:
 
-#+ATTR_HTML: height="600"
+#+ATTR_HTML: :height 600
 [[file:code/signal_bodetime.jpg]]
 
 So we see a very good example of how low-pass filtering can be used very
@@ -430,14 +440,22 @@ One solution is to use signal processing techniques such as *filtering* to separ
 
 One salient reason to low-pass filter a signal, and remove high-frequency noise, is for cases in which we are interested in taking the temporal derivative of a signal. For example, let's say we have recorded the position of the fingertip as a subject reaches from a start position on a tabletop, to a target located in front of them on a computer screen. Using a device like Optotrak we can record the (x,y,z) coordinates of the fingertip at a sampling rate of 200 Hz. Here is an example of such a recording:
 
-#+ATTR_HTML: height="600"
+#+ATTR_HTML: :height 600
 [[file:code/signal_optotrak.jpg]]
 
 The top panel shows position in one coordinate over time. The middle panel shows the result of taking the derivative of the position signal to obtain velocity. I have simply used the =diff()= function here to obtain a numerical estimate of the derivative, taking the forward difference. Note how much noisier it looks than the position signal. Finally the bottom panel shows the result of taking the derivative of the velocity signal, to obtain acceleration. It is so noisy one cannot even see the peaks in the acceleration signal, they are completely masked by noise.
 
-What is happening here is that small amounts of noise in the position signal are amplified each time a derivative is taken. One solution is to *low-pass filter* the position signal *before taking derivatives*. The choice of the cutoff frequency is key --- too low and we will decimate the signal itself, and too high and we will not remove enough of the high frequency noise. It happens that we are fairly certain in this case that there isn't much real signal power above 12 Hz for arm movements. Here is what it looks like when we low-pass filter the position signal at a 12Hz cutoff frequency:
+What is happening here is that small amounts of noise in the position
+signal are amplified each time a derivative is taken. One solution is
+to *low-pass filter* the position signal. The choice of the cutoff
+frequency is key --- too low and we will decimate the signal itself,
+and too high and we will not remove enough of the high frequency
+noise. It happens that we are fairly certain in this case that there
+isn't much real signal power above 12 Hz for arm movements. Here is
+what it looks like when we low-pass filter the position signal at a
+12Hz cutoff frequency:
 
-#+ATTR_HTML: height="600"
+#+ATTR_HTML: :height 600
 [[file:code/signal_optotrak_filtered.jpg]]
 
 What you can see is that for the position over time, the filtered
@@ -463,7 +481,7 @@ Another way of saying this is that when sampling an analog signal and converting
 
 As an example, let's look at a continuous signal and its digital representation using a variety of (low) sample resolutions:
 
-#+ATTR_HTML: height="600"
+#+ATTR_HTML: :height 600
 [[file:code/signal_quantization.jpg]]
 
 Here we see as the number of possible unique values increases, the digital representation of the underlying continuous signal gets more and more accurate. Also notice that in general, quantization adds noise to the representation of the signal.

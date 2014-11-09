@@ -1,65 +1,96 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>A1. Digital Representation of Data</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
-<meta name="title" content="A1. Digital Representation of Data"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="generated" content="fall 2014"/>
-<meta name="author" content="Paul Gribble"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<!-- 2014-11-08 Sat 19:08 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Paul Gribble" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
   .title  { text-align: center; }
-  .todo   { color: red; }
+  .todo   { font-family: monospace; color: red; }
   .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
   pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
   }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
     background: #ffffcc;
   }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
   textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="mystyle.css" /><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-52544521-1', 'auto');ga('send', 'pageview');</script>
+</style>
+<link rel="stylesheet"
+                         href="mystyle.css"
+                         type="text/css"/><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-52544521-1', 'auto');ga('send', 'pageview');</script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -106,57 +137,8 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js">
-/**
- *
- * @source: http://orgmode.org/mathjax/MathJax.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/mathjax/MathJax.js.
- *
- * Copyright (C) 2012-2013  MathJax
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/mathjax/MathJax.js.
- *
- */
-
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code below.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code below is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code below.
-*/
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
 <!--/*--><![CDATA[/*><!--*/
     MathJax.Hub.Config({
         // Only one of the two following lines, depending on user settings
@@ -199,56 +181,41 @@ for the JavaScript code below.
 </script>
 </head>
 <body>
-<div id="org-div-home-and-up" style="text-align:right;font-size:70%;white-space:nowrap;">
+<div id="org-div-home-and-up">
  <a accesskey="h" href="http://www.gribblelab.org/scicomp/index.html"> UP </a>
  |
  <a accesskey="H" href="http://www.gribblelab.org/scicomp/index.html"> HOME </a>
-</div>
-
-<div id="preamble">
-
-</div>
-
-<div id="content">
+</div><div id="content">
 <h1 class="title">A1. Digital Representation of Data</h1>
-
-
-
-<hr/>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1 Binary</a></li>
-<li><a href="#sec-2">2 Hexadecimal</a></li>
-<li><a href="#sec-3">3 Floating point values</a></li>
+<li><a href="#sec-1">1. Binary</a></li>
+<li><a href="#sec-2">2. Hexadecimal</a></li>
+<li><a href="#sec-3">3. Floating point values</a></li>
 </ul>
 </div>
 </div>
+<hr  />
 
-<hr/>
-
-
-<div id="outline-container-1" class="outline-2">
+<div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1"><span class="section-number-2">1</span> Binary</h2>
 <div class="outline-text-2" id="text-1">
-
-
 <p>
 At its core, all information on a digital computer is stored in a
 <a href="http://en.wikipedia.org/wiki/Binary_code">binary</a> format. Binary format represents information using a series of
 0s and 1s. If there are \(n\) digits of a binary code, one can represent
 \(2^{n}\) <a href="http://en.wikipedia.org/wiki/Bit">bits</a> of information.
 </p>
+
 <p>
 So for example the binary number denoted by:
 </p>
 
-
-
-<pre class="example">0001
+<pre class="example">
+0001
 </pre>
-
 
 <p>
 represents the number 1. The convention here is called <a href="http://en.wikipedia.org/wiki/Endianness">little-endian</a>
@@ -257,41 +224,110 @@ right to left, the value of each binary digit doubles. So for example
 the number 2 would be represented as:
 </p>
 
-
-
-<pre class="example">0010
+<pre class="example">
+0010
 </pre>
-
 
 <p>
 This is a 4-bit code since there are 4 binary digits. The full list of all values that can be represented using a 4-bit code are:
 </p>
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<colgroup><col class="right" /><col class="right" />
+
+
+<colgroup>
+<col  class="right" />
+
+<col  class="right" />
 </colgroup>
 <thead>
-<tr><th scope="col" class="right">Binary</th><th scope="col" class="right">Decimal</th></tr>
+<tr>
+<th scope="col" class="right">Binary</th>
+<th scope="col" class="right">Decimal</th>
+</tr>
 </thead>
 <tbody>
-<tr><td class="right">0000</td><td class="right">0</td></tr>
-<tr><td class="right">0001</td><td class="right">1</td></tr>
-<tr><td class="right">0010</td><td class="right">2</td></tr>
-<tr><td class="right">0011</td><td class="right">3</td></tr>
-<tr><td class="right">0100</td><td class="right">4</td></tr>
-<tr><td class="right">0101</td><td class="right">5</td></tr>
-<tr><td class="right">0110</td><td class="right">6</td></tr>
-<tr><td class="right">0111</td><td class="right">7</td></tr>
-<tr><td class="right">1000</td><td class="right">8</td></tr>
-<tr><td class="right">1001</td><td class="right">9</td></tr>
-<tr><td class="right">1010</td><td class="right">10</td></tr>
-<tr><td class="right">1011</td><td class="right">11</td></tr>
-<tr><td class="right">1100</td><td class="right">12</td></tr>
-<tr><td class="right">1101</td><td class="right">13</td></tr>
-<tr><td class="right">1110</td><td class="right">14</td></tr>
-<tr><td class="right">1111</td><td class="right">15</td></tr>
+<tr>
+<td class="right">0000</td>
+<td class="right">0</td>
+</tr>
+
+<tr>
+<td class="right">0001</td>
+<td class="right">1</td>
+</tr>
+
+<tr>
+<td class="right">0010</td>
+<td class="right">2</td>
+</tr>
+
+<tr>
+<td class="right">0011</td>
+<td class="right">3</td>
+</tr>
+
+<tr>
+<td class="right">0100</td>
+<td class="right">4</td>
+</tr>
+
+<tr>
+<td class="right">0101</td>
+<td class="right">5</td>
+</tr>
+
+<tr>
+<td class="right">0110</td>
+<td class="right">6</td>
+</tr>
+
+<tr>
+<td class="right">0111</td>
+<td class="right">7</td>
+</tr>
+
+<tr>
+<td class="right">1000</td>
+<td class="right">8</td>
+</tr>
+
+<tr>
+<td class="right">1001</td>
+<td class="right">9</td>
+</tr>
+
+<tr>
+<td class="right">1010</td>
+<td class="right">10</td>
+</tr>
+
+<tr>
+<td class="right">1011</td>
+<td class="right">11</td>
+</tr>
+
+<tr>
+<td class="right">1100</td>
+<td class="right">12</td>
+</tr>
+
+<tr>
+<td class="right">1101</td>
+<td class="right">13</td>
+</tr>
+
+<tr>
+<td class="right">1110</td>
+<td class="right">14</td>
+</tr>
+
+<tr>
+<td class="right">1111</td>
+<td class="right">15</td>
+</tr>
 </tbody>
 </table>
-
 
 <p>
 So with a 4-bit binary code one can represent \(2^{4} = 16\) different
@@ -300,11 +336,13 @@ can represent. So a 5-bit code enables us to represent 32 distinct
 values, a 6-bit code 64, a 7-bit code 128 and an 8-bit code 256 values
 (0-255).
 </p>
+
 <p>
 Another piece of terminology: a given sequence of binary digits that
 forms the natural unit of data for a given processor (CPU) is called a
 <a href="http://en.wikipedia.org/wiki/Word_(computer_architecture)">word</a>.
 </p>
+
 <p>
 Have another look at the <a href="http://www.asciitable.com">ASCII table</a>. The standard ASCII table
 represents 128 different characters and the extended ASCII codes
@@ -312,14 +350,11 @@ enable another 128 for a total of 256 characters. How many binary bits
 are used for each?
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-2" class="outline-2">
+<div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2"><span class="section-number-2">2</span> Hexadecimal</h2>
 <div class="outline-text-2" id="text-2">
-
-
 <p>
 You will also see in the ASCII table that it gives the decimal
 representation of each character but also the Hexadecimal and Octal
@@ -327,11 +362,9 @@ representations. The <a href="http://en.wikipedia.org/wiki/Hexadecimal">hexadeci
 <a href="http://en.wikipedia.org/wiki/Octal">octal</a> system is a base-8 code. Hex values for a single hexadecimal digit can range over:
 </p>
 
-
-
-<pre class="example">0 1 2 3 4 5 6 7 8 9 A B C D E F
+<pre class="example">
+0 1 2 3 4 5 6 7 8 9 A B C D E F
 </pre>
-
 
 <p>
 If we use a 2-digit hex code we can represent \(16*16 = 256\) distinct
@@ -339,58 +372,194 @@ values. In computer science, engineering and programming, a common
 practice is to represent successive 4-bit binary sequences using
 single-digit hex codes. 
 </p>
+
 <p>
 So here is our table again, with Binary, Decimal and Hexadecimal
 values:
 </p>
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<colgroup><col class="right" /><col class="right" /><col class="right" />
+
+
+<colgroup>
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
 </colgroup>
 <thead>
-<tr><th scope="col" class="right">Binary</th><th scope="col" class="right">Decimal</th><th scope="col" class="right">Hexadecimal</th></tr>
+<tr>
+<th scope="col" class="right">Binary</th>
+<th scope="col" class="right">Decimal</th>
+<th scope="col" class="right">Hexadecimal</th>
+</tr>
 </thead>
 <tbody>
-<tr><td class="right">0000</td><td class="right">0</td><td class="right">0</td></tr>
-<tr><td class="right">0001</td><td class="right">1</td><td class="right">1</td></tr>
-<tr><td class="right">0010</td><td class="right">2</td><td class="right">2</td></tr>
-<tr><td class="right">0011</td><td class="right">3</td><td class="right">3</td></tr>
-<tr><td class="right">0100</td><td class="right">4</td><td class="right">4</td></tr>
-<tr><td class="right">0101</td><td class="right">5</td><td class="right">5</td></tr>
-<tr><td class="right">0110</td><td class="right">6</td><td class="right">6</td></tr>
-<tr><td class="right">0111</td><td class="right">7</td><td class="right">7</td></tr>
-<tr><td class="right">1000</td><td class="right">8</td><td class="right">8</td></tr>
-<tr><td class="right">1001</td><td class="right">9</td><td class="right">9</td></tr>
-<tr><td class="right">1010</td><td class="right">10</td><td class="right">A</td></tr>
-<tr><td class="right">1011</td><td class="right">11</td><td class="right">B</td></tr>
-<tr><td class="right">1100</td><td class="right">12</td><td class="right">C</td></tr>
-<tr><td class="right">1101</td><td class="right">13</td><td class="right">D</td></tr>
-<tr><td class="right">1110</td><td class="right">14</td><td class="right">E</td></tr>
-<tr><td class="right">1111</td><td class="right">15</td><td class="right">F</td></tr>
+<tr>
+<td class="right">0000</td>
+<td class="right">0</td>
+<td class="right">0</td>
+</tr>
+
+<tr>
+<td class="right">0001</td>
+<td class="right">1</td>
+<td class="right">1</td>
+</tr>
+
+<tr>
+<td class="right">0010</td>
+<td class="right">2</td>
+<td class="right">2</td>
+</tr>
+
+<tr>
+<td class="right">0011</td>
+<td class="right">3</td>
+<td class="right">3</td>
+</tr>
+
+<tr>
+<td class="right">0100</td>
+<td class="right">4</td>
+<td class="right">4</td>
+</tr>
+
+<tr>
+<td class="right">0101</td>
+<td class="right">5</td>
+<td class="right">5</td>
+</tr>
+
+<tr>
+<td class="right">0110</td>
+<td class="right">6</td>
+<td class="right">6</td>
+</tr>
+
+<tr>
+<td class="right">0111</td>
+<td class="right">7</td>
+<td class="right">7</td>
+</tr>
+
+<tr>
+<td class="right">1000</td>
+<td class="right">8</td>
+<td class="right">8</td>
+</tr>
+
+<tr>
+<td class="right">1001</td>
+<td class="right">9</td>
+<td class="right">9</td>
+</tr>
+
+<tr>
+<td class="right">1010</td>
+<td class="right">10</td>
+<td class="right">A</td>
+</tr>
+
+<tr>
+<td class="right">1011</td>
+<td class="right">11</td>
+<td class="right">B</td>
+</tr>
+
+<tr>
+<td class="right">1100</td>
+<td class="right">12</td>
+<td class="right">C</td>
+</tr>
+
+<tr>
+<td class="right">1101</td>
+<td class="right">13</td>
+<td class="right">D</td>
+</tr>
+
+<tr>
+<td class="right">1110</td>
+<td class="right">14</td>
+<td class="right">E</td>
+</tr>
+
+<tr>
+<td class="right">1111</td>
+<td class="right">15</td>
+<td class="right">F</td>
+</tr>
 </tbody>
 </table>
-
 
 <p>
 If we have 8-bit binary codes we would use successive hex digits to
 represent each 4-bit word of the 8-bit <a href="http://en.wikipedia.org/wiki/Byte">byte</a> (another piece of lingo):
 </p>
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<colgroup><col class="left" /><col class="right" /><col class="left" />
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="left" />
 </colgroup>
 <thead>
-<tr><th scope="col" class="left">Binary</th><th scope="col" class="right">Decimal</th><th scope="col" class="left">Hexadecimal</th></tr>
+<tr>
+<th scope="col" class="left">Binary</th>
+<th scope="col" class="right">Decimal</th>
+<th scope="col" class="left">Hexadecimal</th>
+</tr>
 </thead>
 <tbody>
-<tr><td class="left">0000 0000</td><td class="right">0</td><td class="left">00</td></tr>
-<tr><td class="left">0000 0001</td><td class="right">1</td><td class="left">01</td></tr>
-<tr><td class="left">0000 0010</td><td class="right">2</td><td class="left">02</td></tr>
-<tr><td class="left">&hellip;</td><td class="right">&hellip;</td><td class="left">&hellip;</td></tr>
-<tr><td class="left">1111 1101</td><td class="right">253</td><td class="left">FD</td></tr>
-<tr><td class="left">1111 1110</td><td class="right">254</td><td class="left">FE</td></tr>
-<tr><td class="left">1111 1111</td><td class="right">255</td><td class="left">FF</td></tr>
+<tr>
+<td class="left">0000 0000</td>
+<td class="right">0</td>
+<td class="left">00</td>
+</tr>
+
+<tr>
+<td class="left">0000 0001</td>
+<td class="right">1</td>
+<td class="left">01</td>
+</tr>
+
+<tr>
+<td class="left">0000 0010</td>
+<td class="right">2</td>
+<td class="left">02</td>
+</tr>
+
+<tr>
+<td class="left">&#x2026;</td>
+<td class="right">&#x2026;</td>
+<td class="left">&#x2026;</td>
+</tr>
+
+<tr>
+<td class="left">1111 1101</td>
+<td class="right">253</td>
+<td class="left">FD</td>
+</tr>
+
+<tr>
+<td class="left">1111 1110</td>
+<td class="right">254</td>
+<td class="left">FE</td>
+</tr>
+
+<tr>
+<td class="left">1111 1111</td>
+<td class="right">255</td>
+<td class="left">FF</td>
+</tr>
 </tbody>
 </table>
-
 
 <p>
 The left chunk of 4-bit binary digits (the left word) is represented
@@ -398,20 +567,18 @@ in hex as a single hex digit (0-F) and the next chunk of 4-bit binary
 digits (the right word) is represented as another single hex digit
 (0-F).
 </p>
+
 <p>
 Hex is typically used to represent bytes (8-bits long) because it is a
 more compact notation than using 8 binary digits (hex uses just 2 hex
 digits).
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-3" class="outline-2">
+<div id="outline-container-sec-3" class="outline-2">
 <h2 id="sec-3"><span class="section-number-2">3</span> Floating point values</h2>
 <div class="outline-text-2" id="text-3">
-
-
 <p>
 The material above talks about the decimal representation of bytes in
 terms of integer values (e.g. 0-255). Frequently however in science we
@@ -419,6 +586,7 @@ want the ability to represent <a href="http://en.wikipedia.org/wiki/Real_number"
 example 3.14159, or 5.5, or 0.123, etc. For this, the convention is to
 use <a href="http://en.wikipedia.org/wiki/Floating_point">floating point</a> representations of numbers.
 </p>
+
 <p>
 The idea behind the floating point representation is that it allows us
 to represent an approximation of a real number in a way that allows
@@ -427,7 +595,6 @@ represented to a fixed number of <b>significant digits</b> (called
 a <b>significand</b>) and then this is scaled using a <b>base</b> raised to
 an <b>exponent</b>:
 </p>
-
 
 \begin{equation}
 s~\mathrm{x}~b^{e}
@@ -439,6 +606,7 @@ science, namely <a href="http://en.wikipedia.org/wiki/Scientific_notation">scien
 is 10 and so a real number like 123456.789 is represented as
 \(1.23456789~\mathrm{x}~10^{5}\).
 </p>
+
 <p>
 In computers there are different conventions for different CPUs but
 there are standards, like the <a href="http://en.wikipedia.org/wiki/IEEE_floating_point">IEEE 754</a> floating-point standard. As an
@@ -449,7 +617,7 @@ bits (8 bytes). In C you can find out how many bytes are used for
 various types using the <code>sizeof()</code> function:
 </p>
 
-
+<div class="org-src-container">
 
 <pre class="src src-c"><span style="color: #483d8b;">#include</span> <span style="color: #8b2252;">&lt;stdio.h&gt;</span>
 
@@ -460,25 +628,25 @@ various types using the <code>sizeof()</code> function:
   <span style="color: #a020f0;">return</span> 0;
 }
 </pre>
-
+</div>
 
 <p>
 On my macbook pro laptop this results in this output:
 </p>
 
-
-
-<pre class="example">a single precision float uses 4 bytes
+<pre class="example">
+a single precision float uses 4 bytes
 a double precision float uses 8 bytes
 </pre>
-
 
 <p>
 According to the IEEE 754 standard, a single precision 32-bit binary
 floating point representation is composed of a <b>1-bit sign bit</b>
-(signifying whether the number is positive or negative), an <b>8-bit exponent</b> and a <b>23-bit significand</b>. See the various wikipedia pages
+(signifying whether the number is positive or negative), an <b>8-bit
+exponent</b> and a <b>23-bit significand</b>. See the various wikipedia pages
 for full details.
 </p>
+
 <p>
 There is a key phrase in the description of floating point values
 above, which is that floating point representation allows us to store
@@ -488,6 +656,7 @@ floating point value, then we have to approximate that real number,
 typically by rounding off the digits that cannot fit in the 32
 bits. This introduces <a href="http://en.wikipedia.org/wiki/Round-off_error">rounding error</a>.
 </p>
+
 <p>
 Now with 32 bits, or even 64-bits in the case of double precision
 floating point values, rounding error is likely to be relatively
@@ -496,6 +665,7 @@ doing with these values, the rounding errors can accumulate (for
 example if you're simulating a dynamical system over thousands of time
 steps, and at each time step there is a small rounding error).
 </p>
+
 <p>
 We don't need a fancy simulation however to see the results of
 floating point rounding error. Open up your favourite programming
@@ -503,22 +673,22 @@ language (MATLAB, Python, R, C, etc) and type the following (adjust
 the syntax as needed for your language of choice):
 </p>
 
-
+<div class="org-src-container">
 
 <pre class="src src-python">(0.1 + 0.2) == 0.3
 </pre>
-
+</div>
 
 <p>
 What do you get? In Python I get:
 </p>
 
-
+<div class="org-src-container">
 
 <pre class="src src-python">&gt;&gt;&gt; (0.1 + 0.2) == 0.3
 <span style="color: #008b8b;">False</span>
 </pre>
-
+</div>
 
 <p>
 What's going on here? What's happening is that these decimal numbers,
@@ -532,24 +702,21 @@ that the binary representation of 0.1 is an infinitely repeating
 sequence:
 </p>
 
-
-
-<pre class="example">0.000110011001100110011001100... (base 2)
+<pre class="example">
+0.000110011001100110011001100... (base 2)
 </pre>
-
 
 <p>
 This shouldn't be an unfamiliar situation, if we remember that there
 are also real numbers that cannot be represented precisely in decimal
 format, either, because they involve an infintely repeating
-sequence. For example the real number \(\frac{1}{3}\) <a href="http://www.wolframalpha.com/input/?i=1/3+in+decimal">when represented in decimal</a> is:
+sequence. For example the real number \(\frac{1}{3}\) <a href="http://www.wolframalpha.com/input/?i=1/3+in+decimal">when represented
+in decimal</a> is:
 </p>
 
-
-
-<pre class="example">0.3333333333... (base 10)
+<pre class="example">
+0.3333333333... (base 10)
 </pre>
-
 
 <p>
 If we try to represent \(\frac{1}{3}\) using \(n\) decimal digits then we
@@ -558,14 +725,17 @@ thereby rounding the number. We lose some amount of precision that
 depends on how many significant digits we retain in our
 representation.
 </p>
+
 <p>
 So the same is true in binary. There are some real numbers that cannot
 be represented precisely in binary floating-point format.
 </p>
+
 <p>
 See <a href="http://ta.twi.tudelft.nl/users/vuik/wi211/disasters.html">here</a> for some examples of significant adverse events
 (i.e. disasters) cause by numerical errors.
 </p>
+
 <p>
 Rounding can be used to your advantage, if you're in the business of
 stealing from people (see <a href="http://en.wikipedia.org/wiki/Salami_slicing">salami slicing</a>). In the awesomely kitchy
@@ -575,15 +745,16 @@ number of "fractions of cents" (which in the movie are said to be
 "lost" anyway due to rounding) from his company's payroll (YouTube
 clip <a href="http://www.youtube.com/watch?v=iLw9OBV7HYA">here</a>).
 </p>
+
 <p>
 There is a comprehensive theoretical summary of these issues here:
-<a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html">What Every Computer Scientist Should Know About Floating-Point Arithmetic</a>.
+<a href="http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html">What Every Computer Scientist Should Know About Floating-Point
+Arithmetic</a>.
 </p>
 </div>
 </div>
 </div>
-
-<div id="postamble">
+<div id="postamble" class="status">
 <hr />Paul Gribble | fall 2014<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license"href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
 </div>
 </body>

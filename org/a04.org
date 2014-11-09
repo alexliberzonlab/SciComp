@@ -5,8 +5,8 @@
 #+EMAIL:     paul@gribblelab.org
 #+DATE:      fall 2014
 #+OPTIONS: toc:nil html:t num:nil h:2
-#+LINK_UP: http://www.gribblelab.org/scicomp/assignments.html
-#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+#+HTML_LINK_UP: http://www.gribblelab.org/scicomp/assignments.html
+#+HTML_LINK_HOME: http://www.gribblelab.org/scicomp/index.html
 
 * Preferred Directions of Spiking Neurons
 
@@ -42,7 +42,7 @@ For neuron =001= we have 5 movements (rows) to each of 8 targets (columns). The 
 
 Here is a graphical depiction of the data for neuron =001=:
 
-#+ATTR_HTML: width="400"
+#+ATTR_HTML: :width 400
 [[file:code/neuron001.png]]
 
 ** The Goal
@@ -65,7 +65,7 @@ In our case however we do not have movement directions that are spaced equally a
 
 One solution is to fit the unequally-spaced data to a function (such as a cosine function, or a von Mises function), and then determine the movement direction corresponding to the peak of that function. See Equations 30 and 31 in [[http://www.gribblelab.org/publications/2002_JNeurosciMeth_gribble.pdf][Gribble & Scott 2002]] for cosine and von Mises functions. Here is an example of fitting a von Mises function to the first 8-target movement set for neuron 001. We can then simply pick off the hand direction corresponding to the peak, to get the preferred direction of the neuron.
 
-#+ATTR_HTML: width="400"
+#+ATTR_HTML: :width 400
 [[file:code/vonmisesfit.png]]
 
 The weaknesses of this approach is that fitting functions (e.g. using optimization techniques) can be time consuming since optimization is an inherently iterative procedure, and sometimes the fit may not converge on a global minimum. On ther other hand, computers are fast now and we have strategies to deal with local minima (e.g. re-running the optimizations many times from different initial guesses).
@@ -124,7 +124,7 @@ The logic here is that in our 10,000 simulations, we are *simulating the null hy
 
 For example, if we take neuron 005, I have computed using the plate method that the measure $r$ of direction tuning is $r=3.9804$. When I perform a bootstrap test using 10,000 iterations, I get the following distribution of $r$ values under the null hypothesis (i.e. when I randomly sample with replacement from the original (5 x 8) set of spike data:
 
-#+ATTR_HTML: width="400"
+#+ATTR_HTML: :width 400
 [[file:code/neuronboot.png]]
 
 The observed tuning parameter $r$ is plotted as a vertical red line overtop of the distribution of $r$ under the null hypothesis, as assessed by the bootstrap test using 10,000 random resamplings (with replacement) of the spike data. As you can see only a small proportion of the bootstrap values of $r$ are greater than our observed value of $r=3.9804$. In fact if we count, there are 331 out of 10,000 that are greater than or equal to $r=3.9804$. This corresponds to $p = 0.0331$. If we use an alpha value of $p = 0.05$ as our cutoff for rejecting the null hypothesis, we would indeed reject the null in this case (the null being that the neuron is not directionally tuned) and we would conclude that the neuron is in fact directionally tuned. Actually if we want to be technically correct from a statistical point of view, we would say that the chances are very low that the cell is not directionally tuned... i.e. assuming the null hypothesis is true, the chance of observing a tuning parameter $r$ as extreme or more extreme than the one we actually observed is only 3.31 %. If we wanted to be more conservative we could set our alpha level at $p = 0.01$.

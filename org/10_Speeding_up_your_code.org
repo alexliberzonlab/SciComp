@@ -5,11 +5,9 @@
 #+EMAIL:     paul@gribblelab.org
 #+DATE:      fall 2014
 #+OPTIONS: html:t num:t toc:1
-#+LINK_UP: http://www.gribblelab.org/scicomp/index.html
-#+LINK_HOME: http://www.gribblelab.org/scicomp/index.html
+#+HTML_LINK_UP: http://www.gribblelab.org/scicomp/index.html
+#+HTML_LINK_HOME: http://www.gribblelab.org/scicomp/index.html
 
------
-[TABLE-OF-CONTENTS]
 -----
 
 We have already seen some examples in the course so far, of code that runs slowly and code that runs quickly. Here we'll discuss some of the things that contribute to the speed of your code, and strategies for speeding up your programs.
