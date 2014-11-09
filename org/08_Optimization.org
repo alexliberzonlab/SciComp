@@ -322,3 +322,4 @@ Two popular global methods you might come across are [[http://en.wikipedia.org/w
 - [[http://www.mikehutt.com/prog.html][Nelder-Mead Simplex in C]] (Micheal Hutt)
 - [[http://en.wikipedia.org/wiki/Test_functions_for_optimization][Test functions for optimization]]
 - [[http://www.cs.cmu.edu/~quake-papers/painless-conjugate-gradient.pdf][An Introduction to the Conjugate Gradient Method Without the Agonizing Pain]]
+- [[http://www.cs.cmu.edu/~cga/dynopt/][Dynamic Optimization]], a course at CMU by Chris Atkeson
