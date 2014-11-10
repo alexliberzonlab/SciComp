@@ -62,7 +62,13 @@ We can also represent the Fourier series using only sines:
 s(t) = \frac{a_{0}}{2} \sum_{n=1}^{\infty} \left[r_{n}\mathrm{cos}(nwt-\phi_{n})\right]
 \end{equation}
 
-Using this formulation we now have *magnitude* coefficients $r_{n}$ and *phase* coefficients $\phi_{n}$. That is, we are representing the original signal $s(t)$ using a sum of sinusoids of different frequencies and phases.
+Using this formulation we now have *magnitude* coefficients $r_{n}$
+and *phase* coefficients $\phi_{n}$. That is, we are representing the
+original signal $s(t)$ using a sum of sinusoids of different
+frequencies and phases.
+
+Here is a java applet that lets you play with how sines and cosines
+can be used to represent different signals: [[http://www.falstad.com/fourier/][Fourier Series Applet]].
 
 * Fast Fourier transform (FFT)
 
