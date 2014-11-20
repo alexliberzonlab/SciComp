@@ -5,8 +5,8 @@ function [PD,IR,M,IX,IY,IXY,CX,CY,CR] = platemethod(a,r)
 % from Gribble PL, Scott SH (2002) J. Neurosci. Methods 113(2):185-195
 %
 % INPUTS:
-% a: list of angles (in radians)
-% r: list of magnitudes
+% a: 1D list of angles (in radians)
+% r: 1D list of magnitudes
 %
 % OUTPUTS:
 % PD          :preferred direction (radians)
