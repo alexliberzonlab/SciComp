@@ -72,7 +72,19 @@ can be used to represent different signals: [[http://www.falstad.com/fourier/][F
 
 * Fast Fourier transform (FFT)
 
-Given a signal there is a very efficient computational algorithm called the [[http://en.wikipedia.org/wiki/Fast_Fourier_transform][Fast Fourier transform]] (FFT) for computing the magnitude and phase coefficients. We will not go into the details of this algorithm here, most high level programming languages have a library that includes the FFT algorithm.
+Given a signal there is a very efficient computational algorithm
+called the [[http://en.wikipedia.org/wiki/Fast_Fourier_transform][Fast Fourier transform]] (FFT) for computing the magnitude
+and phase coefficients. We will not go into the details of this
+algorithm here, most high level programming languages have a library
+that includes the FFT algorithm.
+
+Here is a video showing a 100-year-old mechanical computer that does
+both forward and inverse Fourier transforms:
+
+- [[https://www.youtube.com/watch?v%3DNAsM30MAHLg][Harmonic Analyzer (1/4)]]
+- [[https://www.youtube.com/watch?v=8KmVDxkia_w][Harmonic Analyzer (2/4)]]
+- [[https://www.youtube.com/watch?v=6dW6VYXp9HM][Harmonic Analyzer (3/4)]]
+- [[https://www.youtube.com/watch?v=jfH-NbsmvD4][Harmonic Analyzer (4/4)]]
 
 * Sampling
 
