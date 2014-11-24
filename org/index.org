@@ -54,7 +54,7 @@ Appendix 1: [[file:A1_Digital_Representation_of_Data.html][Digital Representatio
 - Nov 3,5: no class, Paul is away
 - Nov 10,12:  [[file:09_Signals_and_sampling.html][Signals & Sampling Theory]]
 - Nov 17,19: no class due to SFN meeting
-- Nov 24: [[file:a04.html][assignment 4]] (due Friday, Dec. 5)
+- Nov 24: [[file:a04.html][assignment 4]] (due Thursday, Dec. 18)
 - Nov 26: [[file:10_Speeding_up_your_code.html][Speeding up your code]]
 - Dec 1: [[file:11_Parallel_Computing.html][Parallel Computing]] (first 15 min for course evaluations)
 - Dec 3: Parallel Computing exercises
