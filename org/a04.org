@@ -140,16 +140,10 @@ in your assignment. If you would prefer to use an optimization
 approach for your assignment, by all means go ahead and do that. You
 have the knowledge and the tools now to do it.
 
-- [[file:code/platemethod.m][platemethod.m]]
-- [[file:code/platemethod.py][platemethod.py]]
-- [[file:code/platemethod.R][platemethod.R]]
+Here is a gzipped tarred directory containing platmethod functions in
+MATLAB, in Python, in R and in C:
 
-For those of you interested in programming in C, here is a C version
-of the plate method code, and an example program:
-
-- [[file:code/platemethod.h][platemethod.h]]
-- [[file:code/platemethod.c][platemethod.c]]
-- [[file:code/goplate.c][goplate.c]]
+- [[file:code/platemethodfuns.tgz][platemethodfuns.tgz]]
 
 ** Circular statistics
 
