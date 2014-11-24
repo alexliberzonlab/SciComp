@@ -27,9 +27,10 @@ cortex, during a visually guided arm reaching task ([[http://www.gribblelab.org/
 2001]], [[http://www.gribblelab.org/publications/2002_Nature_gribble.pdf][Gribble & Scott, 2002]]).
 
 The task was to move the hand from a central start target to one of 8
-peripheral targets equally spaced around the circumference of a
-circle. Each target was presented in random order, and movements to
-each of the 8 targets were repeated 5 times.
+peripheral targets spaced around the circumference of a circle
+(importantly the spacing was not equal). Each target was presented in
+random order, and movements to each of the 8 targets were repeated 5
+times.
 
 For each movement to each target, *two quantities* were computed:
 
