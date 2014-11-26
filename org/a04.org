@@ -293,22 +293,6 @@ the PD.txt file and the PDboot.txt file. You can assume that I will
 run your code from a location that contains the neurondata/
 subdirectory.
 
-Here is what the first 3 lines of PD.txt look like for my solution:
-
-#+BEGIN_SRC example
-4.29683956
-4.16177382
-4.26387645
-#+END_SRC
-
-and here is what the first 3 lines of PDboot.txt look like for my solution:
-
-#+BEGIN_SRC example
-0.00010000
-0.00010000
-0.00000000
-#+END_SRC
-
 
 ** Some Guidance
 
@@ -340,6 +324,23 @@ MATLAB:
 
 You should get something pretty much identical in your Python or R
 version of the platemethod function.
+
+Here is what the first 3 lines of PD.txt look like for my solution:
+
+#+BEGIN_SRC example
+4.29683956
+4.16177382
+4.26387645
+#+END_SRC
+
+and here is what the first 3 lines of PDboot.txt look like for my solution:
+
+#+BEGIN_SRC example
+0.00010000
+0.00010000
+0.00000000
+#+END_SRC
+
 
 ** Speed Contest
 
