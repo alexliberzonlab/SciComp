@@ -271,6 +271,45 @@ So your tasks are:
    the distribution of preferred directions over the population of
    neurons.
 
+Submit items 1. 2. and 3. above as a short (1 page max) report (pdf
+format please).
+
+4. create a file called PD.txt that contains the preferred direction
+   (in radians, to 8 decimal places) for each of the 100 neurons. The
+   file should be 100 lines long (1 line per neuron).
+5. create a file called PDboot.txt that contains the bootstrap
+   probability (to 8 decimal places) for each of the 100 neurons. The
+   file should be 100 lines long (1 line per neuron).
+
+*Send me:* (by email):
+
+- your 1-page .pdf report
+- the PD.txt file
+- the PDboot.txt file
+- your code
+
+I should be able to run your code on my machine and it should generate
+the PD.txt file and the PDboot.txt file. You can assume that I will
+run your code from a location that contains the neurondata/
+subdirectory.
+
+Here is what the first 3 lines of PD.txt look like for my solution:
+
+#+BEGIN_SRC example
+4.29683956
+4.16177382
+4.26387645
+#+END_SRC
+
+and here is what the first 3 lines of PDboot.txt look like for my solution:
+
+#+BEGIN_SRC example
+0.00010000
+0.00010000
+0.00000000
+#+END_SRC
+
+
 ** Some Guidance
 
 When I run my code with 10,000 bootstraps on the 100 neurons, here is
@@ -339,8 +378,4 @@ download the data directory here:
 I should be able to put your code in a directory containing
 =neurondata/= and run your code without adjusting anything.
 
-Please send me your completed assignment by email. Send (1) your code
-and (2) a short report summarizing the findings from your
-analyses. *Please make sure that your name is indicated somewhere in
-each file*.
 
