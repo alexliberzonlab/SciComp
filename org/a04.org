@@ -325,7 +325,9 @@ MATLAB:
 You should get something pretty much identical in your Python or R
 version of the platemethod function.
 
-Here is what the first 3 lines of PD.txt look like for my solution:
+Here is what the first 3 lines of PD.txt look like for my solution
+(where I take the entire 5x8 dataset for each neuron as a whole and
+compute PD):
 
 #+BEGIN_SRC example
 4.29683956
@@ -333,13 +335,18 @@ Here is what the first 3 lines of PD.txt look like for my solution:
 4.26387645
 #+END_SRC
 
-and here is what the first 3 lines of PDboot.txt look like for my solution:
+When I compute a neuron's PD as the mean (using circular stats
+approach) of the 5 PDs for the 5 trials, I get the following mean PDs
+for the first 3 neurons:
 
 #+BEGIN_SRC example
-0.00010000
-0.00010000
-0.00000000
+4.26666622
+3.97270313
+4.37791813
 #+END_SRC
+
+You can compute PD for each neuron using either of these methods, it's
+up to you.
 
 
 ** Speed Contest

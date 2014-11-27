@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Assignment 4</title>
-<!-- 2014-11-26 Wed 14:00 -->
+<!-- 2014-11-27 Thu 14:23 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Paul Gribble" />
@@ -688,7 +688,9 @@ version of the platemethod function.
 </p>
 
 <p>
-Here is what the first 3 lines of PD.txt look like for my solution:
+Here is what the first 3 lines of PD.txt look like for my solution
+(where I take the entire 5x8 dataset for each neuron as a whole and
+compute PD):
 </p>
 
 <div class="org-src-container">
@@ -700,16 +702,23 @@ Here is what the first 3 lines of PD.txt look like for my solution:
 </div>
 
 <p>
-and here is what the first 3 lines of PDboot.txt look like for my solution:
+When I compute a neuron's PD as the mean (using circular stats
+approach) of the 5 PDs for the 5 trials, I get the following mean PDs
+for the first 3 neurons:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-example">0.00010000
-0.00010000
-0.00000000
+<pre class="src src-example">4.26666622
+3.97270313
+4.37791813
 </pre>
 </div>
+
+<p>
+You can compute PD for each neuron using either of these methods, it's
+up to you.
+</p>
 </div>
 </div>
 
