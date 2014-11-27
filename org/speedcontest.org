@@ -1,6 +1,6 @@
 #+STARTUP: showall
 
-#+TITLE:     Assignment 4 Speed Contest Results
+#+TITLE:     Assignment 4 Speed Contest Leaderboard
 #+AUTHOR:    Paul Gribble
 #+EMAIL:     paul@gribblelab.org
 #+DATE:      fall 2014
