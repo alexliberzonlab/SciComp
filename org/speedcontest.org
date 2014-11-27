@@ -15,18 +15,28 @@ All tests were run on a Mac Pro 12-core desktop computer running OS X
 Once everyone hands in their code I will make the code available on
 this webpage.
 
+You may resubmit your code any time up to the deadline (e.g. if you
+think of a new way of speeding it up after handing it in).
+
+You're also free to submit code in multiple languages if you want to
+compete in more than one competition.
+
 #+ATTR_HTML: :border="2" :rules="all" :frame="all"
 |---------+----------+-------------+----------+-------|
 | name    | language | speed (sec) | parallel | notes |
 |---------+----------+-------------+----------+-------|
 |         |          |             | <c>      | <c>   |
 | Gribble | R        |   95568.750 | Y        | 1,2   |
+|---------+----------+-------------+----------+-------|
 | Gribble | Python   |    2526.500 | N        | 1     |
-| Gribble | MATLAB   |    1151.175 | N        |       |
+|---------+----------+-------------+----------+-------|
 | Gribble | MATLAB   |     124.953 | Y        |       |
-| Gribble | C        |       7.920 | N        |       |
-| Gribble | C        |       4.150 | N        | 1     |
+| Gribble | MATLAB   |    1151.175 | N        |       |
+|---------+----------+-------------+----------+-------|
 | Gribble | C        |       0.498 | Y        | 1     |
+| Gribble | C        |       4.150 | N        | 1     |
+| Gribble | C        |       7.920 | N        |       |
+|---------+----------+-------------+----------+-------|
 
 /Notes/
 
