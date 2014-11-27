@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Assignment 4 Speed Contest Leaderboard</title>
-<!-- 2014-11-27 Thu 09:13 -->
+<!-- 2014-11-27 Thu 11:52 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Paul Gribble" />
@@ -151,6 +151,11 @@ All tests were run on a Mac Pro 12-core desktop computer running OS X
 2.1.0) and R version 3.1.1
 </p>
 
+<p>
+Once everyone hands in their code I will make the code available on
+this webpage.
+</p>
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -169,7 +174,7 @@ All tests were run on a Mac Pro 12-core desktop computer running OS X
 <tr>
 <th scope="col" class="left">name</th>
 <th scope="col" class="left">language</th>
-<th scope="col" class="right">speed</th>
+<th scope="col" class="right">speed (sec)</th>
 <th scope="col" class="center">parallel</th>
 <th scope="col" class="center">notes</th>
 </tr>
@@ -177,8 +182,16 @@ All tests were run on a Mac Pro 12-core desktop computer running OS X
 <tbody>
 <tr>
 <td class="left">Gribble</td>
-<td class="left">MATLAB</td>
-<td class="right">1151.175</td>
+<td class="left">R</td>
+<td class="right">95568.750</td>
+<td class="center">Y</td>
+<td class="center">1,2</td>
+</tr>
+
+<tr>
+<td class="left">Gribble</td>
+<td class="left">Python</td>
+<td class="right">2526.500</td>
 <td class="center">N</td>
 <td class="center">1</td>
 </tr>
@@ -186,9 +199,17 @@ All tests were run on a Mac Pro 12-core desktop computer running OS X
 <tr>
 <td class="left">Gribble</td>
 <td class="left">MATLAB</td>
+<td class="right">1151.175</td>
+<td class="center">N</td>
+<td class="center">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Gribble</td>
+<td class="left">MATLAB</td>
 <td class="right">124.953</td>
 <td class="center">Y</td>
-<td class="center">2</td>
+<td class="center">&#xa0;</td>
 </tr>
 
 <tr>
@@ -196,15 +217,23 @@ All tests were run on a Mac Pro 12-core desktop computer running OS X
 <td class="left">C</td>
 <td class="right">7.920</td>
 <td class="center">N</td>
-<td class="center">3</td>
+<td class="center">&#xa0;</td>
 </tr>
 
 <tr>
 <td class="left">Gribble</td>
 <td class="left">C</td>
-<td class="right">0.740</td>
+<td class="right">4.150</td>
+<td class="center">N</td>
+<td class="center">1</td>
+</tr>
+
+<tr>
+<td class="left">Gribble</td>
+<td class="left">C</td>
+<td class="right">0.498</td>
 <td class="center">Y</td>
-<td class="center">4</td>
+<td class="center">1</td>
 </tr>
 </tbody>
 </table>
@@ -214,14 +243,10 @@ All tests were run on a Mac Pro 12-core desktop computer running OS X
 </p>
 
 <ol class="org-ol">
-<li>Straightforward use of the provided platemethod.m function as
-written
+<li>Made platemethod function code more efficient
 </li>
-<li>Used parfor to parallelize 10,000 iteration bootstrap loop
-</li>
-<li>Straightforward C version of platemethod function as provided
-</li>
-<li>Used OpenMP to parallelize 10,000 iteration boostrap loop
+<li>Timed on 24 neurons and 100 bootstrap iterations and extrapolated
+the time required for 100 neurons using 10,000 iterations
 </li>
 </ol>
 

@@ -12,23 +12,27 @@ All tests were run on a Mac Pro 12-core desktop computer running OS X
 10.10.1 and gcc version 4.9.2, MATLAB R2014b, Python 2.7.8 (Anaconda
 2.1.0) and R version 3.1.1
 
+Once everyone hands in their code I will make the code available on
+this webpage.
+
 #+ATTR_HTML: :border="2" :rules="all" :frame="all"
-|---------+----------+----------+----------+-------|
-| name    | language |    speed | parallel | notes |
-|---------+----------+----------+----------+-------|
-|         |          |          | <c>      | <c>   |
-| Gribble | MATLAB   | 1151.175 | N        | 1     |
-| Gribble | MATLAB   |  124.953 | Y        | 2     |
-| Gribble | C        |    7.920 | N        | 3     |
-| Gribble | C        |    0.740 | Y        | 4     |
+|---------+----------+-------------+----------+-------|
+| name    | language | speed (sec) | parallel | notes |
+|---------+----------+-------------+----------+-------|
+|         |          |             | <c>      | <c>   |
+| Gribble | R        |   95568.750 | Y        | 1,2   |
+| Gribble | Python   |    2526.500 | N        | 1     |
+| Gribble | MATLAB   |    1151.175 | N        |       |
+| Gribble | MATLAB   |     124.953 | Y        |       |
+| Gribble | C        |       7.920 | N        |       |
+| Gribble | C        |       4.150 | N        | 1     |
+| Gribble | C        |       0.498 | Y        | 1     |
 
 /Notes/
 
-1. Straightforward use of the provided platemethod.m function as
-   written
-2. Used parfor to parallelize 10,000 iteration bootstrap loop
-3. Straightforward C version of platemethod function as provided
-4. Used OpenMP to parallelize 10,000 iteration boostrap loop
+1. Made platemethod function code more efficient
+2. Timed on 24 neurons and 100 bootstrap iterations and extrapolated
+   the time required for 100 neurons using 10,000 iterations
 
 /last updated Nov 26 2014/
 
