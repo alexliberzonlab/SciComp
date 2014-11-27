@@ -35,7 +35,7 @@ Appendix 1: [[file:A1_Digital_Representation_of_Data.html][Digital Representatio
 * Exercises and Assignments
 - [[file:exercises.html][Exercises]] and sample solutions
 - [[file:assignments.html][Assignments]]
-- Assignment 4 [[file:speedcontest.html][speed contest results]]
+- Assignment 4 [[file:speedcontest.html][speed contest leaderboard]]
 
 * Schedule
 
