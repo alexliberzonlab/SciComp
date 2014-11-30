@@ -8,16 +8,12 @@
 #+HTML_LINK_UP: http://www.gribblelab.org/scicomp/e38.html
 #+HTML_LINK_HOME: http://www.gribblelab.org/scicomp/index.html
 
------
-[TABLE-OF-CONTENTS]
------
-
 * MATLAB
 e38.m
 #+INCLUDE: "../code/e38.m" src octave
 
 * C
-e38\_q1.c
+e38_q1.c
 #+INCLUDE: "../code/e38_q1.c" src c
-e38\_q2.c
+e38_q2.c
 #+INCLUDE: "../code/e38_q2.c" src c

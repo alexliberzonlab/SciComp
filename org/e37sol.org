@@ -8,10 +8,6 @@
 #+HTML_LINK_UP: http://www.gribblelab.org/scicomp/e37.html
 #+HTML_LINK_HOME: http://www.gribblelab.org/scicomp/index.html
 
------
-[TABLE-OF-CONTENTS]
------
-
 * MATLAB
 e37.m
 #+INCLUDE: "../code/e37.m" src octave
