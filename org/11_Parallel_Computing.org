@@ -27,7 +27,7 @@ Some programs like MATLAB (and some Apple applications) come with the ability to
 
 * Multi-threading
 
-Modern operating systems like Mac OSX, Linux, and other Unix variants, provide the ability for programs to spawn multiple threads that execute independently of each other. Windows may have this as well, I have no idea. The advantage of multithreading is that one process can do its work and other processes don't have to wait until the working process is done. This is used extensively for graphical user interfaces.
+Modern operating systems like Mac OSX, Linux, and other Unix variants, provide the ability for programs to spawn multiple threads that execute independently of each other. The advantage of multithreading is that one process can do its work and other processes don't have to wait until the working process is done. This is used extensively for graphical user interfaces.
 
 When you copy a file, you can still move your mouse around, you can still start other programs, you can still browse the web, while other things are happening simultaneously. Multithreading can occur on a single CPU with a single core. This isn't parallel computing per se, as multiple threads still have to share a single CPU processing unit to do their work ... but the operating system manages the multiple threads so that the user has the impression that multiple things are happening at once.
 
