@@ -31,6 +31,7 @@ compete in more than one competition.
 | Gribble | C        |       7.920 | N        |       |
 |---------+----------+-------------+----------+-------|
 | Gu      | MATLAB   |      42.449 | Y        | 1     |
+| Sternin | MATLAB   |     106.869 | Y        | 1     |
 | Gribble | MATLAB   |     124.953 | Y        |       |
 | Gribble | MATLAB   |    1151.175 | N        |       |
 |---------+----------+-------------+----------+-------|
