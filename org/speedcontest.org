@@ -32,6 +32,7 @@ compete in more than one competition.
 |------------------+----------+-------------+----------+-------|
 | Gu               | MATLAB   |      42.449 | Y        | 1     |
 | Sternin          | MATLAB   |     106.869 | Y        | 1     |
+| Viczko           | MATLAB   |     122.403 | Y        |       |
 | Gribble          | MATLAB   |     124.953 | Y        |       |
 | Lyons & Sergeeva | MATLAB   |    1150.420 | N        |       |
 | Gribble          | MATLAB   |    1151.175 | N        |       |
