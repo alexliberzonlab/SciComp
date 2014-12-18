@@ -55,5 +55,5 @@ compete in more than one competition.
 3. Timed on 24 neurons and 100 bootstrap iterations and extrapolated
    the time required for 100 neurons using 10,000 iterations
 
-/last updated Dec 17 2014/
+/last updated Dec 18 2014/
 
