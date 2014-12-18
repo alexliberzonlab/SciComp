@@ -33,6 +33,7 @@ compete in more than one competition.
 | Dekraker         | MATLAB   |       8.753 | Y        | 1,2   |
 | Gu               | MATLAB   |      42.449 | Y        | 1     |
 | Dekraker         | MATLAB   |      43.005 | Y        | 1     |
+| Ritz             | MATLAB   |      66.176 | Y        | 1     |
 | Abeyasinghe      | MATLAB   |      82.674 | Y        | 1     |
 | Sternin          | MATLAB   |     106.869 | Y        | 1     |
 | Lyons & Sergeeva | MATLAB   |     110.293 | Y        | 1     |
