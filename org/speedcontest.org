@@ -46,7 +46,7 @@ compete in more than one competition.
 | Gribble          | MATLAB   |    1151.175 | N        |       |
 |------------------+----------+-------------+----------+-------|
 | Gribble          | Python   |    2526.500 | N        | 1     |
-| Coros            | Python   |    6106.359 | N        | 1     |
+| Coros & Alazary  | Python   |    6106.359 | N        | 1     |
 |------------------+----------+-------------+----------+-------|
 | Gribble          | R        |   95568.750 | Y        | 1,3   |
 | Nichols          | R        | 3330647.000 | N        | 4     |
