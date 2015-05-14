@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>7. Document Processing &amp; Reproducible Research</title>
-<!-- 2014-11-21 Fri 12:38 -->
+<!-- 2015-05-14 Thu 11:15 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Paul Gribble" />
@@ -349,7 +349,7 @@ Every LaTeX document must have at the very least, a basic structure that looks l
 <pre class="src src-tex"><span style="color: #b22222;">% </span><span style="color: #b22222;">latexdemo1.tex</span>
 <span style="color: #b22222;">% </span><span style="color: #b22222;">a very basic document</span>
 
-<span style="color: #a020f0;">\documentclass</span>{<span style="color: #483d8b;">article</span>}
+<span style="color: #a020f0;">\documentclass</span>{<span style="color: #0000ff;">article</span>}
 
 <span style="color: #a020f0;">\begin</span>{<span style="color: #0000ff;">document</span>}
 
@@ -426,27 +426,27 @@ look. Here is an example:
 <pre class="src src-tex"><span style="color: #b22222;">% </span><span style="color: #b22222;">latexdemo2.tex</span>
 <span style="color: #b22222;">% </span><span style="color: #b22222;">a very basic document</span>
 
-<span style="color: #a020f0;">\documentclass</span>{<span style="color: #483d8b;">article</span>}
+<span style="color: #a020f0;">\documentclass</span>{<span style="color: #0000ff;">article</span>}
 
-<span style="color: #a020f0;">\usepackage</span>{<span style="color: #483d8b;">lipsum</span>}
+<span style="color: #a020f0;">\usepackage</span>{<span style="color: #0000ff;">lipsum</span>}
 
-<span style="color: #a020f0;">\title</span>{<span style="color: #0000ff;">A demo document in \LaTeX{}</span>}
-<span style="color: #a020f0;">\author</span>{John Doe}
-<span style="color: #a020f0;">\date</span>{<span style="color: #a020f0;">\today</span>}
+<span style="color: #a020f0;">\title</span>{<span style="color: #228b22;">A demo document in </span><span style="color: #a020f0;">\LaTeX</span><span style="color: #228b22;">{}</span>}
+<span style="color: #a020f0;">\author</span>{<span style="color: #228b22;">John Doe</span>}
+<span style="color: #a020f0;">\date</span>{<span style="color: #228b22;">\today</span>}
 
 <span style="color: #a020f0;">\begin</span>{<span style="color: #0000ff;">document</span>}
 
-<span style="color: #a020f0;">\maketitle</span>
+<span style="color: #696969;">\maketitle</span>
 
-<span style="color: #a020f0;">\lipsum</span>[1]
+<span style="color: #696969;">\lipsum</span>[1]
 
-<span style="color: #a020f0;">\section*</span>{<span style="color: #0000ff;">Introduction</span>}
+<span style="color: #a020f0;">\section</span><span style="color: #a020f0;">*</span>{<span style="color: #00008b; font-size: 133%; font-weight: bold;">Introduction</span>}
 
-<span style="color: #a020f0;">\lipsum</span>[1-5]
+<span style="color: #696969;">\lipsum</span>[1-5]
 
-<span style="color: #a020f0;">\section*</span>{<span style="color: #0000ff;">Methods</span>}
+<span style="color: #a020f0;">\section</span><span style="color: #a020f0;">*</span>{<span style="color: #00008b; font-size: 133%; font-weight: bold;">Methods</span>}
 
-<span style="color: #a020f0;">\lipsum</span>[1-5]
+<span style="color: #696969;">\lipsum</span>[1-5]
 
 <span style="color: #a020f0;">\end</span>{<span style="color: #0000ff;">document</span>}
 </pre>
@@ -486,15 +486,15 @@ equations:
 
 <pre class="src src-tex"><span style="color: #b22222;">% </span><span style="color: #b22222;">latexdemo3.tex</span>
 
-<span style="color: #a020f0;">\documentclass</span>{<span style="color: #483d8b;">article</span>}
+<span style="color: #a020f0;">\documentclass</span>{<span style="color: #0000ff;">article</span>}
 
-<span style="color: #a020f0;">\title</span>{<span style="color: #0000ff;">A demo document in \LaTeX{}</span>}
-<span style="color: #a020f0;">\author</span>{John Doe}
-<span style="color: #a020f0;">\date</span>{<span style="color: #a020f0;">\today</span>}
+<span style="color: #a020f0;">\title</span>{<span style="color: #228b22;">A demo document in </span><span style="color: #a020f0;">\LaTeX</span><span style="color: #228b22;">{}</span>}
+<span style="color: #a020f0;">\author</span>{<span style="color: #228b22;">John Doe</span>}
+<span style="color: #a020f0;">\date</span>{<span style="color: #228b22;">\today</span>}
 
 <span style="color: #a020f0;">\begin</span>{<span style="color: #0000ff;">document</span>}
 
-<span style="color: #a020f0;">\maketitle</span>
+<span style="color: #696969;">\maketitle</span>
 
 We will see two equations here. Equation <span style="color: #a020f0;">\ref</span>{<span style="color: #008b8b;">eq:regression_line</span>}
 gives the formula for a line of best fit for a linear
@@ -502,16 +502,16 @@ regression. Equation <span style="color: #a020f0;">\ref</span>{<span style="colo
 mean of a sample. It is not the same as Equation
 <span style="color: #a020f0;">\ref</span>{<span style="color: #008b8b;">eq:regression_line</span>}.
 
-This is an equation: <span style="color: #8b2252;">$\hat{Y} = \beta_{0} + \beta_{1} X$</span>.
+This is an equation: <span style="color: #8b4513;">$</span><span style="color: #8b4513;">\hat</span><span style="color: #8b4513;">{Y} = </span><span style="color: #8b4513;">\beta</span><span style="color: #8b4513;">_{0} + </span><span style="color: #8b4513;">\beta</span><span style="color: #8b4513;">_{1} X$</span>.
 
 <span style="color: #a020f0;">\begin</span>{<span style="color: #0000ff;">equation</span>}
-  <span style="color: #a020f0;">\hat</span>{Y} = <span style="color: #a020f0;">\beta</span>_{0} + <span style="color: #a020f0;">\beta</span>_{1} X
-<span style="color: #a020f0;">\label</span>{<span style="color: #008b8b;">eq:regression_line</span>}
+<span style="color: #8b4513;">  </span><span style="color: #8b4513;">\hat</span><span style="color: #8b4513;">{Y} = </span><span style="color: #8b4513;">\beta</span><span style="color: #8b4513;">_{0} + </span><span style="color: #8b4513;">\beta</span><span style="color: #8b4513;">_{1} X</span>
+<span style="color: #a020f0;">\label</span><span style="color: #8b4513;">{</span><span style="color: #008b8b;">eq:regression_line</span><span style="color: #8b4513;">}</span>
 <span style="color: #a020f0;">\end</span>{<span style="color: #0000ff;">equation</span>}
 
 <span style="color: #a020f0;">\begin</span>{<span style="color: #0000ff;">equation</span>}
-  <span style="color: #a020f0;">\bar</span>{X} = <span style="color: #a020f0;">\frac</span>{1}{N} <span style="color: #a020f0;">\sum</span>_{i=1}^{N} X_{i}
-<span style="color: #a020f0;">\label</span>{<span style="color: #008b8b;">eq:sample_mean</span>}
+<span style="color: #8b4513;">  </span><span style="color: #8b4513;">\bar</span><span style="color: #8b4513;">{X} = </span><span style="color: #8b4513;">\frac</span><span style="color: #8b4513;">{1}{N} </span><span style="color: #8b4513;">\sum</span><span style="color: #8b4513;">_{i=1}^{N} X_{i}</span>
+<span style="color: #a020f0;">\label</span><span style="color: #8b4513;">{</span><span style="color: #008b8b;">eq:sample_mean</span><span style="color: #8b4513;">}</span>
 <span style="color: #a020f0;">\end</span>{<span style="color: #0000ff;">equation</span>}
 
 Note how the equation numbering is handled automatically for you.
@@ -595,7 +595,7 @@ Here is an example of a BibTeX file:
   title={The blind watchmaker: Why the evidence of evolution reveals a universe without design},
   author={Dawkins, Richard},
   year={1996},
-  publisher={WW Norton <span style="color: #a020f0;">\&amp;</span> Company}
+  publisher={WW Norton \&amp; Company}
 }
 </pre>
 </div>
@@ -626,19 +626,19 @@ papers. Here is an example:
 
 <pre class="src src-tex"><span style="color: #b22222;">% </span><span style="color: #b22222;">latexdemo4.tex</span>
 
-<span style="color: #a020f0;">\documentclass</span>{<span style="color: #483d8b;">article</span>}
+<span style="color: #a020f0;">\documentclass</span>{<span style="color: #0000ff;">article</span>}
 
-<span style="color: #a020f0;">\title</span>{<span style="color: #0000ff;">A demo document in \LaTeX{}</span>}
-<span style="color: #a020f0;">\author</span>{John Doe}
-<span style="color: #a020f0;">\date</span>{<span style="color: #a020f0;">\today</span>}
+<span style="color: #a020f0;">\title</span>{<span style="color: #228b22;">A demo document in </span><span style="color: #a020f0;">\LaTeX</span><span style="color: #228b22;">{}</span>}
+<span style="color: #a020f0;">\author</span>{<span style="color: #228b22;">John Doe</span>}
+<span style="color: #a020f0;">\date</span>{<span style="color: #228b22;">\today</span>}
 
-<span style="color: #a020f0;">\usepackage</span>{<span style="color: #483d8b;">chicago</span>}
+<span style="color: #a020f0;">\usepackage</span>{<span style="color: #0000ff;">chicago</span>}
 
 <span style="color: #a020f0;">\begin</span>{<span style="color: #0000ff;">document</span>}
 
-<span style="color: #a020f0;">\maketitle</span>
+<span style="color: #696969;">\maketitle</span>
 
-<span style="color: #a020f0;">\section*</span>{<span style="color: #0000ff;">Introduction</span>}
+<span style="color: #a020f0;">\section</span><span style="color: #a020f0;">*</span>{<span style="color: #00008b; font-size: 133%; font-weight: bold;">Introduction</span>}
 
 Here is a sentence in which we cite an article on fMRI
 <span style="color: #a020f0;">\cite</span>{<span style="color: #008b8b;">poldrack2012future</span>}. Here is another sentence in which we cite a
@@ -649,8 +649,8 @@ evolution <span style="color: #a020f0;">\cite</span>{<span style="color: #008b8b
 Here is a sentence in which we cite all three
 <span style="color: #a020f0;">\cite</span>{<span style="color: #008b8b;">poldrack2012future,myung2003tutorial,dawkins1996blind</span>}.
 
-<span style="color: #a020f0;">\bibliographystyle</span>{chicago}
-<span style="color: #a020f0;">\bibliography</span>{<span style="color: #483d8b;">latexdemorefs</span>}
+<span style="color: #a020f0;">\bibliographystyle</span>{<span style="color: #0000ff;">chicago</span>}
+<span style="color: #a020f0;">\bibliography</span>{<span style="color: #008b8b;">latexdemorefs</span>}
 
 <span style="color: #a020f0;">\end</span>{<span style="color: #0000ff;">document</span>}
 </pre>
@@ -875,41 +875,41 @@ CMD SWEAVE</code>. Then you can compile the resulting .tex file using
 <pre class="src src-tex"><span style="color: #b22222;">% </span><span style="color: #b22222;">sweavedemo1.Rnw</span>
 <span style="color: #b22222;">% </span><span style="color: #b22222;">a very basic Sweave document</span>
 
-<span style="color: #a020f0;">\documentclass</span>{<span style="color: #483d8b;">article</span>}
+<span style="color: #a020f0;">\documentclass</span>{<span style="color: #0000ff;">article</span>}
 
-<span style="color: #a020f0;">\title</span>{<span style="color: #0000ff;">My manuscript</span>}
-<span style="color: #a020f0;">\author</span>{John Doe}
-<span style="color: #a020f0;">\date</span>{<span style="color: #a020f0;">\today</span>}
+<span style="color: #a020f0;">\title</span>{<span style="color: #228b22;">My manuscript</span>}
+<span style="color: #a020f0;">\author</span>{<span style="color: #228b22;">John Doe</span>}
+<span style="color: #a020f0;">\date</span>{<span style="color: #228b22;">\today</span>}
 
-<span style="color: #a020f0;">\usepackage</span>[margin=1.0in]{<span style="color: #483d8b;">geometry</span>}
+<span style="color: #a020f0;">\usepackage</span>[<span style="color: #a0522d;">margin=1.0in</span>]{<span style="color: #0000ff;">geometry</span>}
 
 <span style="color: #a020f0;">\begin</span>{<span style="color: #0000ff;">document</span>}
 
-<span style="color: #a020f0;">\maketitle</span>
+<span style="color: #696969;">\maketitle</span>
 
-<span style="color: #a020f0;">\abstract</span>{This is my article. It will be revolutionary. It will overturn all the current theories.}
+<span style="color: #696969;">\abstract</span>{This is my article. It will be revolutionary. It will overturn all the current theories.}
 
-<span style="color: #a020f0;">\section*</span>{<span style="color: #0000ff;">Introduction</span>}
+<span style="color: #a020f0;">\section</span><span style="color: #a020f0;">*</span>{<span style="color: #00008b; font-size: 133%; font-weight: bold;">Introduction</span>}
 
 Hello world. Here is where I do my lit review.
 
-<span style="color: #a020f0;">\section*</span>{<span style="color: #0000ff;">Methods</span>}
+<span style="color: #a020f0;">\section</span><span style="color: #a020f0;">*</span>{<span style="color: #00008b; font-size: 133%; font-weight: bold;">Methods</span>}
 
 I haven't really done anything yet.
 
-<span style="color: #a020f0;">\section*</span>{<span style="color: #0000ff;">Results</span>}
+<span style="color: #a020f0;">\section</span><span style="color: #a020f0;">*</span>{<span style="color: #00008b; font-size: 133%; font-weight: bold;">Results</span>}
 
 I have a list of numbers. Whoopee. Here is a plot of my 7 numbers:
 
-<span style="color: #8b2252;">&lt;&lt;echo=false,fig=true,height=4&gt;&gt;</span>=
+<span style="color: #bc8f8f;">&lt;&lt;echo=false,fig=true,height=4&gt;&gt;</span>=
 mylist &lt;- c(1,2,3,4,5,4,3)
 mlm &lt;- mean(mylist)
 plot(mylist, type="b", col="blue", lwd=2, xlab="my numbers", ylab="value")
 @
 
-The mean of my list turned out to be <span style="color: #a020f0;">\Sexpr</span>{round(mlm*100)/100}.
+The mean of my list turned out to be <span style="color: #696969;">\Sexpr</span>{round(mlm*100)/100}.
 
-<span style="color: #a020f0;">\section*</span>{<span style="color: #0000ff;">Discussion</span>}
+<span style="color: #a020f0;">\section</span><span style="color: #a020f0;">*</span>{<span style="color: #00008b; font-size: 133%; font-weight: bold;">Discussion</span>}
 
 What would you like me to discuss?
 
@@ -1137,7 +1137,7 @@ files. See the <a href="http://yihui.name/knitr/">main knitr website</a> for lin
 </div>
 </div>
 <div id="postamble" class="status">
-<hr />Paul Gribble | fall 2014<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a><br><a rel="license"href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/80x15.png" /></a><br />
+<hr />Paul Gribble | fall 2014<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a><br><a rel="license"href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />
 </div>
 </body>
 </html>
